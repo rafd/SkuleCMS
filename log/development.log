@@ -1,0 +1,86 @@
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-06-27 16:27:24) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ClubsController#index (for 127.0.0.1 at 2009-06-27 16:27:31) [GET]
+  [4;36;1mClub Load (0.0ms)[0m   [0;1mSQLite3::SQLException: no such table: clubs: SELECT * FROM "clubs" [0m
+
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such table: clubs: SELECT * FROM "clubs" ):
+  app/controllers/clubs_controller.rb:5:in `index'
+  -e:2:in `load'
+  -e:2
+
+Rendered rescues/_trace (110.0ms)
+Rendered rescues/_request_and_response (2.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ClubsController#index (for 127.0.0.1 at 2009-06-27 16:27:40) [GET]
+  [4;35;1mClub Load (0.0ms)[0m   [0mSQLite3::SQLException: no such table: clubs: SELECT * FROM "clubs" [0m
+
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such table: clubs: SELECT * FROM "clubs" ):
+  app/controllers/clubs_controller.rb:5:in `index'
+  -e:2:in `load'
+  -e:2
+
+Rendered rescues/_trace (62.0ms)
+Rendered rescues/_request_and_response (1.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (5.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (6.0ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateClubs (20090627200304)
+  [4;36;1mSQL (1.0ms)[0m   [0;1mCREATE TABLE "clubs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "description" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090627200304')[0m
+Migrating to CreateEvents (20090627200549)
+  [4;36;1mSQL (2.0ms)[0m   [0;1mCREATE TABLE "events" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "club_id" integer, "user_id" integer, "start" datetime, "end" datetime, "location" varchar(255), "description" varchar(255), "link" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090627200549')[0m
+Migrating to CreateUpdates (20090627200802)
+  [4;36;1mSQL (1.0ms)[0m   [0;1mCREATE TABLE "updates" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "club_id" integer, "user_id" integer, "content" text, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090627200802')[0m
+Migrating to CreateGroups (20090627202708)
+  [4;36;1mSQL (1.0ms)[0m   [0;1mCREATE TABLE "groups" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "club_id" integer, "name" varchar(255), "misc" text, "lft" integer, "rgt" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090627202708')[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("clubs")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("events")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("groups")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("updates")[0m
+
+
+Processing ClubsController#index (for 127.0.0.1 at 2009-06-27 16:29:44) [GET]
+  [4;36;1mClub Load (0.0ms)[0m   [0;1mSELECT * FROM "clubs" [0m
+Rendering template within layouts/clubs
+Rendering clubs/index
+Completed in 440ms (View: 432, DB: 0) | 200 OK [http://127.0.0.1/clubs]
+
+
+Processing ClubsController#index (for 127.0.0.1 at 2009-06-27 16:30:24) [GET]
+  [4;35;1mClub Load (0.0ms)[0m   [0mSELECT * FROM "clubs" [0m
+Rendering template within layouts/clubs
+Rendering clubs/index
+Completed in 55ms (View: 47, DB: 0) | 200 OK [http://127.0.0.1/]
