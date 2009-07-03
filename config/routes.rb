@@ -1,4 +1,10 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :download_folders
+
+  map.resources :downloads
+
+  map.resources :users
+
   map.resources :groups
 
   map.resources :updates

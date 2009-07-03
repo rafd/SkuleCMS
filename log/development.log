@@ -84,3 +84,733 @@ Processing ClubsController#index (for 127.0.0.1 at 2009-06-27 16:30:24) [GET]
 Rendering template within layouts/clubs
 Rendering clubs/index
 Completed in 55ms (View: 47, DB: 0) | 200 OK [http://127.0.0.1/]
+
+
+Processing ClubsController#index (for 127.0.0.1 at 2009-06-27 17:38:14) [GET]
+  [4;36;1mClub Load (1.0ms)[0m   [0;1mSELECT * FROM "clubs" [0m
+Rendering template within layouts/clubs
+Rendering clubs/index
+Completed in 2687ms (View: 2549, DB: 1) | 200 OK [http://localhost/]
+
+
+Processing ClubsController#index (for 127.0.0.1 at 2009-06-27 17:44:14) [GET]
+  [4;35;1mClub Load (0.0ms)[0m   [0mSELECT * FROM "clubs" [0m
+Rendering template within layouts/application
+Rendering clubs/index
+
+ActionView::TemplateError (undefined method `name' for #<ClubsController:0x6687aa8>) on line #7 of app/views/layouts/application.html.erb:
+4: <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+5: <head>
+6:   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+7:   <title>Skule Clubs: <%= controller.name %> <%= controller.action_name %></title>
+8:   <%= stylesheet_link_tag 'scaffold' %>
+9: </head>
+10: <body>
+
+    app/views/layouts/application.html.erb:7
+    app/controllers/clubs_controller.rb:7:in `index'
+    C:/Program Files/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/Program Files/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    -e:2:in `load'
+    -e:2
+
+Rendered rescues/_trace (67.0ms)
+Rendered rescues/_request_and_response (2.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ClubsController#index (for 127.0.0.1 at 2009-06-27 17:49:14) [GET]
+  [4;36;1mClub Load (1.0ms)[0m   [0;1mSELECT * FROM "clubs" [0m
+Rendering template within layouts/application
+Rendering clubs/index
+Completed in 17ms (View: 7, DB: 1) | 200 OK [http://localhost/]
+  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateClubs (20090627200304)
+Migrating to CreateEvents (20090627200549)
+Migrating to CreateUpdates (20090627200802)
+Migrating to CreateGroups (20090627202708)
+Migrating to CreateUsers (20090627215247)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090627215247')[0m
+Migrating to Membership (20090627215421)
+  [4;35;1mSQL (1.0ms)[0m   [0mCREATE TABLE "memberships" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "group_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090627215421')[0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("clubs")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("events")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("groups")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("memberships")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("updates")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("users")[0m
+
+
+Processing ClubsController#index (for 127.0.0.1 at 2009-06-27 18:07:17) [GET]
+  [4;35;1mClub Load (1.0ms)[0m   [0mSELECT * FROM "clubs" [0m
+Rendering template within layouts/application
+Rendering clubs/index
+Completed in 24ms (View: 13, DB: 1) | 200 OK [http://localhost/]
+  [4;36;1mSQL (5.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateClubs (20090627200304)
+Migrating to CreateEvents (20090627200549)
+Migrating to CreateUpdates (20090627200802)
+Migrating to CreateGroups (20090627202708)
+Migrating to CreateUsers (20090627215247)
+Migrating to Membership (20090627215421)
+Migrating to CreateDownloads (20090703000354)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mCREATE TABLE "downloads" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "downloadFolder_id" integer, "name" varchar(255), "desc" varchar(255), "url" varchar(255), "tags" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090703000354')[0m
+Migrating to CreateDownloadFolders (20090703002817)
+  [4;35;1mSQL (1.0ms)[0m   [0mCREATE TABLE "download_folders" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "club_id" integer, "name" varchar(255), "icon" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090703002817')[0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (49.0ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("clubs")[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mPRAGMA index_list("download_folders")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("downloads")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("events")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("groups")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("memberships")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("updates")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("users")[0m
+
+
+Processing ClubsController#index (for 127.0.0.1 at 2009-07-02 20:42:29) [GET]
+  [4;36;1mClub Load (1.0ms)[0m   [0;1mSELECT * FROM "clubs" [0m
+Rendering template within layouts/application
+Rendering clubs/index
+Completed in 2512ms (View: 2405, DB: 1) | 200 OK [http://localhost/]
+
+
+Processing DownloadsController#index (for 127.0.0.1 at 2009-07-02 20:42:38) [GET]
+  [4;35;1mDownload Load (0.0ms)[0m   [0mSELECT * FROM "downloads" [0m
+Rendering template within layouts/application
+Rendering downloads/index
+Completed in 39ms (View: 17, DB: 0) | 200 OK [http://localhost/downloads]
+
+
+Processing DownloadsController#index (for 127.0.0.1 at 2009-07-02 20:50:31) [GET]
+  [4;36;1mDownload Load (1.0ms)[0m   [0;1mSELECT * FROM "downloads" [0m
+Rendering template within layouts/application
+Rendering downloads/index
+Completed in 12ms (View: 3, DB: 1) | 200 OK [http://localhost/downloads]
+
+
+Processing DownloadsController#new (for 127.0.0.1 at 2009-07-02 20:58:12) [GET]
+Rendering template within layouts/application
+Rendering downloads/new
+  [4;35;1mDownloadFolder Load (0.0ms)[0m   [0mSELECT * FROM "download_folders" [0m
+
+ActionView::TemplateError (undefined method `user_id' for #<Download:0x64a652c>) on line #12 of app/views/downloads/new.html.erb:
+9:   </p>
+10:   <p>
+11:     <%= f.label :user_id %><br />
+12:     <%= f.text_field :user_id %>
+13:   </p>
+14:   <p>
+15:     <%= f.label :name %><br />
+
+    app/views/downloads/new.html.erb:12
+    app/views/downloads/new.html.erb:3
+    app/controllers/downloads_controller.rb:29:in `new'
+    C:/Program Files/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/Program Files/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    -e:2:in `load'
+    -e:2
+
+Rendered rescues/_trace (132.0ms)
+Rendered rescues/_request_and_response (2.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing DownloadsController#new (for 127.0.0.1 at 2009-07-02 20:58:55) [GET]
+Rendering template within layouts/application
+Rendering downloads/new
+  [4;36;1mDownloadFolder Load (0.0ms)[0m   [0;1mSELECT * FROM "download_folders" [0m
+Completed in 30ms (View: 21, DB: 0) | 200 OK [http://localhost/downloads/new]
+
+
+Processing DownloadsController#new (for 127.0.0.1 at 2009-07-02 21:06:28) [GET]
+Rendering template within layouts/application
+Rendering downloads/new
+  [4;35;1mDownloadFolder Load (1.0ms)[0m   [0mSELECT * FROM "download_folders" [0m
+Completed in 32ms (View: 18, DB: 1) | 200 OK [http://localhost/downloads/new]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-07-02 21:06:34) [GET]
+
+ActionController::RoutingError (No route matches "/downloadsfolder/new" with {:method=>:get}):
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-07-02 21:06:41) [GET]
+
+ActionController::RoutingError (No route matches "/downloadfolder/new" with {:method=>:get}):
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-07-02 21:06:48) [GET]
+
+ActionController::RoutingError (No route matches "/download_folder/new" with {:method=>:get}):
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-07-02 21:06:54) [GET]
+
+ActionController::RoutingError (No route matches "/download_folder/" with {:method=>:get}):
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-07-02 21:07:08) [GET]
+
+ActionController::RoutingError (No route matches "/downloadfolder/" with {:method=>:get}):
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing DownloadsController#index (for 127.0.0.1 at 2009-07-02 21:08:00) [GET]
+  [4;36;1mDownload Load (1.0ms)[0m   [0;1mSELECT * FROM "downloads" [0m
+Rendering template within layouts/application
+Rendering downloads/index
+Completed in 13ms (View: 2, DB: 1) | 200 OK [http://localhost/downloads/]
+
+
+Processing DownloadFoldersController#index (for 127.0.0.1 at 2009-07-03 11:45:50) [GET]
+  [4;36;1mDownloadFolder Load (1.0ms)[0m   [0;1mSELECT * FROM "download_folders" [0m
+Rendering template within layouts/application
+Rendering download_folders/index
+Completed in 144ms (View: 22, DB: 1) | 200 OK [http://localhost/download_folders/]
+
+
+Processing DownloadFoldersController#new (for 127.0.0.1 at 2009-07-03 11:45:52) [GET]
+Rendering template within layouts/application
+Rendering download_folders/new
+  [4;35;1mClub Load (0.0ms)[0m   [0mSELECT * FROM "clubs" [0m
+Completed in 32ms (View: 22, DB: 0) | 200 OK [http://localhost/download_folders/new]
+
+
+Processing DownloadFoldersController#index (for 127.0.0.1 at 2009-07-03 11:45:57) [GET]
+  [4;36;1mDownloadFolder Load (0.0ms)[0m   [0;1mSELECT * FROM "download_folders" [0m
+Rendering template within layouts/application
+Rendering download_folders/index
+Completed in 13ms (View: 3, DB: 0) | 200 OK [http://localhost/download_folders]
+
+
+Processing DownloadsController#index (for 127.0.0.1 at 2009-07-03 11:46:23) [GET]
+  [4;35;1mDownload Load (0.0ms)[0m   [0mSELECT * FROM "downloads" [0m
+Rendering template within layouts/application
+Rendering downloads/index
+Completed in 62ms (View: 53, DB: 0) | 200 OK [http://localhost/downloads]
+
+
+Processing DownloadsController#new (for 127.0.0.1 at 2009-07-03 11:46:25) [GET]
+Rendering template within layouts/application
+Rendering downloads/new
+  [4;36;1mDownloadFolder Load (0.0ms)[0m   [0;1mSELECT * FROM "download_folders" [0m
+Completed in 32ms (View: 22, DB: 0) | 200 OK [http://localhost/downloads/new]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-07-03 11:46:35) [GET]
+
+ActionController::RoutingError (No route matches "/club" with {:method=>:get}):
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ClubsController#index (for 127.0.0.1 at 2009-07-03 11:46:40) [GET]
+  [4;35;1mClub Load (1.0ms)[0m   [0mSELECT * FROM "clubs" [0m
+Rendering template within layouts/application
+Rendering clubs/index
+Completed in 24ms (View: 14, DB: 1) | 200 OK [http://localhost/clubs]
+
+
+Processing ClubsController#new (for 127.0.0.1 at 2009-07-03 11:47:50) [GET]
+Rendering template within layouts/application
+Rendering clubs/new
+Completed in 22ms (View: 10, DB: 0) | 200 OK [http://localhost/clubs/new]
+
+
+Processing ClubsController#create (for 127.0.0.1 at 2009-07-03 11:50:28) [POST]
+  Parameters: {"club"=>{"name"=>"Web-Dev", "description"=>"Revamping Skule.ca"}, "commit"=>"Create", "authenticity_token"=>"ay6YE5Pnfz6+GW9MZQ34JltssEuXCGtUwSGk/NdfkZg="}
+  [4;36;1mClub Create (2.0ms)[0m   [0;1mINSERT INTO "clubs" ("name", "updated_at", "description", "created_at") VALUES('Web-Dev', '2009-07-03 15:50:28', 'Revamping Skule.ca', '2009-07-03 15:50:28')[0m
+Redirected to http://localhost:3004/clubs/1
+Completed in 157ms (DB: 2) | 302 Found [http://localhost/clubs]
+
+
+Processing ClubsController#show (for 127.0.0.1 at 2009-07-03 11:50:29) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mClub Load (1.0ms)[0m   [0mSELECT * FROM "clubs" WHERE ("clubs"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering clubs/show
+Completed in 24ms (View: 13, DB: 1) | 200 OK [http://localhost/clubs/1]
+
+
+Processing DownloadFoldersController#index (for 127.0.0.1 at 2009-07-03 11:50:40) [GET]
+  [4;36;1mDownloadFolder Load (1.0ms)[0m   [0;1mSELECT * FROM "download_folders" [0m
+Rendering template within layouts/application
+Rendering download_folders/index
+Completed in 12ms (View: 2, DB: 1) | 200 OK [http://localhost/download_folders]
+
+
+Processing DownloadFoldersController#new (for 127.0.0.1 at 2009-07-03 11:50:43) [GET]
+Rendering template within layouts/application
+Rendering download_folders/new
+  [4;35;1mClub Load (0.0ms)[0m   [0mSELECT * FROM "clubs" [0m
+Completed in 28ms (View: 18, DB: 0) | 200 OK [http://localhost/download_folders/new]
+
+
+Processing DownloadFoldersController#create (for 127.0.0.1 at 2009-07-03 11:51:17) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"ay6YE5Pnfz6+GW9MZQ34JltssEuXCGtUwSGk/NdfkZg=", "download_folder"=>{"name"=>"Source Code!", "icon"=>"", "club_id"=>"1"}}
+  [4;36;1mDownloadFolder Create (1.0ms)[0m   [0;1mINSERT INTO "download_folders" ("name", "updated_at", "icon", "club_id", "created_at") VALUES('Source Code!', '2009-07-03 15:51:17', '', 1, '2009-07-03 15:51:17')[0m
+Redirected to http://localhost:3004/download_folders/1
+Completed in 61ms (DB: 1) | 302 Found [http://localhost/download_folders]
+
+
+Processing DownloadFoldersController#show (for 127.0.0.1 at 2009-07-03 11:51:17) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mDownloadFolder Load (0.0ms)[0m   [0mSELECT * FROM "download_folders" WHERE ("download_folders"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering download_folders/show
+  [4;36;1mClub Load (1.0ms)[0m   [0;1mSELECT * FROM "clubs" WHERE ("clubs"."id" = 1) [0m
+
+ActionView::TemplateError (edit_download_folder_url failed to generate from {:action=>"edit", :controller=>"download_folders", :id=>nil}, expected: {:action=>"edit", :controller=>"download_folders"}, diff: {:id=>nil}) on line #17 of app/views/download_folders/show.html.erb:
+14: </p>
+15: 
+16: 
+17: <%= link_to 'Edit', edit_download_folder_path(@download) %> |
+18: <%= link_to 'Back', download_folders_path %>
+
+    (eval):16:in `edit_download_folder_path'
+    app/views/download_folders/show.html.erb:17
+    app/controllers/download_folders_controller.rb:18:in `show'
+    C:/Program Files/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/Program Files/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    -e:2:in `load'
+    -e:2
+
+Rendered rescues/_trace (69.0ms)
+Rendered rescues/_request_and_response (2.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing DownloadFoldersController#show (for 127.0.0.1 at 2009-07-03 11:52:32) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mDownloadFolder Load (0.0ms)[0m   [0mSELECT * FROM "download_folders" WHERE ("download_folders"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering download_folders/show
+  [4;36;1mClub Load (1.0ms)[0m   [0;1mSELECT * FROM "clubs" WHERE ("clubs"."id" = 1) [0m
+Completed in 29ms (View: 17, DB: 1) | 200 OK [http://localhost/download_folders/1]
+
+
+Processing DownloadFoldersController#index (for 127.0.0.1 at 2009-07-03 11:52:43) [GET]
+  [4;35;1mDownloadFolder Load (1.0ms)[0m   [0mSELECT * FROM "download_folders" [0m
+Rendering template within layouts/application
+Rendering download_folders/index
+  [4;36;1mClub Load (0.0ms)[0m   [0;1mSELECT * FROM "clubs" WHERE ("clubs"."id" = 1) [0m
+Completed in 81ms (View: 71, DB: 1) | 200 OK [http://localhost/download_folders]
+
+
+Processing DownloadFoldersController#show (for 127.0.0.1 at 2009-07-03 11:52:46) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mDownloadFolder Load (0.0ms)[0m   [0mSELECT * FROM "download_folders" WHERE ("download_folders"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering download_folders/show
+  [4;36;1mClub Load (1.0ms)[0m   [0;1mSELECT * FROM "clubs" WHERE ("clubs"."id" = 1) [0m
+Completed in 28ms (View: 17, DB: 1) | 200 OK [http://localhost/download_folders/1]
+
+
+Processing DownloadFoldersController#index (for 127.0.0.1 at 2009-07-03 11:52:47) [GET]
+  [4;35;1mDownloadFolder Load (0.0ms)[0m   [0mSELECT * FROM "download_folders" [0m
+Rendering template within layouts/application
+Rendering download_folders/index
+  [4;36;1mClub Load (1.0ms)[0m   [0;1mSELECT * FROM "clubs" WHERE ("clubs"."id" = 1) [0m
+Completed in 27ms (View: 17, DB: 1) | 200 OK [http://localhost/download_folders]
+
+
+Processing DownloadsController#index (for 127.0.0.1 at 2009-07-03 11:52:56) [GET]
+  [4;35;1mDownload Load (0.0ms)[0m   [0mSELECT * FROM "downloads" [0m
+Rendering template within layouts/application
+Rendering downloads/index
+Completed in 12ms (View: 3, DB: 0) | 200 OK [http://localhost/downloads]
+
+
+Processing DownloadsController#new (for 127.0.0.1 at 2009-07-03 11:52:58) [GET]
+Rendering template within layouts/application
+Rendering downloads/new
+  [4;36;1mDownloadFolder Load (0.0ms)[0m   [0;1mSELECT * FROM "download_folders" [0m
+Completed in 40ms (View: 25, DB: 0) | 200 OK [http://localhost/downloads/new]
+
+
+Processing DownloadsController#create (for 127.0.0.1 at 2009-07-03 11:54:30) [POST]
+  Parameters: {"download"=>{"name"=>"Test", "tags"=>"Web-Dev", "url"=>"", "downloadFolder_id"=>"1", "desc"=>"Test"}, "commit"=>"Create", "authenticity_token"=>"ay6YE5Pnfz6+GW9MZQ34JltssEuXCGtUwSGk/NdfkZg="}
+  [4;35;1mDownload Create (1.0ms)[0m   [0mINSERT INTO "downloads" ("name", "updated_at", "tags", "downloadFolder_id", "url", "desc", "created_at") VALUES('Test', '2009-07-03 15:54:30', 'Web-Dev', 1, '', 'Test', '2009-07-03 15:54:30')[0m
+Redirected to http://localhost:3004/downloads/1
+Completed in 19ms (DB: 1) | 302 Found [http://localhost/downloads]
+
+
+Processing DownloadsController#show (for 127.0.0.1 at 2009-07-03 11:54:30) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mDownload Load (0.0ms)[0m   [0;1mSELECT * FROM "downloads" WHERE ("downloads"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering downloads/show
+
+ActionView::TemplateError (undefined method `user_id' for #<Download:0x64d59f8>) on line #8 of app/views/downloads/show.html.erb:
+5: 
+6: <p>
+7:   <b>User:</b>
+8:   <%=h @download.user_id %>
+9: </p>
+10: 
+11: <p>
+
+    app/views/downloads/show.html.erb:8
+    app/controllers/downloads_controller.rb:18:in `show'
+    C:/Program Files/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/Program Files/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    -e:2:in `load'
+    -e:2
+
+Rendered rescues/_trace (120.0ms)
+Rendered rescues/_request_and_response (1.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing DownloadsController#show (for 127.0.0.1 at 2009-07-03 11:55:37) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mDownload Load (1.0ms)[0m   [0mSELECT * FROM "downloads" WHERE ("downloads"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering downloads/show
+Completed in 19ms (View: 9, DB: 1) | 200 OK [http://localhost/downloads/1]
+
+
+Processing DownloadsController#index (for 127.0.0.1 at 2009-07-03 11:55:43) [GET]
+  [4;36;1mDownload Load (1.0ms)[0m   [0;1mSELECT * FROM "downloads" [0m
+Rendering template within layouts/application
+Rendering downloads/index
+Completed in 19ms (View: 11, DB: 1) | 200 OK [http://localhost/downloads]
+
+
+Processing DownloadsController#index (for 127.0.0.1 at 2009-07-03 11:56:06) [GET]
+  [4;35;1mDownload Load (1.0ms)[0m   [0mSELECT * FROM "downloads" [0m
+Rendering template within layouts/application
+Rendering downloads/index
+
+ActionView::TemplateError (undefined method `download_Folder' for #<Download:0x6567bf0>) on line #15 of app/views/downloads/index.html.erb:
+12: 
+13: <% @downloads.each do |download| %>
+14:   <tr>
+15:     <td><%=h download.download_Folder.name %></td>
+16:     <td><%=h download.name %></td>
+17:     <td><%=h download.desc %></td>
+18:     <td><%=h download.url %></td>
+
+    app/views/downloads/index.html.erb:15
+    app/views/downloads/index.html.erb:13:in `each'
+    app/views/downloads/index.html.erb:13
+    app/controllers/downloads_controller.rb:7:in `index'
+    C:/Program Files/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/Program Files/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    -e:2:in `load'
+    -e:2
+
+Rendered rescues/_trace (119.0ms)
+Rendered rescues/_request_and_response (1.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing DownloadsController#index (for 127.0.0.1 at 2009-07-03 11:56:25) [GET]
+  [4;36;1mDownload Load (1.0ms)[0m   [0;1mSELECT * FROM "downloads" [0m
+Rendering template within layouts/application
+Rendering downloads/index
+
+ActionView::TemplateError (undefined method `download_folder' for #<Download:0x6694744>) on line #15 of app/views/downloads/index.html.erb:
+12: 
+13: <% @downloads.each do |download| %>
+14:   <tr>
+15:     <td><%=h download.download_folder.name %></td>
+16:     <td><%=h download.name %></td>
+17:     <td><%=h download.desc %></td>
+18:     <td><%=h download.url %></td>
+
+    app/views/downloads/index.html.erb:15
+    app/views/downloads/index.html.erb:13:in `each'
+    app/views/downloads/index.html.erb:13
+    app/controllers/downloads_controller.rb:7:in `index'
+    C:/Program Files/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/Program Files/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    -e:2:in `load'
+    -e:2
+
+Rendered rescues/_trace (67.0ms)
+Rendered rescues/_request_and_response (1.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing DownloadsController#index (for 127.0.0.1 at 2009-07-03 11:56:32) [GET]
+  [4;35;1mDownload Load (0.0ms)[0m   [0mSELECT * FROM "downloads" [0m
+Rendering template within layouts/application
+Rendering downloads/index
+  [4;36;1mDownloadFolder Load (0.0ms)[0m   [0;1mSELECT * FROM "download_folders" WHERE ("download_folders"."id" = 1) [0m
+Completed in 31ms (View: 22, DB: 0) | 200 OK [http://localhost/downloads]
+
+
+Processing DownloadsController#index (for 127.0.0.1 at 2009-07-03 11:56:35) [GET]
+  [4;35;1mDownload Load (1.0ms)[0m   [0mSELECT * FROM "downloads" [0m
+Rendering template within layouts/application
+Rendering downloads/index
+  [4;36;1mDownloadFolder Load (0.0ms)[0m   [0;1mSELECT * FROM "download_folders" WHERE ("download_folders"."id" = 1) [0m
+Completed in 27ms (View: 16, DB: 1) | 200 OK [http://localhost/downloads]
+
+
+Processing DownloadsController#show (for 127.0.0.1 at 2009-07-03 11:57:10) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mDownload Load (0.0ms)[0m   [0mSELECT * FROM "downloads" WHERE ("downloads"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering downloads/show
+Completed in 14ms (View: 4, DB: 0) | 200 OK [http://localhost/downloads/1]
+
+
+Processing DownloadsController#index (for 127.0.0.1 at 2009-07-03 11:57:12) [GET]
+  [4;36;1mDownload Load (1.0ms)[0m   [0;1mSELECT * FROM "downloads" [0m
+Rendering template within layouts/application
+Rendering downloads/index
+  [4;35;1mDownloadFolder Load (1.0ms)[0m   [0mSELECT * FROM "download_folders" WHERE ("download_folders"."id" = 1) [0m
+Completed in 25ms (View: 14, DB: 2) | 200 OK [http://localhost/downloads]
+
+
+Processing DownloadsController#index (for 127.0.0.1 at 2009-07-03 11:57:34) [GET]
+  [4;36;1mDownload Load (1.0ms)[0m   [0;1mSELECT * FROM "downloads" [0m
+Rendering template within layouts/application
+Rendering downloads/index
+  [4;35;1mDownloadFolder Load (0.0ms)[0m   [0mSELECT * FROM "download_folders" WHERE ("download_folders"."id" = 1) [0m
+Completed in 32ms (View: 23, DB: 1) | 200 OK [http://localhost/downloads]
+
+
+Processing DownloadsController#index (for 127.0.0.1 at 2009-07-03 12:09:59) [GET]
+  [4;36;1mDownload Load (1.0ms)[0m   [0;1mSELECT * FROM "downloads" [0m
+Rendering template within layouts/application
+Rendering downloads/index
+  [4;35;1mDownloadFolder Load (0.0ms)[0m   [0mSELECT * FROM "download_folders" WHERE ("download_folders"."id" = 1) [0m
+Completed in 144ms (View: 112, DB: 1) | 200 OK [http://localhost/downloads]
+
+
+Processing DownloadsController#show (for 127.0.0.1 at 2009-07-03 12:10:02) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mDownload Load (1.0ms)[0m   [0;1mSELECT * FROM "downloads" WHERE ("downloads"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering downloads/show
+Completed in 19ms (View: 8, DB: 1) | 200 OK [http://localhost/downloads/1]
+
+
+Processing DownloadsController#show (for 127.0.0.1 at 2009-07-03 12:10:05) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mDownload Load (0.0ms)[0m   [0mSELECT * FROM "downloads" WHERE ("downloads"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering downloads/show
+Completed in 15ms (View: 4, DB: 0) | 200 OK [http://localhost/downloads/1]
+
+
+Processing DownloadFoldersController#index (for 127.0.0.1 at 2009-07-03 12:10:16) [GET]
+  [4;36;1mDownloadFolder Load (1.0ms)[0m   [0;1mSELECT * FROM "download_folders" [0m
+Rendering template within layouts/application
+Rendering download_folders/index
+  [4;35;1mClub Load (1.0ms)[0m   [0mSELECT * FROM "clubs" WHERE ("clubs"."id" = 1) [0m
+Completed in 37ms (View: 26, DB: 2) | 200 OK [http://localhost/download_folders]
+
+
+Processing DownloadFoldersController#index (for 127.0.0.1 at 2009-07-03 12:10:18) [GET]
+  [4;36;1mDownloadFolder Load (1.0ms)[0m   [0;1mSELECT * FROM "download_folders" [0m
+Rendering template within layouts/application
+Rendering download_folders/index
+  [4;35;1mClub Load (1.0ms)[0m   [0mSELECT * FROM "clubs" WHERE ("clubs"."id" = 1) [0m
+Completed in 25ms (View: 14, DB: 2) | 200 OK [http://localhost/download_folders]
+
+
+Processing DownloadFoldersController#show (for 127.0.0.1 at 2009-07-03 12:10:19) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mDownloadFolder Load (0.0ms)[0m   [0;1mSELECT * FROM "download_folders" WHERE ("download_folders"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering download_folders/show
+  [4;35;1mClub Load (1.0ms)[0m   [0mSELECT * FROM "clubs" WHERE ("clubs"."id" = 1) [0m
+Completed in 28ms (View: 16, DB: 1) | 200 OK [http://localhost/download_folders/1]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-07-03 12:10:24) [GET]
+
+ActionController::RoutingError (No route matches "/club" with {:method=>:get}):
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  C:/Program Files/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+
+
+Processing ClubsController#index (for 127.0.0.1 at 2009-07-03 12:10:28) [GET]
+  [4;36;1mClub Load (1.0ms)[0m   [0;1mSELECT * FROM "clubs" [0m
+Rendering template within layouts/application
+Rendering clubs/index
+Completed in 26ms (View: 17, DB: 1) | 200 OK [http://localhost/clubs]
+
+
+Processing ClubsController#index (for 127.0.0.1 at 2009-07-03 12:20:21) [GET]
+  [4;36;1mClub Load (1.0ms)[0m   [0;1mSELECT * FROM "clubs" [0m
+Rendering template within layouts/application
+Rendering clubs/index
+Completed in 86ms (View: 25, DB: 1) | 200 OK [http://localhost/clubs]

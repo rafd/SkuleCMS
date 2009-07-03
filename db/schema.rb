@@ -9,11 +9,29 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090627202708) do
+ActiveRecord::Schema.define(:version => 20090703002817) do
 
   create_table "clubs", :force => true do |t|
     t.string   "name"
     t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "download_folders", :force => true do |t|
+    t.integer  "club_id"
+    t.string   "name"
+    t.string   "icon"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "downloads", :force => true do |t|
+    t.integer  "downloadFolder_id"
+    t.string   "name"
+    t.string   "desc"
+    t.string   "url"
+    t.string   "tags"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -40,10 +58,23 @@ ActiveRecord::Schema.define(:version => 20090627202708) do
     t.datetime "updated_at"
   end
 
+  create_table "memberships", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "group_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "updates", :force => true do |t|
     t.integer  "club_id"
     t.integer  "user_id"
     t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
