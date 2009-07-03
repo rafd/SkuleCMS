@@ -9,6 +9,7 @@ class DownloadsController < ApplicationController
       format.xml  { render :xml => @downloads }
     end
   end
+  
 
   # GET /downloads/1
   # GET /downloads/1.xml
@@ -25,7 +26,7 @@ class DownloadsController < ApplicationController
   # GET /downloads/new.xml
   def new
     @download = Download.new
-
+    @downloadFolder = DownloadFolder.find(:all)
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @download }
@@ -41,10 +42,11 @@ class DownloadsController < ApplicationController
   # POST /downloads.xml
   def create
     @download = Download.new(params[:download])
+    @download.url = @download.name = Download.save(params[:upload])
 
     respond_to do |format|
       if @download.save
-        flash[:notice] = 'Download was successfully created.'
+        flash[:notice] = 'File was successfully uploaded.'
         format.html { redirect_to(@download) }
         format.xml  { render :xml => @download, :status => :created, :location => @download }
       else

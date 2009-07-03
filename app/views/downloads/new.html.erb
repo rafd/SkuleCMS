@@ -1,31 +1,27 @@
-<h1>New download</h1>
+<h1>File Upload</h1>
+<%= form_tag ({:action => 'create'}, 
+                        :multipart => true) %>
+<p>	<label for="upload_file">Select File</label> : 
+	<%= file_field 'upload', 'download' %>
+</p>
 
-<% form_for(@download) do |f| %>
-  <%= f.error_messages %>
+<p>
+  <%= label 'download', 'downloadFolder_id' %><br />
+  <%= collection_select ('download', 'downloadFolder_id', @downloadFolder, :id, :name, { :prompt => 'Select Download Folder'}) %>
+</p>
+<p>
+  <%= label 'download', 'desc' %><br />
+  <%= text_field 'download', 'desc' %>
+</p>
+<p>
+  <%= label 'download', 'tags' %><br />
+  <%= text_field 'download', 'tags' %>
+</p>
 
-  <p>
-    <%= f.label :downloadFolder_id %><br />
-  	<%= f.collection_select :downloadFolder_id, DownloadFolder.find(:all), :id, :name, { :prompt => 'Select Download Folder' } %>
-  </p>
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :desc %><br />
-    <%= f.text_field :desc %>
-  </p>
-  <p>
-    <%= f.label :url %><br />
-    <%= f.text_field :url %>
-  </p>
-  <p>
-    <%= f.label :tags %><br />
-    <%= f.text_field :tags %>
-  </p>
-  <p>
-    <%= f.submit 'Create' %>
-  </p>
-<% end %>
+<p>
+  <%= submit_tag "Upload" %>
+</p>
+
+  
 
 <%= link_to 'Back', downloads_path %>
