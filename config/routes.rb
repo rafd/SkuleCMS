@@ -1,4 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :albums
+
+  map.resources :images
+
   map.resources :download_folders
 
   map.resources :downloads

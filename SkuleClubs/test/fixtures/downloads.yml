@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  downloadFolder_id: 1
+  user_id: 1
+  name: MyString
+  desc: MyString
+  url: MyString
+  tags: MyString
+
+two:
+  downloadFolder_id: 1
+  user_id: 1
+  name: MyString
+  desc: MyString
+  url: MyString
+  tags: MyString

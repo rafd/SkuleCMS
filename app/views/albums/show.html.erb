@@ -1,0 +1,28 @@
+<p>
+  <b>Name:</b>
+  <%=h @album.name %>
+</p>
+
+<p>
+  <b>Desc:</b>
+  <%=h @album.desc %>
+</p>
+
+<p>
+  <b>Tags:</b>
+  <%=h @album.tags %>
+</p>
+
+<p>
+  <b>Locked:</b>
+  <%=h @album.locked %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%=h @album.user_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_album_path(@album) %> |
+<%= link_to 'Back', albums_path %>

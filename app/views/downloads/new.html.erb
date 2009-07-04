@@ -1,6 +1,5 @@
 <h1>File Upload</h1>
-<%= form_tag ({:action => 'create'}, 
-                        :multipart => true) %>
+<%= form_tag ({:action => 'create'}, :multipart => true) %>
 <p>	<label for="upload_file">Select File</label> : 
 	<%= file_field 'upload', 'download' %>
 </p>
