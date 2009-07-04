@@ -1,5 +1,9 @@
 class Download < ActiveRecord::Base
-  belongs_to      :downloadFolder
+  belongs_to      :download_folder
+
+  validates_presence_of     :name, :download_folder_id
+  validates_numericality_of :download_folder_id
+  validates_uniqueness_of   :name
 
   def self.save(upload)
     name =  upload['download'].original_filename

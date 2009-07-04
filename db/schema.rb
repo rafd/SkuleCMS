@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(:version => 20090703245803) do
     t.boolean  "locked"
   end
 
+ActiveRecord::Schema.define(:version => 20090703235351) do
+
   create_table "clubs", :force => true do |t|
     t.string   "name"
     t.string   "description"
@@ -38,7 +40,7 @@ ActiveRecord::Schema.define(:version => 20090703245803) do
   end
 
   create_table "downloads", :force => true do |t|
-    t.integer  "downloadFolder_id"
+    t.integer  "download_folder_id"
     t.string   "name"
     t.string   "desc"
     t.string   "url"

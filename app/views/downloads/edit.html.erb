@@ -4,19 +4,15 @@
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :downloadFolder_id %><br />
-    <%= f.text_field :downloadFolder_id %>
-  </p>
-  <p>
-    <%= f.label :user_id %><br />
-    <%= f.text_field :user_id %>
+    <%= f.label :download_folder_id %><br />
+  	<%= f.collection_select :download_folder_id, DownloadFolder.find(:all), :id, :name, { :prompt => 'Select a Download Folder' } %>
   </p>
   <p>
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </p>
   <p>
-    <%= f.label :desc %><br />
+    <%= f.label :desc, "Description" %><br />
     <%= f.text_field :desc %>
   </p>
   <p>

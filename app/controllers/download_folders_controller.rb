@@ -1,8 +1,14 @@
 class DownloadFoldersController < ApplicationController
+  before_filter :load_club
+  def load_club
+    @club = Club.find(params[:club_id])
+  end
+
+  
   # GET /download_folders
   # GET /download_folders.xml
   def index
-    @download_folders = DownloadFolder.all
+    @download_folders = @club.download_folders
 
     respond_to do |format|
       format.html # index.html.erb
@@ -41,11 +47,12 @@ class DownloadFoldersController < ApplicationController
   # POST /download_folders.xml
   def create
     @download_folder = DownloadFolder.new(params[:download_folder])
-
+    @download_folder.club_id = @club.id
+    
     respond_to do |format|
       if @download_folder.save
         flash[:notice] = 'DownloadFolder was successfully created.'
-        format.html { redirect_to(@download_folder) }
+        format.html { redirect_to club_files_path }
         format.xml  { render :xml => @download_folder, :status => :created, :location => @download_folder }
       else
         format.html { render :action => "new" }
@@ -62,7 +69,7 @@ class DownloadFoldersController < ApplicationController
     respond_to do |format|
       if @download_folder.update_attributes(params[:download_folder])
         flash[:notice] = 'DownloadFolder was successfully updated.'
-        format.html { redirect_to(@download_folder) }
+        format.html { redirect_to club_files_path }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -78,7 +85,7 @@ class DownloadFoldersController < ApplicationController
     @download_folder.destroy
 
     respond_to do |format|
-      format.html { redirect_to(download_folders_url) }
+      format.html { redirect_to(club_files_url) }
       format.xml  { head :ok }
     end
   end

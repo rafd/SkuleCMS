@@ -7,7 +7,7 @@
   <b>Description:</b>
   <%=h @club.description %>
 </p>
-
+<%= link_to 'Downloads Page', club_files_path(@club) %> |
 
 <%= link_to 'Edit', edit_club_path(@club) %> |
 <%= link_to 'Back', clubs_path %>

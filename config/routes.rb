@@ -14,8 +14,10 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :updates
 
   map.resources :events
-
-  map.resources :clubs
+  
+  map.resources :clubs do |club|
+    club.resources :files, :controller => "download_folders"
+  end 
 
   # The priority is based upon order of creation: first created -> highest priority.
 
