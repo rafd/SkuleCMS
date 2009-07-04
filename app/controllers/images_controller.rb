@@ -25,7 +25,8 @@ class ImagesController < ApplicationController
   # GET /images/new.xml
   def new
     @image = Image.new
-
+    @album = Album.find(:all)
+    @user = User.find(:all)
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @image }
@@ -41,10 +42,10 @@ class ImagesController < ApplicationController
   # POST /images.xml
   def create
     @image = Image.new(params[:image])
-
+    @image.url = Image.save(params[:upload])
     respond_to do |format|
       if @image.save
-        flash[:notice] = 'Image was successfully created.'
+        flash[:notice] = 'Image was successfully uploaded to album.'
         format.html { redirect_to(@image) }
         format.xml  { render :xml => @image, :status => :created, :location => @image }
       else

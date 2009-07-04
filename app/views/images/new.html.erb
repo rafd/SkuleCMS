@@ -1,35 +1,29 @@
-<h1>New image</h1>
+<h1>Image Upload</h1>
 
-<% form_for(@image) do |f| %>
-  <%= f.error_messages %>
+<%= form_tag ({:action => 'create'}, :multipart => true) %>
+<p>	<label for="upload_file">Select Image</label> : 
+	<%= file_field 'upload', 'download', :accept => 'text/html' %>
+</p>
 
+<p>
+  <%= label 'image', 'album_id' %><br />
+  <%= collection_select ('image', 'album_id', @album, :id, :name, { :prompt => 'Select Album'}) %>
+</p>
+<p>
+  <%= label 'image', 'desc' %><br />
+  <%= text_field 'image', 'desc' %>
+</p>
+<p>
+  <%= label 'image', 'tags' %><br />
+  <%= text_field 'image', 'tags' %>
+</p>
+
+<p>
+  <%= label 'image', 'user_id' %><br />
+  <%= collection_select ('image', 'user_id', @user, :id, :name, { :prompt => 'Select User'}) %>
+</p>
   <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <%= submit_tag 'Upload' %>
   </p>
-  <p>
-    <%= f.label :url %><br />
-    <%= f.text_field :url %>
-  </p>
-  <p>
-    <%= f.label :desc %><br />
-    <%= f.text_field :desc %>
-  </p>
-  <p>
-    <%= f.label :tags %><br />
-    <%= f.text_field :tags %>
-  </p>
-  <p>
-    <%= f.label :album_id %><br />
-    <%= f.text_field :album_id %>
-  </p>
-  <p>
-    <%= f.label :user_id %><br />
-    <%= f.text_field :user_id %>
-  </p>
-  <p>
-    <%= f.submit 'Create' %>
-  </p>
-<% end %>
 
 <%= link_to 'Back', images_path %>

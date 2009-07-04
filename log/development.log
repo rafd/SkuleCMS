@@ -2140,3 +2140,266 @@ Migrating to AddClubIdToAlbum (20090703235803)
   [4;35;1mSQL (1.0ms)[0m   [0mPRAGMA index_list("memberships")[0m
   [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("updates")[0m
   [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("users")[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateClubs (20090627200304)
+Migrating to CreateEvents (20090627200549)
+Migrating to CreateUpdates (20090627200802)
+Migrating to CreateGroups (20090627202708)
+Migrating to CreateUsers (20090627215247)
+Migrating to Membership (20090627215421)
+Migrating to CreateDownloads (20090703000354)
+Migrating to CreateDownloadFolders (20090703002817)
+Migrating to CreateImages (20090703234540)
+Migrating to CreateAlbums (20090703235238)
+Migrating to AddClubIdToAlbum (20090703235803)
+Migrating to RemoveLockedFromAlbum (20090703245803)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateClubs (20090627200304)
+Migrating to CreateEvents (20090627200549)
+Migrating to CreateUpdates (20090627200802)
+Migrating to CreateGroups (20090627202708)
+Migrating to CreateUsers (20090627215247)
+Migrating to Membership (20090627215421)
+Migrating to CreateDownloads (20090703000354)
+Migrating to CreateDownloadFolders (20090703002817)
+Migrating to CreateImages (20090703234540)
+Migrating to CreateAlbums (20090703235238)
+Migrating to AddClubIdToAlbum (20090703235803)
+Migrating to RemoveLockedFromAlbum (20090703245803)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mCREATE TEMPORARY TABLE "altered_albums" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "desc" varchar(255), "tags" varchar(255), "locked" varchar(255), "user_id" varchar(255), "created_at" datetime, "updated_at" datetime, "club_id" integer) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("albums")[0m
+  [4;35;1mSQL (3.0ms)[0m   [0mDROP TABLE "albums"[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mCREATE TABLE "albums" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "desc" varchar(255), "tags" varchar(255), "user_id" varchar(255), "created_at" datetime, "updated_at" datetime, "club_id" integer) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("altered_albums")[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mDROP TABLE "altered_albums"[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mALTER TABLE "albums" ADD "locked" boolean[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090703245803')[0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("albums")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("clubs")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("download_folders")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("downloads")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("events")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("groups")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("images")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("memberships")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("updates")[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mPRAGMA index_list("users")[0m
+
+
+Processing DownloadFoldersController#show (for 127.0.0.1 at 2009-07-03 20:51:00) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mDownloadFolder Load (1.0ms)[0m   [0mSELECT * FROM "download_folders" WHERE ("download_folders"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering download_folders/show
+  [4;36;1mClub Load (0.0ms)[0m   [0;1mSELECT * FROM "clubs" WHERE ("clubs"."id" = 1) [0m
+Completed in 30ms (View: 16, DB: 1) | 200 OK [http://127.0.0.1/download_folders/1]
+
+
+Processing DownloadFoldersController#new (for 127.0.0.1 at 2009-07-03 20:51:02) [GET]
+Rendering template within layouts/application
+Rendering download_folders/new
+  [4;35;1mClub Load (0.0ms)[0m   [0mSELECT * FROM "clubs" [0m
+Completed in 33ms (View: 21, DB: 0) | 200 OK [http://127.0.0.1/download_folders/new]
+
+
+Processing UsersController#index (for 127.0.0.1 at 2009-07-03 20:55:00) [GET]
+  [4;36;1mUser Load (1.0ms)[0m   [0;1mSELECT * FROM "users" [0m
+Rendering template within layouts/application
+Rendering users/index
+Completed in 231ms (View: 61, DB: 1) | 200 OK [http://127.0.0.1/users/]
+
+
+Processing UsersController#new (for 127.0.0.1 at 2009-07-03 20:55:09) [GET]
+Rendering template within layouts/application
+Rendering users/new
+Completed in 20ms (View: 10, DB: 0) | 200 OK [http://127.0.0.1/users/new]
+
+
+Processing UsersController#create (for 127.0.0.1 at 2009-07-03 20:55:13) [POST]
+  Parameters: {"user"=>{"name"=>"Guru M"}, "commit"=>"Create", "authenticity_token"=>"DyXuphrOFYfSZF7GkWhjpKGkinNkmWfhPljb5bu1tRU="}
+  [4;35;1mUser Create (1.0ms)[0m   [0mINSERT INTO "users" ("name", "updated_at", "created_at") VALUES('Guru M', '2009-07-04 00:55:13', '2009-07-04 00:55:13')[0m
+Redirected to http://127.0.0.1:3000/users/1
+Completed in 27ms (DB: 1) | 302 Found [http://127.0.0.1/users]
+
+
+Processing UsersController#show (for 127.0.0.1 at 2009-07-03 20:55:13) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mUser Load (1.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering users/show
+Completed in 51ms (View: 32, DB: 1) | 200 OK [http://127.0.0.1/users/1]
+
+
+Processing UsersController#index (for 127.0.0.1 at 2009-07-03 20:55:16) [GET]
+  [4;35;1mUser Load (1.0ms)[0m   [0mSELECT * FROM "users" [0m
+Rendering template within layouts/application
+Rendering users/index
+Completed in 106ms (View: 7, DB: 1) | 200 OK [http://127.0.0.1/users]
+
+
+Processing DownloadsController#show (for 127.0.0.1 at 2009-07-03 22:08:29) [GET]
+  Parameters: {"id"=>"4"}
+  [4;36;1mDownload Load (0.0ms)[0m   [0;1mSELECT * FROM "downloads" WHERE ("downloads"."id" = 4) [0m
+
+ActiveRecord::RecordNotFound (Couldn't find Download with ID=4):
+  app/controllers/downloads_controller.rb:17:in `show'
+  C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  C:/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  C:/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  C:/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  C:/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  -e:2:in `load'
+  -e:2
+
+Rendered rescues/_trace (63.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (not_found)
+
+
+Processing AlbumsController#index (for 127.0.0.1 at 2009-07-03 22:08:39) [GET]
+  [4;35;1mAlbum Load (1.0ms)[0m   [0mSELECT * FROM "albums" [0m
+Rendering template within layouts/application
+Rendering albums/index
+Completed in 30ms (View: 19, DB: 1) | 200 OK [http://127.0.0.1/albums/]
+
+
+Processing AlbumsController#new (for 127.0.0.1 at 2009-07-03 22:08:40) [GET]
+Rendering template within layouts/application
+Rendering albums/new
+  [4;36;1mClub Load (1.0ms)[0m   [0;1mSELECT * FROM "clubs" [0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" [0m
+Completed in 61ms (View: 40, DB: 1) | 200 OK [http://127.0.0.1/albums/new]
+
+
+Processing AlbumsController#create (for 127.0.0.1 at 2009-07-03 22:09:08) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"DyXuphrOFYfSZF7GkWhjpKGkinNkmWfhPljb5bu1tRU=", "album"=>{"name"=>"TestAlbum", "tags"=>"test", "club_id"=>"1", "desc"=>"A Test Album", "user_id"=>"1"}}
+  [4;36;1mAlbum Create (1.0ms)[0m   [0;1mINSERT INTO "albums" ("name", "updated_at", "tags", "club_id", "desc", "user_id", "created_at", "locked") VALUES('TestAlbum', '2009-07-04 02:09:08', 'test', 1, 'A Test Album', '1', '2009-07-04 02:09:08', NULL)[0m
+Redirected to http://127.0.0.1:3000/albums/1
+Completed in 26ms (DB: 1) | 302 Found [http://127.0.0.1/albums]
+
+
+Processing AlbumsController#show (for 127.0.0.1 at 2009-07-03 22:09:08) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mAlbum Load (1.0ms)[0m   [0mSELECT * FROM "albums" WHERE ("albums"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering albums/show
+Completed in 23ms (View: 10, DB: 1) | 200 OK [http://127.0.0.1/albums/1]
+
+
+Processing AlbumsController#index (for 127.0.0.1 at 2009-07-03 22:09:11) [GET]
+  [4;36;1mAlbum Load (1.0ms)[0m   [0;1mSELECT * FROM "albums" [0m
+Rendering template within layouts/application
+Rendering albums/index
+Completed in 29ms (View: 10, DB: 1) | 200 OK [http://127.0.0.1/albums]
+
+
+Processing ImagesController#index (for 127.0.0.1 at 2009-07-03 22:09:15) [GET]
+  [4;35;1mImage Load (1.0ms)[0m   [0mSELECT * FROM "images" [0m
+Rendering template within layouts/application
+Rendering images/index
+Completed in 24ms (View: 13, DB: 1) | 200 OK [http://127.0.0.1/images/]
+
+
+Processing ImagesController#new (for 127.0.0.1 at 2009-07-03 22:09:17) [GET]
+  [4;36;1mAlbum Load (1.0ms)[0m   [0;1mSELECT * FROM "albums" [0m
+Rendering template within layouts/application
+Rendering images/new
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.map) on line #23 of app/views/images/new.html.erb:
+20: 
+21: <p>
+22:   <%= label 'image', 'user_id' %><br />
+23:   <%= collection_select ('image', 'user_id', @user, :id, :name, { :prompt => 'Select User'}) %>
+24: </p>
+25:   <p>
+26:     <%= submit_tag 'Upload' %>
+
+    app/views/images/new.html.erb:23
+    app/controllers/images_controller.rb:29:in `new'
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    C:/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    -e:2:in `load'
+    -e:2
+
+Rendered rescues/_trace (146.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ImagesController#new (for 127.0.0.1 at 2009-07-03 22:09:39) [GET]
+  [4;35;1mAlbum Load (1.0ms)[0m   [0mSELECT * FROM "albums" [0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" [0m
+Rendering template within layouts/application
+Rendering images/new
+Completed in 39ms (View: 13, DB: 1) | 200 OK [http://127.0.0.1/images/new]
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-07-03 22:10:03) [POST]
+  Parameters: {"commit"=>"Upload", "authenticity_token"=>"DyXuphrOFYfSZF7GkWhjpKGkinNkmWfhPljb5bu1tRU=", "upload"=>{"download"=>#<File:C:/Users/Guru/AppData/Local/Temp/RackMultipart.6340.1>}, "image"=>{"tags"=>"asrock, netbook", "album_id"=>"1", "desc"=>"An AsRock Netbook", "user_id"=>"1"}}
+  [4;35;1mImage Create (1.0ms)[0m   [0mINSERT INTO "images" ("name", "updated_at", "tags", "url", "album_id", "desc", "user_id", "created_at") VALUES(NULL, '2009-07-04 02:10:03', 'asrock, netbook', 'asrock_netbook.jpg', 1, 'An AsRock Netbook', 1, '2009-07-04 02:10:03')[0m
+Redirected to http://127.0.0.1:3000/images/1
+Completed in 28ms (DB: 1) | 302 Found [http://127.0.0.1/images]
+
+
+Processing ImagesController#show (for 127.0.0.1 at 2009-07-03 22:10:04) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mImage Load (1.0ms)[0m   [0;1mSELECT * FROM "images" WHERE ("images"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering images/show
+Completed in 22ms (View: 10, DB: 1) | 200 OK [http://127.0.0.1/images/1]
+
+
+Processing ImagesController#index (for 127.0.0.1 at 2009-07-03 22:10:06) [GET]
+  [4;35;1mImage Load (1.0ms)[0m   [0mSELECT * FROM "images" [0m
+Rendering template within layouts/application
+Rendering images/index
+Completed in 19ms (View: 8, DB: 1) | 200 OK [http://127.0.0.1/images]
+
+
+Processing ImagesController#show (for 127.0.0.1 at 2009-07-03 22:11:06) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mImage Load (0.0ms)[0m   [0;1mSELECT * FROM "images" WHERE ("images"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering images/show
+Completed in 34ms (View: 22, DB: 0) | 200 OK [http://127.0.0.1/images/1]
+
+
+Processing ImagesController#index (for 127.0.0.1 at 2009-07-03 22:11:27) [GET]
+  [4;35;1mImage Load (1.0ms)[0m   [0mSELECT * FROM "images" [0m
+Rendering template within layouts/application
+Rendering images/index
+Completed in 18ms (View: 8, DB: 1) | 200 OK [http://127.0.0.1/images]
