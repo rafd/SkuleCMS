@@ -10,6 +10,10 @@
   <%= collection_select ('image', 'album_id', @album, :id, :name, { :prompt => 'Select Album'}) %>
 </p>
 <p>
+  <%= label 'image', 'name' %><br />
+  <%= text_field 'image', 'name' %>
+</p>
+<p>
   <%= label 'image', 'desc' %><br />
   <%= text_field 'image', 'desc' %>
 </p>
@@ -17,13 +21,12 @@
   <%= label 'image', 'tags' %><br />
   <%= text_field 'image', 'tags' %>
 </p>
-
 <p>
   <%= label 'image', 'user_id' %><br />
   <%= collection_select ('image', 'user_id', @user, :id, :name, { :prompt => 'Select User'}) %>
 </p>
-  <p>
-    <%= submit_tag 'Upload' %>
-  </p>
+<p>
+  <%= submit_tag 'Upload' %>
+</p>
 
 <%= link_to 'Back', images_path %>

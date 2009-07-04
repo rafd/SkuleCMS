@@ -19,10 +19,17 @@
 </p>
 
 <p>
-  <b>User:</b>
-  <%=h @album.user_id %>
+  <b>Created by:</b>
+  <%=h @album.user.name %>
 </p>
 
-
+<h2>Images in this Album</h2>
+<% @album.images.each do |image| %>
+  <p>
+    <h3><%= image.name %></h3>
+	<%= image_tag  "/" + image.album.club.name+"/"+image.album.name+"/"+image.url, :size => "100x100", :alt => image.desc %>
+  </p>
+  <hr>
+<% end %>
 <%= link_to 'Edit', edit_album_path(@album) %> |
 <%= link_to 'Back', albums_path %>

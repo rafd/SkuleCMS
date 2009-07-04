@@ -42,7 +42,7 @@ class ImagesController < ApplicationController
   # POST /images.xml
   def create
     @image = Image.new(params[:image])
-    @image.url = Image.save(params[:upload])
+    @image.url = Image.save(params[:upload], params[:image])
     respond_to do |format|
       if @image.save
         flash[:notice] = 'Image was successfully uploaded to album.'

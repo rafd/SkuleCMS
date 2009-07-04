@@ -41,6 +41,10 @@ class ClubsController < ApplicationController
   # POST /clubs.xml
   def create
     @club = Club.new(params[:club])
+    directory = "public/"+@club.name
+    if !File.exist?(directory)
+      FileUtils.mkdir_p(directory)
+    end
 
     respond_to do |format|
       if @club.save
