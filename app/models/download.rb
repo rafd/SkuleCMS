@@ -6,6 +6,9 @@ class Download < ActiveRecord::Base
   validates_uniqueness_of   :name
 
   def self.save(upload)
+    if (upload.blank?)
+      return nil
+    end
     name =  upload['download'].original_filename
     directory = "public/data"
     # create the file path
