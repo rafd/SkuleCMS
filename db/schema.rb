@@ -22,8 +22,6 @@ ActiveRecord::Schema.define(:version => 20090703245803) do
     t.boolean  "locked"
   end
 
-ActiveRecord::Schema.define(:version => 20090703235351) do
-
   create_table "clubs", :force => true do |t|
     t.string   "name"
     t.string   "description"

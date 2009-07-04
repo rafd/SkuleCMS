@@ -2,6 +2,9 @@ class Image < ActiveRecord::Base
   belongs_to :album
   belongs_to :user
   
+  validates_presence_of     :name, :album_id, :user_id, :url
+  validates_numericality_of :user_id, :album_id
+  
   def self.save(upload, properties)
     name =  upload['download'].original_filename
     album = Album.find(properties['album_id'])

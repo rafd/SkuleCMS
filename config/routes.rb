@@ -3,8 +3,6 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :images
 
-  map.resources :download_folders
-
   map.resources :downloads
 
   map.resources :users

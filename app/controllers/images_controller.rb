@@ -54,7 +54,7 @@ class ImagesController < ApplicationController
       end
     end
   end
-
+  
   # PUT /images/1
   # PUT /images/1.xml
   def update
