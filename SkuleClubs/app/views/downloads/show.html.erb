@@ -1,0 +1,27 @@
+<p>
+  <b>Downloadfolder:</b>
+  <%=h @download.downloadFolder_id %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%=h @download.name %>
+</p>
+
+<p>
+  <b>Desc:</b>
+  <%=h @download.desc %>
+</p>
+
+<p>
+  <%= link_to 'download', "/data/"+@download.url %>
+</p>
+
+<p>
+  <b>Tags:</b>
+  <%=h @download.tags %>
+</p>
+
+
+<%= link_to 'Edit', edit_download_path(@download) %> |
+<%= link_to 'Back', downloads_path %>

@@ -1,0 +1,32 @@
+<p>
+  <b>Name:</b>
+  <%=h @image.name %>
+</p>
+
+<p>
+  <%= link_to 'download', "/data/"+@image.url %>
+</p>
+
+<p>
+  <b>Desc:</b>
+  <%=h @image.desc %>
+</p>
+
+<p>
+  <b>Tags:</b>
+  <%=h @image.tags %>
+</p>
+
+<p>
+  <b>Album:</b>
+  <%=h @image.album_id %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%=h @image.user_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_image_path(@image) %> |
+<%= link_to 'Back', images_path %>

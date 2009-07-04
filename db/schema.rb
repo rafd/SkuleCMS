@@ -9,7 +9,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090703002817) do
+ActiveRecord::Schema.define(:version => 20090703245803) do
+
+  create_table "albums", :force => true do |t|
+    t.string   "name"
+    t.string   "desc"
+    t.string   "tags"
+    t.string   "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "club_id"
+    t.boolean  "locked"
+  end
 
   create_table "clubs", :force => true do |t|
     t.string   "name"
@@ -54,6 +65,17 @@ ActiveRecord::Schema.define(:version => 20090703002817) do
     t.text     "misc"
     t.integer  "lft"
     t.integer  "rgt"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "images", :force => true do |t|
+    t.string   "name"
+    t.string   "url"
+    t.string   "desc"
+    t.string   "tags"
+    t.integer  "album_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

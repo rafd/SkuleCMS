@@ -1,0 +1,24 @@
+<h1>Listing Downloads Folders</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Club</th>
+    <th>Icon</th>
+  </tr>
+
+<% @download_folders.each do |folder| %>
+  <tr>
+    <td><%=h folder.name %></td>
+    <td><%=h folder.club.name %></td>
+    <td><%=h folder.icon %></td>
+    <td><%= link_to 'Show', folder %></td>
+    <td><%= link_to 'Edit', edit_download_folder_path(folder) %></td>
+    <td><%= link_to 'Destroy', folder, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New download', new_download_folder_path %>

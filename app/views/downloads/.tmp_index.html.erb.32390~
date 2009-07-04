@@ -1,0 +1,28 @@
+<h1>Listing Downloads</h1>
+
+<table>
+  <tr>
+    <th>File Name</th>
+    <th>Download Folder</th>
+    <th>Desc</th>
+    <th>Url</th>
+    <th>Tags</th>
+  </tr>
+
+<% @downloads.each do |download| %>
+  <tr>
+    <td><%=h download.name %></td>
+    <td><%=h download.downloadFolder.name %></td>
+    <td><%=h download.desc %></td>
+    <td><%=h download.url %></td>
+    <td><%=h download.tags %></td>
+    <td><%= link_to 'Show', download %></td>
+    <td><%= link_to 'Edit', edit_download_path(download) %></td>
+    <td><%= link_to 'Destroy', download, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New download', new_download_path %>

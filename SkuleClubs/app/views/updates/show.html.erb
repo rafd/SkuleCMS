@@ -1,0 +1,18 @@
+<p>
+  <b>Club:</b>
+  <%=h @updates.club_id %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%=h @updates.user_id %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%=h @updates.content %>
+</p>
+
+
+<%= link_to 'Edit', edit_updates_path(@updates) %> |
+<%= link_to 'Back', updates_path %>

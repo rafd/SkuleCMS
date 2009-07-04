@@ -1,0 +1,34 @@
+<h1>New album</h1>
+
+<% form_for(@album) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  
+  <p>
+    <%= f.label :club_id %><br />
+  	<%= f.collection_select :club_id, Club.find(:all), :id, :name, { :prompt => 'Select a Club' } %>
+  </p>
+  
+  <p>
+    <%= f.label :desc %><br />
+    <%= f.text_field :desc %>
+  </p>
+  <p>
+    <%= f.label :tags %><br />
+    <%= f.text_field :tags %>
+  </p>
+
+  <p>
+    <%= f.label :user_id %><br />
+  	<%= f.collection_select :user_id, User.find(:all), :id, :name, { :prompt => 'Select a User' } %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', albums_path %>

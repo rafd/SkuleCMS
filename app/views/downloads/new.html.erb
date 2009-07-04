@@ -1,6 +1,14 @@
 <h1>File Upload</h1>
+<<<<<<< HEAD:app/views/downloads/new.html.erb
 <%= form_tag ({:action => 'create'}, 
                         :multipart => true) %>
+=======
+<%= form_tag ({:action => 'create'}, :multipart => true) %>
+<p>	<label for="upload_file">Select File</label> : 
+	<%= file_field 'upload', 'download' %>
+</p>
+
+>>>>>>> 6a605564a6d705f4b23eb6171353deae9797f252:app/views/downloads/new.html.erb
 <p>
   <%= label 'download', 'download_folder_id' %><br />
   <%= collection_select ('download', 'download_folder_id', @downloadFolder, :id, :name, { :prompt => 'Select Download Folder'}) %>
