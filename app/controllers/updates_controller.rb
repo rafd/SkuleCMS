@@ -2,7 +2,7 @@ class UpdatesController < ApplicationController
   # GET /updates
   # GET /updates.xml
   def index
-    @updates = Updates.all
+    @updates = Update.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,43 +13,43 @@ class UpdatesController < ApplicationController
   # GET /updates/1
   # GET /updates/1.xml
   def show
-    @updates = Updates.find(params[:id])
+    @update = Update.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @updates }
+      format.xml  { render :xml => @update }
     end
   end
 
   # GET /updates/new
   # GET /updates/new.xml
   def new
-    @updates = Updates.new
+    @update = Update.new
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @updates }
+      format.xml  { render :xml => @update }
     end
   end
 
   # GET /updates/1/edit
   def edit
-    @updates = Updates.find(params[:id])
+    @update = Update.find(params[:id])
   end
 
   # POST /updates
   # POST /updates.xml
   def create
-    @updates = Updates.new(params[:updates])
+    @update = Update.new(params[:update])
 
     respond_to do |format|
-      if @updates.save
-        flash[:notice] = 'Updates was successfully created.'
-        format.html { redirect_to(@updates) }
-        format.xml  { render :xml => @updates, :status => :created, :location => @updates }
+      if @update.save
+        flash[:notice] = 'Update was successfully created.'
+        format.html { redirect_to(@update) }
+        format.xml  { render :xml => @update, :status => :created, :location => @update }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @updates.errors, :status => :unprocessable_entity }
+        format.xml  { render :xml => @update.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -57,16 +57,16 @@ class UpdatesController < ApplicationController
   # PUT /updates/1
   # PUT /updates/1.xml
   def update
-    @updates = Updates.find(params[:id])
+    @update = Update.find(params[:id])
 
     respond_to do |format|
-      if @updates.update_attributes(params[:updates])
-        flash[:notice] = 'Updates was successfully updated.'
-        format.html { redirect_to(@updates) }
+      if @update.update_attributes(params[:update])
+        flash[:notice] = 'Update was successfully updated.'
+        format.html { redirect_to(@update) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @updates.errors, :status => :unprocessable_entity }
+        format.xml  { render :xml => @update.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -74,8 +74,8 @@ class UpdatesController < ApplicationController
   # DELETE /updates/1
   # DELETE /updates/1.xml
   def destroy
-    @updates = Updates.find(params[:id])
-    @updates.destroy
+    @update = Update.find(params[:id])
+    @update.destroy
 
     respond_to do |format|
       format.html { redirect_to(updates_url) }

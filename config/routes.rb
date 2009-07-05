@@ -1,4 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :groups
+
+  map.resources :updates
+
   map.resources :albums
 
   map.resources :images
@@ -8,8 +12,6 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users
 
   map.resources :groups
-
-  map.resources :updates
 
   map.resources :events
   

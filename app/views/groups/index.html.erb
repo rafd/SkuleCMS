@@ -9,20 +9,20 @@
     <th>Rgt</th>
   </tr>
 
-<% @groups.each do |groups| %>
+<% @groups.each do |group| %>
   <tr>
-    <td><%=h groups.club_id %></td>
-    <td><%=h groups.name %></td>
-    <td><%=h groups.misc %></td>
-    <td><%=h groups.lft %></td>
-    <td><%=h groups.rgt %></td>
-    <td><%= link_to 'Show', groups %></td>
-    <td><%= link_to 'Edit', edit_groups_path(groups) %></td>
-    <td><%= link_to 'Destroy', groups, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%=h group.club_id %></td>
+    <td><%=h group.name %></td>
+    <td><%=h group.misc %></td>
+    <td><%=h group.lft %></td>
+    <td><%=h group.rgt %></td>
+    <td><%= link_to 'Show', group %></td>
+    <td><%= link_to 'Edit', edit_group_path(group) %></td>
+    <td><%= link_to 'Destroy', group, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New groups', new_groups_path %>
+<%= link_to 'New group', new_group_path %>
