@@ -1,14 +1,18 @@
 <h1>Image Upload</h1>
+<p>
+  <h3>Album - 
+  <%= @album.name %>
+  </h3>
+</p>
 
 <%= form_tag ({:action => 'create'}, :multipart => true) %>
 <p>	<label for="upload_file">Select Image</label> : 
-	<%= file_field 'upload', 'download', :accept => 'text/html' %>
+	<%= file_field 'upload', 'download' %>
+</p>
+<p>
+	<%= hidden_field 'image', :album_id, :value => @album.id  %>
 </p>
 
-<p>
-  <%= label 'image', 'album_id' %><br />
-  <%= collection_select ('image', 'album_id', @album, :id, :name, { :prompt => 'Select Album'}) %>
-</p>
 <p>
   <%= label 'image', 'name' %><br />
   <%= text_field 'image', 'name' %>
@@ -29,4 +33,4 @@
   <%= submit_tag 'Upload' %>
 </p>
 
-<%= link_to 'Back', images_path %>
+<%= link_to 'Back', album_path(@album) %>
