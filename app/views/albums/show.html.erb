@@ -26,7 +26,7 @@
 <h2>Images in this Album</h2>
 <% @album.images.each do |image| %>
   <p>
-    <h3><%= link_to image.name, image_path(image) %></h3>
+    <h3><%= link_to image.name, new_album_image_path(image) %></h3>
 	<%= image_tag  "/club_data/" + image.album.club.name+"/"+image.album.name+"/"+image.url, :size => "100x100", :alt => image.desc, :title => image.desc %>
   </p>
   <hr>

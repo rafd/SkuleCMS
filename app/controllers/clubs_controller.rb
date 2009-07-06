@@ -41,13 +41,12 @@ class ClubsController < ApplicationController
   # POST /clubs.xml
   def create
     @club = Club.new(params[:club])
-    directory = "public/club_data/"+@club.name
-    if !File.exist?(directory)
-      FileUtils.mkdir_p(directory)
-    end
-
     respond_to do |format|
       if @club.save
+        directory = "public/club_data/"+@club.name
+        if !File.exist?(directory)
+          FileUtils.mkdir_p(directory)
+        end
         flash[:notice] = 'Club was successfully created.'
         format.html { redirect_to(@club) }
         format.xml  { render :xml => @club, :status => :created, :location => @club }

@@ -1,4 +1,9 @@
 class ImagesController < ApplicationController
+  before_filter :load_album, :only => [:new, :create]
+  def load_album
+    @album = Album.find(params[:album_id])
+  end
+  
   # GET /images
   # GET /images.xml
   def index
@@ -25,7 +30,6 @@ class ImagesController < ApplicationController
   # GET /images/new.xml
   def new
     @image = Image.new
-    @album = Album.find(params[:album_id])
     @user = User.find(:all)
     respond_to do |format|
       format.html # new.html.erb
@@ -41,26 +45,18 @@ class ImagesController < ApplicationController
   # POST /images
   # POST /images.xml
   def create 
-    if !params[:upload]
-      respond_to do |format|
-        flash[:notice] = 'Empty File Field!'
-        format.html { redirect_to :controller => :albums, :action => :new}
+    @image = Image.new(params[:image])
+    @image.url = Image.save(params[:image][:url], @album)
+    @image.album_id = @album.id
+    respond_to do |format|
+      if @image.save
+        flash[:notice] = 'Image was successfully uploaded to album.'
+        format.html { redirect_to(@image) }
+        format.xml  { render :xml => @image, :status => :created, :location => @image }
+      else
+        @user = User.find(:all)
+        format.html { render :action => "new" }
         format.xml  { render :xml => @image.errors, :status => :unprocessable_entity }
-      end
-    else
-      @image = Image.new(params[:image])
-      @image.url = Image.save(params[:upload], params[:image])
-      respond_to do |format|
-        if @image.save
-          flash[:notice] = 'Image was successfully uploaded to album.'
-          format.html { redirect_to(@image) }
-          format.xml  { render :xml => @image, :status => :created, :location => @image }
-        else
-          @album = Album.find(params[:image]['album_id'])
-          @user = User.find(:all)
-          format.html { render :action => "new" }
-          format.xml  { render :xml => @image.errors, :status => :unprocessable_entity }
-        end
       end
     end
   end

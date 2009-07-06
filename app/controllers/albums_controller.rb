@@ -41,12 +41,12 @@ class AlbumsController < ApplicationController
   # POST /albums.xml
   def create
     @album = Album.new(params[:album])
-    directory = "public/club_data/"+@album.club.name+"/"+@album.name
-    if !File.exist?(directory)
-      FileUtils.mkdir_p(directory)
-    end
     respond_to do |format|
       if @album.save
+        directory = "public/club_data/"+@album.club.name+"/"+@album.name
+        if !File.exist?(directory)
+          FileUtils.mkdir_p(directory)
+        end
         flash[:notice] = 'Album was successfully created.'
         format.html { redirect_to(@album) }
         format.xml  { render :xml => @album, :status => :created, :location => @album }

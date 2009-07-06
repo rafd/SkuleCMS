@@ -5,9 +5,9 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :updates
 
-  map.resources :images
-
   map.resources :albums, :has_many => :images
+  
+  map.resources :images
 
   map.resources :downloads
 
