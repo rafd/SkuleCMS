@@ -1,0 +1,34 @@
+<h1>Listing admins</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Club</th>
+    <th>Event</th>
+    <th>Update</th>
+    <th>Member</th>
+    <th>Group</th>
+    <th>File</th>
+    <th>Gallery</th>
+  </tr>
+
+<% @admins.each do |admin| %>
+  <tr>
+    <td><%=h admin.user_id %></td>
+    <td><%=h admin.club_id %></td>
+    <td><%=h admin.event %></td>
+    <td><%=h admin.update %></td>
+    <td><%=h admin.member %></td>
+    <td><%=h admin.group %></td>
+    <td><%=h admin.file %></td>
+    <td><%=h admin.gallery %></td>
+    <td><%= link_to 'Show', admin %></td>
+    <td><%= link_to 'Edit', edit_admin_path(admin) %></td>
+    <td><%= link_to 'Destroy', admin, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New admin', new_admin_path %>

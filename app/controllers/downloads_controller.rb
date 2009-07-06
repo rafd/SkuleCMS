@@ -26,7 +26,7 @@ class DownloadsController < ApplicationController
   # GET /downloads/new.xml
   def new
     @download = Download.new
-    @downloadFolder = DownloadFolder.find(:all)
+    @downloadFolders = DownloadFolder.find(:all)
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @download }
@@ -42,13 +42,14 @@ class DownloadsController < ApplicationController
   # POST /downloads.xml
   def create
     @download = Download.new(params[:download])
-    @download.url = @download.name = Download.save(params[:upload])
+    @download.url = Download.save(params[:download][:url])
     respond_to do |format|
-      if @download.url.blank? and @download.save
+      if @download.save
         flash[:notice] = 'File was successfully uploaded.'
         format.html { redirect_to(@download) }
         format.xml  { render :xml => @download, :status => :created, :location => @download }
       else
+        @downloadFolders = DownloadFolder.find(:all)
         format.html { render :action => "new" }
         format.xml  { render :xml => @download.errors, :status => :unprocessable_entity }
       end

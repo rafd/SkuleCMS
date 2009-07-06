@@ -1,0 +1,44 @@
+<h1>Editing admin</h1>
+
+<% form_for(@admin) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :user_id %><br />
+    <%= f.text_field :user_id %>
+  </p>
+  <p>
+    <%= f.label :club_id %><br />
+    <%= f.text_field :club_id %>
+  </p>
+  <p>
+    <%= f.label :event %><br />
+    <%= f.check_box :event %>
+  </p>
+  <p>
+    <%= f.label :update %><br />
+    <%= f.check_box :update %>
+  </p>
+  <p>
+    <%= f.label :member %><br />
+    <%= f.check_box :member %>
+  </p>
+  <p>
+    <%= f.label :group %><br />
+    <%= f.check_box :group %>
+  </p>
+  <p>
+    <%= f.label :file %><br />
+    <%= f.check_box :file %>
+  </p>
+  <p>
+    <%= f.label :gallery %><br />
+    <%= f.check_box :gallery %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @admin %> |
+<%= link_to 'Back', admins_path %>

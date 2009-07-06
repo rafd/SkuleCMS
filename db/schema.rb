@@ -9,7 +9,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090705020107) do
+ActiveRecord::Schema.define(:version => 20090705235350) do
+
+  create_table "admins", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "club_id"
+    t.boolean  "event"
+    t.boolean  "update"
+    t.boolean  "member"
+    t.boolean  "group"
+    t.boolean  "file"
+    t.boolean  "gallery"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "albums", :force => true do |t|
     t.string   "name"
