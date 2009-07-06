@@ -1,0 +1,4 @@
+
+tmp/
+log/development.log
+app/stylesheets/compiled/

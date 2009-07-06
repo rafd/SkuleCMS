@@ -1,0 +1,156 @@
+@import base.sass
+
+!banner_height= 150px
+!banner_info_block_height= 100px
+/* Layout */
+
+//Vars
+!color_foreground= #222
+!color_text= #333
+!color_links= blue
+
+
++blueprint-typography
+//+blueprint-scaffolding
+//+blueprint-liquid-grid
+
+body
+	//:background= !main_color
+
+#skulebar 
+	:background #eee
+	:height 2em
+	:margin 0 0 1em 0
+	+rounded-corners(0 0 2px 2px)
+	p
+		:margin 0
+
+#header
+	!header_height = 50px
+	h1
+		//+replace-text("logo.png")
+		:float left
+		:width 40%
+		:line-height= !header_height
+		:margin 0
+		
+		img
+			:float left
+			:width= !header_height
+			:height= !header_height
+			:background= !color_foreground
+			:margin-right 0.25em
+			
+	#menu
+		+horizontal-list
+		:float right
+		:font-size 1.25em
+		:margin= 0.9em 0
+		
+		li
+			:margin 0 0.5em
+			:padding 0 0.5em
+			:background= !color_foreground
+			:font-weight bold
+			+rounded-corners(4px)
+			:color white
+			:line-height 1.5em
+			
+			a
+				:background white
+				:font-weight normal
+				:display inline-block
+				:margin -0.25em -0.5em
+				:color #000
+				
+		
+#banner
+	:background= !color_foreground
+	+rounded-corners(5px)
+	:height= !banner_height
+	:margin 0.5em 0
+	
+	#info
+		:background white
+		:margin= (!banner_height - !banner_info_block_height + 20px)/2 0
+		:height= !banner_info_block_height -20px
+		:width 35%
+		:padding 10px 2em 10px 0
+		+rounded-corners(0 5px 5px 0)
+		+quiet
+
+
+#container
+	+container
+
+#content
+	ul
+		+no-bullets	
+	
+#header, #banner, #footer
+	+column(!blueprint_grid_columns)
+
+
+#left
+	!left_columns= floor(!blueprint_grid_columns / 4)
+	+column(!left_columns)
+	
+#sidebar
+	!sidebar_columns= floor(!blueprint_grid_columns / 4)
+	+column(!sidebar_columns, true)
+	
+	.widget
+		:background #fafafa
+		:height 7em
+		+rounded-corners
+		margin-bottom: 1em
+ 
+#content
+	!content_columns= ceil(!blueprint_grid_columns / 2)
+	+column(!content_columns)
+	
+
+#footer
+	:margin-top 2em
+	:background black
+	:padding 1em 0
+	
+	h2, dt
+		:font-size 1em
+		:color #666
+		:text-transform uppercase
+		:letter-spacing 0.2em
+		:font-weight bold
+		:margin 0 0 0.25em 0
+		
+	p, a
+		:color #333
+		
+	#address
+		+column(6)
+		+prepend(0.5)
+	
+	#sitemap
+		+column(17.5,true)
+		dl
+			:float left
+			:margin 0 1.25em
+			
+			dd
+				:margin 0
+			
+
+		
+	#copyright
+		+column(!blueprint_grid_columns)
+		+prepend(0.5)
+		//:text-align center
+		:font-size 0.9em
+		:margin 2em 0 0
+
+/* Typography */
+a 
+	:text-decoration none
+	:font-weight bold
+	&:hover
+		:text-decoration underline
