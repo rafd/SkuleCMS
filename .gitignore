@@ -13,4 +13,5 @@ coverage/*
 db/*.sqlite3
 *.tmproj
 Capfile
-ap/stylesheets/compiled/
+public/stylesheets/compiled/**
+
