@@ -40,6 +40,8 @@ ActiveRecord::Schema.define(:version => 20090705235350) do
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "tagline"
+    t.string   "logo"
   end
 
   create_table "download_folders", :force => true do |t|
