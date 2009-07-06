@@ -43,9 +43,8 @@ class DownloadsController < ApplicationController
   def create
     @download = Download.new(params[:download])
     @download.url = @download.name = Download.save(params[:upload])
-
     respond_to do |format|
-      if @download.save
+      if @download.url.blank? and @download.save
         flash[:notice] = 'File was successfully uploaded.'
         format.html { redirect_to(@download) }
         format.xml  { render :xml => @download, :status => :created, :location => @download }

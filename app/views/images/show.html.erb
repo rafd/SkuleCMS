@@ -4,7 +4,7 @@
 </p>
 
 <p>
-  <%= link_to 'download', "/"+@image.album.club.name+"/"+@image.album.name+"/"+@image.url %>
+  <%= link_to 'download', "/club_data/"+@image.album.club.name+"/"+@image.album.name+"/"+@image.url %>
 </p>
 
 <p>
@@ -19,14 +19,14 @@
 
 <p>
   <b>Album:</b>
-  <%=h @image.album_id %>
+  <%=h @image.album.name %>
 </p>
 
 <p>
   <b>User:</b>
-  <%=h @image.user_id %>
+  <%=h @image.user.name %>
 </p>
 
 
 <%= link_to 'Edit', edit_image_path(@image) %> |
-<%= link_to 'Back', images_path %>
+<%= link_to 'Back', album_path(@image.album) %>

@@ -12,15 +12,15 @@ class GroupsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create groups" do
-    assert_difference('Groups.count') do
-      post :create, :groups => { }
+  test "should create group" do
+    assert_difference('Group.count') do
+      post :create, :group => { }
     end
 
-    assert_redirected_to groups_path(assigns(:groups))
+    assert_redirected_to group_path(assigns(:group))
   end
 
-  test "should show groups" do
+  test "should show group" do
     get :show, :id => groups(:one).to_param
     assert_response :success
   end
@@ -30,13 +30,13 @@ class GroupsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should update groups" do
-    put :update, :id => groups(:one).to_param, :groups => { }
-    assert_redirected_to groups_path(assigns(:groups))
+  test "should update group" do
+    put :update, :id => groups(:one).to_param, :group => { }
+    assert_redirected_to group_path(assigns(:group))
   end
 
-  test "should destroy groups" do
-    assert_difference('Groups.count', -1) do
+  test "should destroy group" do
+    assert_difference('Group.count', -1) do
       delete :destroy, :id => groups(:one).to_param
     end
 

@@ -1,7 +1,11 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :albums
+  map.resources :groups
+
+  map.resources :updates
 
   map.resources :images
+
+  map.resources :albums, :has_many => :images
 
   map.resources :downloads
 
@@ -9,13 +13,14 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :groups
 
-  map.resources :updates
-
   map.resources :events
   
   map.resources :clubs do |club|
     club.resources :files, :controller => "download_folders"
   end 
+
+ # map.connect 'albums/:id/add', :controller => 'images', :action => 'new'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
 

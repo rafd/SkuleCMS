@@ -41,7 +41,7 @@ class AlbumsController < ApplicationController
   # POST /albums.xml
   def create
     @album = Album.new(params[:album])
-    directory = "public/"+@album.club.name+"/"+@album.name
+    directory = "public/club_data/"+@album.club.name+"/"+@album.name
     if !File.exist?(directory)
       FileUtils.mkdir_p(directory)
     end

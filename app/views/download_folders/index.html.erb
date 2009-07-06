@@ -12,7 +12,7 @@
     <td><%=h folder.name %></td>
     <td><%=h folder.club.name %></td>
     <td><%=h folder.icon %></td>
-    <td><%= link_to 'Show', club_file_path(@club,folder) %></td>
+    <td><%= link_to 'Show', :action => 'show', :id => folder.id %></td>    
     <td><%= link_to 'Edit', edit_club_file_path(@club,folder) %></td>
     <td><%= link_to 'Destroy', club_file_path(@club,folder), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>

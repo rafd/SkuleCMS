@@ -12,15 +12,15 @@ class UpdatesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create updates" do
-    assert_difference('Updates.count') do
-      post :create, :updates => { }
+  test "should create update" do
+    assert_difference('Update.count') do
+      post :create, :update => { }
     end
 
-    assert_redirected_to updates_path(assigns(:updates))
+    assert_redirected_to update_path(assigns(:update))
   end
 
-  test "should show updates" do
+  test "should show update" do
     get :show, :id => updates(:one).to_param
     assert_response :success
   end
@@ -30,13 +30,13 @@ class UpdatesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should update updates" do
-    put :update, :id => updates(:one).to_param, :updates => { }
-    assert_redirected_to updates_path(assigns(:updates))
+  test "should update update" do
+    put :update, :id => updates(:one).to_param, :update => { }
+    assert_redirected_to update_path(assigns(:update))
   end
 
-  test "should destroy updates" do
-    assert_difference('Updates.count', -1) do
+  test "should destroy update" do
+    assert_difference('Update.count', -1) do
       delete :destroy, :id => updates(:one).to_param
     end
 
