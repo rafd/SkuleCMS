@@ -1,11 +1,15 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :clubs do |club|
+    club.resources :files, :controller => "download_folders", :has_many => :downloads
+    club.resources :admin, :controller => "admins"
+    club.resources :gallery, :controller => "albums", :singular => "album", :has_many => :images
+  end 
+
   map.resources :admins
 
   map.resources :groups
 
   map.resources :updates
-
-  map.resources :albums, :has_many => :images
   
   map.resources :images
 
@@ -17,10 +21,6 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :events
   
-  map.resources :clubs do |club|
-    club.resources :files, :controller => "download_folders"
-    club.resources :admin, :controller => "admins"
-  end 
 
  # map.connect 'albums/:id/add', :controller => 'images', :action => 'new'
 

@@ -1,6 +1,6 @@
 <h2>Editing album</h2>
 
-<% form_for(@album) do |f| %>
+<% form_for(@album, :url=>{:action=>"edit"}) do |f| %>
   <%= f.error_messages %>
 
   <p>
@@ -28,5 +28,5 @@
   </p>
 <% end %>
 
-<%= link_to 'Show', @album %> |
-<%= link_to 'Back', albums_path %>
+<%= link_to 'Show', club_album_path (@album.club, @album) %> |
+<%= link_to 'Back', club_gallery_path (@album.club) %>

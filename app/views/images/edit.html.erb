@@ -32,5 +32,4 @@
   </p>
 <% end %>
 
-<%= link_to 'Show', @image %> |
-<%= link_to 'Back', images_path %>
+<%= link_to 'Back', club_album_image_path(@image.album.club, @image.album, @image) %>

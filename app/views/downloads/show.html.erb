@@ -1,6 +1,6 @@
 <p>
   <b>Folder:</b>
-  <%=h @download.download_folder.name %>
+  <%=link_to @download.download_folder.name, club_file_path(@download.download_folder.club,@download.download_folder) %>
 </p>
 
 <p>
