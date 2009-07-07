@@ -9,7 +9,7 @@ class Image < ActiveRecord::Base
     if (upload.blank?)
       return ""
     end
-    name =  upload.original_filename
+    name = upload.original_filename
     directory = "public/club_data/"+album.club.name+"/"+album.name
     # create the file path
     path = File.join(directory, name)

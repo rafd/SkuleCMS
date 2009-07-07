@@ -1,0 +1,11 @@
+<% remote_form_for([:club, @download], :url => {:action=> 'file_update', :file => @download.id}) do |f| %>
+  <%= f.label :name, "Name: " %>
+  <%= f.text_field :name, :size => 10 %><br />
+  <%= f.label :desc, "Description: " %>
+  <%= f.text_field :desc, :size => 15 %><br />
+  <%= f.label :tags, "Tags" %>
+  <%= f.text_field :tags, :size => 10 %><br />
+  <%= link_to 'Download', "/data/"+@download.url %>
+  <%= f.submit 'Update' %>
+  <%= link_to_remote 'Delete', :url => {:action => 'file_destroy', :download=> @download.id}, :confirm => "Are you sure you want to remove this file?" %>
+<% end %>

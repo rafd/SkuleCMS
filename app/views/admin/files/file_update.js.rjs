@@ -1,0 +1,3 @@
+page.replace_html("file_"+@download.id.to_s  , :partial => "file_update" , :object => @download)
+
+page["file_"+@download.id.to_s].visual_effect :highlight

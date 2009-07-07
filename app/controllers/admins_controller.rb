@@ -1,4 +1,9 @@
 class AdminsController < ApplicationController
+  before_filter :load_club, :except => [:index, :show, :new, :update, :create, :edit, :destroy]
+  def load_club
+    @club = Club.find(params[:club_id])
+  end
+  
   # GET /admins
   # GET /admins.xml
   def index
@@ -70,7 +75,40 @@ class AdminsController < ApplicationController
       end
     end
   end
+  
+  # GET /admins/files
+  def files
+    @download_folders = @club.download_folders
 
+    respond_to do |format|
+      format.html # downloads.html.erb
+      format.xml  { render :xml => @download_folders  }
+    end
+  end
+  
+  def show_files
+    puts params[:folder]
+    begin
+      @download_folder = DownloadFolder.find(params[:folder])
+    rescue ActiveRecord::RecordNotFound
+      logger.error("Attempt to access invalid folder #{params[:folder]}" )
+      redirect_to_index("Invalid product" )
+    else
+      respond_to { |format| format.js }
+    end
+  end
+  
+  def hide_files
+    puts params[:folder]
+    begin
+      @download_folder = DownloadFolder.find(params[:folder])
+    rescue ActiveRecord::RecordNotFound
+      logger.error("Attempt to access invalid folder #{params[:folder]}" )
+      redirect_to_index("Invalid product" )
+    else
+      respond_to { |format| format.js }
+    end
+  end
   # DELETE /admins/1
   # DELETE /admins/1.xml
   def destroy
@@ -82,4 +120,6 @@ class AdminsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  
 end

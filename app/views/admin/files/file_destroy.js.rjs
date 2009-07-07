@@ -1,0 +1,2 @@
+page["file_"+@download.id.to_s].visual_effect :fade
+page["file_"+@download.id.to_s].visual_effect :blind_up

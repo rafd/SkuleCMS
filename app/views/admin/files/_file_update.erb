@@ -1,0 +1,7 @@
+Name: <%=h @download.name %><br />
+Description: <%=h @download.desc %><br />
+Tag: <%=h @download.tags %><br />
+<%= link_to 'Download', "/data/"+@download.url %>
+<%= link_to_remote 'Edit',:url =>{ :action => 'file_edit', :download => @download.id}  %>
+<%= link_to_remote 'Delete', :url => {:action => 'file_destroy', :download=> @download.id}, :confirm => "Are you sure you want to remove this file?" %>
+<br /><br />

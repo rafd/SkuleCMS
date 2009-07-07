@@ -9,13 +9,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090705235350) do
+ActiveRecord::Schema.define(:version => 20090706144922) do
 
   create_table "admins", :force => true do |t|
     t.integer  "user_id"
     t.integer  "club_id"
     t.boolean  "event"
-    t.boolean  "update"
+    t.boolean  "updates"
     t.boolean  "member"
     t.boolean  "group"
     t.boolean  "file"

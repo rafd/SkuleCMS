@@ -1,0 +1,1 @@
+page.replace_html("file_"+@download.id.to_s , :partial => "file_edit" , :object => @download)

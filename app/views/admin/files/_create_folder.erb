@@ -1,0 +1,11 @@
+<div id = "<%="folder"+@download_folder.id.to_s%>" >
+  <div id = "<%="folderHeader"+@download_folder.id.to_s%>" >
+    <b> Folder: <%=h @download_folder.name %>, Icon: <%=h @download_folder.icon %></b>
+    <%= link_to_remote 'Edit', :url => {:action => 'edit_folder', :folder=> @download_folder.id}%>
+    <%= link_to_remote 'Remove', :url => {:action => 'destroy_folder', :folder=> @download_folder.id}, :confirm => "Are you sure you want to remove this folder?" %>
+  </div>
+  <div id = "<%= "folderContent"+@download_folder.id.to_s %>" >
+    <%= link_to_remote 'Show', :url =>{ :action => 'show_files', :folder => @download_folder.id}  %>         
+  </div>
+  <br />
+</div>

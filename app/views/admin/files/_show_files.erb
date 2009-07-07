@@ -1,0 +1,12 @@
+<% @download_folder.downloads.each do |download| %>
+  <div id = "<%= "file_"+download.id.to_s -%>">
+    Name: <%=h download.name %><br />
+    Description: <%=h download.desc %><br />
+    Tag: <%=h download.tags %><br />
+    <%= link_to 'Download', "/data/"+download.url %>
+    <%= link_to_remote 'Edit',:url =>{ :action => 'file_edit', :download => download.id}  %>
+    <%= link_to_remote 'Delete', :url => {:action => 'file_destroy', :download=> download.id}, :confirm => "Are you sure you want to remove this file?" %>
+    <br /><br />
+  </div>
+<% end %>
+<%= link_to_remote 'Hide',:url =>{ :action => 'hide_files', :folder => @download_folder.id}  %> 
