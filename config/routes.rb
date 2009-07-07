@@ -5,21 +5,21 @@ ActionController::Routing::Routes.draw do |map|
     club.resources :gallery, :controller => "albums", :singular => "album", :has_many => :images
   end 
 
-  map.resources :admins
+  map.resources :admins,
+		:groups,
+  	:updates,
+		:images,
+		:downloads,
+		:users,
+		:groups,
+		:events
 
-  map.resources :groups
-
-  map.resources :updates
-  
-  map.resources :images
-
-  map.resources :downloads
-
-  map.resources :users
-
-  map.resources :groups
-
-  map.resources :events
+	map.connect '/about', :controller => 'hub_pages', :action => 'about'
+	map.connect '/digest', :controller => 'hub_pages', :action => 'digest'
+	map.connect '/calendar', :controller => 'hub_pages', :action => 'calendar'
+	map.connect '/club', :controller => 'hub_pages', :action => 'clubs'
+  map.connect '/map', :controller => 'hub_pages', :action => 'map'
+  map.connect '/services', :controller => 'hub_pages', :action => 'services'
   
 
  # map.connect 'albums/:id/add', :controller => 'images', :action => 'new'
@@ -57,7 +57,7 @@ ActionController::Routing::Routes.draw do |map|
   #   end
 
   # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
-   map.root :controller => "clubs"
+   map.root :controller => "hub_pages"
 
   # See how all your routes lay out with "rake routes"
 
