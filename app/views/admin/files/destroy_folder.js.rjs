@@ -1,2 +1,0 @@
-page["folder"+@folder_num.to_s].visual_effect :fade
-page["folder"+@folder_num.to_s].visual_effect :blind_up

@@ -1,0 +1,4 @@
+page.insert_html(:before, "file_new_"+@download.download_folder_id.to_s, :partial => "file_create" , :object => @download)
+page.replace_html("file_new_"+@download.download_folder_id.to_s,:partial => "display_new_file_link", :object => @download)
+
+page["folder_"+@download.download_folder_id.to_s].visual_effect :highlight, :duration => 3.0

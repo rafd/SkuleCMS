@@ -4,9 +4,7 @@
   <%= @album.name %>
   </h3>
 </p>
-
-
-<% form_for(@image, :url => {:action=> 'create'})  do |f| %>
+<% form_for(@image, :url => {:action => 'create'}, :html => {:multipart => true}) do |f| %>
   <%= f.error_messages %>
   <p>
     <%= f.label :name %><br />
@@ -34,4 +32,4 @@
 <% end %>
 
 
-<%= link_to 'Back', album_path(@album) %>
+<%= link_to 'Back', club_album_path(@album.club, @album) %>

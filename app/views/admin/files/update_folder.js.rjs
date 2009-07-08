@@ -1,3 +1,0 @@
-page.replace_html("folderHeader"+@download_folder.id.to_s , :partial => "update_folder" , :object => @download_folder)
-
-page["folderHeader"+@download_folder.id.to_s].visual_effect :highlight

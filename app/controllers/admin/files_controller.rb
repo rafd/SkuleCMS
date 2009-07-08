@@ -1,5 +1,4 @@
 class Admin::FilesController < ApplicationController
-  layout 'admin.html.erb'
   before_filter :load_club
   def load_club
     @club = Club.find(params[:club_id])
@@ -26,6 +25,37 @@ class Admin::FilesController < ApplicationController
       respond_to { |format| format.js }
     end
   end  
+  
+  def file_new
+    begin
+      @download_folder = DownloadFolder.find(params[:folder])
+      @download = Download.new
+    rescue ActiveRecord::RecordNotFound
+      logger.error("Attempt to access invalid folder #{params[:folder]}" )
+      redirect_to_index("Invalid Folder" )
+    else
+      respond_to { |format| format.js }
+    end
+  end
+  
+  def file_create   
+    begin
+      @download = Download.new(params[:download])
+      @download_folder = DownloadFolder.find(params[:folder])
+      @download.url = Download.save(params[:download][:url])
+      @download.download_folder = @download_folder
+    rescue ActiveRecord::RecordNotFound
+      logger.error("Attempt to access invalid folder #{params[:folder]}" )
+      redirect_to_index("Invalid Folder" )
+    else
+      if @download.save
+        flash[:notice] = 'File was successfully created.'
+        respond_to { |format| format.js }
+      else
+        respond_to { |format| format.js {render :action => "file_new"}}
+      end
+    end
+  end
   
   def file_update
     begin
@@ -78,7 +108,7 @@ class Admin::FilesController < ApplicationController
     end
   end
   
-  def edit_folder
+  def folder_edit
     begin
       @download_folder = DownloadFolder.find(params[:folder])
     rescue ActiveRecord::RecordNotFound
@@ -89,7 +119,7 @@ class Admin::FilesController < ApplicationController
     end
   end
   
-  def update_folder
+  def folder_update
     begin
       @download_folder = DownloadFolder.find(params[:folder])
     rescue ActiveRecord::RecordNotFound
@@ -100,28 +130,28 @@ class Admin::FilesController < ApplicationController
         flash[:notice] = 'DownloadFolder was successfully updated.'
         respond_to { |format| format.js }
       else
-        respond_to { |format| format.js {render :action => "edit_folder"}}
+        respond_to { |format| format.js {render :action => "folder_edit"}}
       end
     end
   end
   
-  def new_folder
+  def folder_new
     @download_folder = DownloadFolder.new
     respond_to { |format| format.js }
   end
   
-  def create_folder    
+  def folder_create    
     @download_folder = DownloadFolder.new(params[:download_folder])
     @download_folder.club_id = @club.id    
     if @download_folder.save
       flash[:notice] = 'DownloadFolder was successfully created.'
       respond_to { |format| format.js }
     else
-      respond_to { |format| format.js {render :action => "new_folder"}}
+      respond_to { |format| format.js {render :action => "folder_new"}}
     end
   end
   
-  def destroy_folder
+  def folder_destroy
     begin
       @download_folder = DownloadFolder.find(params[:folder])
       @folder_num = @download_folder.id

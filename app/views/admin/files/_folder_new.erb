@@ -1,0 +1,9 @@
+<% remote_form_for([:club, @download_folder], :url => {:action=> 'folder_create'}) do |f| %>
+  <%= f.error_messages %>
+  <b>
+    <%= f.label :name, "Folder:" %>
+    <%= f.text_field :name, :size => 10 %><%= f.label :icon, ", Icon:" %>
+    <%= f.text_field :icon, :size => 10  %>
+   <%= f.submit 'Create' %> </b>
+<% end %>
+<br />

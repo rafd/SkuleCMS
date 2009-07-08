@@ -87,7 +87,6 @@ class AdminsController < ApplicationController
   end
   
   def show_files
-    puts params[:folder]
     begin
       @download_folder = DownloadFolder.find(params[:folder])
     rescue ActiveRecord::RecordNotFound
@@ -99,7 +98,6 @@ class AdminsController < ApplicationController
   end
   
   def hide_files
-    puts params[:folder]
     begin
       @download_folder = DownloadFolder.find(params[:folder])
     rescue ActiveRecord::RecordNotFound

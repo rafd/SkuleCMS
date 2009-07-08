@@ -1,0 +1,15 @@
+<% form_remote_for([:club, @download], :url => {:action=> 'file_create', :folder => @download_folder.id}, :html => {:multipart => true}) do |f| %>
+  <%= f.error_messages %>
+  <b>
+    <%= f.label :name, "Name:" %>
+    <%= f.text_field :name, :size => 10 %><br />
+    <%= f.label :desc, "Description:" %>
+    <%= f.text_field :desc, :size => 20  %><br />
+    <%= f.label :tags, "Tags:" %>
+    <%= f.text_field :tags, :size => 10  %><br />
+    <%= f.label :url, "Select File: " %>
+    <%= f.file_field :url %><br />
+    <br />
+    <%= f.submit 'Create' %> </b>
+<% end %>
+<br />

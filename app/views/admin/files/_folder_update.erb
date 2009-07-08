@@ -1,0 +1,3 @@
+<b> Folder: <%=h @download_folder.name %>, Icon: <%=h @download_folder.icon %></b>
+<%= link_to_remote 'Edit', :url => {:action => 'folder_edit', :folder=> @download_folder.id}%>
+<%= link_to_remote 'Remove', :url => {:action => 'folder_destroy', :folder=> @download_folder.id}, :confirm => "Are you sure you want to remove this folder?" %>

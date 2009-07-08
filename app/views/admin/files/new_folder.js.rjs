@@ -1,3 +1,0 @@
-page.replace_html("new_folder" , :partial => "new_folder" , :object => @download_folder)
-
-page["new_folder"].visual_effect :blind_down

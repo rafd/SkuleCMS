@@ -1,3 +1,3 @@
-page.replace_html("folderContent"+@download_folder.id.to_s , :partial => "show_files" , :object => @download_folder)
+page.replace_html("folder_content_"+@download_folder.id.to_s , :partial => "show_files" , :object => @download_folder)
 
-page["folderContent"+@download_folder.id.to_s].visual_effect :blind_down
+page["folder_content_"+@download_folder.id.to_s].visual_effect :blind_down

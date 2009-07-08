@@ -9,4 +9,7 @@
     <br /><br />
   </div>
 <% end %>
-<%= link_to_remote 'Hide',:url =>{ :action => 'hide_files', :folder => @download_folder.id}  %> 
+<div id = "<%= "file_new_"+@download_folder.id.to_s -%>">
+  <%= link_to_remote 'New File',:url =>{ :action => 'file_new', :folder => @download_folder.id} %> 
+</div>
+<%= link_to_remote 'Hide',:url =>{ :action => 'hide_files', :folder => @download_folder.id} %> 

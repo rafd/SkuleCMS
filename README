@@ -1,5 +1,12 @@
 === SkuleClubs ===
  
+=== Developers ===
+
+Rafal Dittwald
+Raymond Lam
+Gurubavan Mahendran
+
+
 We will be using HAML, SASS, & COMPASS for templating and styling.
     
 ****Important****
@@ -7,11 +14,6 @@ Run these gems or the project won't work
 
     gem uninstall haml
     gem install haml-edge
+    gem install taps
     gem sources --add http://gems.github.com/
-    sudo gem install chriseppstein-compass
-
-=== Developers ===
-
-Rafal Dittwald
-Raymond Lam
-Gurubavan Mahendran
+    gem install chriseppstein-compass

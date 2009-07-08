@@ -20,10 +20,57 @@ body
 #skulebar 
 	:background #eee
 	:height 2em
-	:margin 0 0 1em 0
+	:width 97%
+	:margin 0 auto 1em
 	+rounded-corners(0 0 2px 2px)
-	p
-		:margin 0
+	:line-height 2em
+	:height 2em
+	
+	#skule
+		:float left
+		+background-icon("icons/hardhat.png")
+		
+	a
+		:color= #eee - #444
+		:font-weight normal
+				
+	#bookmarks
+		+horizontal-list
+		:float left
+		li
+			a.google
+				+background-icon("icons/google_favicon.png")
+			a.facebook
+				+background-icon("icons/favicon_facebook.gif")
+
+	form
+		:float left
+		:margin 0 0.5em
+		input
+			:font-size 1em
+			:height 1.3em
+			:color #999
+			:margin 0.25em
+			+rounded-corners(2px)
+			:padding 0.1em 0.25em
+			:width 10em
+			:border none
+			:background #fff url("/images/icons/magnifier.png") right center no-repeat
+		
+	#user
+		:float right
+		:display block
+		:height 2em
+		:line-height 2em
+		:padding-right 15px
+		:background url("/images/icons/bullet_arrow_down.png") right 50% no-repeat
+			
+		
+	a.more
+		+replace-text("icons/bullet_arrow_down.png")
+		:display inline-block
+		:width 10px
+		:height 2em
 
 #header
 	!header_height = 50px
@@ -48,11 +95,11 @@ body
 		:margin= 0.9em 0
 		
 		li
-			:margin 0 0.5em
+			:margin 0 0.25em
 			:padding 0 0.5em
 			:background= !color_foreground
-			:font-weight bold
 			+rounded-corners(4px)
+			:font-weight bold
 			:color white
 			:line-height 1.5em
 			
@@ -61,11 +108,12 @@ body
 				:font-weight normal
 				:display inline-block
 				:margin -0.25em -0.5em
+				:padding 0 0.5em
 				:color #000
 				
 		
 #banner
-	:background= !color_foreground
+	:background= url("/images/banners/dboat.png") !color_foreground
 	+rounded-corners(5px)
 	:height= !banner_height
 	:margin 0.5em 0
@@ -92,11 +140,32 @@ body
 
 
 #left
-	!left_columns= floor(!blueprint_grid_columns / 4)
+	!left_columns= floor(4 * !blueprint_grid_columns / 24)
 	+column(!left_columns)
 	
+	ul
+		:list-style none
+		:margin 0
+		
+		li
+			:background= !color_foreground
+			:color #fff
+			:font-size 1.2em
+			:line-height 1.75em
+			:height 1.75em
+			:padding-left 0.5em
+			:margin 0
+			
+			a
+				:display block
+				:color= !color_foreground
+				:background #fff
+				:font-size 0.85em
+				:padding-left 0.5em
+				:margin-left -0.51em
+				
 #sidebar
-	!sidebar_columns= floor(!blueprint_grid_columns / 4)
+	!sidebar_columns= floor(6 * !blueprint_grid_columns / 24)
 	+column(!sidebar_columns, true)
 	
 	.widget
@@ -106,7 +175,7 @@ body
 		margin-bottom: 1em
  
 #content
-	!content_columns= ceil(!blueprint_grid_columns / 2)
+	!content_columns= ceil(14 * !blueprint_grid_columns / 24)
 	+column(!content_columns)
 	
 

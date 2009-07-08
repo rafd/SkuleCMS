@@ -1,6 +1,6 @@
 <h2>New album</h2>
 
-<% form_for(@album) do |f| %>
+<% form_for(@album, :url=>{:action=>"create"}) do |f| %>
   <%= f.error_messages %>
 
   <p>
@@ -31,4 +31,4 @@
   </p>
 <% end %>
 
-<%= link_to 'Back', albums_path %>
+<%= link_to 'Back', club_gallery_path(@club) %>

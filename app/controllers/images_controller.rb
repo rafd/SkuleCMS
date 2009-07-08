@@ -51,7 +51,7 @@ class ImagesController < ApplicationController
     respond_to do |format|
       if @image.save
         flash[:notice] = 'Image was successfully uploaded to album.'
-        format.html { redirect_to(@image) }
+        format.html { redirect_to(club_album_image_path(@image.album.club, @image.album, @image)) }
         format.xml  { render :xml => @image, :status => :created, :location => @image }
       else
         @user = User.find(:all)
@@ -82,10 +82,11 @@ class ImagesController < ApplicationController
   # DELETE /images/1.xml
   def destroy
     @image = Image.find(params[:id])
+    @album = @image.album
     @image.destroy
 
     respond_to do |format|
-      format.html { redirect_to(images_url) }
+      format.html { redirect_to(club_album_path(@album.club, @album)) }
       format.xml  { head :ok }
     end
   end

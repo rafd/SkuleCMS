@@ -1,0 +1,4 @@
+page.insert_html(:bottom, "admin_download_folders", :partial => "folder_create" , :object => @download_folder)
+page.replace_html("new_folder",:partial => "display_new_folder_link")
+
+page["folder_"+@download_folder.id.to_s].visual_effect :highlight, :duration => 3.0

@@ -1,0 +1,9 @@
+<% remote_form_for([:club, @download_folder], :url => {:action=> 'folder_update', :folder => @download_folder.id}) do |f| %>
+  <%= f.error_messages %>
+    <%= f.label :name, "Folder:" %>
+    <%= f.text_field :name, :size => 10 %>
+    <%= f.label :icon, ", Icon:" %>
+    <%= f.text_field :icon, :size => 10  %>
+   <%= f.submit 'Update' %> </b>
+<% end %>
+<%= link_to_remote 'Remove', :url => {:action => 'folder_destroy', :folder=> @download_folder.id}, :confirm => "Are you sure you want to remove this folder?" %>

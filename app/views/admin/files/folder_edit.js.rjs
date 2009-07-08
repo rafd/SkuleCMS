@@ -1,0 +1,1 @@
+page.replace_html("folder_header_"+@download_folder.id.to_s , :partial => "folder_edit" , :object => @download_folder)

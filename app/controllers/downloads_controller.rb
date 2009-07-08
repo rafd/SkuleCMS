@@ -1,4 +1,8 @@
 class DownloadsController < ApplicationController
+  before_filter :load_download_folder, :only => [:new, :create, :index, :show]
+  def load_download_folder
+    @download_folder = DownloadFolder.find(params[:file_id])
+  end
   # GET /downloads
   # GET /downloads.xml
   def index
@@ -26,7 +30,6 @@ class DownloadsController < ApplicationController
   # GET /downloads/new.xml
   def new
     @download = Download.new
-    @downloadFolders = DownloadFolder.find(:all)
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @download }
@@ -43,13 +46,13 @@ class DownloadsController < ApplicationController
   def create
     @download = Download.new(params[:download])
     @download.url = Download.save(params[:download][:url])
+    @download.download_folder = @download_folder
     respond_to do |format|
       if @download.save
         flash[:notice] = 'File was successfully uploaded.'
-        format.html { redirect_to(@download) }
+        format.html { redirect_to(club_file_path(@download.download_folder.club, @download.download_folder)) }
         format.xml  { render :xml => @download, :status => :created, :location => @download }
       else
-        @downloadFolders = DownloadFolder.find(:all)
         format.html { render :action => "new" }
         format.xml  { render :xml => @download.errors, :status => :unprocessable_entity }
       end
@@ -77,10 +80,11 @@ class DownloadsController < ApplicationController
   # DELETE /downloads/1.xml
   def destroy
     @download = Download.find(params[:id])
+    @download_folder = @download.download_folder
     @download.destroy
 
     respond_to do |format|
-      format.html { redirect_to(downloads_url) }
+      format.html { redirect_to(club_file_path(@download_folder.club, @download_folder)) }
       format.xml  { head :ok }
     end
   end

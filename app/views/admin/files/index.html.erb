@@ -1,14 +1,16 @@
 <div id = "admin_download_folders">
   <h2>Listing Downloads Folders</h2>
-  <br />
+  Note: File Upload is not allowed via AJAX, so just wait until we implement a gem or plugin.
+  You can manually add files via the non-admin page through the club downloads page to test for features.
+  <br /><br />
   <% @download_folders.each do |folder| %>
-    <div id = "<%="folder"+folder.id.to_s%>" >
-      <div id = "<%="folderHeader"+folder.id.to_s%>" >
+    <div id = "<%="folder_"+folder.id.to_s%>" >
+      <div id = "<%="folder_header_"+folder.id.to_s%>" >
         <b> Folder: <%=h folder.name %>, Icon: <%=h folder.icon %></b>
-        <%= link_to_remote 'Edit', :url => {:action => 'edit_folder', :folder=> folder.id}%>
-        <%= link_to_remote 'Remove', :url => {:action => 'destroy_folder', :folder=> folder.id}, :confirm => "Are you sure you want to remove this folder?" %>
+        <%= link_to_remote 'Edit', :url => {:action => 'folder_edit', :folder=> folder.id}%>
+        <%= link_to_remote 'Remove', :url => {:action => 'folder_destroy', :folder=> folder.id}, :confirm => "Are you sure you want to remove this folder?" %>
       </div>
-      <div id = "<%= "folderContent"+folder.id.to_s %>" >
+      <div id = "<%= "folder_content_"+folder.id.to_s %>" >
         <%= link_to_remote 'Show', :url =>{ :action => 'show_files', :folder => folder.id}  %>         
       </div>
       <br />
@@ -17,5 +19,6 @@
 </div>
 <br />
 <div id = "new_folder" >
-  <%= link_to_remote 'New Folder', :url =>{ :action => 'new_folder'}  %>
+  <%= link_to_remote 'New Folder', :url =>{ :action => 'folder_new'}  %>
 </div>
+<%= link_to 'Back',  club_admin_index_path(@club)   %>

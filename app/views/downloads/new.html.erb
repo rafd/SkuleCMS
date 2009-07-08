@@ -1,12 +1,11 @@
 <h2>File Upload</h2>
 
-<%= form_tag ({:action => 'create'}, :multipart => true) %>
+<% form_for(@download, :url => {:action => 'create'}, :html => {:multipart => true}) do |f| %>
 
-<% form_for(@download) do |f| %>
   <%= f.error_messages %>
   <p>
-    <%= f.label :download_folder_id, 'Download Folder' %><br />
-    <%= f.collection_select :download_folder_id, @downloadFolders, :id, :name, { :prompt => 'Select Download Folder'} %>
+    <%= f.label :download_folder_id, 'Download Folder:' %>
+	<%= h @download_folder.name %>
   </p>
   <p>
     <%= f.label :name %><br />
@@ -28,6 +27,4 @@
     <%= f.submit 'Create' %>
   </p>
 <% end %>
-  
-
-<%= link_to 'Back', downloads_path %>
+<%= link_to 'Back', club_file_path(@download_folder.club, @download_folder) %>

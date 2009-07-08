@@ -28,5 +28,4 @@
   </p>
 <% end %>
 
-<%= link_to 'Show', @download %> |
-<%= link_to 'Back', downloads_path %>
+<%= link_to 'Back', club_file_path(@download.download_folder.club, @download.download_folder) %>

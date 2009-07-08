@@ -1,31 +1,30 @@
 ActionController::Routing::Routes.draw do |map|
 
-
-  map.resources :groups
-
-  map.resources :updates
-
-  map.resources :albums, :has_many => :images
-  
-  map.resources :images
-
-  map.resources :downloads
-
-  map.resources :users
-
-  map.resources :groups
-
-  map.resources :events
-  
   map.connect 'clubs/:club_id/admin/files/:action', :controller => 'admin/files'
-  map.connect 'clubs/:club_id/admin/files', :controller => 'admin/files', :action => 'index'
-  
+  map.club_admin_files 'clubs/:club_id/admin/files', :controller => 'admin/files', :action => 'index'
+ 
   map.resources :clubs do |club|
-    club.resources :admin, :controller =>'admins'
-    club.resources :files, :controller => "download_folders"
+    club.resources :files, :controller => "download_folders", :has_many => :downloads
+    club.resources :admin, :controller => "admin_pages"
+    club.resources :gallery, :controller => "albums", :singular => "album", :has_many => :images
   end 
-  map.resources :admins
- # map.connect 'albums/:id/add', :controller => 'images', :action => 'new'
+
+  map.resources :admins,
+		:groups,
+  	:updates,
+		:images,
+		:downloads,
+		:users,
+		:events
+
+	map.connect '/about', :controller => 'hub_pages', :action => 'about'
+	map.connect '/digest', :controller => 'hub_pages', :action => 'digest'
+	map.connect '/calendar', :controller => 'hub_pages', :action => 'calendar'
+	map.connect '/club', :controller => 'hub_pages', :action => 'clubs'
+  map.connect '/map', :controller => 'hub_pages', :action => 'map'
+  map.connect '/services', :controller => 'hub_pages', :action => 'services'
+  
+  # map.connect 'albums/:id/add', :controller => 'images', :action => 'new'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -60,7 +59,7 @@ ActionController::Routing::Routes.draw do |map|
   #   end
 
   # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
-   map.root :controller => "clubs"
+   map.root :controller => "hub_pages"
 
   # See how all your routes lay out with "rake routes"
 

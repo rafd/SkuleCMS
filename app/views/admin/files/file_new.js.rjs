@@ -1,0 +1,3 @@
+page.replace_html("file_new_"+@download_folder.id.to_s , :partial => "file_new" , :object => @download_folder)
+
+page["file_new_"+@download_folder.id.to_s].visual_effect :blind_down

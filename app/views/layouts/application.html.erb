@@ -11,14 +11,12 @@
 <body>
 
 <div id="skulebar">
-	<p style="color: green"><%= flash[:notice] %></p>
+	<%= render :partial => 'layouts/skulebar' %>
 </div>
 
 
 <div id="container">
 <div id="header">
-
-
 	<h1>
 		<% if @club && @club.logo %>
 			<%= link_to image_tag(@club.logo)+@club.name, "#" %>
@@ -29,14 +27,7 @@
 		<% end %>
 	</h1>
 
-	<ul id="menu">
-		<li>Home</li>
-		<li><%= link_to "About", "#" %></li>
-		<li><%= link_to "The Digest", "#" %></li>
-		<li><%= link_to "Clubs", "#" %></li>
-		<li><%= link_to "Map", "#" %></li>
-		<li><%= link_to "Services", "#" %></li>
-	</ul>
+	<%= render :partial => 'layouts/menu' %>
 	
 	<div id="banner">
 		<div id="info">

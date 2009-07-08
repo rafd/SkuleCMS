@@ -1,9 +1,14 @@
 class AlbumsController < ApplicationController
+  before_filter :load_club, :only => [:new, :create, :index, :show]
+  def load_club
+    @club = Club.find(params[:club_id])
+  end
+  
   # GET /albums
   # GET /albums.xml
   def index
-    @albums = Album.all
-
+    @albums = @club.albums
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @albums }
@@ -48,7 +53,7 @@ class AlbumsController < ApplicationController
           FileUtils.mkdir_p(directory)
         end
         flash[:notice] = 'Album was successfully created.'
-        format.html { redirect_to(@album) }
+        format.html { redirect_to(club_album_url(@club, @album)) }
         format.xml  { render :xml => @album, :status => :created, :location => @album }
       else
         format.html { render :action => "new" }
@@ -81,7 +86,7 @@ class AlbumsController < ApplicationController
     @album.destroy
 
     respond_to do |format|
-      format.html { redirect_to(albums_url) }
+      format.html { redirect_to(club_gallery_path) }
       format.xml  { head :ok }
     end
   end
