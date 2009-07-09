@@ -74,12 +74,18 @@ body
 
 #header
 	!header_height = 50px
+	margin: 0 0 0.5em 0
 	h1
 		//+replace-text("logo.png")
 		:float left
 		:width 40%
 		:line-height= !header_height
 		:margin 0
+		
+		a
+			:color= !color_foreground
+		a:hover
+			:text-decoration none
 		
 		img
 			:float left
@@ -116,7 +122,7 @@ body
 	:background= url("/images/banners/dboat.png") !color_foreground
 	+rounded-corners(5px)
 	:height= !banner_height
-	:margin 0.5em 0
+	:margin 0.5em 0 0 0
 	
 	#info
 		:background white
@@ -148,12 +154,12 @@ body
 		:margin 0
 		
 		li
-			:background= !color_foreground
+			:background url("/images/arrow.png") center right no-repeat
 			:color #fff
 			:font-size 1.2em
 			:line-height 1.75em
 			:height 1.75em
-			:padding-left 0.5em
+			:text-indent 0.5em
 			:margin 0
 			
 			a
@@ -161,8 +167,8 @@ body
 				:color= !color_foreground
 				:background #fff
 				:font-size 0.85em
-				:padding-left 0.5em
-				:margin-left -0.51em
+				
+			
 				
 #sidebar
 	!sidebar_columns= floor(6 * !blueprint_grid_columns / 24)

@@ -4,97 +4,29 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-  <title>Skule Clubs: <%= controller.controller_name %> - <%= controller.action_name %></title>
+  <title>Skule.ca : <%= controller.controller_name %> - <%= controller.action_name %></title>
   <%= stylesheet_link_tag 'compiled/style.css' %>
-  <%= javascript_include_tag :defaults %>
 </head>
 <body>
 
-<div id="skulebar">
-	<%= render :partial => 'layouts/skulebar' %>
-</div>
+	<%= render__partial 'skulebar' %>
 
-
-<div id="container">
-<div id="header">
-	<h1>
-		<% if @club && @club.logo %>
-			<%= link_to image_tag(@club.logo)+@club.name, "#" %>
-		<% elsif @club && @club.name %>
-			<%= link_to image_tag("blank.gif")+@club.name, "#" %>
-		<% else %>
-			<%= image_tag("blank.gif")+"Skule.ca" %>
-		<% end %>
-	</h1>
-
-	<%= render :partial => 'layouts/menu' %>
-	
-	<div id="banner">
-		<div id="info">
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam malesuada, nunc vitae dapibus fringilla, lectus purus suscipit mauris, ac blandit tortor orci ut mi. Nulla fringilla nisi massa.
-		</div>
-	</div>
-
-	<div id="left">
-		<ul class="filter">
-			<li><%= link_to "All", "#" %></li>
-			<li>My Clubs</li>
-		</ul>
-	</div>
-
-	<div id="content">
-		<%= yield %>
-	</div>
-
-	<div id="sidebar">
-		<div class="widget">
-			<%= render :partial => 'layouts/sidebar' %>
-		</div>
-		<div class="widget">
+	<div id="container">
 		
-		</div>
-		<div class="widget">
-		
-		</div>
-	</div>
-
-	<div id="footer">
-		<div id="address">
-			<h2><%= @club ? @club.name : "Skule.ca" %></h2>
-			<p>
-				B740 Sandford Fleming Building <br />
-				10 King's College Road <br />
-				Toronto, Ontario, Canada M5S 3G4
-		</div>
-		<div id="sitemap">
-			<dl>
-				<dt>About</dt>
-					<dd><a href="#">History</a></dd>
-					<dd><a href="#">FAQ</a></dd>
-			</dl>
-			<dl>		
-				<dt>Governance</dt>
-					<dd><a href="#">Officers</a></dd>
-					<dd><a href="#">Directors</a></dd>
-					<dd><a href="#">Club Chairs</a></dd>
-			</dl>
-			<dl>		
-				<dt>Documents</dt>
-					<dd><a href="#">Bylaws</a></dd>
-					<dd><a href="#">Minutes</a></dd>
-					<dd><a href="#">Policies</a></dd>
-					<dd><a href="#">Misc</a></dd>
-			</dl>
+		<div id="header">
+			<%= render__partial 'heading' %>
+			<%= render__partial 'menu' %>
+			<%= render__partial 'banner' %>
 		</div>
 		
-		<div id="copyright">
-			Copyright © 1970-2009 <a href="#">University of Toronto Engineering Society</a>. 
-			All Rights Reserved | 
-			<a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a> | 
-			<a href="#">Help</a> and <a href="#">Feedback</a> |
-			Updated Jan. 30, 2009
+		<%= render__partial 'left' %>
+
+		<div id="content">
+			<%= yield %>
 		</div>
+
+		<%= render__partial 'sidebar' %>
+		<%= render__partial 'footer' %>
 	</div>
-</div>
 </body>
 </html>

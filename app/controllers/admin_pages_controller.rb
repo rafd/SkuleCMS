@@ -10,4 +10,36 @@ class AdminPagesController < ApplicationController
       format.xml  { render :xml => @clubs }
     end
   end
+  
+  def dashboard
+  
+  end
+  
+  def posts
+  
+  end
+  
+  def events
+  
+  end
+  
+  def photos
+  
+  end
+  
+  def pages
+  
+  end
+  
+  def members
+  
+  end
+  
+  def files
+  
+  end
+  
+  def settings
+  
+  end 	
 end
