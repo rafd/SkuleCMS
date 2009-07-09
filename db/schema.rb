@@ -104,7 +104,7 @@ ActiveRecord::Schema.define(:version => 20090709041236) do
 
   create_table "pages", :force => true do |t|
     t.string   "title"
-    t.string   "content"
+    t.text     "content"
     t.integer  "club_id"
     t.datetime "created_at"
     t.datetime "updated_at"

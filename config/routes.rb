@@ -1,7 +1,4 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :pages
-
-
   map.connect 'clubs/:club_id/admin/files/:action', :controller => 'admin/files'
   map.club_admin_files 'clubs/:club_id/admin/files', :controller => 'admin/files', :action => 'index'
  
@@ -11,6 +8,7 @@ ActionController::Routing::Routes.draw do |map|
     club.resources :files, :controller => "download_folders", :has_many => :downloads
     club.resources :admin, :controller => "admin_pages"
     club.resources :gallery, :controller => "albums", :singular => "album", :has_many => :images
+		club.resources :pages, :controller => "pages"
   end 
 
   map.resources :admins,
