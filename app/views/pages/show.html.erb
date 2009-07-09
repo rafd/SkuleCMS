@@ -1,0 +1,13 @@
+<p>
+  <b>Title:</b>
+  <%=h @pages.title %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%=h @pages.content %>
+</p>
+
+
+<%= link_to 'Edit', edit_club_page_path(@club, @pages) %> |
+<%= link_to 'Back', club_pages_path(@club) %>

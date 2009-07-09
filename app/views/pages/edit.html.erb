@@ -1,0 +1,20 @@
+<h1>Editing pages</h1>
+
+<% form_for(@page, :url=>{:action=>"edit"}) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :content %><br />
+    <%= f.text_field :content %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', club_page_path(@club, @page) %> |
+<%= link_to 'Back', club_pages_path(@club) %>
