@@ -1,5 +1,5 @@
 class Image < ActiveRecord::Base
-  belongs_to :album, :dependent => :destroy
+  belongs_to :album
   belongs_to :user
   
   validates_presence_of     :name, :album_id, :user_id, :url

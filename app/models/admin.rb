@@ -1,4 +1,3 @@
 class Admin < ActiveRecord::Base
-  belongs_to      :club, :dependent => :destroy
-
+  belongs_to      :club
 end

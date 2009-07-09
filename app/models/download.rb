@@ -1,5 +1,5 @@
 class Download < ActiveRecord::Base
-  belongs_to      :download_folder, :dependent => :destroy
+  belongs_to      :download_folder
 
   validates_presence_of     :name, :download_folder_id, :url
   validates_numericality_of :download_folder_id
