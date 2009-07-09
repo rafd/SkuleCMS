@@ -1,5 +1,5 @@
 class DownloadFolder < ActiveRecord::Base
-  belongs_to        :club
+  belongs_to        :club, :dependent => :destroy
   has_many          :downloads
     
   validates_presence_of     :name, :club_id
