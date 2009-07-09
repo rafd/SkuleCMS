@@ -3,7 +3,7 @@
 one:
   name: MyString
   desc: MyString
-  tags: MyString
+  tags: tags1, tags2, tags3
   locked: MyString
   user_id: MyString
 
