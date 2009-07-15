@@ -1,12 +1,7 @@
 <h2>New group</h2>
 
-<% form_for(@group) do |f| %>
+<% form_for([:club, @group], :url => {:action=> 'create'}) do |f| %>
   <%= f.error_messages %>
-
-  <p>
-    <%= f.label :club_id %><br />
-    <%= f.text_field :club_id %>
-  </p>
   <p>
     <%= f.label :name %><br />
     <%= f.text_field :name %>
@@ -16,16 +11,12 @@
     <%= f.text_area :misc %>
   </p>
   <p>
-    <%= f.label :lft %><br />
-    <%= f.text_field :lft %>
-  </p>
-  <p>
-    <%= f.label :rgt %><br />
-    <%= f.text_field :rgt %>
+    <%= f.label :parent_id, "Subgroup of..." %><br />
+    <%= f.collection_select :parent_id, @grouplist, :id, :name, { :prompt => 'Select a Group', :include_blank => 'None'} %>
   </p>
   <p>
     <%= f.submit 'Create' %>
   </p>
 <% end %>
 
-<%= link_to 'Back', groups_path %>
+<%= link_to 'Back', :action => 'index' %>

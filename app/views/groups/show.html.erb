@@ -1,13 +1,11 @@
 <p>
-  <b>Club:</b>
-  <%=h @group.club_id %>
-</p>
-
-<p>
   <b>Name:</b>
   <%=h @group.name %>
 </p>
-
+<p>
+  <b>Parent:</b>
+  <%=h (@group.parent.blank?) ? "" : @group.parent.name %></td>
+</p>
 <p>
   <b>Misc:</b>
   <%=h @group.misc %>
@@ -23,6 +21,5 @@
   <%=h @group.rgt %>
 </p>
 
-
-<%= link_to 'Edit', edit_group_path(@group) %> |
-<%= link_to 'Back', groups_path %>
+<%= link_to 'Edit', :action => 'edit', :id => @group %> |
+<%= link_to 'Back', :action => 'index' %>

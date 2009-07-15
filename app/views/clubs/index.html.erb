@@ -12,6 +12,7 @@
     <td><%=h club.description %></td> 
     <td><%= link_to 'Downloads', club_files_path(club) %></td>
     <td><%= link_to 'Galleries', club_gallery_path(club) %></td>
+    <td><%= link_to 'Groups', club_groups_path(club) %></td>
     <td><%= link_to 'Show', club %></td>
     <td><%= link_to 'Edit', edit_club_path(club) %></td>
     <td><%= link_to 'Destroy', club, :confirm => 'Are you sure?', :method => :delete %></td>

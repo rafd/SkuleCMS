@@ -1,6 +1,6 @@
 <ul id="menu">
 	<% @club.pages.each do |page| %>
-	<li><%= link_to_unless_current page.name, :controller => "pages", :action => "show", :id=> page %></li>
+	<li><%= link_to_unless_current page.title, :controller => "pages", :action => "show", :id=> page %></li>
 	<% end if @club %>
 	<li><a href="#">...</a></li>
 </ul>

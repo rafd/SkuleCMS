@@ -2,8 +2,8 @@
 
 <table>
   <tr>
-    <th>Club</th>
     <th>Name</th>
+    <th>Parent</th>
     <th>Misc</th>
     <th>Lft</th>
     <th>Rgt</th>
@@ -11,18 +11,42 @@
 
 <% @groups.each do |group| %>
   <tr>
-    <td><%=h group.club_id %></td>
     <td><%=h group.name %></td>
+    <td><%=h (group.parent.blank?) ? "" : group.parent.name %></td>
     <td><%=h group.misc %></td>
     <td><%=h group.lft %></td>
     <td><%=h group.rgt %></td>
-    <td><%= link_to 'Show', group %></td>
-    <td><%= link_to 'Edit', edit_group_path(group) %></td>
-    <td><%= link_to 'Destroy', group, :confirm => 'Are you sure?', :method => :delete %></td>
+
+    <td><%= link_to 'Show', :action => 'show', :id => group %></td>
+    <td><%= link_to 'Edit', :action => 'edit', :id => group %></td>
+    <td><%= link_to 'Destroy',  club_group_path(@club, group) , :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
-
+<h3>Tree Structure</h3>
+<ul>
+  <% @roots.each do |group| -%>
+    <%=h group.name -%>
+    <ul>
+    <% @curLevel = 1 -%>
+    <% group.all_children.each do |groupy| -%>
+      <% if (groupy.level > @curLevel) -%>
+        <ul><% @curLevel += 1  -%>
+        <li><%=h groupy.name -%></li>
+      <% elsif groupy.level == @curLevel  -%>
+        <li><%=h groupy.name -%></li>
+      <% else  %>
+        <% while (groupy.level< @curLevel) -%>
+          <% @curLevel -= 1 -%>
+          </ul>
+        <% end  -%>
+        <li><%=h groupy.name -%></li>
+      <% end  -%>
+    <% end -%>
+    </ul>
+  <% end -%>
+</ul>
 <br />
 
-<%= link_to 'New group', new_group_path %>
+<%= link_to 'New group', :action => 'new' %>
+<%= link_to 'Back', club_path(@club)%>

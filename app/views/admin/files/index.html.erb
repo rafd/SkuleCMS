@@ -4,17 +4,17 @@
   You can manually add files via the non-admin page through the club downloads page to test for features.
   <br /><br />
   <% @download_folders.each do |folder| %>
-    <div id = "<%="folder_"+folder.id.to_s%>" >
-      <div id = "<%="folder_header_"+folder.id.to_s%>" >
+    <% div_for(folder) do %>
+      <% div_for(folder, :header) do %>
         <b> Folder: <%=h folder.name %>, Icon: <%=h folder.icon %></b>
         <%= link_to_remote 'Edit', :url => {:action => 'folder_edit', :folder=> folder.id}%>
         <%= link_to_remote 'Remove', :url => {:action => 'folder_destroy', :folder=> folder.id}, :confirm => "Are you sure you want to remove this folder?" %>
-      </div>
-      <div id = "<%= "folder_content_"+folder.id.to_s %>" >
+      <% end %>
+      <% div_for(folder, :content) do %>
         <%= link_to_remote 'Show', :url =>{ :action => 'show_files', :folder => folder.id}  %>         
-      </div>
+      <% end %>
       <br />
-    </div>
+    <% end %>
   <% end %> 
 </div>
 <br />
