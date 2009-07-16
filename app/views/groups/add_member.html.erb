@@ -1,0 +1,17 @@
+<h2>Add user to group</h2>
+<% form_for([:club, @membership], :url => {:action=> 'create_membership', :club_id => @club}) do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :user_id, "Pick a User" %><br />
+    <%= f.collection_select :user_id, @users, :id, :name, { :prompt => 'Select a User'} %>
+  </p>
+  <p>
+    <%= f.label :group_id, "Group" %><br />
+    <%= f.collection_select :group_id, @groups, :id, :name, { :prompt => 'Select a Group'} %>
+  </p>
+  <p>
+    <%= f.submit 'Add' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', :action => 'index' %>
