@@ -13,5 +13,4 @@ class Club < ActiveRecord::Base
   def members
     return Group.find(:first, :conditions => {:club_id => self, :name => "Member List"}).memberships
   end
-
 end

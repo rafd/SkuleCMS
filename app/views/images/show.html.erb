@@ -4,17 +4,26 @@
 </p>
 
 <p>
+  <b>Tags:</b><br/>
+  <% @image.tags.each do |tag| -%>
+    <%= link_to_tag(tag) %>
+  <% end -%>
+</p>
+
+<p>
+  <b>+ Album Tags: </b><br/>
+  <% @album.tags.each do |tag| -%>
+    <%= link_to_tag(tag) %>
+  <% end -%>
+</p>
+
+<p>
   <%= link_to 'download', "/club_data/"+@image.album.club.name+"/"+@image.album.name+"/"+@image.url %>
 </p>
 
 <p>
   <b>Desc:</b>
   <%=h @image.desc %>
-</p>
-
-<p>
-  <b>Tags:</b>
-  <%=h @image.tags %>
 </p>
 
 <p>

@@ -19,6 +19,8 @@ class GroupsController < ApplicationController
   # GET /groups/1.xml
   def show
     @group = Group.find(params[:id])
+    @page = @club.pages.find(:first, :conditions=> ["title=?",@group.name])
+
 
     respond_to do |format|
       format.html # show.html.erb
@@ -47,11 +49,17 @@ class GroupsController < ApplicationController
   # POST /groups.xml
   def create
     @group = Group.new(params[:group])
-    @group.club = @club;
+    @group.club = @club
     respond_to do |format|
       if @group.save
         if !params[:group][:parent_id].blank?
           @group.move_to_child_of(Group.find(params[:group][:parent_id]))
+        end
+        if !params[:page].nil? && !params[:page]['create_page'].nil?
+          @page = Page.new
+          @page.title = @group.name
+          @page.club = @club
+          @page.save
         end
         flash[:notice] = 'Group was successfully created.'
         format.html { redirect_to club_group_path(@club, @group) }

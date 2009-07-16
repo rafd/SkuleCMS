@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  before_filter :load_club, :only => [:new, :create, :edit, :index, :show, :destroy]
+  before_filter :load_club
   def load_club
     @club = Club.find(params[:club_id])
   end
@@ -7,7 +7,7 @@ class PagesController < ApplicationController
   # GET /pages
   # GET /pages.xml
   def index
-    @pages = Page.all
+    @pages = @club.pages
 
     respond_to do |format|
       format.html # index.html.erb
@@ -18,7 +18,7 @@ class PagesController < ApplicationController
   # GET /pages/1
   # GET /pages/1.xml
   def show
-    @pages = Page.find(params[:id])
+    @page = Page.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
