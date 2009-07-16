@@ -102,4 +102,41 @@ class GroupsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def add_member
+    @groups = @club.groups
+    @membership = Membership.new
+    @users = User.find(:all)
+    respond_to do |format|
+      format.html
+      format.xml  { render :xml => @group }
+    end
+  end
+  
+  def create_membership
+    @membership = Membership.new(params[:membership])
+    respond_to do |format|
+      if @membership.save
+        flash[:notice] = 'Membership was successfully created.'
+        format.html { redirect_to club_group_path(@club, @membership.group) }
+        format.xml  { render :xml => @membership, :status => :created, :location => @membership }
+      else
+        @groups = @club.groups
+        @users = User.find(:all)
+        format.html { render :action => "add_member" }
+        format.xml  { render :xml => @membership.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+  
+  def kick
+    @membership = Membership.find(params[:member])
+    @group = @membership.group
+    @membership.destroy
+
+    respond_to do |format|
+      format.html { redirect_to club_group_path(@club, @group) }
+      format.xml  { head :ok }
+    end
+  end
 end

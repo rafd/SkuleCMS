@@ -9,7 +9,7 @@ ActionController::Routing::Routes.draw do |map|
     club.resources :gallery, :controller => "albums", :singular => "album", :has_many => :images
     club.resources :admin, :controller => 'admin_pages'
 		club.resources :pages, :controller => "pages"
-    club.resources :groups
+    club.resources :groups, :member => { :kick => :delete }, :collection => { :add_member => :get, :create_membership => :post }
   end 
 
   map.resources :admins,

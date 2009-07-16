@@ -30,13 +30,13 @@
     <ul>
     <% @curLevel = 1 -%>
     <% group.all_children.each do |groupy| -%>
-      <% if (groupy.level > @curLevel) -%>
+      <% if(groupy.level > @curLevel) -%>
         <ul><% @curLevel += 1  -%>
         <li><%=h groupy.name -%></li>
       <% elsif groupy.level == @curLevel  -%>
         <li><%=h groupy.name -%></li>
       <% else  %>
-        <% while (groupy.level< @curLevel) -%>
+        <% while(groupy.level< @curLevel) -%>
           <% @curLevel -= 1 -%>
           </ul>
         <% end  -%>
@@ -48,5 +48,6 @@
 </ul>
 <br />
 
-<%= link_to 'New group', :action => 'new' %>
+<%= link_to 'New group', :action => 'new' %> |
+<%= link_to 'Add Members', :action => 'add_member' %> |
 <%= link_to 'Back', club_path(@club)%>
