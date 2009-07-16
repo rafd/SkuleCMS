@@ -1,1 +1,1 @@
-page.replace_html("folder_content_"+@download_folder.id.to_s , :partial => "hide_files" , :object => @download_folder)
+page.replace_html("content_download_folder_"+@download_folder.id.to_s , :partial => "hide_files" , :object => @download_folder)

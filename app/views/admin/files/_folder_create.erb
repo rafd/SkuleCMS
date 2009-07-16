@@ -1,11 +1,11 @@
-<div id = "<%="folder_"+@download_folder.id.to_s%>" >
-  <div id = "<%="folder_header_"+@download_folder.id.to_s%>" >
+<% div_for(@download_folder) do %>
+  <% div_for(@download_folder, :header) do %>
     <b> Folder: <%=h @download_folder.name %>, Icon: <%=h @download_folder.icon %></b>
     <%= link_to_remote 'Edit', :url => {:action => 'folder_edit', :folder=> @download_folder.id}%>
     <%= link_to_remote 'Remove', :url => {:action => 'folder_destroy', :folder=> @download_folder.id}, :confirm => "Are you sure you want to remove this folder?" %>
-  </div>
-  <div id = "<%= "folder_content_"+@download_folder.id.to_s %>" >
+  <% end %>
+  <% div_for(@download_folder, :content) do %>
     <%= link_to_remote 'Show', :url =>{ :action => 'show_files', :folder => @download_folder.id}  %>         
-  </div>
+  <% end %>
   <br />
-</div>
+<% end %>

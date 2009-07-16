@@ -1,2 +1,2 @@
-page["folder_"+@folder_num.to_s].visual_effect :fade
-page["folder_"+@folder_num.to_s].visual_effect :blind_up
+page["download_folder_"+@folder_num.to_s].visual_effect :fade
+page["download_folder_"+@folder_num.to_s].visual_effect :blind_up
