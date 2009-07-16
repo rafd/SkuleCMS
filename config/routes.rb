@@ -17,7 +17,8 @@ ActionController::Routing::Routes.draw do |map|
 		:images,
 		:downloads,
 		:users,
-		:events
+		:events,
+    :tags
 
 	
 

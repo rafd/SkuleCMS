@@ -1,7 +1,7 @@
 class ImagesController < ApplicationController
-  before_filter :load_album, :only => [:new, :create]
+  before_filter :load_album, :except => [:destroy]
   def load_album
-    @album = Album.find(params[:album_id])
+    @album = Album.find(params[:album_id], :include => :tags)
   end
   
   # GET /images
@@ -18,7 +18,7 @@ class ImagesController < ApplicationController
   # GET /images/1
   # GET /images/1.xml
   def show
-    @image = Image.find(params[:id])
+    @image = Image.find(params[:id], :include => :tags)
 
     respond_to do |format|
       format.html # show.html.erb

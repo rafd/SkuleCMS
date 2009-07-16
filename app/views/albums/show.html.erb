@@ -10,7 +10,9 @@
 
 <p>
   <b>Tags:</b>
-  <%=h @album.tags %>
+  <% @album.tags.each do |tag| -%>
+    <%= link_to_tag(tag) %>
+  <% end -%>
 </p>
 
 <p>
@@ -30,7 +32,6 @@
     <th>File Name</th>
     <th>Desc</th>
     <th>Url</th>
-    <th>Tags</th>
   </tr>	
 <% @album.images.each do |image| %>
   <tr>
@@ -39,7 +40,6 @@
     <td><%=h image.name %></td>
     <td><%=h image.desc %></td>
     <td><%=h image.url %></td>
-    <td><%=h image.tags %></td>
     <td><%= link_to 'Download', "/club_data/" + image.album.club.name+"/"+image.album.name+"/"+image.url %></td>
     <td><%= link_to 'Edit', edit_club_album_image_path(@album.club, @album, image) %></td>
     <td><%= link_to 'Destroy', image, :confirm => 'Are you sure?', :method => :delete %></td>
