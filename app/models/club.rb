@@ -11,10 +11,16 @@ class Club < ActiveRecord::Base
 
   validates_presence_of     :name, :description
   validates_uniqueness_of   :name
+<<<<<<< HEAD:app/models/club.rb
   
   def search
   end
   
   def search=(query)
+=======
+
+  def members
+    return Group.find(:first, :conditions => {:club_id => self, :parent_id => nil, :name => "Member List"}).memberships
+>>>>>>> 04beceb21f745cba60f853c975b1ab834c128005:app/models/club.rb
   end
 end

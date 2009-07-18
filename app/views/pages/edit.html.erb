@@ -1,6 +1,6 @@
-<h1>Editing pages</h1>
+<h2>Editing pages</h2>
 
-<% form_for(@page, :url=>{:action=>"edit"}) do |f| %>
+<% form_for([:club, @page], :url => {:action=> 'update'}) do |f| %>
   <%= f.error_messages %>
 
   <p>
@@ -16,5 +16,5 @@
   </p>
 <% end %>
 
-<%= link_to 'Show', club_page_path(@club, @page) %> |
-<%= link_to 'Back', club_pages_path(@club) %>
+<%= link_to 'Show', :action => 'admin', :club_id => @club, :id => @page %> |
+<%= link_to 'Back', :action => 'admin' %>

@@ -1,7 +1,11 @@
 <h3> Welcome to the Admin Control Panel </h3>
 <br />
-Options:
+Manage:
 <br />
 <ul>
-<li><%= link_to 'Downloads', club_admin_files_path() %></li> 
+<li><%= link_to 'Files', :controller => "download_folders", :action=>"admin", :club_id => @club %></li> 
+<li><%= link_to 'Groups/Members', :controller => "groups", :action=>"admin", :club_id => @club %></li> 
+<li><%= link_to 'Static Pages', :controller => "pages", :action=>"admin", :club_id => @club %></li> 
 </ul>
+
+*Not functional yet.
