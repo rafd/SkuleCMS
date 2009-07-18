@@ -7,6 +7,15 @@
   <b>Description:</b>
   <%=h @club.description %>
 </p>
+
+<p>
+  <b>Tags:</b><br/>
+  <% @club.tags.each do |tag| -%>
+    <%= link_to_tag(tag) %>
+  <% end -%>
+</p>
+
+
 <%= link_to 'Downloads', club_files_path(@club) %> |
 <%= link_to 'Gallery', club_gallery_path(@club) %> |
 <%= link_to 'Groups', club_groups_path(@club) %> |

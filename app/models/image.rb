@@ -6,6 +6,14 @@ class Image < ActiveRecord::Base
   
   validates_presence_of     :name, :album_id, :user_id, :url
   validates_numericality_of :user_id, :album_id
+    
+  def search
+
+  end
+  
+  def search=(query)
+    
+  end
   
   def self.save(upload, album)
     if (upload.blank?)

@@ -1,19 +1,37 @@
 class ClubsController < ApplicationController
+
+  def search
+    if !(params[:club]).nil?
+      redirect_to :controller => 'clubs', :action => 'search', :id => params[:club][:search]
+    elsif !(params[:id]).nil?
+      if (@club=Club.find(:first, :conditions => ['name = ?', params[:id]])).nil?
+        @clubs = Club.find_tagged_with(params[:id])
+      else
+        redirect_to(@club)
+      end
+    else
+      @clubs = Club.find(:all)
+    end
+  end
+  
   # GET /clubs
   # GET /clubs.xml
   def index
     @clubs = Club.all
-
-    respond_to do |format|
+    @tags = Club.find_tagged_with(params[:search])
+    
+   if false
+     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @clubs }
-    end
+     end
+   end
   end
 
   # GET /clubs/1
   # GET /clubs/1.xml
   def show
-    @club = Club.find(params[:id])
+    @club = Club.find(params[:id], :include => :tags)
 
     respond_to do |format|
       format.html # show.html.erb

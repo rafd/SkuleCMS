@@ -5,7 +5,6 @@
     <th>Name</th>
     <th>Url</th>
     <th>Desc</th>
-    <th>Tags</th>
     <th>Album</th>
     <th>User</th>
   </tr>
@@ -15,7 +14,6 @@
     <td><%=h image.name %></td>
     <td><%=h image.url %></td>
     <td><%=h image.desc %></td>
-    <td><%=h image.tags %></td>
     <td><%=h image.album.name %></td>
     <td><%=h image.user.name %></td>
     <td><%= link_to 'Show', image %></td>
@@ -24,5 +22,4 @@
   </tr>
 <% end %>
 </table>
-
 <br />

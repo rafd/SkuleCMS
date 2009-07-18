@@ -3,6 +3,7 @@ ActionController::Routing::Routes.draw do |map|
   map.club_admin_files 'clubs/:club_id/admin/files', :controller => 'admin/files', :action => 'index'
   
   map.connect '/clubs/:club_id/admin_/:action', :controller => 'admin_pages'
+  map.connect '/clubs/search', :controller => 'clubs', :action => 'search'
  
   map.resources :clubs do |club|
     club.resources :files, :controller => "download_folders", :has_many => :downloads
