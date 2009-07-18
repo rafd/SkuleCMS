@@ -1,257 +1,80 @@
-/* line 6, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/compass/stylesheets/compass/utilities/general/_reset.sass */
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, font, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  outline: 0;
-  font-weight: inherit;
-  font-style: inherit;
-  font-size: 100%;
-  font-family: inherit;
-  vertical-align: baseline; }
+/*
+Sass::SyntaxError: Undefined mixin 'blueprint-typography'.
+on line 2 of /media/USB DRIVE/Projects/SkuleClubs/app/stylesheets/ben.sass
 
-/* line 17, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/compass/stylesheets/compass/utilities/general/_reset.sass */
-*:focus {
-  outline: 0; }
+1: @import base.sass
+2: +blueprint-typography
+3: 
+4: 
+5: //Variables
 
-/* line 20, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/compass/stylesheets/compass/utilities/general/_reset.sass */
-body {
-  line-height: 1em;
-  color: black;
-  background: #fff; }
 
-/* line 23, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/compass/stylesheets/compass/utilities/general/_reset.sass */
-ol, ul {
-  list-style: none; }
-
-/* tables still need 'cellspacing="0"' in the markup */
-/* line 27, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/compass/stylesheets/compass/utilities/general/_reset.sass */
-table {
-  border-collapse: separate;
-  border-spacing: 0;
-  vertical-align: middle; }
-
-/* line 30, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/compass/stylesheets/compass/utilities/general/_reset.sass */
-caption, th, td {
-  text-align: left;
-  font-weight: normal;
-  vertical-align: middle; }
-
-/* line 33, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/compass/stylesheets/compass/utilities/general/_reset.sass */
-q, blockquote {
-  quotes: "" ""; }
-  /* line 101, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/compass/stylesheets/compass/utilities/general/_reset.sass */
-  q:before, q:after, blockquote:before, blockquote:after {
-    content: ""; }
-
-/* line 36, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/compass/stylesheets/compass/utilities/general/_reset.sass */
-img a {
-  border: none; }
-
-/* line 22, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-body {
-  line-height: 1.5;
-  font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
-  color: #333333;
-  font-size: 75%; }
-
-/* line 53, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-h1 {
-  font-weight: normal;
-  color: #222222;
-  font-size: 3em;
-  line-height: 1;
-  margin-bottom: 0.5em; }
-  /* line 58, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-  h1 img {
-    margin: 0; }
-
-/* line 60, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-h2 {
-  font-weight: normal;
-  color: #222222;
-  font-size: 2em;
-  margin-bottom: 0.75em; }
-
-/* line 64, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-h3 {
-  font-weight: normal;
-  color: #222222;
-  font-size: 1.5em;
-  line-height: 1;
-  margin-bottom: 1em; }
-
-/* line 69, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-h4 {
-  font-weight: normal;
-  color: #222222;
-  font-size: 1.2em;
-  line-height: 1.25;
-  margin-bottom: 1.25em; }
-
-/* line 74, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-h5 {
-  font-weight: normal;
-  color: #222222;
-  font-size: 1em;
-  font-weight: bold;
-  margin-bottom: 1.5em; }
-
-/* line 79, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-h6 {
-  font-weight: normal;
-  color: #222222;
-  font-size: 1em;
-  font-weight: bold; }
-
-/* line 83, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-h2 img, h3 img, h4 img, h5 img, h6 img {
-  margin: 0; }
-
-/* line 85, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-p {
-  margin: 0 0 1.5em; }
-  /* line 87, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-  p img.left {
-    display: inline;
-    float: left;
-    margin: 1.5em 1.5em 1.5em 0;
-    padding: 0; }
-  /* line 91, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-  p img.right {
-    display: inline;
-    float: right;
-    margin: 1.5em 0 1.5em 1.5em;
-    padding: 0; }
-
-/* line 95, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-a {
-  text-decoration: underline;
-  color: #000099; }
-  /* line 12, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/compass/stylesheets/compass/utilities/links/_link_colors.sass */
-  a:visited {
-    color: #000066; }
-  /* line 15, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/compass/stylesheets/compass/utilities/links/_link_colors.sass */
-  a:focus {
-    color: black; }
-  /* line 18, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/compass/stylesheets/compass/utilities/links/_link_colors.sass */
-  a:hover {
-    color: black; }
-  /* line 21, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/compass/stylesheets/compass/utilities/links/_link_colors.sass */
-  a:active {
-    color: #cc0099; }
-
-/* line 98, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-blockquote {
-  margin: 1.5em;
-  color: #666;
-  font-style: italic; }
-
-/* line 102, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-strong {
-  font-weight: bold; }
-
-/* line 104, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-em {
-  font-style: italic; }
-
-/* line 106, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-dfn {
-  font-style: italic;
-  font-weight: bold; }
-
-/* line 109, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-sup, sub {
-  line-height: 0; }
-
-/* line 111, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-abbr, acronym {
-  border-bottom: 1px dotted #666; }
-
-/* line 113, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-address {
-  margin: 0 0 1.5em;
-  font-style: italic; }
-
-/* line 116, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-del {
-  color: #666; }
-
-/* line 118, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-pre {
-  margin: 1.5em 0;
-  white-space: pre; }
-
-/* line 121, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-pre, code, tt {
-  font: 1em 'andale mono', 'lucida console', monospace;
-  line-height: 1.5; }
-
-/* line 123, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-li ul, li ol {
-  margin: 0 1.5em; }
-
-/* line 125, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-ul {
-  margin: 0 1.5em 1.5em 1.5em;
-  list-style-type: disc; }
-
-/* line 128, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-ol {
-  margin: 0 1.5em 1.5em 1.5em;
-  list-style-type: decimal; }
-
-/* line 131, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-dl {
-  margin: 0 0 1.5em 0; }
-  /* line 133, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-  dl dt {
-    font-weight: bold; }
-
-/* line 135, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-dd {
-  margin-left: 1.5em; }
-
-/* line 137, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-table {
-  margin-bottom: 1.4em;
-  width: 100%; }
-
-/* line 140, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-th {
-  font-weight: bold; }
-
-/* line 142, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-thead th {
-  background: #c3d9ff; }
-
-/* line 144, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-th, td, caption {
-  padding: 4px 10px 4px 5px; }
-
-/* line 146, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-tr.even td {
-  background: #e5ecf9; }
-
-/* line 148, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-tfoot {
-  font-style: italic; }
-
-/* line 150, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-caption {
-  background: #eee; }
-
-/* line 152, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-.quiet {
-  color: #666666; }
-
-/* line 154, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-.loud {
-  color: #111111; }
+Backtrace:
+/media/USB DRIVE/Projects/SkuleClubs/app/stylesheets/ben.sass:2
+/usr/lib/ruby/gems/1.8/gems/haml-edge-2.1.56/lib/sass/tree/mixin_node.rb:27:in `_perform'
+/usr/lib/ruby/gems/1.8/gems/haml-edge-2.1.56/lib/sass/tree/node.rb:156:in `perform'
+/usr/lib/ruby/gems/1.8/gems/haml-edge-2.1.56/lib/sass/tree/node.rb:200:in `perform_children'
+/usr/lib/ruby/gems/1.8/gems/haml-edge-2.1.56/lib/sass/tree/node.rb:200:in `map'
+/usr/lib/ruby/gems/1.8/gems/haml-edge-2.1.56/lib/sass/tree/node.rb:200:in `perform_children'
+/usr/lib/ruby/gems/1.8/gems/haml-edge-2.1.56/lib/sass/tree/node.rb:191:in `perform!'
+/usr/lib/ruby/gems/1.8/gems/haml-edge-2.1.56/lib/sass/tree/node.rb:179:in `_perform'
+/usr/lib/ruby/gems/1.8/gems/haml-edge-2.1.56/lib/sass/tree/node.rb:156:in `perform'
+/usr/lib/ruby/gems/1.8/gems/haml-edge-2.1.56/lib/sass/tree/node.rb:103:in `render'
+/usr/lib/ruby/gems/1.8/gems/haml-edge-2.1.56/lib/sass/plugin.rb:83:in `update_stylesheet'
+/usr/lib/ruby/gems/1.8/gems/haml-edge-2.1.56/lib/sass/plugin.rb:69:in `update_stylesheets'
+/usr/lib/ruby/gems/1.8/gems/haml-edge-2.1.56/lib/sass/plugin.rb:64:in `each'
+/usr/lib/ruby/gems/1.8/gems/haml-edge-2.1.56/lib/sass/plugin.rb:64:in `update_stylesheets'
+/usr/lib/ruby/gems/1.8/gems/haml-edge-2.1.56/lib/sass/plugin.rb:62:in `each'
+/usr/lib/ruby/gems/1.8/gems/haml-edge-2.1.56/lib/sass/plugin.rb:62:in `update_stylesheets'
+/usr/lib/ruby/gems/1.8/gems/haml-edge-2.1.56/lib/sass/plugin/rails.rb:16:in `process_without_compass'
+/usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/lib/compass/app_integration/rails/action_controller.rb:7:in `process'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.2/lib/action_controller/base.rb:391:in `process'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.2/lib/action_controller/base.rb:386:in `call'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.2/lib/action_controller/routing/route_set.rb:433:in `call'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.2/lib/action_controller/dispatcher.rb:88:in `dispatch'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.2/lib/action_controller/dispatcher.rb:111:in `_call'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.2/lib/action_controller/dispatcher.rb:82:in `initialize'
+/usr/lib/ruby/gems/1.8/gems/activerecord-2.3.2/lib/active_record/query_cache.rb:29:in `call'
+/usr/lib/ruby/gems/1.8/gems/activerecord-2.3.2/lib/active_record/query_cache.rb:29:in `call'
+/usr/lib/ruby/gems/1.8/gems/activerecord-2.3.2/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+/usr/lib/ruby/gems/1.8/gems/activerecord-2.3.2/lib/active_record/query_cache.rb:9:in `cache'
+/usr/lib/ruby/gems/1.8/gems/activerecord-2.3.2/lib/active_record/query_cache.rb:28:in `call'
+/usr/lib/ruby/gems/1.8/gems/activerecord-2.3.2/lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+/usr/lib/ruby/gems/1.8/gems/rack-1.0.0/lib/rack/head.rb:9:in `call'
+/usr/lib/ruby/gems/1.8/gems/rack-1.0.0/lib/rack/methodoverride.rb:24:in `call'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.2/lib/action_controller/params_parser.rb:15:in `call'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.2/lib/action_controller/rewindable_input.rb:25:in `call'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.2/lib/action_controller/session/cookie_store.rb:93:in `call'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.2/lib/action_controller/reloader.rb:9:in `call'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.2/lib/action_controller/failsafe.rb:11:in `call'
+/usr/lib/ruby/gems/1.8/gems/rack-1.0.0/lib/rack/lock.rb:11:in `call'
+/usr/lib/ruby/gems/1.8/gems/rack-1.0.0/lib/rack/lock.rb:11:in `synchronize'
+/usr/lib/ruby/gems/1.8/gems/rack-1.0.0/lib/rack/lock.rb:11:in `call'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.2/lib/action_controller/dispatcher.rb:106:in `call'
+/usr/lib/ruby/gems/1.8/gems/rails-2.3.2/lib/rails/rack/static.rb:31:in `call'
+/usr/lib/ruby/gems/1.8/gems/rack-1.0.0/lib/rack/urlmap.rb:46:in `call'
+/usr/lib/ruby/gems/1.8/gems/rack-1.0.0/lib/rack/urlmap.rb:40:in `each'
+/usr/lib/ruby/gems/1.8/gems/rack-1.0.0/lib/rack/urlmap.rb:40:in `call'
+/usr/lib/ruby/gems/1.8/gems/rails-2.3.2/lib/rails/rack/log_tailer.rb:17:in `call'
+/usr/lib/ruby/gems/1.8/gems/rack-1.0.0/lib/rack/content_length.rb:13:in `call'
+/usr/lib/ruby/gems/1.8/gems/rack-1.0.0/lib/rack/handler/webrick.rb:46:in `service'
+/usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+/usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+/usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+/usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+/usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+/usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+/usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+/usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+/usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+/usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+/usr/lib/ruby/gems/1.8/gems/rack-1.0.0/lib/rack/handler/webrick.rb:13:in `run'
+/usr/lib/ruby/gems/1.8/gems/rails-2.3.2/lib/commands/server.rb:111
+/usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+/usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+script/server:3
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Sass::SyntaxError: Undefined mixin 'blueprint-typography'.\A on line 2 of /media/USB DRIVE/Projects/SkuleClubs/app/stylesheets/ben.sass\A \A 1: @import base.sass\A 2: +blueprint-typography\A 3: \A 4: \A 5: //Variables\A "; }

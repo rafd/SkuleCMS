@@ -4,7 +4,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.connect '/clubs/:club_id/admin/:action', :controller => 'admin_pages'
  
-  map.resources :clubs do |club|
+  map.resources :clubs, :collection => { :admin => :get } do |club|
     club.resources  :files,
                     :controller => "download_folders",
                     :has_many => :downloads,

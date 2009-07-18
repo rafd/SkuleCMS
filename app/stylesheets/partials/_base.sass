@@ -1,11 +1,37 @@
-// Here is where you can define your constants for your application and to configure the blueprint framework.
-// Feel free to delete these if you want keep the defaults:
+// External Libraries
 
-!blueprint_grid_columns = 24
-!blueprint_container_size = 950px
-!blueprint_grid_margin  = 10px
+@import compass/reset.sass
+@import compass/utilities.sass
+@import blueprint.sass
 
-// Use this to calculate the width based on the total width.
-// Or you can set !blueprint_grid_width to a fixed value and unset !blueprint_container_size -- it will be calculated for you.
-!blueprint_grid_width   = (!blueprint_container_size + !blueprint_grid_margin) / !blueprint_grid_columns - !blueprint_grid_margin
+// Blueprint Config
 
+// Main
+ 
+//!blueprint_grid_columns = 24
+//!blueprint_container_size = 950px
+//!blueprint_grid_margin  = 10px
+
+//!blueprint_grid_width   = (!blueprint_container_size + !blueprint_grid_margin) / !blueprint_grid_columns - !blueprint_grid_margin
+
+
+//Liquid
+
+//!blueprint_liquid_grid_columns = 24
+//!blueprint_liquid_grid_width  = 4.173%
+//!blueprint_liquid_grid_margin = 0.833em
+
+//!blueprint_liquid_container_width = 80%
+//!blueprint_liquid_container_min_width = 800px
+//!blueprint_liquid_grid_push_pull = -(!blueprint_liquid_grid_margin * 4)
+
+
+//Our Mixins
+=rounded-corners(!width = 5px)
+	-moz-border-radius= !width
+	-webkit-border-radius= !width
+	
+=background-icon(!url)
+	:background= url("/images/"+!url) left center no-repeat
+	:padding-left 20px
+	:margin 0 0 0 0.25em
