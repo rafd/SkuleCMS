@@ -9,6 +9,15 @@
 </p>
 
 <p>
+<<<<<<< HEAD:app/views/clubs/show.html.erb
+  <b>Tags:</b><br/>
+  <% @club.tags.each do |tag| -%>
+    <%= link_to_tag(tag) %>
+  <% end -%>
+</p>
+
+
+=======
   <b>Members:</b>
   <ul>
     <% @club.members.each do |member| %>
@@ -18,6 +27,7 @@
 </p>
 
 <%= link_to '**Hidden Admin Link**', club_admin_index_path(@club) %> |
+>>>>>>> 04beceb21f745cba60f853c975b1ab834c128005:app/views/clubs/show.html.erb
 <%= link_to 'Downloads', club_files_path(@club) %> |
 <%= link_to 'Gallery', club_gallery_path(@club) %> |
 <%= link_to 'Groups', club_groups_path(@club) %> |

@@ -1,18 +1,22 @@
 class ImagesController < ApplicationController
-  before_filter :load_album, :except => [:destroy]
+ # before_filter :load_album, :except => [:destroy]
   def load_album
     @album = Album.find(params[:album_id], :include => :tags)
   end
+
+  
   
   # GET /images
   # GET /images.xml
   def index
+    @tags = Tag.find(:all, :conditions => ['name LIKE ?', "%#{params[:search]}%"])
+    #Category.find(:all, :conditions => ['name LIKE ?', "%#{params[:search]}%"])
     @images = Image.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @images }
-    end
+ #   respond_to do |format|
+ #    format.html # index.html.erb
+ #     format.xml  { render :xml => @images }
+ #   end
   end
 
   # GET /images/1
