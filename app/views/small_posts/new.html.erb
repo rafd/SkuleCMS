@@ -1,0 +1,25 @@
+
+
+<h1>New small_post</h1>
+
+<% form_for(@small_post) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :content %><br />
+    <%= f.text_area 	:content,
+						:onKeyDown => "textCounter(this,this.form.remLen,20);", 
+						:onKeyUp => "textCounter(this,this.form.remLen,20);" 
+	%>
+  </p>
+  
+<input readonly type=text name=remLen size=3 maxlength=3 value="--"> characters left</input>
+
+  <p>
+    <%= f.submit 'Create' %>
+	<%= f.submit 'Try a Twat' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', small_posts_path %>
+<%= link_to "Try a twat", :controller => 'large_posts', :action => "new" %>
