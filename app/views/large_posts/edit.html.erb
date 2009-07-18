@@ -1,0 +1,22 @@
+<%= include_tiny_mce_if_needed %>
+
+<h1>Editing large_post</h1>
+
+<% form_for(@large_post) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :content %><br />
+    <%= f.text_area :content, :class => "mceEditor" %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @large_post %> |
+<%= link_to 'Back', large_posts_path %>

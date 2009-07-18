@@ -1,0 +1,20 @@
+<h1>Listing small_posts</h1>
+
+<table>
+  <tr>
+    <th>Content</th>
+  </tr>
+
+<% @small_posts.each do |small_post| %>
+  <tr>
+    <td><%=h small_post.content %></td>
+    <td><%= link_to 'Show', small_post %></td>
+    <td><%= link_to 'Edit', edit_small_post_path(small_post) %></td>
+    <td><%= link_to 'Destroy', small_post, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New small_post', new_small_post_path %>
