@@ -89,7 +89,6 @@ ActiveRecord::Schema.define(:version => 20090718212252) do
     t.string   "name"
     t.string   "url"
     t.string   "desc"
-    t.string   "tags"
     t.integer  "album_id"
     t.integer  "user_id"
     t.datetime "created_at"
@@ -123,6 +122,26 @@ ActiveRecord::Schema.define(:version => 20090718212252) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "taggings", :force => true do |t|
+    t.integer "tag_id"
+    t.integer "taggable_id"
+    t.string  "taggable_type"
+    t.integer "user_id"
+  end
+
+  add_index "taggings", ["tag_id", "taggable_type"], :name => "index_taggings_on_tag_id_and_taggable_type"
+  add_index "taggings", ["taggable_id", "taggable_type"], :name => "index_taggings_on_taggable_id_and_taggable_type"
+  add_index "taggings", ["user_id", "tag_id", "taggable_type"], :name => "index_taggings_on_user_id_and_tag_id_and_taggable_type"
+  add_index "taggings", ["user_id", "taggable_id", "taggable_type"], :name => "index_taggings_on_user_id_and_taggable_id_and_taggable_type"
+
+  create_table "tags", :force => true do |t|
+    t.string  "name"
+    t.integer "taggings_count", :default => 0, :null => false
+  end
+
+  add_index "tags", ["name"], :name => "index_tags_on_name"
+  add_index "tags", ["taggings_count"], :name => "index_tags_on_taggings_count"
 
   create_table "updates", :force => true do |t|
     t.integer  "club_id"
