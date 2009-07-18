@@ -9,6 +9,10 @@ class ClubsController < ApplicationController
       format.xml  { render :xml => @clubs }
     end
   end
+  
+  def admin
+  	@clubs = Club.all
+  end
 
   # GET /clubs/1
   # GET /clubs/1.xml

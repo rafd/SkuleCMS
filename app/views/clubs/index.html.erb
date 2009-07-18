@@ -1,25 +1,20 @@
-<h2>Listing clubs</h2>
+<h2>Clubs</h2>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-  </tr>
+
 
 <% @clubs.each do |club| %>
-  <tr>
-    <td><%=h club.name %></td>
-    <td><%=h club.description %></td> 
-    <td><%= link_to 'Downloads', club_files_path(club) %></td>
-    <td><%= link_to 'Galleries', club_gallery_path(club) %></td>
-    <td><%= link_to 'Groups', club_groups_path(club) %></td>
-    <td><%= link_to 'Show', club %></td>
-    <td><%= link_to 'Edit', edit_club_path(club) %></td>
-    <td><%= link_to 'Destroy', club, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+
+<div class="club">
+	<img src="logo" />
+	<h3><%=h club.name || "Club Name" %></h3>
+	<span><%=h club.tagline || "Tagline" %></span>
+	<ul>
+		<li><a href="#">Tag</a></li>
+		<li><a href="#">Tag</a></li>
+		<li><a href="#">Tag</a></li>
+	</ul>
+</div>
+
 <% end %>
-</table>
 
-<br />
 
-<%= link_to 'New club', new_club_path %>

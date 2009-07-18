@@ -1,10 +1,9 @@
 ActionController::Routing::Routes.draw do |map|
-  #map.connect 'clubs/:club_id/admin/files/:action', :controller => 'admin/files'
-  #map.club_admin_files 'clubs/:club_id/admin/files', :controller => 'admin/files', :action => 'index'
   
   map.connect '/clubs/:club_id/admin/:action', :controller => 'admin_pages'
  
-  map.resources :clubs, :member => { :join => :get, :create_membership => :post } do |club|
+
+  map.resources :clubs, :collection => { :admin => :get } do |club|
     club.resources  :files,
                     :controller => "download_folders",
                     :has_many => :downloads,
@@ -34,10 +33,11 @@ ActionController::Routing::Routes.draw do |map|
 		:images,
 		:downloads,
 		:users,
-    :tags
+    :tags,
+    :small_posts,
+    :large_posts
 
 	
-
 	map.connect '/about', :controller => 'hub_pages', :action => 'about'
 	map.connect '/digest', :controller => 'hub_pages', :action => 'digest'
 	map.connect '/calendar', :controller => 'hub_pages', :action => 'calendar'
