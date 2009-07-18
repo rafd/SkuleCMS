@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  before_filter :load_club, :only => [:new, :create, :edit, :index, :show, :destroy]
+  before_filter :load_club
   def load_club
     @club = Club.find(params[:club_id])
   end
@@ -7,7 +7,7 @@ class PagesController < ApplicationController
   # GET /pages
   # GET /pages.xml
   def index
-    @pages = Page.all
+    @pages = @club.pages
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,14 +15,30 @@ class PagesController < ApplicationController
     end 
   end
 
+  def admin
+    if (params[:id].blank?)
+      @pages = @club.pages
+      respond_to do |format|
+        format.html # index.html.erb
+        format.xml  { render :xml => @pages }
+      end
+    else
+      @page = Page.find(params[:id])
+      respond_to do |format|
+        format.html { render :action => "admin_show" }
+        format.xml  { render :xml => @page }
+      end
+    end
+  end
+
   # GET /pages/1
   # GET /pages/1.xml
   def show
-    @pages = Page.find(params[:id])
+    @page = Page.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @pages }
+      format.xml  { render :xml => @page }
     end
   end
 
@@ -33,7 +49,7 @@ class PagesController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @pages }
+      format.xml  { render :xml => @page }
     end
   end
 
@@ -50,7 +66,7 @@ class PagesController < ApplicationController
     respond_to do |format|
       if @page.save
         flash[:notice] = 'Pages was successfully created.'
-	      format.html { redirect_to(club_page_url(@club, @page)) }
+	      format.html { redirect_to(admin_club_page_path(@club, @page)) }
         format.xml  { render :xml => @page, :status => :created, :location => @page }
       else
         format.html { render :action => "new" }
@@ -62,16 +78,16 @@ class PagesController < ApplicationController
   # PUT /pages/1
   # PUT /pages/1.xml
   def update
-    @pages = Page.find(params[:id])
+    @page = Page.find(params[:id])
 
     respond_to do |format|
-      if @pages.update_attributes(params[:pages])
+      if @page.update_attributes(params[:page])
         flash[:notice] = 'Pages was successfully updated.'
-        format.html { redirect_to(@pages) }
+        format.html { redirect_to(admin_club_page_path(@club, @page)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @pages.errors, :status => :unprocessable_entity }
+        format.xml  { render :xml => @page.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -79,11 +95,11 @@ class PagesController < ApplicationController
   # DELETE /pages/1
   # DELETE /pages/1.xml
   def destroy
-    @pages = Page.find(params[:id])
-    @pages.destroy
+    @page = Page.find(params[:id])
+    @page.destroy
 
     respond_to do |format|
-      format.html { redirect_to(club_pages_path(@club)) }
+      format.html { redirect_to(admin_club_pages_url) }
       format.xml  { head :ok }
     end
   end

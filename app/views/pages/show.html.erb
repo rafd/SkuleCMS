@@ -1,13 +1,11 @@
 <p>
   <b>Title:</b>
-  <%=h @pages.title %>
+  <%=h @page.title %>
 </p>
 
 <p>
   <b>Content:</b>
-  <%=h @pages.content %>
+  <%=h @page.content %>
 </p>
 
-
-<%= link_to 'Edit', edit_club_page_path(@club, @pages) %> |
 <%= link_to 'Back', club_pages_path(@club) %>

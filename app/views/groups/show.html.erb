@@ -12,24 +12,15 @@
 </p>
 
 <p>
-  <b>Lft:</b>
-  <%=h @group.lft %>
-</p>
-
-<p>
-  <b>Rgt:</b>
-  <%=h @group.rgt %>
-</p>
-
-<p>
   <b>Members:</b>
   <ul>
     <% @group.memberships.each do |member| %>
          <li><%=h member.user.name %>  
-         <%= link_to 'Kick', kick_club_group_path(@club, @group, :member => member.id), :confirm => 'Are you sure?', :method => :delete %></li>
     <% end %>
   </ul>
 </p>
 
-<%= link_to 'Edit', :action => 'edit', :id => @group %> |
+<% if !@page.nil? %>
+	<%= link_to 'Page', club_page_path(@club, @page) %> |
+<% end %>
 <%= link_to 'Back', :action => 'index' %>

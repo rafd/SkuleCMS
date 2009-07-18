@@ -14,7 +14,6 @@ class DownloadsController < ApplicationController
     end
   end
   
-
   # GET /downloads/1
   # GET /downloads/1.xml
   def show
@@ -50,7 +49,7 @@ class DownloadsController < ApplicationController
     respond_to do |format|
       if @download.save
         flash[:notice] = 'File was successfully uploaded.'
-        format.html { redirect_to(club_file_path(@download.download_folder.club, @download.download_folder)) }
+        format.html { redirect_to(admin_club_file_path(@download.download_folder.club, @download.download_folder)) }
         format.xml  { render :xml => @download, :status => :created, :location => @download }
       else
         format.html { render :action => "new" }
@@ -67,7 +66,7 @@ class DownloadsController < ApplicationController
     respond_to do |format|
       if @download.update_attributes(params[:download])
         flash[:notice] = 'Download was successfully updated.'
-        format.html { redirect_to(@download) }
+        format.html { redirect_to(admin_club_file_path(@download.download_folder.club, @download.download_folder)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -84,7 +83,7 @@ class DownloadsController < ApplicationController
     @download.destroy
 
     respond_to do |format|
-      format.html { redirect_to(club_file_path(@download_folder.club, @download_folder)) }
+      format.html { redirect_to(admin_club_file_path(@download_folder.club, @download_folder)) }
       format.xml  { head :ok }
     end
   end

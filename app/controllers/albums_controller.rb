@@ -18,7 +18,7 @@ class AlbumsController < ApplicationController
   # GET /albums/1
   # GET /albums/1.xml
   def show
-    @album = Album.find(params[:id])
+    @album = Album.find(params[:id], :include => :tags)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -46,6 +46,7 @@ class AlbumsController < ApplicationController
   # POST /albums.xml
   def create
     @album = Album.new(params[:album])
+    @album.club = @club
     respond_to do |format|
       if @album.save
         directory = "public/club_data/"+@album.club.name+"/"+@album.name

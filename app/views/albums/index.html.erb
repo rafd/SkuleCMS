@@ -4,7 +4,6 @@
   <tr>
     <th>Name</th>
     <th>Desc</th>
-    <th>Tags</th>
     <th>Locked</th>
     <th>User</th>
   </tr>
@@ -13,7 +12,6 @@
   <tr>
     <td><%=h album.name %></td>
     <td><%=h album.desc %></td>
-    <td><%=h album.tags %></td>
     <td><%=h album.locked %></td>
     <td><%=h album.user.name %></td>
     <td><%= link_to 'Show', club_album_path(album.club, album) %></td>

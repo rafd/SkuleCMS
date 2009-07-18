@@ -15,8 +15,11 @@
     <%= f.collection_select :parent_id, @grouplist, :id, :name, { :prompt => 'Select a Group', :include_blank => 'None'} %>
   </p>
   <p>
+  	<%= label_tag :page, "Create a Page for this Group" %>
+  	<%= check_box_tag :page, :create_page %>
+  <p>
     <%= f.submit 'Create' %>
   </p>
 <% end %>
 
-<%= link_to 'Back', :action => 'index' %>
+<%= link_to 'Back', :action => 'admin' %>

@@ -10,4 +10,7 @@ class Club < ActiveRecord::Base
   validates_presence_of     :name, :description
   validates_uniqueness_of   :name
 
+  def members
+    return Group.find(:first, :conditions => {:club_id => self, :parent_id => nil, :name => "Member List"}).memberships
+  end
 end

@@ -30,16 +30,10 @@
     <td><%=h download.url %></td>
     <td><%=h download.tags %></td>
     <td><%= link_to 'Download', "/data/"+download.url %></td>
-    <td><%= link_to 'Edit', edit_club_file_download_path(@download_folder.club, @download_folder, download) %></td>
-    <td><%= link_to 'Destroy', download, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'Add Download', new_club_file_download_path(@club, @download_folder) %> |
-
-
-<%= link_to 'Edit', edit_club_file_path(@club, @download_folder) %> |
 <%= link_to 'Back', club_files_path %>

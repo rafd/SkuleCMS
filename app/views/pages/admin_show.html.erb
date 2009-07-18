@@ -1,0 +1,12 @@
+<p>
+  <b>Title:</b>
+  <%=h @page.title %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%=h @page.content %>
+</p>
+
+<%= link_to 'Edit', edit_club_page_path(@club, @page) %> |
+<%= link_to 'Back', :action => 'admin' %>
