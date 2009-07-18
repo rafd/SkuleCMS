@@ -14,14 +14,32 @@ class GroupsController < ApplicationController
       format.xml  { render :xml => @groups }
     end
   end
+  
+  # GET /groups/admin
+  # GET /groups/1/admin
+  def admin
+    if (params[:id].blank?)
+      @groups = @club.groups
+      @roots = Group.find(:all, :conditions => {:club_id => @club, :parent_id => nil})
+      respond_to do |format|
+        format.html # index.html.erb
+        format.xml  { render :xml => @groups }
+      end
+    else
+      @group = Group.find(params[:id])
+      @page = @club.pages.find(:first, :conditions=> ["title=?",@group.name])
+      respond_to do |format|
+        format.html { render :action => "admin_show" }
+        format.xml  { render :xml => @group }
+      end
+    end
+  end
 
   # GET /groups/1
   # GET /groups/1.xml
   def show
     @group = Group.find(params[:id])
     @page = @club.pages.find(:first, :conditions=> ["title=?",@group.name])
-
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @group }
@@ -62,9 +80,10 @@ class GroupsController < ApplicationController
           @page.save
         end
         flash[:notice] = 'Group was successfully created.'
-        format.html { redirect_to club_group_path(@club, @group) }
+        format.html { redirect_to admin_club_group_path(@club, @group) }
         format.xml  { render :xml => @group, :status => :created, :location => @group }
       else
+        @grouplist = @club.groups
         format.html { render :action => "new" }
         format.xml  { render :xml => @group.errors, :status => :unprocessable_entity }
       end
@@ -75,16 +94,21 @@ class GroupsController < ApplicationController
   # PUT /groups/1.xml
   def update
     @group = Group.find(params[:id])
-
+    
     respond_to do |format|
-      if @group.update_attributes(params[:group])
+      if (@group.is_member_list?)
+        flash[:notice] = 'Cannot edit the member list.'
+        format.html { redirect_to admin_club_group_path(@club, @group) }
+        format.xml  { head :ok }
+      elsif @group.update_attributes(params[:group])
         if !params[:group][:parent_id].blank?
           @group.move_to_child_of(Group.find(params[:group][:parent_id]))
         end
         flash[:notice] = 'Group was successfully updated.'
-        format.html { redirect_to club_group_path(@club, @group) }
+        format.html { redirect_to admin_club_group_path(@club, @group) }
         format.xml  { head :ok }
       else
+        @grouplist = @club.groups
         format.html { render :action => "edit" }
         format.xml  { render :xml => @group.errors, :status => :unprocessable_entity }
       end
@@ -95,10 +119,10 @@ class GroupsController < ApplicationController
   # DELETE /groups/1.xml
   def destroy
     @group = Group.find(params[:id])
-    @group.destroy
+    @group.destroy unless @group.is_member_list?
 
     respond_to do |format|
-      format.html { redirect_to(club_groups_url) }
+      format.html { redirect_to(admin_club_groups_url) }
       format.xml  { head :ok }
     end
   end
@@ -118,7 +142,7 @@ class GroupsController < ApplicationController
     respond_to do |format|
       if @membership.save
         flash[:notice] = 'Membership was successfully created.'
-        format.html { redirect_to club_group_path(@club, @membership.group) }
+        format.html { redirect_to admin_club_group_path(@club, @membership.group) }
         format.xml  { render :xml => @membership, :status => :created, :location => @membership }
       else
         @groups = @club.groups
@@ -135,7 +159,7 @@ class GroupsController < ApplicationController
     @membership.destroy
 
     respond_to do |format|
-      format.html { redirect_to club_group_path(@club, @group) }
+      format.html { redirect_to admin_club_group_path(@club, @group) }
       format.xml  { head :ok }
     end
   end

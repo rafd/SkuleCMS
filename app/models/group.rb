@@ -11,5 +11,9 @@ class Group < ActiveRecord::Base
                       :left_column => "lft",
                       :right_column => "rgt",
                       :text_coloumn => "name"
-
+                      
+  def is_member_list?
+    return self.name.eql? "Member List"
+  end
+  
 end

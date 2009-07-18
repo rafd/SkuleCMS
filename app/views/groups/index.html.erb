@@ -5,8 +5,6 @@
     <th>Name</th>
     <th>Parent</th>
     <th>Misc</th>
-    <th>Lft</th>
-    <th>Rgt</th>
   </tr>
 
 <% @groups.each do |group| %>
@@ -14,12 +12,7 @@
     <td><%=h group.name %></td>
     <td><%=h (group.parent.blank?) ? "" : group.parent.name %></td>
     <td><%=h group.misc %></td>
-    <td><%=h group.lft %></td>
-    <td><%=h group.rgt %></td>
-
     <td><%= link_to 'Show', :action => 'show', :id => group %></td>
-    <td><%= link_to 'Edit', :action => 'edit', :id => group %></td>
-    <td><%= link_to 'Destroy',  club_group_path(@club, group) , :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
@@ -48,6 +41,4 @@
 </ul>
 <br />
 
-<%= link_to 'New group', :action => 'new' %> |
-<%= link_to 'Add Members', :action => 'add_member' %> |
 <%= link_to 'Back', club_path(@club)%>

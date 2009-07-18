@@ -7,6 +7,17 @@
   <b>Description:</b>
   <%=h @club.description %>
 </p>
+
+<p>
+  <b>Members:</b>
+  <ul>
+    <% @club.members.each do |member| %>
+         <li><%=h member.user.name %>  
+    <% end %>
+  </ul>
+</p>
+
+<%= link_to '**Hidden Admin Link**', club_admin_index_path(@club) %> |
 <%= link_to 'Downloads', club_files_path(@club) %> |
 <%= link_to 'Gallery', club_gallery_path(@club) %> |
 <%= link_to 'Groups', club_groups_path(@club) %> |

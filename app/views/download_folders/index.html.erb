@@ -1,4 +1,4 @@
-<h2>Listing Downloads Folders for <%=h @club.name %></h2>
+<h2>Listing Downloads Folders</h2>
 
 <table>
   <tr>
@@ -13,13 +13,10 @@
     <td><%=h folder.club.name %></td>
     <td><%=h folder.icon %></td>
     <td><%= link_to 'Show', :action => 'show', :id => folder.id %></td>    
-    <td><%= link_to 'Edit', edit_club_file_path(@club,folder) %></td>
-    <td><%= link_to 'Destroy', club_file_path(@club,folder), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Folder', new_club_file_path(@club) %> |
 <%= link_to 'Back', club_path(@club)%>

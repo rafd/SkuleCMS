@@ -3,6 +3,16 @@
   <%=h @user.name %>
 </p>
 
+<p>
+  <b>Clubs involved in:</b>
+  <ul>
+    <% @user.memberships.each do |member| %>
+         <li><%=h member.group.club.name %></li> 
+    <% end %>
+  </ul>
+</p>
+
+
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

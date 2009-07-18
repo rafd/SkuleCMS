@@ -2,14 +2,14 @@
 	<ul class="filter">
 		<li><%= link_to_unless_current "Dashboard", :controller => "admin_pages", :action=>"index" %></li>
 	
-		<li><%= link_to_unless_current "Posts", :controller => "admin_pages", :action=>"posts" %></li>
-		<li><%= link_to_unless_current "Events", :controller => "admin_pages", :action=>"events" %></li>
-		<li><%= link_to_unless_current "Photos", :controller => "admin_pages", :action=>"photos" %></li>
+		<li><%= link_to_unless_current "Posts*", :controller => "admin_pages", :action=>"posts", :club_id => @club  %></li>
+		<li><%= link_to_unless_current "Events*", :controller => "admin_pages", :action=>"events", :club_id => @club %></li>
+		<li><%= link_to_unless_current "Photos*", :controller => "admin_pages", :action=>"photos", :club_id => @club %></li>
 	
-		<li><%= link_to_unless_current "Pages", :controller => "admin_pages", :action=>"pages" %></li>
-		<li><%= link_to_unless_current "Members", :controller => "admin_pages", :action=>"members" %></li>
-		<li><%= link_to_unless_current "Files", :controller => "admin_pages", :action=>"files" %></li>
+		<li><%= link_to_unless_current "Pages", :controller => "pages", :action=>"admin", :club_id => @club %></li>
+		<li><%= link_to_unless_current "Members", :controller => "groups", :action=>"admin", :club_id => @club %></li>
+		<li><%= link_to_unless_current "Files", :controller => "download_folders", :action=>"admin", :club_id => @club %></li>
 
-		<li><%= link_to_unless_current "Settings", :controller => "admin_pages", :action=>"settings" %></li>
+		<li><%= link_to_unless_current "Settings*", :controller => "admin_pages", :action=>"settings", :club_id => @club %></li>
 	</ul>
 </div>
