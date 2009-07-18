@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090715231428) do
+ActiveRecord::Schema.define(:version => 20090718212252) do
 
   create_table "admins", :force => true do |t|
     t.integer  "user_id"
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(:version => 20090715231428) do
     t.integer  "club_id"
     t.integer  "user_id"
     t.datetime "start"
-    t.datetime "end"
+    t.datetime "finish"
     t.string   "location"
     t.string   "description"
     t.string   "link"

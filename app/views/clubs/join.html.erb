@@ -1,0 +1,13 @@
+<h2>Join <%=h @club.name %></h2>
+<% form_for( @membership, :url => {:action=> 'create_membership'}) do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :user_id, "Pick a User" %><br />
+    <%= f.collection_select :user_id, @users, :id, :name, { :prompt => 'Select a User'} %>
+  </p>
+  <p>
+    <%= f.submit 'Join' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', :action => 'show' %>
