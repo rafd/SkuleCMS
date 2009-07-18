@@ -1,15 +1,27 @@
 ActionController::Routing::Routes.draw do |map|
-  map.connect 'clubs/:club_id/admin/files/:action', :controller => 'admin/files'
-  map.club_admin_files 'clubs/:club_id/admin/files', :controller => 'admin/files', :action => 'index'
+  #map.connect 'clubs/:club_id/admin/files/:action', :controller => 'admin/files'
+  #map.club_admin_files 'clubs/:club_id/admin/files', :controller => 'admin/files', :action => 'index'
   
-  map.connect '/clubs/:club_id/admin_/:action', :controller => 'admin_pages'
+  map.connect '/clubs/:club_id/admin/:action', :controller => 'admin_pages'
  
   map.resources :clubs do |club|
-    club.resources :files, :controller => "download_folders", :has_many => :downloads
+    club.resources  :files,
+                    :controller => "download_folders",
+                    :has_many => :downloads,
+                    :member => { :admin => :get },
+                    :collection => { :admin => :get }
+    
     club.resources :gallery, :controller => "albums", :singular => "album", :has_many => :images
     club.resources :admin, :controller => 'admin_pages'
-		club.resources :pages, :controller => "pages"
-    club.resources :groups, :member => { :kick => :delete }, :collection => { :add_member => :get, :create_membership => :post }
+		
+    club.resources  :pages,
+                    :controller => "pages",
+                    :member => { :admin => :get },
+                    :collection => { :admin => :get }
+    
+    club.resources  :groups,
+                    :member => { :kick => :delete, :admin => :get },
+                    :collection => { :add_member => :get, :create_membership => :post, :admin => :get }
   end 
 
   map.resources :admins,

@@ -17,5 +17,5 @@
   </p>
 <% end %>
 
-<%= link_to 'Show', club_file_path(@download_folder) %> |
-<%= link_to 'Back', club_files_path %>
+<%= link_to 'Show', :action => 'admin', :club_id => @club, :id => @download_folder  %> |
+<%= link_to 'Back', :action => 'admin' %>

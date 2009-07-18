@@ -1,4 +1,4 @@
-<h1>Listing pages</h1>
+<h2>Listing pages</h2>
 
 <table>
   <tr>
@@ -11,13 +11,10 @@
     <td><%=h page.title %></td>
     <td><%=h page.content %></td>
     <td><%= link_to 'Show', club_page_path(@club, page) %></td>
-    <td><%= link_to 'Edit', edit_club_page_path(@club, page) %></td>
-    <td><%= link_to 'Destroy', club_page_path(@club, page), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New pages', new_club_page_path(@club) %> |
 <%= link_to 'Back', club_path(@club) %>
