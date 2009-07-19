@@ -4,7 +4,7 @@ class SmallPost < ActiveRecord::Base
     belongs_to      :user
   
   minLimit = 2.freeze
-  maxLimit = 20.freeze
+  maxLimit = 200.freeze
 
   validates_length_of :content, 
                       :within => minLimit..maxLimit,

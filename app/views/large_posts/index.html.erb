@@ -10,13 +10,9 @@
   <tr>
     <td><%=h large_post.title %></td>
     <td><%= large_post.content %></td>
-    <td><%= link_to 'Show', large_post %></td>
-    <td><%= link_to 'Edit', edit_large_post_path(large_post) %></td>
-    <td><%= link_to 'Destroy', large_post, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Show', :action => 'show', :club_id => @club, :id => large_post.id %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
-
-<%= link_to 'New large_post', new_large_post_path %>
