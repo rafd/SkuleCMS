@@ -2,7 +2,7 @@
 
 <h1>Editing large_post</h1>
 
-<% form_for(@large_post) do |f| %>
+<% form_for([:club, @large_post], :url => {:action=> 'update'}) do |f| %>
   <%= f.error_messages %>
 
   <p>
@@ -18,5 +18,5 @@
   </p>
 <% end %>
 
-<%= link_to 'Show', @large_post %> |
-<%= link_to 'Back', large_posts_path %>
+<%= link_to 'Show', :action => 'admin', :club_id => @club, :id => @large_post.id %> |
+<%= link_to 'Back', :action => 'admin' %>

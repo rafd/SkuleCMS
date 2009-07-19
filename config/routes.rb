@@ -26,6 +26,14 @@ ActionController::Routing::Routes.draw do |map|
     club.resources  :events,
                     :member => { :admin => :get },
                     :collection => { :admin => :get }     
+    
+    club.resources  :small_posts,
+                    :member => { :admin => :get },
+                    :collection => { :admin => :get }  
+                    
+    club.resources  :large_posts,
+                    :member => { :admin => :get },
+                    :collection => { :admin => :get }  
                     
   end 
 
@@ -34,9 +42,7 @@ ActionController::Routing::Routes.draw do |map|
 		:images,
 		:downloads,
 		:users,
-    :tags,
-    :small_posts,
-    :large_posts
+    :tags
 
 	
 	map.connect '/about', :controller => 'hub_pages', :action => 'about'
