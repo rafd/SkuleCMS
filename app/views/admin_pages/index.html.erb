@@ -3,6 +3,7 @@
 Manage:
 <br />
 <ul>
+<li><%= link_to 'Events', :controller => "events", :action=>"admin", :club_id => @club %></li> 
 <li><%= link_to 'Files', :controller => "download_folders", :action=>"admin", :club_id => @club %></li> 
 <li><%= link_to 'Groups/Members', :controller => "groups", :action=>"admin", :club_id => @club %></li> 
 <li><%= link_to 'Static Pages', :controller => "pages", :action=>"admin", :club_id => @club %></li> 

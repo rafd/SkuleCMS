@@ -1,15 +1,39 @@
 class ClubsController < ApplicationController
+
+  def search
+    if !(params[:club]).nil?
+      redirect_to :controller => 'clubs', :action => 'search', :id => params[:club][:search]
+    elsif !(params[:id]).nil?
+      if (@club=Club.find(:first, :conditions => ['name = ?', params[:id]])).nil?
+        @clubs = Club.find_tagged_with(params[:id])
+      else
+        redirect_to(@club)
+      end
+    else
+      @clubs = Club.find(:all)
+    end
+  end
+  
   # GET /clubs
   # GET /clubs.xml
   def index
+<<<<<<< HEAD:app/controllers/clubs_controller.rb
   	@clubs = Club.all
     #@club = Club.find(424055344, :include => :tags)
    # @tags = Tag.all
 
     respond_to do |format|
+=======
+    @clubs = Club.all
+    @tags = Club.find_tagged_with(params[:search])
+    
+   if false
+     respond_to do |format|
+>>>>>>> 1ce0c1882ac6ddd903da2e2697263f981cb219b2:app/controllers/clubs_controller.rb
       format.html # index.html.erb
       format.xml  { render :xml => @clubs }
-    end
+     end
+   end
   end
   
   def admin
@@ -19,7 +43,7 @@ class ClubsController < ApplicationController
   # GET /clubs/1
   # GET /clubs/1.xml
   def show
-    @club = Club.find(params[:id])
+    @club = Club.find(params[:id], :include => :tags)
 
     respond_to do |format|
       format.html # show.html.erb

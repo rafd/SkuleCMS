@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(:version => 20090718231943) do
     t.integer  "club_id"
     t.integer  "user_id"
     t.datetime "start"
-    t.datetime "end"
+    t.datetime "finish"
     t.string   "location"
     t.string   "description"
     t.string   "link"

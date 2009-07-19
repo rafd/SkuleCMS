@@ -1,4 +1,6 @@
 class Club < ActiveRecord::Base
+  acts_as_taggable
+    
   has_many      :groups, :dependent => :destroy
   has_many      :events, :dependent => :destroy
   has_many      :updates, :dependent => :destroy
@@ -9,8 +11,18 @@ class Club < ActiveRecord::Base
 
   validates_presence_of     :name, :description
   validates_uniqueness_of   :name
+  
+  def search
+  end
+  
+  def search=(query)
+  end
 
   def members
-    return Group.find(:first, :conditions => {:club_id => self, :parent_id => nil, :name => "Member List"}).memberships
+    return Group.find(:first, :conditions => {:club_id => self, :parent_id => nil, :name => "Member List"}).users
+  end
+  
+  def member_list
+    return Group.find(:first, :conditions => {:club_id => self, :parent_id => nil, :name => "Member List"})
   end
 end

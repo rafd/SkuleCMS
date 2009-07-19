@@ -9,7 +9,7 @@
   <tr>
     <td><%=h small_post.content %></td>
     <td><%= link_to 'Show', small_post %></td>
-    <td><%= link_to 'Edit', edit_small_post_path(small_post) %></td>
+    <!-- <td><%= link_to 'Edit', edit_small_post_path(small_post) %></td> -->
     <td><%= link_to 'Destroy', small_post, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
@@ -17,4 +17,4 @@
 
 <br />
 
-<%= link_to 'New small_post', new_small_post_path %>
+<%= link_to 'New small post', new_small_post_path %>

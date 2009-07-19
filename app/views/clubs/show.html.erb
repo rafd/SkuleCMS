@@ -9,10 +9,18 @@
 </p>
 
 <p>
+  <b>Tags:</b><br/>
+  <% @club.tags.each do |tag| -%>
+    <%= link_to_tag(tag) %>
+  <% end -%>
+</p>
+
+
+<p>
   <b>Members:</b>
   <ul>
     <% @club.members.each do |member| %>
-         <li><%=h member.user.name %>  
+         <li><%=h member.name %></li>
     <% end %>
   </ul>
 </p>

@@ -22,7 +22,7 @@ class DownloadFoldersController < ApplicationController
     if (params[:id].blank?)
       @download_folders = @club.download_folders
       respond_to do |format|
-        format.html # index.html.erb
+        format.html # admin.html.erb
         format.xml  { render :xml => @download_folders }
       end
     else

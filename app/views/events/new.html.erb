@@ -1,23 +1,19 @@
 <h2>New event</h2>
 
-<% form_for(@event) do |f| %>
+<% form_for([:club, @event], :url => {:action=> 'create'}) do |f| %>
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :club_id %><br />
-    <%= f.text_field :club_id %>
-  </p>
-  <p>
     <%= f.label :user_id %><br />
-    <%= f.text_field :user_id %>
+  	<%= f.collection_select :user_id, User.find(:all), :id, :name, { :prompt => 'Select a User' } %>
   </p>
   <p>
     <%= f.label :start %><br />
     <%= f.datetime_select :start %>
   </p>
   <p>
-    <%= f.label :end %><br />
-    <%= f.datetime_select :end %>
+    <%= f.label :finish %><br />
+    <%= f.datetime_select :finish %>
   </p>
   <p>
     <%= f.label :location %><br />
@@ -36,4 +32,4 @@
   </p>
 <% end %>
 
-<%= link_to 'Back', events_path %>
+<%= link_to 'Back', :action => 'admin' %>
