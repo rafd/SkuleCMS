@@ -6,12 +6,13 @@
 
 <div class="club">
 	<img src="logo" />
-	<h3><%=h club.name || "Club Name" %></h3>
+	<h3><%= link_to club.name, :action => 'show', :id => club  %></h3>
 	<span><%=h club.tagline || "Tagline" %></span>
 	<ul>
-	<% @club.tags.each do |tag| %>
+	<% club.tags.each do |tag| %>
 		<li><a href="#"><%= tag %></a></li>
-	<% end if 0%>
+	<% end if club.tags %>
+		<li><a href="#">Tag</a></li>
 	</ul>
 </div>
 
