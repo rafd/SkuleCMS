@@ -1,19 +1,1 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  club_id: 1
-  user_id: 1
-  start: 2009-06-27 16:05:49
-  end: 2009-06-27 16:05:49
-  location: MyString
-  description: MyString
-  link: MyString
-
-two:
-  club_id: 1
-  user_id: 1
-  start: 2009-06-27 16:05:49
-  end: 2009-06-27 16:05:49
-  location: MyString
-  description: MyString
-  link: MyString

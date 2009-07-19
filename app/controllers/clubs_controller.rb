@@ -2,7 +2,9 @@ class ClubsController < ApplicationController
   # GET /clubs
   # GET /clubs.xml
   def index
-    @clubs = Club.all
+  	@clubs = Club.all
+    #@club = Club.find(424055344, :include => :tags)
+   # @tags = Tag.all
 
     respond_to do |format|
       format.html # index.html.erb

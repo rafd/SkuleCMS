@@ -1,0 +1,40 @@
+UTCA:
+  name: University of Toronto Consulting Association
+  short_name: UTCA
+  description: Description here.
+  tagline: We are cool.
+  logo: none
+  website: http://www.utconsulting.ca/
+  contact: 
+  affiliated: false
+  
+WebDev:
+  name: Skule WebDev
+  short_name: WebDev
+  description: Description here.
+  tagline: Uber-1337 haxors.
+  logo: none
+  website: http://webdev.skule.ca/
+  contact: webmaster@skule.ca
+  affiliated: false
+  
+Dragonboat:
+  name: Dragonboat
+  short_name: Dboat
+  description: Description here.
+  tagline: Paddle Time
+  logo: none
+  website: http://dragonboat.skule.ca/
+  contact: dragonboat@skule.ca
+  affiliated: false
+  
+FroshWeek:
+  name: Orientation
+  short_name: F!rosh Week
+  description: Description here.
+  tagline: Get purple bitches!
+  logo: none
+  website: http://orientation.skule.ca/
+  contact: orientation@skule.ca
+  affiliated: false
+  

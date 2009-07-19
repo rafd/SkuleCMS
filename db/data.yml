@@ -1,0 +1,42 @@
+
+--- 
+clubs: 
+  columns: 
+  - id
+  - name
+  - description
+  - created_at
+  - updated_at
+  - tagline
+  - logo
+  records: 
+  - - "922073660"
+    - Webdev
+    - ff
+    - 2009-07-18 23:40:17
+    - 2009-07-18 23:40:17
+    - 
+    - 
+
+--- 
+groups: 
+  columns: 
+  - id
+  - club_id
+  - name
+  - misc
+  - lft
+  - rgt
+  - created_at
+  - updated_at
+  - parent_id
+  records: 
+  - - "1"
+    - "922073660"
+    - Member List
+    - Full member list of the club
+    - "1"
+    - "2"
+    - 2009-07-18 23:40:19
+    - 2009-07-18 23:40:19
+    - 

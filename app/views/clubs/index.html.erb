@@ -9,9 +9,9 @@
 	<h3><%=h club.name || "Club Name" %></h3>
 	<span><%=h club.tagline || "Tagline" %></span>
 	<ul>
-		<li><a href="#">Tag</a></li>
-		<li><a href="#">Tag</a></li>
-		<li><a href="#">Tag</a></li>
+	<% @club.tags.each do |tag| %>
+		<li><a href="#"><%= tag %></a></li>
+	<% end if 0%>
 	</ul>
 </div>
 
