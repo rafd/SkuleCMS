@@ -1,24 +1,35 @@
 
 
 
-// clubs/index
+// CLUB DIRECTORY
+// /clubs/index
 
 .club
-
+	:margin 0.5em
+	:width 45%
+	:float left
+	:position relative
+	
 	//logo
 	img
 		:width 50px
 		:height 50px
 		:float left
-		:background red
+		:border 1px solid gray
+		:margin-right 0.5em
 	
 	//name
 	h3
 		:margin 0
+		:font-size 1.25em
 	
 	//tagline
 	span
 		:font-style italic
+		:width 13em
+		:height 1.5em
+		:overflow hidden
+		:display block
 	
 	//tags
 	ul
@@ -28,3 +39,11 @@
 			:padding 0 0.5em 0 0
 			a
 				:margin 0
+	//affiliated
+	.affiliated
+		:width 5px
+		:height 5px
+		:position absolute
+		:top 0
+		:left 0
+		:background gold

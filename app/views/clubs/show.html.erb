@@ -21,7 +21,7 @@
   <ul>
     <% @club.members.each do |member| %>
          <li><%=h member.name %></li>
-    <% end %>
+    <% end if @club.groups.count > 0 %>
   </ul>
 </p>
 
