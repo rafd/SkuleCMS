@@ -21,7 +21,7 @@ class Group < ActiveRecord::Base
   end
   
   def is_member_list?
-    return self.name.eql? "Member List"
+    return self.name.eql?("Member List")
   end
   
 end

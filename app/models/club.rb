@@ -9,8 +9,8 @@ class Club < ActiveRecord::Base
   has_many      :albums, :dependent => :destroy
   has_many			:pages, :dependent => :destroy
 
-  validates_presence_of     :name, :description
-  validates_uniqueness_of   :name
+  validates_presence_of     :name, :description, :official_name
+  validates_uniqueness_of   :name, :official_name
   
   after_create :create_member_list, :create_directory
   
