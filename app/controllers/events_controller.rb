@@ -1,7 +1,25 @@
+require 'icalendar'
+
 class EventsController < ApplicationController
   before_filter :load_club
   def load_club
     @club = Club.find(params[:club_id])
+  end
+  
+  
+  def export_events
+    @event = Event.find(params[:id])
+    @calendar = Icalendar::Calendar.new
+    event = Icalendar::Event.new
+    event.start = @event.start.strftime("%Y%m%dT%H%M%S")
+    event.end = @event.finish.strftime("%Y%m%dT%H%M%S")
+    event.summary = @event.description
+    event.description = @event.link
+    event.location = @event.location
+    @calendar.add event
+    @calendar.publish
+    headers['Content-Type'] = "text/calendar; charset=UTF-8"
+    render :text => @calendar.to_ical, :layout=> false
   end
   
   # GET /events

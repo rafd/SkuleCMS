@@ -2,7 +2,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.connect '/clubs/search', :controller => 'clubs', :action => 'search'
   map.connect '/clubs/:club_id/admin/:action', :controller => 'admin_pages'
- 
+
 
   map.resources :clubs, :collection => { :admin => :get } do |club|
     club.resources  :files,
@@ -24,8 +24,8 @@ ActionController::Routing::Routes.draw do |map|
                     :collection => { :add_member => :get, :create_membership => :post, :admin => :get }
                     
     club.resources  :events,
-                    :member => { :admin => :get },
-                    :collection => { :admin => :get }     
+                    :member => { :admin => :get, :export_events => :get },
+                    :collection => { :admin => :get }
     
     club.resources  :small_posts,
                     :member => { :admin => :get },
