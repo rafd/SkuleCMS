@@ -1,0 +1,16 @@
+<h1>Listing small_posts</h1>
+
+<table>
+  <tr>
+    <th>Content</th>
+  </tr>
+
+<% @small_posts.each do |small_post| %>
+  <tr>
+    <td><%=h small_post.content %></td>
+    <td><%= link_to 'Show', :action => 'show', :club_id => @club, :id => small_post.id %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
