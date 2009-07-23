@@ -41,8 +41,12 @@
     <td><%=h image.desc %></td>
     <td><%=h image.url %></td>
     <td><%= link_to 'Download', "/club_data/" + image.album.club.id.to_s+"/"+image.album.id.to_s+"/"+image.url %></td>
+    <td><%= link_to 'Edit', edit_club_album_image_path(@album.club, @album, image) %></td>
+    <td><%= link_to 'Destroy', club_album_image_path(@club, @album, image), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
-<%= link_to 'Back', club_gallery_path(@club) %>
+<%= link_to 'Edit', edit_club_album_path(@club, @album) %> |
+<%= link_to 'Add Image', new_club_album_image_path(@club, @album) %> |
+<%= link_to 'Back', admin_club_gallery_path(@club) %>

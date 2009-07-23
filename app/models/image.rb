@@ -20,7 +20,7 @@ class Image < ActiveRecord::Base
       return ""
     end
     name = upload.original_filename
-    directory = "public/club_data/"+album.club.name+"/"+album.name
+    directory = "public/club_data/"+album.club.id.to_s+"/"+album.id.to_s
     # create the file path
     path = File.join(directory, name)
     # write the file

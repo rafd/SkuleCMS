@@ -5,7 +5,7 @@
 		<li><%= link_to_unless_current "Large Posts", :controller => "large_posts", :action=>"admin", :club_id => @club  %></li>
 		<li><%= link_to_unless_current "Small Posts", :controller => "small_posts", :action=>"admin", :club_id => @club  %></li>
 		<li><%= link_to_unless_current "Events", :controller => "events", :action=>"admin", :club_id => @club %></li>
-		<li><%= link_to_unless_current "Photos*", :controller => "admin_pages", :action=>"photos", :club_id => @club %></li>
+		<li><%= link_to_unless_current "Photos", :controller => "albums", :action=>"admin", :club_id => @club %></li>
 	
 		<li><%= link_to_unless_current "Pages", :controller => "pages", :action=>"admin", :club_id => @club %></li>
 		<li><%= link_to_unless_current "Members", :controller => "groups", :action=>"admin", :club_id => @club %></li>

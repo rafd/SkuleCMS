@@ -11,7 +11,13 @@ ActionController::Routing::Routes.draw do |map|
                     :member => { :admin => :get },
                     :collection => { :admin => :get }
     
-    club.resources :gallery, :controller => "albums", :singular => "album", :has_many => :images
+    club.resources  :gallery,
+                    :controller => "albums",
+                    :singular => "album",
+                    :has_many => :images,
+                    :member => { :admin => :get },
+                    :collection => { :admin => :get }
+    
     club.resources :admin, :controller => 'admin_pages'
 		
     club.resources  :pages,

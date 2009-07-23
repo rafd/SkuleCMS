@@ -15,13 +15,10 @@
     <td><%=h album.locked %></td>
     <td><%=h album.user.name %></td>
     <td><%= link_to 'Show', club_album_path(album.club, album) %></td>
-    <td><%= link_to 'Edit', edit_club_album_path(album.club, album) %></td>
-    <td><%= link_to 'Destroy', club_album_path(@club, album), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New album', new_club_album_path(@club) %> |
 <%= link_to 'Back', club_path(@club) %>

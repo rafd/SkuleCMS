@@ -12,6 +12,23 @@ class Club < ActiveRecord::Base
   validates_presence_of     :name, :description
   validates_uniqueness_of   :name
   
+  after_create :create_member_list, :create_directory
+  
+  def create_directory
+    directory = "#{RAILS_ROOT}/public"+"/club_data/"+self.id.to_s
+    if !File.exist?(directory)
+      FileUtils.mkdir_p(directory)
+    end
+  end
+  
+  def create_member_list
+    @group = Group.new
+    @group.club_id = self.id
+    @group.name = "Member List"
+    @group.misc = "Full member list of the club"
+    @group.save
+  end
+  
   def search
   end
   
