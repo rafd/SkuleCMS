@@ -1,0 +1,7 @@
+<h1>
+  <% if !@club.blank? && @club.name != nil %>
+	<%= link_to image_tag((@club.logo || "blank.gif"))+@club.name, :controller => 'clubs', :action => 'show', :id=>@club %>
+  <% else %>
+  	<%= link_to image_tag(( "blank.gif")), :controller => 'admin_pages', :action => 'index' %>
+  <% end %>
+</h1>

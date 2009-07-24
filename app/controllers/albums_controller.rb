@@ -1,5 +1,5 @@
 class AlbumsController < ApplicationController
-  before_filter :load_club, :only => [:new, :create, :index, :show]
+  before_filter :load_club
   def load_club
     @club = Club.find(params[:club_id])
   end
@@ -12,6 +12,23 @@ class AlbumsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @albums }
+    end
+  end
+
+  def admin
+    if (params[:id].blank?)
+      @albums = @club.albums
+      respond_to do |format|
+        format.html # index.html.erb
+        format.xml  { render :xml => @albums }
+      end
+    else
+      @album = Album.find(params[:id], :include => :tags)
+  
+      respond_to do |format|
+        format.html { render :action => "admin_show" }
+        format.xml  { render :xml => @album }
+      end
     end
   end
 
@@ -49,12 +66,8 @@ class AlbumsController < ApplicationController
     @album.club = @club
     respond_to do |format|
       if @album.save
-        directory = "public/club_data/"+@album.club.name+"/"+@album.name
-        if !File.exist?(directory)
-          FileUtils.mkdir_p(directory)
-        end
         flash[:notice] = 'Album was successfully created.'
-        format.html { redirect_to(club_album_url(@club, @album)) }
+        format.html { redirect_to admin_club_album_url(@club, @album) }
         format.xml  { render :xml => @album, :status => :created, :location => @album }
       else
         format.html { render :action => "new" }
@@ -71,7 +84,7 @@ class AlbumsController < ApplicationController
     respond_to do |format|
       if @album.update_attributes(params[:album])
         flash[:notice] = 'Album was successfully updated.'
-        format.html { redirect_to(@album) }
+        format.html { redirect_to admin_club_album_url(@club, @album) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -87,7 +100,7 @@ class AlbumsController < ApplicationController
     @album.destroy
 
     respond_to do |format|
-      format.html { redirect_to(club_gallery_path) }
+      format.html { redirect_to(admin_club_gallery_path(@club)) }
       format.xml  { head :ok }
     end
   end

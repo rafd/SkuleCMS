@@ -10,11 +10,13 @@
     <td><%=h small_post.content %></td>
     <td><%= link_to 'Show', :action => 'admin', :club_id => @club, :id => small_post %></td>
     <td><%= link_to 'Destroy', club_small_post_path(@club,small_post), :confirm => 'Are you sure?', :method => :delete %></td>
+
   </tr>
 <% end %>
 </table>
 
 <br />
+
 
 <%= link_to 'New small post', new_club_small_post_path(@club) %> | 
 <%= link_to 'Back',  club_admin_index_path(@club) %>

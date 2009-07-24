@@ -11,7 +11,13 @@ ActionController::Routing::Routes.draw do |map|
                     :member => { :admin => :get },
                     :collection => { :admin => :get }
     
-    club.resources :gallery, :controller => "albums", :singular => "album", :has_many => :images
+    club.resources  :gallery,
+                    :controller => "albums",
+                    :singular => "album",
+                    :has_many => :images,
+                    :member => { :admin => :get },
+                    :collection => { :admin => :get }
+    
     club.resources :admin, :controller => 'admin_pages'
 		
     club.resources  :pages,
@@ -45,10 +51,9 @@ ActionController::Routing::Routes.draw do |map|
     :tags
 
 	
-	map.connect '/about', :controller => 'hub_pages', :action => 'about'
-	map.connect '/digest', :controller => 'hub_pages', :action => 'digest'
-	map.connect '/calendar', :controller => 'hub_pages', :action => 'calendar'
-	map.connect '/club', :controller => 'hub_pages', :action => 'clubs'
+  map.connect '/about', :controller => 'hub_pages', :action => 'about'
+  map.connect '/digest', :controller => 'hub_pages', :action => 'digest'
+  map.connect '/calendar', :controller => 'hub_pages', :action => 'calendar'
   map.connect '/map', :controller => 'hub_pages', :action => 'map'
   map.connect '/services', :controller => 'hub_pages', :action => 'services'
   

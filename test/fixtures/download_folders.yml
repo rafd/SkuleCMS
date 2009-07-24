@@ -1,11 +1,1 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  club_id: 1
-  name: MyString
-  icon: MyString
-
-two:
-  club_id: 1
-  name: MyString
-  icon: MyString
