@@ -31,7 +31,7 @@ ActionController::Routing::Routes.draw do |map|
                     
     club.resources  :events,
                     :member => { :admin => :get, :export_events => :get },
-                    :collection => { :admin => :get }
+                    :collection => { :admin => :get, :export_events => :get }
     
     club.resources  :small_posts,
                     :member => { :admin => :get },

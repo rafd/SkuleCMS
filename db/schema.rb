@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090719211740) do
+ActiveRecord::Schema.define(:version => 20090724045724) do
 
   create_table "admins", :force => true do |t|
     t.integer  "user_id"
@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(:version => 20090719211740) do
     t.string   "link"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
   end
 
   create_table "groups", :force => true do |t|

@@ -8,18 +8,33 @@ class EventsController < ApplicationController
   
   
   def export_events
-    @event = Event.find(params[:id])
-    @calendar = Icalendar::Calendar.new
-    event = Icalendar::Event.new
-    event.start = @event.start.strftime("%Y%m%dT%H%M%S")
-    event.end = @event.finish.strftime("%Y%m%dT%H%M%S")
-    event.summary = @event.description
-    event.description = @event.link
-    event.location = @event.location
-    @calendar.add event
+    @calendar = Icalendar::Calendar.new      
+    if (!params[:id].blank?)
+      @event = Event.find(params[:id])
+      event = Icalendar::Event.new
+      event.start = @event.start.strftime("%Y%m%dT%H%M%S")
+      event.end = @event.finish.strftime("%Y%m%dT%H%M%S")
+      event.summary = @event.name+ " - " + @event.club.name
+      event.description = @event.description
+      event.location = @event.location
+      event.url = @event.link
+      @calendar.add event
+    else
+      @events = Event.find(:all, :conditions => ["club_id = :club_id AND finish >= :finish", {:club_id => params[:club_id], :finish => Time.now}])
+      @events.each do |event_item|
+        event = Icalendar::Event.new
+        event.start = event_item.start.strftime("%Y%m%dT%H%M%S")
+        event.end = event_item.finish.strftime("%Y%m%dT%H%M%S")
+        event.summary = event_item.name+ " - " + event_item.club.name
+        event.description = event_item.description
+        event.location = event_item.location
+        event.url = event_item.link
+        @calendar.add event
+      end
+    end
     @calendar.publish
     headers['Content-Type'] = "text/calendar; charset=UTF-8"
-    render :text => @calendar.to_ical, :layout=> false
+    render :text => @calendar.to_ical, :layout=> false    
   end
   
   # GET /events

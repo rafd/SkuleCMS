@@ -2,7 +2,7 @@ class Event < ActiveRecord::Base
   belongs_to      :club
   belongs_to      :user
   
-  validates_presence_of     :start, :finish, :club_id, :user_id, :location
+  validates_presence_of     :start, :finish, :club_id, :user_id, :location, :name
   validates_numericality_of :club_id, :user_id
   
   def validate
