@@ -20,7 +20,7 @@
     <td><%= link_to 'Show', :action => 'admin', :club_id => @club, :id => group %></td>
     
     <% unless group.is_member_list? %>
-    <td><%= link_to 'Edit', :action => 'edit', :id => group%></td>
+    <td><%= link_to 'Edit', :action => 'edit', :id => group %></td>
     <td><%= link_to 'Destroy', club_group_path(@club, group) , :confirm => 'Are you sure?', :method => :delete %></td>
     <% end %>
   </tr>

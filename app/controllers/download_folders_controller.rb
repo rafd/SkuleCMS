@@ -22,7 +22,7 @@ class DownloadFoldersController < ApplicationController
     if (params[:id].blank?)
       @download_folders = @club.download_folders
       respond_to do |format|
-        format.html # index.html.erb
+        format.html # admin.html.erb
         format.xml  { render :xml => @download_folders }
       end
     else
@@ -70,7 +70,7 @@ class DownloadFoldersController < ApplicationController
     respond_to do |format|
       if @download_folder.save
         flash[:notice] = 'DownloadFolder was successfully created.'
-        format.html { redirect_to admin_club_file_path (@club, @download_folder) }
+        format.html { redirect_to admin_club_file_path(@club, @download_folder) }
         format.xml  { render :xml => @download_folder, :status => :created, :location => @download_folder }
       else
         format.html { render :action => "new" }
@@ -87,7 +87,7 @@ class DownloadFoldersController < ApplicationController
     respond_to do |format|
       if @download_folder.update_attributes(params[:download_folder])
         flash[:notice] = 'DownloadFolder was successfully updated.'
-        format.html { redirect_to admin_club_file_path (@club, @download_folder) }
+        format.html { redirect_to admin_club_file_path(@club, @download_folder) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

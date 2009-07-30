@@ -5,4 +5,15 @@ function textCounter(field, countfield, maxlimit){
 	// otherwise, update 'characters left' counter
 //	else 
 		countfield.value = maxlimit - field.value.length;
+		
+		if (countfield.value < 1) {
+			countfield.style.color = "#900";
+		}
+		else if (countfield.value >0 && countfield.value < 25){
+			countfield.style.color = "orangered"
+		}
+		else {
+			countfield.style.color = "#000"
+		}
+		
 }

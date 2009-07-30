@@ -1,0 +1,52 @@
+<p>
+  <b>Name:</b>
+  <%=h @album.name %>
+</p>
+
+<p>
+  <b>Desc:</b>
+  <%=h @album.desc %>
+</p>
+
+<p>
+  <b>Tags:</b>
+  <% @album.tags.each do |tag| -%>
+    <%= link_to_tag(tag) %>
+  <% end -%>
+</p>
+
+<p>
+  <b>Locked:</b>
+  <%=h @album.locked %>
+</p>
+
+<p>
+  <b>Created by:</b>
+  <%=h @album.user.name %>
+</p>
+
+<h2>Images in this Album</h2>
+<table>
+  <tr>
+    <th>Preview</th>
+    <th>File Name</th>
+    <th>Desc</th>
+    <th>Url</th>
+  </tr>	
+<% @album.images.each do |image| %>
+  <tr>
+	<td><%= image_tag  "/club_data/" + image.album.club.id.to_s+"/"+image.album.id.to_s+"/"+image.url,
+            :size => "100x100", :alt => image.desc, :title => image.desc %></td>
+    <td><%=h image.name %></td>
+    <td><%=h image.desc %></td>
+    <td><%=h image.url %></td>
+    <td><%= link_to 'Download', "/club_data/" + image.album.club.id.to_s+"/"+image.album.id.to_s+"/"+image.url %></td>
+    <td><%= link_to 'Edit', edit_club_album_image_path(@album.club, @album, image) %></td>
+    <td><%= link_to 'Destroy', club_album_image_path(@club, @album, image), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to 'Edit', edit_club_album_path(@club, @album) %> |
+<%= link_to 'Add Image', new_club_album_image_path(@club, @album) %> |
+<%= link_to 'Back', admin_club_gallery_path(@club) %>

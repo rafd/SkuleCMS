@@ -1,4 +1,8 @@
 class LargePostsController < ApplicationController
+    before_filter :load_club
+  def load_club
+    @club = Club.find(params[:club_id])
+  end
   
      uses_tiny_mce :options => {
                                 :theme => 'advanced',
@@ -25,6 +29,24 @@ class LargePostsController < ApplicationController
       format.xml  {} #{ render :xml => @large_posts }
     end
   end
+  
+    def admin
+       if (params[:id].blank?)
+         @large_posts = LargePost.all
+         respond_to do |format|
+          format.html #admin.html.erb
+          format.xml { render :xml => @large_posts }
+         end
+       else
+           @large_post = LargePost.find(params[:id])
+           
+         respond_to do |format|
+          format.html { render :action => "admin_show" }
+          format.xml  { render :xml => @large_post }
+        end  
+      end
+  end
+
 
   # GET /large_posts/1
   # GET /large_posts/1.xml
@@ -63,7 +85,7 @@ class LargePostsController < ApplicationController
     respond_to do |format|
       if @large_post.save
         flash[:notice] = 'LargePost was successfully created.'
-        format.html { redirect_to(@large_post) }
+        format.html { redirect_to admin_club_large_post_path(@club, @large_post) }
         format.xml  { render :xml => @large_post, :status => :created, :location => @large_post }
       else
         format.html { render :action => "new" }
@@ -80,7 +102,7 @@ class LargePostsController < ApplicationController
     respond_to do |format|
       if @large_post.update_attributes(params[:large_post])
         flash[:notice] = 'LargePost was successfully updated.'
-        format.html { redirect_to(@large_post) }
+        format.html { redirect_to admin_club_large_post_path(@club, @large_post) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -96,7 +118,7 @@ class LargePostsController < ApplicationController
     @large_post.destroy
 
     respond_to do |format|
-      format.html { redirect_to(large_posts_url) }
+      format.html { redirect_to(admin_club_large_posts_url) }
       format.xml  { head :ok }
     end
   end

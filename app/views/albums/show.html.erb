@@ -35,18 +35,14 @@
   </tr>	
 <% @album.images.each do |image| %>
   <tr>
-	<td><%= image_tag  "/club_data/" + image.album.club.name+"/"+image.album.name+"/"+image.url,
+	<td><%= image_tag  "/club_data/" + image.album.club.id.to_s+"/"+image.album.id.to_s+"/"+image.url,
             :size => "100x100", :alt => image.desc, :title => image.desc %></td>
     <td><%=h image.name %></td>
     <td><%=h image.desc %></td>
     <td><%=h image.url %></td>
-    <td><%= link_to 'Download', "/club_data/" + image.album.club.name+"/"+image.album.name+"/"+image.url %></td>
-    <td><%= link_to 'Edit', edit_club_album_image_path(@album.club, @album, image) %></td>
-    <td><%= link_to 'Destroy', image, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Download', "/club_data/" + image.album.club.id.to_s+"/"+image.album.id.to_s+"/"+image.url %></td>
   </tr>
 <% end %>
 </table>
 
-<%= link_to 'Edit', edit_club_album_path(@club, @album) %> |
-<%= link_to 'Add Image', new_club_album_image_path(@club, @album) %> |
 <%= link_to 'Back', club_gallery_path(@club) %>

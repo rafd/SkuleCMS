@@ -2,18 +2,19 @@
 
 <h1>New small_post</h1>
 
-<% form_for(@small_post) do |f| %>
+<% form_for([:club, @small_post], :url => {:action=> 'create'}) do |f| %>
   <%= f.error_messages %>
 
   <p>
     <%= f.label :content %><br />
     <%= f.text_area 	:content,
-						:onKeyDown => "textCounter(this,this.form.remLen,20);", 
-						:onKeyUp => "textCounter(this,this.form.remLen,20);" 
+						:onKeyDown => "textCounter(this,this.form.remLen,200);", 
+						:onKeyUp => "textCounter(this,this.form.remLen,200);" 
 	%>
   </p>
   
-<input readonly type=text name=remLen size=3 maxlength=3 value="--"> characters left</input>
+Characters Left: <input readonly style="border: 0" type=text name=remLen size=3 maxlength=3 value="200"></input>
+
 
   <p>
     <%= f.submit 'Create' %>
@@ -21,5 +22,4 @@
   </p>
 <% end %>
 
-<%= link_to 'Back', small_posts_path %>
-<%= link_to "Try a twat", :controller => 'large_posts', :action => "new" %>
+<%= link_to 'Back', :action => 'admin' %>

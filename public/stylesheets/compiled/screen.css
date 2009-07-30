@@ -586,47 +586,76 @@ a {
   a:hover {
     text-decoration: underline; }
 
-/* line 9, ../../../app/stylesheets/partials/_clubs.sass */
-.club img {
-  width: 50px;
-  height: 50px;
+/* line 3, ../../../app/stylesheets/partials/_forms.sass */
+form label {
+  font-weight: bold;
+  display: block;
+  font-size: 1.2em; }
+/* line 8, ../../../app/stylesheets/partials/_forms.sass */
+form span {
+  display: block; }
+
+/* line 7, ../../../app/stylesheets/partials/_clubs.sass */
+.club {
+  margin: 0.5em;
+  width: 45%;
   float: left;
-  background: red; }
-/* line 16, ../../../app/stylesheets/partials/_clubs.sass */
-.club h3 {
-  margin: 0; }
-/* line 20, ../../../app/stylesheets/partials/_clubs.sass */
-.club span {
-  font-style: italic; }
-/* line 24, ../../../app/stylesheets/partials/_clubs.sass */
-.club ul {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  outline: 0;
-  overflow: hidden;
-  display: inline-block; }
-  /* line 5, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/compass/stylesheets/compass/utilities/general/_hacks.sass */
-  .club ul {
-    display: block; }
-  /* line 50, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal_list.sass */
-  .club ul li {
-    list-style-type: none;
-    margin-left: 0px;
-    white-space: nowrap;
-    display: inline;
+  position: relative; }
+  /* line 14, ../../../app/stylesheets/partials/_clubs.sass */
+  .club img {
+    width: 50px;
+    height: 50px;
     float: left;
-    padding-left: 4px;
-    padding-right: 4px; }
-    /* line 40, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal_list.sass */
-    .club ul li.first {
-      padding-left: 0px; }
-    /* line 42, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal_list.sass */
-    .club ul li.last {
-      padding-right: 0px; }
-  /* line 26, ../../../app/stylesheets/partials/_clubs.sass */
-  .club ul li {
-    padding: 0 0.5em 0 0; }
-    /* line 29, ../../../app/stylesheets/partials/_clubs.sass */
-    .club ul li a {
-      margin: 0; }
+    border: 1px solid gray;
+    margin-right: 0.5em; }
+  /* line 22, ../../../app/stylesheets/partials/_clubs.sass */
+  .club h3 {
+    margin: 0;
+    font-size: 1.25em; }
+  /* line 27, ../../../app/stylesheets/partials/_clubs.sass */
+  .club span {
+    font-style: italic;
+    width: 13em;
+    height: 1.5em;
+    overflow: hidden;
+    display: block; }
+  /* line 35, ../../../app/stylesheets/partials/_clubs.sass */
+  .club ul {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    overflow: hidden;
+    display: inline-block; }
+    /* line 5, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/compass/stylesheets/compass/utilities/general/_hacks.sass */
+    .club ul {
+      display: block; }
+    /* line 50, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal_list.sass */
+    .club ul li {
+      list-style-type: none;
+      margin-left: 0px;
+      white-space: nowrap;
+      display: inline;
+      float: left;
+      padding-left: 4px;
+      padding-right: 4px; }
+      /* line 40, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal_list.sass */
+      .club ul li.first {
+        padding-left: 0px; }
+      /* line 42, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal_list.sass */
+      .club ul li.last {
+        padding-right: 0px; }
+    /* line 37, ../../../app/stylesheets/partials/_clubs.sass */
+    .club ul li {
+      padding: 0 0.5em 0 0; }
+      /* line 40, ../../../app/stylesheets/partials/_clubs.sass */
+      .club ul li a {
+        margin: 0; }
+  /* line 43, ../../../app/stylesheets/partials/_clubs.sass */
+  .club .affiliated {
+    width: 5px;
+    height: 5px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: gold; }

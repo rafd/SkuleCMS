@@ -18,7 +18,7 @@
 </p>
 
 <p>
-  <%= link_to 'download', "/club_data/"+@image.album.club.name+"/"+@image.album.name+"/"+@image.url %>
+  <%= link_to 'download', "/club_data/"+@image.album.club.id.to_s+"/"+@image.album.id.to_s+"/"+@image.url %>
 </p>
 
 <p>

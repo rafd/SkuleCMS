@@ -1,0 +1,34 @@
+<h2>Listing events</h2>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Event Name</th>
+    <th>Start</th>
+    <th>End</th>
+    <th>Location</th>
+    <th>Description</th>
+    <th>Link</th>
+  </tr>
+
+<% @events.each do |event| %>
+  <tr>
+    <td><%=h event.user.name %></td>
+    <td><%=h event.name %></td>
+    <td><%=h format_time(event.start) %></td>
+    <td><%=h format_time(event.finish) %></td>
+    <td><%=h event.location %></td>
+    <td><%=h event.description %></td>
+    <td><%=h event.link %></td>
+    <td><%= link_to 'Show', :action => 'admin', :club_id => @club, :id => event %></td>
+    <td><%= link_to 'Edit', :action => 'edit', :id => event %></td>
+    <td><%= link_to 'Destroy', club_event_path(@club, event), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New event', :action => 'new' %> |
+<%= link_to 'ICal Me', :action => 'export_events', :club_id => @club %> |
+<%= link_to 'Back', club_admin_index_path(@club) %>

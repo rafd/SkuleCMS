@@ -20,8 +20,8 @@
   <b>Members:</b>
   <ul>
     <% @club.members.each do |member| %>
-         <li><%=h member.user.name %>  
-    <% end %>
+         <li><%=h member.name %></li>
+    <% end if @club.groups.count > 0 %>
   </ul>
 </p>
 

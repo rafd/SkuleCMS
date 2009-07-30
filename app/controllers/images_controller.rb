@@ -1,5 +1,5 @@
 class ImagesController < ApplicationController
- # before_filter :load_album, :except => [:destroy]
+  before_filter :load_album
   def load_album
     @album = Album.find(params[:album_id], :include => :tags)
   end
@@ -90,7 +90,7 @@ class ImagesController < ApplicationController
     @image.destroy
 
     respond_to do |format|
-      format.html { redirect_to(club_album_path(@album.club, @album)) }
+      format.html { redirect_to(admin_club_album_path(@album.club, @album)) }
       format.xml  { head :ok }
     end
   end

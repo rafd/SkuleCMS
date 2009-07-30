@@ -29,15 +29,9 @@ class ClubsController < ApplicationController
   # GET /clubs
   # GET /clubs.xml
   def index
-    @clubs = Club.all
+    @clubs = Club.find(:all, :include => :tags)
     @tags = Club.find_tagged_with(params[:search])
     
-   if false
-     respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @clubs }
-     end
-   end
   end
   
   def admin
@@ -77,15 +71,6 @@ class ClubsController < ApplicationController
     @club = Club.new(params[:club])
     respond_to do |format|
       if @club.save
-        directory = "public/club_data/"+@club.name
-        if !File.exist?(directory)
-          FileUtils.mkdir_p(directory)
-        end
-        @group = Group.new
-        @group.club_id = @club.id
-        @group.name = "Member List"
-        @group.misc = "Full member list of the club"
-        @group.save
         flash[:notice] = 'Club was successfully created.'
         format.html { redirect_to(@club) }
         format.xml  { render :xml => @club, :status => :created, :location => @club }

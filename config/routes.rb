@@ -5,7 +5,8 @@ ActionController::Routing::Routes.draw do |map|
   map.connect '/clubs/search/:redir/:club_id/:query/', :controller => 'clubs', :action => 'search'
   map.connect '/clubs/search', :controller => 'clubs', :action => 'search'
   map.connect '/clubs/:club_id/admin/:action', :controller => 'admin_pages'
- 
+
+
   map.resources :clubs, :collection => { :admin => :get } do |club|
     club.resources  :files,
                     :controller => "download_folders",
@@ -13,7 +14,13 @@ ActionController::Routing::Routes.draw do |map|
                     :member => { :admin => :get },
                     :collection => { :admin => :get }
     
-    club.resources :gallery, :controller => "albums", :singular => "album", :has_many => :images
+    club.resources  :gallery,
+                    :controller => "albums",
+                    :singular => "album",
+                    :has_many => :images,
+                    :member => { :admin => :get },
+                    :collection => { :admin => :get }
+    
     club.resources :admin, :controller => 'admin_pages'
 		
     club.resources  :pages,
@@ -24,6 +31,19 @@ ActionController::Routing::Routes.draw do |map|
     club.resources  :groups,
                     :member => { :kick => :delete, :admin => :get },
                     :collection => { :add_member => :get, :create_membership => :post, :admin => :get }
+                    
+    club.resources  :events,
+                    :member => { :admin => :get, :export_events => :get },
+                    :collection => { :admin => :get, :export_events => :get }
+    
+    club.resources  :small_posts,
+                    :member => { :admin => :get },
+                    :collection => { :admin => :get }  
+                    
+    club.resources  :large_posts,
+                    :member => { :admin => :get },
+                    :collection => { :admin => :get }  
+                    
   end 
 
   map.resources :admins,
@@ -31,16 +51,12 @@ ActionController::Routing::Routes.draw do |map|
 		:images,
 		:downloads,
 		:users,
-		:events,
-    :tags,
-    :small_posts,
-    :large_posts
+    :tags
 
 	
-	map.connect '/about', :controller => 'hub_pages', :action => 'about'
-	map.connect '/digest', :controller => 'hub_pages', :action => 'digest'
-	map.connect '/calendar', :controller => 'hub_pages', :action => 'calendar'
-	map.connect '/club', :controller => 'hub_pages', :action => 'clubs'
+  map.connect '/about', :controller => 'hub_pages', :action => 'about'
+  map.connect '/digest', :controller => 'hub_pages', :action => 'digest'
+  map.connect '/calendar', :controller => 'hub_pages', :action => 'calendar'
   map.connect '/map', :controller => 'hub_pages', :action => 'map'
   map.connect '/services', :controller => 'hub_pages', :action => 'services'
   

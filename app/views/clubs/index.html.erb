@@ -5,14 +5,18 @@
 <% @clubs.each do |club| %>
 
 <div class="club">
-	<img src="logo" />
-	<h3><%=h club.name || "Club Name" %></h3>
-	<span><%=h club.tagline || "Tagline" %></span>
+	<%= link_to image_tag(club.logo || "blank.gif"), (club.website || {:action => 'show', :id => club}) %>
+	<h3><%= link_to (club.name || club.official_name), :action => 'show', :id => club  %></h3>
+	<span><%=h club.tagline || club.official_name || "Tagline" %></span>
 	<ul>
-		<li><a href="#">Tag</a></li>
-		<li><a href="#">Tag</a></li>
+	<% club.tags.each do |tag| %>
+		<li><a href="#"><%= tag %></a></li>
+	<% end if club.tags %>
 		<li><a href="#">Tag</a></li>
 	</ul>
+	<% if club.affiliated %>
+	<div class="affiliated"></div>
+	<% end %>
 </div>
 
 <% end %>

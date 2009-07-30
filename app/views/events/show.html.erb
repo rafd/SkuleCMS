@@ -1,21 +1,21 @@
 <p>
-  <b>Club:</b>
-  <%=h @event.club_id %>
+  <b>User:</b>
+  <%=h @event.user.name %>
 </p>
 
 <p>
-  <b>User:</b>
-  <%=h @event.user_id %>
+  <b>Event Name:</b>
+  <%=h @event.name %>
 </p>
 
 <p>
   <b>Start:</b>
-  <%=h @event.start %>
+  <%=h format_time(@event.start) %>
 </p>
 
 <p>
   <b>End:</b>
-  <%=h @event.end %>
+  <%=h format_time(@event.finish) %>
 </p>
 
 <p>
@@ -33,6 +33,5 @@
   <%=h @event.link %>
 </p>
 
-
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+<%= link_to 'ICal Me', :action => 'export_events', :club_id => @club, :id => @event %> |
+<%= link_to 'Back', :action => 'index' %>

@@ -1,0 +1,13 @@
+<p>
+  <b>Title:</b>
+  <%=h @large_post.title %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= @large_post.content %>
+</p>
+
+
+<%= link_to 'Edit', :action => 'edit', :id => @large_post %> |
+<%= link_to 'Back', :action => 'admin' %>

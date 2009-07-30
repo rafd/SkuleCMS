@@ -2,8 +2,8 @@
 
 <table>
   <tr>
-    <th>Club</th>
     <th>User</th>
+    <th>Event Name</th>
     <th>Start</th>
     <th>End</th>
     <th>Location</th>
@@ -13,20 +13,17 @@
 
 <% @events.each do |event| %>
   <tr>
-    <td><%=h event.club_id %></td>
-    <td><%=h event.user_id %></td>
-    <td><%=h event.start %></td>
-    <td><%=h event.end %></td>
+    <td><%=h event.user.name%></td>
+    <td><%=h event.name%></td>
+    <td><%=h format_time(event.start) %></td>
+    <td><%=h format_time(event.finish) %></td>
     <td><%=h event.location %></td>
     <td><%=h event.description %></td>
     <td><%=h event.link %></td>
-    <td><%= link_to 'Show', event %></td>
-    <td><%= link_to 'Edit', edit_event_path(event) %></td>
-    <td><%= link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Show', :action => 'show', :id => event %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
-
-<%= link_to 'New event', new_event_path %>
+<%= link_to 'ICal Me', :action => 'export_events', :club_id => @club %>

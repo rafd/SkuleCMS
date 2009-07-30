@@ -1,15 +1,1 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  name: MyString
-  desc: MyString
-  tags: tags1, tags2, tags3
-  locked: MyString
-  user_id: MyString
-
-two:
-  name: MyString
-  desc: MyString
-  tags: MyString
-  locked: MyString
-  user_id: MyString
