@@ -1,5 +1,5 @@
 class AlbumsController < ApplicationController
-  before_filter :load_club, :only => [:new, :create, :index, :show]
+  before_filter :load_club
   def load_club
     @club = Club.find(params[:club_id])
   end
@@ -39,7 +39,7 @@ class AlbumsController < ApplicationController
 
   # GET /albums/1/edit
   def edit
-    @album = Album.find(params[:id])
+    @album = Album.find(params[:id], :include => :tags)
   end
 
   # POST /albums
@@ -66,12 +66,12 @@ class AlbumsController < ApplicationController
   # PUT /albums/1
   # PUT /albums/1.xml
   def update
-    @album = Album.find(params[:id])
+    @album = Album.find(params[:id], :include => :tags)
 
     respond_to do |format|
       if @album.update_attributes(params[:album])
         flash[:notice] = 'Album was successfully updated.'
-        format.html { redirect_to(@album) }
+        format.html { redirect_to(club_album_path(@club, @album)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

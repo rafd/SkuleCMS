@@ -1,5 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
   
+  map.connect '/clubs/search/:club_id/:query/', :controller => 'clubs', :action => 'search'
+  map.connect '/clubs/search/:query/', :controller => 'clubs', :action => 'search'
+  map.connect '/clubs/search/:redir/:club_id/:query/', :controller => 'clubs', :action => 'search'
   map.connect '/clubs/search', :controller => 'clubs', :action => 'search'
   map.connect '/clubs/:club_id/admin/:action', :controller => 'admin_pages'
  

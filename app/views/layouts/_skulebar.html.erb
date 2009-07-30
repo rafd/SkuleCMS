@@ -1,7 +1,7 @@
 <div id="skulebar">
 	<%= link_to "Skule.ca", "/", :id => "skule" %>
 	
-    <% form_for :club, @search, :url => {:controller => 'clubs', :action => 'search' }  do |f| %>
+    <% form_for :club, @search, :url => {:controller => 'clubs', :action => 'search', :id => club_id }  do |f| %>
 	  <%= text_field_with_auto_complete :club, :search, {}, { :url => formatted_clubs_path( :js), :method => :get, :param_name => 'search' } %>
     <% end %>
 

@@ -1,6 +1,6 @@
 <h2>Editing album</h2>
 
-<% form_for(@album, :url=>{:action=>"edit"}) do |f| %>
+<% form_for(@album, :url=>{:action=>"update"}) do |f| %>
   <%= f.error_messages %>
 
   <p>
@@ -13,15 +13,11 @@
   </p>
   <p>
     <%= f.label :tags %><br />
-    <%= f.text_field :tags %>
-  </p>
-  <p>
-    <%= f.label :locked %><br />
-    <%= f.text_field :locked %>
+    <%= f.text_field :tag_list -%>
   </p>
   <p>
     <%= f.label :user_id %><br />
-    <%= f.text_field :user_id %>
+  	<%= f.collection_select :user_id, User.find(:all), :id, :name, { :prompt => 'Select a User' } %>
   </p>
   <p>
     <%= f.submit 'Update' %>

@@ -1,16 +1,28 @@
 class ClubsController < ApplicationController
 
   def search
-    if !(params[:club]).nil?
-      redirect_to :controller => 'clubs', :action => 'search', :id => params[:club][:search]
-    elsif !(params[:id]).nil?
-      if (@club=Club.find(:first, :conditions => ['name = ?', params[:id]])).nil?
-        @clubs = Club.find_tagged_with(params[:id])
+    if false
+    if !(params[:redir]).nil?
+      redirect_to :controller => 'clubs', :action => 'search', :query => params[:club][:search], :club_id => params[:club_id]
+    elsif !(params[:query]).nil?
+      if !(params[:club_id]).nil?
+        if (@club=Club.find(:first, :conditions => ['name = ?', params[:query]])).nil?
+          @clubs = Club.find_tagged_with(params[:query])
+          @albums = Album.find_tagged_with(params[:query]) & Club.find(params[:club_id]).albums
+          #@albums = Album.find(:all, :conditions => ['club_id = ?', params[:club_id]])
+        else
+          redirect_to(@club)
+        end
       else
-        redirect_to(@club)
+        if (@club=Club.find(:first, :conditions => ['name = ?', params[:query]])).nil?
+          @clubs = Club.find_tagged_with(params[:query])
+        else
+          redirect_to(@club)
+        end
       end
     else
       @clubs = Club.find(:all)
+    end
     end
   end
   

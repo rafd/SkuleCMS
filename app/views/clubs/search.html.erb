@@ -4,4 +4,7 @@
   <% @clubs.each do |club| %>
   	<%= link_to club.name, club %><br/>
   <% end %>
+  <% @albums.each do |album| %>
+  	<%= link_to album.name, club_album_path (album.club, album) %><br/>
+  <% end %>
 </p>
