@@ -22,7 +22,7 @@ class LargePostsController < ApplicationController
   # GET /large_posts
   # GET /large_posts.xml
   def index
-    @large_posts = LargePost.all
+    @large_posts = @club.large_posts.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -32,13 +32,13 @@ class LargePostsController < ApplicationController
   
     def admin
        if (params[:id].blank?)
-         @large_posts = LargePost.all
+         @large_posts = @club.large_posts.all
          respond_to do |format|
           format.html #admin.html.erb
           format.xml { render :xml => @large_posts }
          end
        else
-           @large_post = LargePost.find(params[:id])
+           @large_post = @club.large_posts.find(params[:id])
            
          respond_to do |format|
           format.html { render :action => "admin_show" }
@@ -51,7 +51,7 @@ class LargePostsController < ApplicationController
   # GET /large_posts/1
   # GET /large_posts/1.xml
   def show
-    @large_post = LargePost.find(params[:id])
+    @large_post = @club.large_posts.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -62,7 +62,7 @@ class LargePostsController < ApplicationController
   # GET /large_posts/new
   # GET /large_posts/new.xml
   def new
-    @large_post = LargePost.new
+    @large_post = @club.large_posts.new
     
     @large_post.content = params[:content] if params[:content]
     @large_post.club_id = params[:club_id]
@@ -78,18 +78,20 @@ class LargePostsController < ApplicationController
 
   # GET /large_posts/1/edit
   def edit
-    @large_post = LargePost.find(params[:id])
+    @large_post = @club.large_posts.find(params[:id])
   end
 
   # POST /large_posts
   # POST /large_posts.xml
   def create
-    @large_post = LargePost.new(params[:large_post])
+    @large_post = @club.large_posts.new(params[:large_post])
 
     @small_post = SmallPost.new
 
-    @small_post.content = @large_post.title
+    @small_post.content = "New Large Post: " + @large_post.title
     @small_post.club_id = params[:club_id]
+
+    @small_post.save
 
     respond_to do |format|
       if @large_post.save
@@ -106,7 +108,7 @@ class LargePostsController < ApplicationController
   # PUT /large_posts/1
   # PUT /large_posts/1.xml
   def update
-    @large_post = LargePost.find(params[:id])
+    @large_post = @club.large_posts.find(params[:id])
 
     respond_to do |format|
       if @large_post.update_attributes(params[:large_post])
@@ -123,7 +125,7 @@ class LargePostsController < ApplicationController
   # DELETE /large_posts/1
   # DELETE /large_posts/1.xml
   def destroy
-    @large_post = LargePost.find(params[:id])
+    @large_post = @club.large_posts.find(params[:id])
     @large_post.destroy
 
     respond_to do |format|

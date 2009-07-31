@@ -7,7 +7,7 @@ class SmallPostsController < ApplicationController
   # GET /small_posts
   # GET /small_posts.xml
   def index
-    @small_posts = SmallPost.all
+    @small_posts = @club.small_posts.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -17,13 +17,13 @@ class SmallPostsController < ApplicationController
 
   def admin
        if (params[:id].blank?)
-         @small_posts = SmallPost.all
+         @small_posts = @club.small_posts.all
          respond_to do |format|
           format.html #admin.html.erb
           format.xml { render :xml => @small_posts }
          end
        else
-           @small_post = SmallPost.find(params[:id])
+           @small_post = @club.small_posts.find(params[:id])
            
          respond_to do |format|
           format.html { render :action => "admin_show" }
@@ -35,7 +35,7 @@ class SmallPostsController < ApplicationController
   # GET /small_posts/1
   # GET /small_posts/1.xml
   def show
-    @small_post = SmallPost.find(params[:id])
+    @small_post = @club.small_posts.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -46,7 +46,7 @@ class SmallPostsController < ApplicationController
   # GET /small_posts/new
   # GET /small_posts/new.xml
   def new
-    @small_post = SmallPost.new
+    @small_post = @club.small_posts.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -57,13 +57,13 @@ class SmallPostsController < ApplicationController
 
   # GET /small_posts/1/edit
   def edit
-    @small_post = SmallPost.find(params[:id])
+    @small_post = @club.small_posts.find(params[:id])
   end
 
   # POST /small_posts
   # POST /small_posts.xml
   def create
-    @small_post = SmallPost.new(params[:small_post])
+    @small_post = @club.small_posts.new(params[:small_post])
 
     respond_to do |format|
       if params[:commit] == "Try a Twat"
@@ -86,7 +86,7 @@ class SmallPostsController < ApplicationController
   # PUT /small_posts/1
   # PUT /small_posts/1.xml
   def update
-    @small_post = SmallPost.find(params[:id])
+    @small_post = @club.small_posts.find(params[:id])
 
     respond_to do |format|
       if @small_post.update_attributes(params[:small_post])
@@ -103,7 +103,7 @@ class SmallPostsController < ApplicationController
   # DELETE /small_posts/1
   # DELETE /small_posts/1.xml
   def destroy
-    @small_post = SmallPost.find(params[:id])
+    @small_post = @club.small_posts.find(params[:id])
     @small_post.destroy
 
     respond_to do |format|
