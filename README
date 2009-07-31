@@ -17,3 +17,4 @@ Run these gems or the project won't work
     gem install taps
     gem sources --add http://gems.github.com/
     gem install chriseppstein-compass
+    gem install icalendar

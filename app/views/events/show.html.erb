@@ -4,6 +4,11 @@
 </p>
 
 <p>
+  <b>Event Name:</b>
+  <%=h @event.name %>
+</p>
+
+<p>
   <b>Start:</b>
   <%=h format_time(@event.start) %>
 </p>
@@ -28,5 +33,5 @@
   <%=h @event.link %>
 </p>
 
-
+<%= link_to 'ICal Me', :action => 'export_events', :club_id => @club, :id => @event %> |
 <%= link_to 'Back', :action => 'index' %>

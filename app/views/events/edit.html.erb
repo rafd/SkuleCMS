@@ -3,6 +3,10 @@
 <% form_for([:club, @event], :url => {:action=> 'update'}) do |f| %>
   <%= f.error_messages %>
   <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
     <%= f.label :user_id %><br />
   	<%= f.collection_select :user_id, User.find(:all), :id, :name, { :prompt => 'Select a User' } %>
   </p>
