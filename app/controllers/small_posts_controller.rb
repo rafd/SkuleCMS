@@ -54,6 +54,7 @@ class SmallPostsController < ApplicationController
     end
   end
 
+
   # GET /small_posts/1/edit
   def edit
     @small_post = SmallPost.find(params[:id])

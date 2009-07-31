@@ -65,12 +65,16 @@ class LargePostsController < ApplicationController
     @large_post = LargePost.new
     
     @large_post.content = params[:content] if params[:content]
+    @large_post.club_id = params[:club_id]
+    
 
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @large_post }
     end
   end
+
+
 
   # GET /large_posts/1/edit
   def edit
@@ -81,6 +85,11 @@ class LargePostsController < ApplicationController
   # POST /large_posts.xml
   def create
     @large_post = LargePost.new(params[:large_post])
+
+    @small_post = SmallPost.new
+
+    @small_post.content = @large_post.title
+    @small_post.club_id = params[:club_id]
 
     respond_to do |format|
       if @large_post.save
