@@ -1,11 +1,11 @@
 ActionController::Routing::Routes.draw do |map|
   
-  map.connect '/clubs/search/:club_id/:query/', :controller => 'clubs', :action => 'search'
-  map.connect '/clubs/search/:query/', :controller => 'clubs', :action => 'search'
-  map.connect '/clubs/search/:redir/:club_id/:query/', :controller => 'clubs', :action => 'search'
-  map.connect '/clubs/search', :controller => 'clubs', :action => 'search'
   map.connect '/clubs/:club_id/admin/:action', :controller => 'admin_pages'
-
+  map.connect '/search/query/:query/', :controller => 'search', :action => 'search'
+  map.connect '/search/clubs/:club_id/query/:query/', :controller => 'search', :action => 'search'
+  map.connect '/search', :controller => 'search', :action => 'search'
+  
+  map.formatted_search "/search.:format", :controller => "search", :action => "index", :method => :get 
 
   map.resources :clubs, :collection => { :admin => :get } do |club|
     club.resources  :files,

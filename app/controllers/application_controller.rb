@@ -5,6 +5,12 @@ class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
+  before_filter :load_club
+  def load_club
+    if !params[:club_id].blank?
+      @club = Club.find(params[:club_id])
+    end
+  end
 
 
 

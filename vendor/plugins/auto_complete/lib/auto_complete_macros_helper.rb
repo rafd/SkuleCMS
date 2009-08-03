@@ -69,9 +69,10 @@ module AutoCompleteMacrosHelper
     js_options[:paramName]  = "'#{options[:param_name]}'" if options[:param_name]
     js_options[:frequency]  = "#{options[:frequency]}" if options[:frequency]
     js_options[:method]     = "'#{options[:method].to_s}'" if options[:method]
+    js_options[:afterUpdateElement] = "function(element,value) {
+return #{options[:after_update_element]}(element,value); }"  if options[:after_update_element]
 
-    { :after_update_element => :afterUpdateElement, 
-      :on_show => :onShow, :on_hide => :onHide, :min_chars => :minChars }.each do |k,v|
+    { :on_show => :onShow, :on_hide => :onHide, :min_chars => :minChars }.each do |k,v|
       js_options[v] = options[k] if options[k]
     end
 
@@ -93,11 +94,29 @@ module AutoCompleteMacrosHelper
   #
   # The auto_complete_result can of course also be called from a view belonging to the 
   # auto_complete action if you need to decorate it further.
+  def auto_complete_result(entries, field1, field2, pic=nil)
+    return unless entries
+    items = entries.map { |entry| content_tag("li",
+    {
+    content_tag("h4", h(entry[field1]), :class => "entry_name"),
+    content_tag("br"),
+    content_tag("i", h(entry[field2])),
+    content_tag("br")
+    })}
+    content_tag("ul", items.uniq)
+  end
+  
+
+
+=begin
   def auto_complete_result(entries, field, phrase = nil)
     return unless entries
     items = entries.map { |entry| content_tag("li", phrase ? highlight(entry[field], phrase) : h(entry[field])) }
     content_tag("ul", items.uniq)
   end
+=end
+  
+  
   
   # Wrapper for text_field with added AJAX autocompletion functionality.
   #
@@ -115,7 +134,7 @@ module AutoCompleteMacrosHelper
     def auto_complete_stylesheet
       content_tag('style', <<-EOT, :type => Mime::CSS)
         div.auto_complete {
-          width: 350px;
+          width: 500px;
           background: #fff;
         }
         div.auto_complete ul {

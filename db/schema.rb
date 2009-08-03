@@ -27,7 +27,6 @@ ActiveRecord::Schema.define(:version => 20090724045724) do
   create_table "albums", :force => true do |t|
     t.string   "name"
     t.string   "desc"
-    t.string   "tags"
     t.string   "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"

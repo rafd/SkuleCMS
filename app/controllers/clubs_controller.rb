@@ -1,37 +1,14 @@
 class ClubsController < ApplicationController
-
-  def search
-    if false
-    if !(params[:redir]).nil?
-      redirect_to :controller => 'clubs', :action => 'search', :query => params[:club][:search], :club_id => params[:club_id]
-    elsif !(params[:query]).nil?
-      if !(params[:club_id]).nil?
-        if (@club=Club.find(:first, :conditions => ['name = ?', params[:query]])).nil?
-          @clubs = Club.find_tagged_with(params[:query])
-          @albums = Album.find_tagged_with(params[:query]) & Club.find(params[:club_id]).albums
-          #@albums = Album.find(:all, :conditions => ['club_id = ?', params[:club_id]])
-        else
-          redirect_to(@club)
-        end
-      else
-        if (@club=Club.find(:first, :conditions => ['name = ?', params[:query]])).nil?
-          @clubs = Club.find_tagged_with(params[:query])
-        else
-          redirect_to(@club)
-        end
-      end
-    else
-      @clubs = Club.find(:all)
-    end
-    end
-  end
   
   # GET /clubs
   # GET /clubs.xml
   def index
     @clubs = Club.find(:all, :include => :tags)
-    @tags = Club.find_tagged_with(params[:search])
-    
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @clubs }
+    end
   end
   
   def admin
@@ -62,7 +39,7 @@ class ClubsController < ApplicationController
 
   # GET /clubs/1/edit
   def edit
-    @club = Club.find(params[:id])
+    @club = Club.find(params[:id], :include => :tags)
   end
 
   # POST /clubs
@@ -84,7 +61,7 @@ class ClubsController < ApplicationController
   # PUT /clubs/1
   # PUT /clubs/1.xml
   def update
-    @club = Club.find(params[:id])
+    @club = Club.find(params[:id], :include => :tags)
 
     respond_to do |format|
       if @club.update_attributes(params[:club])
