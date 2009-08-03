@@ -102,6 +102,8 @@ ActiveRecord::Schema.define(:version => 20090724045724) do
   create_table "large_posts", :force => true do |t|
     t.string   "title"
     t.text     "content"
+    t.integer  "club_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -123,6 +125,8 @@ ActiveRecord::Schema.define(:version => 20090724045724) do
 
   create_table "small_posts", :force => true do |t|
     t.text     "content"
+    t.integer  "club_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -146,14 +150,6 @@ ActiveRecord::Schema.define(:version => 20090724045724) do
 
   add_index "tags", ["name"], :name => "index_tags_on_name"
   add_index "tags", ["taggings_count"], :name => "index_tags_on_taggings_count"
-
-  create_table "updates", :force => true do |t|
-    t.integer  "club_id"
-    t.integer  "user_id"
-    t.text     "content"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "users", :force => true do |t|
     t.string   "name"
