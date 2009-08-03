@@ -26,7 +26,7 @@ class DownloadFoldersController < ApplicationController
         format.xml  { render :xml => @download_folders }
       end
     else
-      @download_folder = DownloadFolder.find(params[:id])
+      @download_folder = @club.download_folders.find(params[:id])
       respond_to do |format|
         format.html { render :action => "admin_show" }
         format.xml  { render :xml => @download_folder }
@@ -37,7 +37,7 @@ class DownloadFoldersController < ApplicationController
   # GET /download_folders/1
   # GET /download_folders/1.xml
   def show
-    @download_folder = DownloadFolder.find(params[:id])
+    @download_folder = @club.download_folders.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -58,14 +58,13 @@ class DownloadFoldersController < ApplicationController
 
   # GET /download_folders/1/edit
   def edit
-    @download_folder = DownloadFolder.find(params[:id])
+    @download_folder = @club.download_folders.find(params[:id])
   end
 
   # POST /download_folders
   # POST /download_folders.xml
   def create
-    @download_folder = DownloadFolder.new(params[:download_folder])
-    @download_folder.club_id = @club.id
+    @download_folder = @club.download_folders.new(params[:download_folder])
     
     respond_to do |format|
       if @download_folder.save
@@ -82,7 +81,7 @@ class DownloadFoldersController < ApplicationController
   # PUT /download_folders/1
   # PUT /download_folders/1.xml
   def update
-    @download_folder = DownloadFolder.find(params[:id])
+    @download_folder = @club.download_folders.find(params[:id])
 
     respond_to do |format|
       if @download_folder.update_attributes(params[:download_folder])
@@ -99,7 +98,7 @@ class DownloadFoldersController < ApplicationController
   # DELETE /download_folders/1
   # DELETE /download_folders/1.xml
   def destroy
-    @download_folder = DownloadFolder.find(params[:id])
+    @download_folder = @club.download_folders.find(params[:id])
     @download_folder.destroy
 
     respond_to do |format|

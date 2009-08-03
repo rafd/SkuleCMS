@@ -8,7 +8,8 @@ class GroupsController < ApplicationController
   # GET /groups.xml
   def index
     @groups = @club.groups
-    @roots = Group.find(:all, :conditions => {:club_id => @club, :parent_id => nil})
+    @roots = @club.groups.find(:all, :conditions => {:parent_id => nil})
+    puts @club.groups.new().club_id.to_s
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @groups }
@@ -20,13 +21,13 @@ class GroupsController < ApplicationController
   def admin
     if (params[:id].blank?)
       @groups = @club.groups
-      @roots = Group.find(:all, :conditions => {:club_id => @club, :parent_id => nil})
+      @roots = @club.groups.find(:all, :conditions => {:parent_id => nil})
       respond_to do |format|
         format.html # index.html.erb
         format.xml  { render :xml => @groups }
       end
     else
-      @group = Group.find(params[:id])
+      @group = @club.groups.find(params[:id])
       @page = @club.pages.find(:first, :conditions=> ["title=?",@group.name])
       respond_to do |format|
         format.html { render :action => "admin_show" }
@@ -38,7 +39,7 @@ class GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.xml
   def show
-    @group = Group.find(params[:id])
+    @group = @club.groups.find(params[:id])
     @page = @club.pages.find(:first, :conditions=> ["title=?",@group.name])
     respond_to do |format|
       format.html # show.html.erb
@@ -49,7 +50,7 @@ class GroupsController < ApplicationController
   # GET /groups/new
   # GET /groups/new.xml
   def new
-    @group = Group.new
+    @group = @club.groups.new
     @grouplist = @club.groups
     respond_to do |format|
       format.html # new.html.erb
@@ -59,26 +60,16 @@ class GroupsController < ApplicationController
 
   # GET /groups/1/edit
   def edit
-    @group = Group.find(params[:id])
+    @group = @club.groups.find(params[:id])
     @grouplist = @club.groups
   end
 
   # POST /groups
   # POST /groups.xml
   def create
-    @group = Group.new(params[:group])
-    @group.club = @club
+    @group = @club.groups.new(params[:group])
     respond_to do |format|
       if @group.save
-        if !params[:group][:parent_id].blank?
-          @group.move_to_child_of(Group.find(params[:group][:parent_id]))
-        end
-        if !params[:page].nil? && !params[:page]['create_page'].nil?
-          @page = Page.new
-          @page.title = @group.name
-          @page.club = @club
-          @page.save
-        end
         flash[:notice] = 'Group was successfully created.'
         format.html { redirect_to admin_club_group_path(@club, @group) }
         format.xml  { render :xml => @group, :status => :created, :location => @group }
@@ -93,7 +84,7 @@ class GroupsController < ApplicationController
   # PUT /groups/1
   # PUT /groups/1.xml
   def update
-    @group = Group.find(params[:id])
+    @group = @club.groups.find(params[:id])
     
     respond_to do |format|
       if (@group.is_member_list?)
@@ -101,9 +92,6 @@ class GroupsController < ApplicationController
         format.html { redirect_to admin_club_group_path(@club, @group) }
         format.xml  { head :ok }
       elsif @group.update_attributes(params[:group])
-        if !params[:group][:parent_id].blank?
-          @group.move_to_child_of(Group.find(params[:group][:parent_id]))
-        end
         flash[:notice] = 'Group was successfully updated.'
         format.html { redirect_to admin_club_group_path(@club, @group) }
         format.xml  { head :ok }
@@ -118,7 +106,7 @@ class GroupsController < ApplicationController
   # DELETE /groups/1
   # DELETE /groups/1.xml
   def destroy
-    @group = Group.find(params[:id])
+    @group = @club.groups.find(params[:id])
     @group.destroy unless @group.is_member_list?
 
     respond_to do |format|

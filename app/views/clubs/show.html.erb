@@ -15,6 +15,13 @@
   <% end -%>
 </p>
 
+<p>
+  <b>Upcoming Events:</b><br/>
+  <% @club.upcoming_events.each do |event| -%>
+    <%= event.name %> <i>@ <%= event.location%></i>, Time: <%= format_time(event.start)%> - <%= format_time(event.finish)%>
+  <br />
+  <% end -%>
+</p>
 
 <p>
   <b>Members:</b>

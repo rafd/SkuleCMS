@@ -31,5 +31,16 @@ module ApplicationHelper
 		else
 			render :partial => ('layouts/default/'+element)
 		end
-	end
+  end
+
+  def format_time(time)
+    return time.strftime('%a. %b. %d %I:%M %p')
+  end
+  
+  def truncate_string(text, length = 30, truncate_string = "...")
+    return if text.nil?
+    l = length - truncate_string.chars.length
+    text.chars.length > length ? text[/\A.{#{l}}\w*\;?/m][/.*[\w\;]/m] + truncate_string : text
+  end
+
 end

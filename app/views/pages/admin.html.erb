@@ -9,7 +9,7 @@
 <% @pages.each do |page| %>
   <tr>
     <td><%=h page.title %></td>
-    <td><%=h page.content %></td>
+    <td><%= page.content %></td>
     <td><%= link_to 'Show', admin_club_page_path(@club, page) %></td>
     <td><%= link_to 'Edit', edit_club_page_path(@club, page) %></td>
     <td><%= link_to 'Destroy', club_page_path(@club, page), :confirm => 'Are you sure?', :method => :delete %></td>

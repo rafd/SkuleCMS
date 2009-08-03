@@ -3,14 +3,12 @@
 <table>
   <tr>
     <th>Name</th>
-    <th>Club</th>
     <th>Icon</th>
   </tr>
 
 <% @download_folders.each do |folder| %>
   <tr>
     <td><%=h folder.name %></td>
-    <td><%=h folder.club.name %></td>
     <td><%=h folder.icon %></td>
     <td><%= link_to 'Show', :action => 'show', :id => folder.id %></td>    
   </tr>
