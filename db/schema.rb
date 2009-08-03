@@ -27,7 +27,6 @@ ActiveRecord::Schema.define(:version => 20090802184814) do
   create_table "albums", :force => true do |t|
     t.string   "name"
     t.string   "desc"
-    t.string   "tags"
     t.string   "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -148,14 +147,6 @@ ActiveRecord::Schema.define(:version => 20090802184814) do
 
   add_index "tags", ["name"], :name => "index_tags_on_name"
   add_index "tags", ["taggings_count"], :name => "index_tags_on_taggings_count"
-
-  create_table "updates", :force => true do |t|
-    t.integer  "club_id"
-    t.integer  "user_id"
-    t.text     "content"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "users", :force => true do |t|
     t.string   "name"

@@ -45,6 +45,7 @@ class DownloadsController < ApplicationController
   def create
     @download = @download_folder.downloads.new(params[:download])
     @download.url = Download.save(params[:download][:url])
+    
     respond_to do |format|
       if @download.save
         flash[:notice] = 'File was successfully uploaded.'

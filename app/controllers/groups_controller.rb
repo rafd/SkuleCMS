@@ -62,6 +62,7 @@ class GroupsController < ApplicationController
   def edit
     @group = @club.groups.find(params[:id])
     @grouplist = @club.groups
+    @grouplist -= @group.all_children << @group
   end
 
   # POST /groups
@@ -97,6 +98,8 @@ class GroupsController < ApplicationController
         format.xml  { head :ok }
       else
         @grouplist = @club.groups
+        @grouplist.delete(@group.all_children)
+        @grouplist.delete(@group)
         format.html { render :action => "edit" }
         format.xml  { render :xml => @group.errors, :status => :unprocessable_entity }
       end

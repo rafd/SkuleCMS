@@ -51,6 +51,7 @@ class ImagesController < ApplicationController
   def create 
     @image = @album.images.new(params[:image])
     @image.url = Image.save(params[:image][:url], @album)
+
     respond_to do |format|
       if @image.save
         flash[:notice] = 'Image was successfully uploaded to album.'

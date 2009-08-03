@@ -4,12 +4,29 @@
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :name %><br />
+  	<%= f.label :name, "Short Name" %>
+  	<span>The short form of your club name. Max 20 characters. Used almost everywhere.</span>
     <%= f.text_field :name %>
   </p>
   <p>
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
+    <%= f.label :official_name, "Official Name" %>
+    <span>The official name of the club. Max 100 characters. Used in the club site's footer.</span>
+    <%= f.text_field :official_name %>
+  </p>
+  <p>
+  	<%= f.label :tagline %>
+  	<span>A short description of your club. Max 100 characters. Used in the club directory.</span>
+    <%= f.text_field :tagline %>
+  </p>
+  <p>
+    <%= f.label :description %>
+    <span>A longer description of your club. Max 400 characters. Used on the home page of your club's website.</span>
+    <%= f.text_area :description %>
+  </p>
+  <p>
+    <%= f.label :tags, "Labels" %>
+    <span>Tags used to classify your club in the club directory.</span>
+		<%= f.text_field :tag_list -%>
   </p>
   <p>
     <%= f.submit 'Update' %>
@@ -17,4 +34,4 @@
 <% end %>
 
 <%= link_to 'Show', @club %> |
-<%= link_to 'Back', clubs_path %>
+<%= link_to 'Cancel', clubs_path %>

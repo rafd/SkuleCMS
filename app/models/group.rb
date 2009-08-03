@@ -27,8 +27,11 @@ class Group < ActiveRecord::Base
   def move_to_parent
     if !self.name.eql?("Member List")
       if !self.parent_id.blank?
+                puts self.parent_id
         self.move_to_child_of(self.club.groups.find(self.parent_id))
+        puts self.parent_id
       else
+        self.parent_id = self.club.member_list.id
         self.move_to_child_of(self.club.member_list)
       end
     end

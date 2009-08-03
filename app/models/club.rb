@@ -3,7 +3,8 @@ class Club < ActiveRecord::Base
     
   has_many      :groups, :dependent => :destroy
   has_many      :events, :dependent => :destroy
-  has_many      :updates, :dependent => :destroy
+  has_many      :large_posts, :dependent => :destroy
+  has_many      :small_posts, :dependent => :destroy
   has_many      :download_folders, :dependent => :destroy
   has_many      :admins, :dependent => :destroy
   has_many      :albums, :dependent => :destroy

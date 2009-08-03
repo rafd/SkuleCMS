@@ -1,6 +1,6 @@
 class SmallPost < ActiveRecord::Base
   
-    belongs_to      :club, :dependent => :destroy
+    belongs_to      :club
     belongs_to      :user
   
   minLimit = 2.freeze

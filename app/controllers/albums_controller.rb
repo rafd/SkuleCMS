@@ -56,7 +56,7 @@ class AlbumsController < ApplicationController
 
   # GET /albums/1/edit
   def edit
-    @album = @club.albums.find(params[:id])
+    @album = @club.albums.find(params[:id], :include => :tags)
   end
 
   # POST /albums
@@ -80,6 +80,7 @@ class AlbumsController < ApplicationController
   # PUT /albums/1.xml
   def update
     @album = @club.albums.find(params[:id])
+    @album = @club.albums.find(params[:id], :include => :tags)
 
     respond_to do |format|
       if @album.update_attributes(params[:album])
