@@ -24,10 +24,8 @@ class SearchController < ApplicationController
       else
         redirect_to(@club)
       end
-    elsif params[:club_id]
-      redirect_to :controller => 'search', :action => 'search', :query => params[:search][:search], :club_id => params[:club_id]
     else
-      redirect_to :controller => 'search', :action => 'search', :query => params[:search][:search]
+      redirect_to :controller => 'search', :action => 'search', :query => params[:search][:search], :club_id => params[:club_id]||nil
     end
   end
 end
