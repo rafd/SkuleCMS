@@ -1,3 +1,4 @@
+<%= include_tiny_mce_if_needed %>
 <h2>Editing pages</h2>
 
 <% form_for([:club, @page], :url => {:action=> 'update'}) do |f| %>
@@ -9,7 +10,7 @@
   </p>
   <p>
     <%= f.label :content %><br />
-    <%= f.text_field :content %>
+    <%= f.text_area :content, :class => "mceEditor" %>
   </p>
   <p>
     <%= f.submit 'Update' %>

@@ -15,10 +15,10 @@ class SearchController < ApplicationController
   def search
     if (params[:query]) && !(params[:search])
       if !(@club=Club.find(:first, :conditions => ['name = ?', params[:query]]))
-        @club = Club.find(params[:club_id])
         @clubs = Club.find_tagged_with(params[:query])
         @myAlbums = Album.find_tagged_with(params[:query])
         if params[:club_id]
+          @club = Club.find(params[:club_id])
           @albums = @myAlbums & Club.find(params[:club_id]).albums
         end
       else

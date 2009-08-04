@@ -43,16 +43,15 @@ class ImagesController < ApplicationController
 
   # GET /images/1/edit
   def edit
-    @image = Image.find(params[:id])
+    @image = @album.images.find(params[:id])
   end
 
   # POST /images
   # POST /images.xml
   def create 
-    @image = Image.new(params[:image])
+    @image = @album.images.new(params[:image])
     @image.url = Image.save(params[:image][:url], @album)
-    @image.album_id = @album.id
-    
+
     respond_to do |format|
       if @image.save
         flash[:notice] = 'Image was successfully uploaded to album.'
@@ -69,7 +68,7 @@ class ImagesController < ApplicationController
   # PUT /images/1
   # PUT /images/1.xml
   def update
-    @image = Image.find(params[:id])
+    @image = @album.images.find(params[:id])
 
     respond_to do |format|
       if @image.update_attributes(params[:image])
@@ -86,7 +85,7 @@ class ImagesController < ApplicationController
   # DELETE /images/1
   # DELETE /images/1.xml
   def destroy
-    @image = Image.find(params[:id])
+    @image = @album.images.find(params[:id])
     @album = @image.album
     @image.destroy
 

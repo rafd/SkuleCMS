@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090724045724) do
+ActiveRecord::Schema.define(:version => 20090802184814) do
 
   create_table "admins", :force => true do |t|
     t.integer  "user_id"
@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(:version => 20090724045724) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "parent_id"
+    t.integer  "bns_parent_id"
   end
 
   create_table "images", :force => true do |t|
@@ -102,8 +103,6 @@ ActiveRecord::Schema.define(:version => 20090724045724) do
   create_table "large_posts", :force => true do |t|
     t.string   "title"
     t.text     "content"
-    t.integer  "club_id"
-    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -125,8 +124,6 @@ ActiveRecord::Schema.define(:version => 20090724045724) do
 
   create_table "small_posts", :force => true do |t|
     t.text     "content"
-    t.integer  "club_id"
-    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -9,7 +9,7 @@
 <% @pages.each do |page| %>
   <tr>
     <td><%=h page.title %></td>
-    <td><%=h page.content %></td>
+    <td><%= page.content %></td>
     <td><%= link_to 'Show', club_page_path(@club, page) %></td>
   </tr>
 <% end %>
