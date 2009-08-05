@@ -35,13 +35,17 @@ class Club < ActiveRecord::Base
   
   def search=(query)
   end
-
-  def members
-    return Group.find(:first, :conditions => {:club_id => self, :parent_id => nil, :name => "Member List"}).users
-  end
   
   def member_list
-    return Group.find(:first, :conditions => {:club_id => self, :parent_id => nil, :name => "Member List"})
+    return self.groups.find(:first, :conditions => {:parent_id => nil})
+  end
+  
+  def members
+    return self.member_list.users
+  end
+  
+  def upcoming_events
+    return self.events.find(:all, :order => "finish", :conditions => ["finish>=?", Time.now], :limit => 3)
   end
   
   def feed_items

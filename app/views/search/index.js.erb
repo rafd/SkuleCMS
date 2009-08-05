@@ -1,0 +1,17 @@
+<% if @club %>
+	<ul id = "auto_search_results">
+		<% @club.uniq.each do |club| %>
+			<li>
+				<h4 class = "entry_name"><%= club.name %></h4>
+				<span class = "description"><%= club.description %></span>
+				<span class = "tag">Tag:
+				<% club.tags.each do |tag| %>
+					<% if @tagList.include?(tag) %>
+						<%= h tag %>
+					<% end %>
+				<% end %>
+				</span>
+			</li>
+		<% end %>
+	</ul>
+<% end %>

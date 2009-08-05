@@ -23,7 +23,7 @@ class AlbumsController < ApplicationController
         format.xml  { render :xml => @albums }
       end
     else
-      @album = Album.find(params[:id], :include => :tags)
+      @album = @club.albums.find(params[:id], :include => :tags)
   
       respond_to do |format|
         format.html { render :action => "admin_show" }
@@ -35,7 +35,7 @@ class AlbumsController < ApplicationController
   # GET /albums/1
   # GET /albums/1.xml
   def show
-    @album = Album.find(params[:id], :include => :tags)
+    @album = @club.albums.find(params[:id], :include => :tags)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -56,14 +56,14 @@ class AlbumsController < ApplicationController
 
   # GET /albums/1/edit
   def edit
-    @album = Album.find(params[:id])
+    @album = @club.albums.find(params[:id], :include => :tags)
   end
 
   # POST /albums
   # POST /albums.xml
   def create
-    @album = Album.new(params[:album])
-    @album.club = @club
+    @album = @club.albums.new(params[:album])
+
     respond_to do |format|
       if @album.save
         flash[:notice] = 'Album was successfully created.'
@@ -79,7 +79,8 @@ class AlbumsController < ApplicationController
   # PUT /albums/1
   # PUT /albums/1.xml
   def update
-    @album = Album.find(params[:id])
+    @album = @club.albums.find(params[:id])
+    @album = @club.albums.find(params[:id], :include => :tags)
 
     respond_to do |format|
       if @album.update_attributes(params[:album])
@@ -96,7 +97,7 @@ class AlbumsController < ApplicationController
   # DELETE /albums/1
   # DELETE /albums/1.xml
   def destroy
-    @album = Album.find(params[:id])
+    @album = @club.albums.find(params[:id])
     @album.destroy
 
     respond_to do |format|

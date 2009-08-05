@@ -10,7 +10,7 @@ class EventsController < ApplicationController
   def export_events
     @calendar = Icalendar::Calendar.new      
     if (!params[:id].blank?)
-      @event = Event.find(params[:id])
+      @event = @club.events.find(params[:id])
       event = Icalendar::Event.new
       event.start = @event.start.strftime("%Y%m%dT%H%M%S")
       event.end = @event.finish.strftime("%Y%m%dT%H%M%S")
@@ -20,7 +20,7 @@ class EventsController < ApplicationController
       event.url = @event.link
       @calendar.add event
     else
-      @events = Event.find(:all, :conditions => ["club_id = :club_id AND finish >= :finish", {:club_id => params[:club_id], :finish => Time.now}])
+      @events = @club.events.find(:all, :conditions => ["finish >= :finish", { :finish => Time.now}])
       @events.each do |event_item|
         event = Icalendar::Event.new
         event.start = event_item.start.strftime("%Y%m%dT%H%M%S")
@@ -40,8 +40,8 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.xml
   def index
-    @events = Event.all
-
+    @events = @club.events.find(:all, :order => "start")
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @events }
@@ -52,13 +52,13 @@ class EventsController < ApplicationController
   # GET /events/1/admin
   def admin
     if (params[:id].blank?)
-      @events = Event.all
+    @events = @club.events.find(:all, :order => "start")
       respond_to do |format|
         format.html # admin.html.erb
         format.xml  { render :xml => @events }
       end
     else
-      @event = Event.find(params[:id])
+      @event = @club.events.find(params[:id])
       respond_to do |format|
         format.html { render :action => "admin_show" }
         format.xml  { render :xml => @event }
@@ -69,7 +69,7 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.xml
   def show
-    @event = Event.find(params[:id])
+    @event = @club.events.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -90,15 +90,14 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit
-    @event = Event.find(params[:id])
+    @event = @club.events.find(params[:id])
     @users = User.find(:all)
   end
 
   # POST /events
   # POST /events.xml
   def create
-    @event = Event.new(params[:event])
-    @event.club_id = @club.id
+    @event = @club.events.new(params[:event])
     respond_to do |format|
       if @event.save
         flash[:notice] = 'Event was successfully created.'
@@ -115,7 +114,7 @@ class EventsController < ApplicationController
   # PUT /events/1
   # PUT /events/1.xml
   def update
-    @event = Event.find(params[:id])
+    @event = @club.events.find(params[:id])
     
     respond_to do |format|
       if @event.update_attributes(params[:event])
@@ -133,7 +132,7 @@ class EventsController < ApplicationController
   # DELETE /events/1
   # DELETE /events/1.xml
   def destroy
-    @event = Event.find(params[:id])
+    @event = @club.events.find(params[:id])
     @event.destroy
 
     respond_to do |format|

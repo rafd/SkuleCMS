@@ -1,7 +1,5 @@
 <h2>Clubs</h2>
 
-
-
 <% @clubs.each do |club| %>
 
 <div class="club">
@@ -12,7 +10,6 @@
 	<% club.tags.each do |tag| %>
 		<li><a href="#"><%= tag %></a></li>
 	<% end if club.tags %>
-		<li><a href="#">Tag</a></li>
 	</ul>
 	<% if club.affiliated %>
 	<div class="affiliated"></div>

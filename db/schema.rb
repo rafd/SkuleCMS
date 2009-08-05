@@ -27,7 +27,6 @@ ActiveRecord::Schema.define(:version => 20090802222547) do
   create_table "albums", :force => true do |t|
     t.string   "name"
     t.string   "desc"
-    t.string   "tags"
     t.string   "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -88,6 +87,7 @@ ActiveRecord::Schema.define(:version => 20090802222547) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "parent_id"
+    t.integer  "bns_parent_id"
   end
 
   create_table "images", :force => true do |t|

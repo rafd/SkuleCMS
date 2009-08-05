@@ -1,12 +1,12 @@
 class DownloadsController < ApplicationController
-  before_filter :load_download_folder, :only => [:new, :create, :index, :show]
+  before_filter :load_download_folder
   def load_download_folder
     @download_folder = DownloadFolder.find(params[:file_id])
   end
   # GET /downloads
   # GET /downloads.xml
   def index
-    @downloads = Download.all
+    @downloads = @download_folder.downloads
 
     respond_to do |format|
       format.html # index.html.erb
@@ -17,7 +17,7 @@ class DownloadsController < ApplicationController
   # GET /downloads/1
   # GET /downloads/1.xml
   def show
-    @download = Download.find(params[:id])
+    @download = @download_folder.downloads.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -37,15 +37,15 @@ class DownloadsController < ApplicationController
 
   # GET /downloads/1/edit
   def edit
-    @download = Download.find(params[:id])
+    @download = @download_folder.downloads.find(params[:id])
   end
 
   # POST /downloads
   # POST /downloads.xml
   def create
-    @download = Download.new(params[:download])
+    @download = @download_folder.downloads.new(params[:download])
     @download.url = Download.save(params[:download][:url])
-    @download.download_folder = @download_folder
+    
     respond_to do |format|
       if @download.save
         flash[:notice] = 'File was successfully uploaded.'
@@ -61,7 +61,7 @@ class DownloadsController < ApplicationController
   # PUT /downloads/1
   # PUT /downloads/1.xml
   def update
-    @download = Download.find(params[:id])
+    @download = @download_folder.downloads.find(params[:id])
 
     respond_to do |format|
       if @download.update_attributes(params[:download])
@@ -78,7 +78,7 @@ class DownloadsController < ApplicationController
   # DELETE /downloads/1
   # DELETE /downloads/1.xml
   def destroy
-    @download = Download.find(params[:id])
+    @download = @download_folder.downloads.find(params[:id])
     @download_folder = @download.download_folder
     @download.destroy
 

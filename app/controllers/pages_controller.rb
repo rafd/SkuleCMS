@@ -3,6 +3,19 @@ class PagesController < ApplicationController
   def load_club
     @club = Club.find(params[:club_id])
   end
+       uses_tiny_mce :options => {
+                                :theme => 'advanced',
+                                :plugins => %w{ advimg media emotions },
+                                :theme_advanced_buttons1 => 'bold,italic,underline,strikethrough,|,fontselect,fontsizeselect',
+                                :theme_advanced_buttons2 => 'bullist,numlist,|,forecolor,backcolor,|,image,code,|',
+                                :theme_advanced_buttons3 => '',
+                                :theme_advanced_toolbar_location => 'top',
+                                :theme_advanced_toolbar_align => 'left',
+                                :theme_advanced_resizing => true,
+                                :theme_advanced_statusbar_location => 'bottom',
+
+
+                              }
   
   # GET /pages
   # GET /pages.xml
@@ -23,7 +36,7 @@ class PagesController < ApplicationController
         format.xml  { render :xml => @pages }
       end
     else
-      @page = Page.find(params[:id])
+      @page = @club.pages.find(params[:id])
       respond_to do |format|
         format.html { render :action => "admin_show" }
         format.xml  { render :xml => @page }
@@ -34,7 +47,7 @@ class PagesController < ApplicationController
   # GET /pages/1
   # GET /pages/1.xml
   def show
-    @page = Page.find(params[:id])
+    @page = @club.pages.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -55,14 +68,13 @@ class PagesController < ApplicationController
 
   # GET /pages/1/edit
   def edit
-    @page = Page.find(params[:id])
+    @page = @club.pages.find(params[:id])
   end
 
   # POST /pages
   # POST /pages.xml
   def create
-    @page = Page.new(params[:page])
-		@page.club = @club
+    @page = @club.pages.new(params[:page])
     respond_to do |format|
       if @page.save
         flash[:notice] = 'Pages was successfully created.'
@@ -78,7 +90,7 @@ class PagesController < ApplicationController
   # PUT /pages/1
   # PUT /pages/1.xml
   def update
-    @page = Page.find(params[:id])
+    @page = @club.pages.find(params[:id])
 
     respond_to do |format|
       if @page.update_attributes(params[:page])
@@ -95,7 +107,7 @@ class PagesController < ApplicationController
   # DELETE /pages/1
   # DELETE /pages/1.xml
   def destroy
-    @page = Page.find(params[:id])
+    @page = @club.pages.find(params[:id])
     @page.destroy
 
     respond_to do |format|

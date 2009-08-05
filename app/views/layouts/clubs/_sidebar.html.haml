@@ -20,3 +20,14 @@
 			- if @club.groups.count > 0
 				- @club.members.each do |member|
 					=h member.name
+	%div#widget
+		%h4 Upcoming Events
+		%ul
+			%li
+	  			-@club.upcoming_events.each do |event|
+	    				= event.name
+	    				%em= event.location
+	    				,
+	    				=format_time(event.start)
+	    				-
+	    				=format_time(event.finish)
