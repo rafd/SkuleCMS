@@ -9,7 +9,7 @@ module ApplicationHelper
 	def render__partial(*args)
     @element = args[0]
 		if (args.length==1)
-      if controller.controller_name == 'hub_pages' || (controller.controller_name == "clubs" && controller.action_name == "index")|| controller.controller_name == 'users' 
+      if controller.controller_name == 'hub_pages' || (controller.controller_name == "clubs" && controller.action_name == "index")|| controller.controller_name == 'users' || controller.controller_name == 'calendar' 
         render_this_or_default('hub', @element)
       elsif controller.controller_name != "admin_pages" and (controller.action_name == "show" || controller.action_name == "index")
         render_this_or_default('clubs', @element)

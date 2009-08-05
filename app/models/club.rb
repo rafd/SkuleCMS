@@ -12,6 +12,9 @@ class Club < ActiveRecord::Base
 
   validates_presence_of     :name, :description, :official_name
   validates_uniqueness_of   :name, :official_name
+  validates_length_of       :name, :maximum => 20
+  validates_length_of       :official_name, :maximum => 100
+
   
   after_create :create_member_list, :create_directory
   
