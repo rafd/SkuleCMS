@@ -3,5 +3,6 @@
 %div.feed_item
 	%h4= feed_item.title if feed_item.respond_to?("title")
 	%div= feed_item.content
-	%div= link_to feed_item.club.name, :controller=>'clubs', :action => 'show', :id => feed_item.club
+	- unless controller.controller_name == 'clubs'
+		%div= link_to feed_item.club.name, :controller=>'clubs', :action => 'show', :id => feed_item.club
 
