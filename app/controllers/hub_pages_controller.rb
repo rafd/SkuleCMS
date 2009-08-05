@@ -12,6 +12,8 @@ class HubPagesController < ApplicationController
 	def digest
 		@page_title = "The Digest"
 		@page_description = "Check out the latest happenings."
+		
+		@feed_items = LargePost.all + SmallPost.all
 	end
 
 	def calendar

@@ -11,7 +11,7 @@
   <%= javascript_include_tag "text_counter" %>
     <%= javascript_include_tag "event_calendar" %>
 </head>
-<body>
+<body class="<%= controller.controller_name + ' ' + controller.action_name %>">
 	<%= render__partial 'skulebar', @club %>
 	<div id="container">
 		
@@ -24,6 +24,7 @@
 		<%= render__partial 'left' %>
 
 		<div id="content">
+			<%= render__partial 'ie6nomore' %>
 			<%= yield %>
 		</div>
 

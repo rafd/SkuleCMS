@@ -1,11 +1,2 @@
-<p>
-  <b>Title:</b>
-  <%=h @page.title %>
-</p>
-
-<p>
-  <b>Content:</b>
-  <%= @page.content %>
-</p>
-
-<%= link_to 'Back', club_pages_path(@club) %>
+<h2><%=h @page.title %></h2>
+<%= @page.content %>

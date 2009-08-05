@@ -319,10 +319,13 @@ caption {
       padding-left: 20px;
       margin: 0 0 0 0.25em; }
   /* line 30, ../../../app/stylesheets/partials/_layout.sass */
+  #skulebar #message {
+    float: left; }
+  /* line 33, ../../../app/stylesheets/partials/_layout.sass */
   #skulebar form {
     float: left;
     margin: 0 0.5em; }
-    /* line 33, ../../../app/stylesheets/partials/_layout.sass */
+    /* line 36, ../../../app/stylesheets/partials/_layout.sass */
     #skulebar form input {
       font-size: 1em;
       height: 1.3em;
@@ -334,7 +337,7 @@ caption {
       width: 10em;
       border: none;
       background: #fff url("/images/icons/magnifier.png") right center no-repeat; }
-  /* line 44, ../../../app/stylesheets/partials/_layout.sass */
+  /* line 47, ../../../app/stylesheets/partials/_layout.sass */
   #skulebar #user {
     float: right;
     display: block;
@@ -342,7 +345,7 @@ caption {
     line-height: 2em;
     padding-right: 15px;
     background: url("/images/icons/bullet_arrow_down.png") right 50% no-repeat; }
-  /* line 53, ../../../app/stylesheets/partials/_layout.sass */
+  /* line 56, ../../../app/stylesheets/partials/_layout.sass */
   #skulebar a.more {
     text-indent: -9999em;
     overflow: hidden;
@@ -353,29 +356,29 @@ caption {
     width: 10px;
     height: 2em; }
 
-/* line 59, ../../../app/stylesheets/partials/_layout.sass */
+/* line 62, ../../../app/stylesheets/partials/_layout.sass */
 #header {
   margin: 0 0 0.5em 0; }
-  /* line 62, ../../../app/stylesheets/partials/_layout.sass */
+  /* line 65, ../../../app/stylesheets/partials/_layout.sass */
   #header h1 {
     float: left;
     width: 40%;
     line-height: 50px;
     margin: 0; }
-    /* line 69, ../../../app/stylesheets/partials/_layout.sass */
+    /* line 72, ../../../app/stylesheets/partials/_layout.sass */
     #header h1 a {
       color: #222222; }
-    /* line 71, ../../../app/stylesheets/partials/_layout.sass */
+    /* line 74, ../../../app/stylesheets/partials/_layout.sass */
     #header h1 a:hover {
       text-decoration: none; }
-    /* line 74, ../../../app/stylesheets/partials/_layout.sass */
+    /* line 77, ../../../app/stylesheets/partials/_layout.sass */
     #header h1 img {
       float: left;
       width: 50px;
       height: 50px;
       background: #222222;
       margin-right: 0.25em; }
-  /* line 81, ../../../app/stylesheets/partials/_layout.sass */
+  /* line 84, ../../../app/stylesheets/partials/_layout.sass */
   #header #menu {
     margin: 0;
     padding: 0;
@@ -404,7 +407,7 @@ caption {
       /* line 42, ../../../../../../../../Program Files/Ruby/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.8/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal_list.sass */
       #header #menu li.last {
         padding-right: 0px; }
-    /* line 87, ../../../app/stylesheets/partials/_layout.sass */
+    /* line 90, ../../../app/stylesheets/partials/_layout.sass */
     #header #menu li {
       margin: 0 0.25em;
       padding: 0 0.5em;
@@ -414,7 +417,7 @@ caption {
       font-weight: bold;
       color: white;
       line-height: 1.5em; }
-      /* line 96, ../../../app/stylesheets/partials/_layout.sass */
+      /* line 99, ../../../app/stylesheets/partials/_layout.sass */
       #header #menu li a {
         background: white;
         font-weight: normal;
@@ -423,14 +426,14 @@ caption {
         padding: 0 0.5em;
         color: #000; }
 
-/* line 105, ../../../app/stylesheets/partials/_layout.sass */
+/* line 108, ../../../app/stylesheets/partials/_layout.sass */
 #banner {
   background: url('/images/banners/dboat.png') #222222;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   height: 150px;
   margin: 0.5em 0 0 0; }
-  /* line 111, ../../../app/stylesheets/partials/_layout.sass */
+  /* line 114, ../../../app/stylesheets/partials/_layout.sass */
   #banner #info {
     background: white;
     margin: 35px 0;
@@ -441,7 +444,7 @@ caption {
     -webkit-border-radius: 0 5px 5px 0;
     color: #666666; }
 
-/* line 121, ../../../app/stylesheets/partials/_layout.sass */
+/* line 124, ../../../app/stylesheets/partials/_layout.sass */
 #container {
   width: 950px;
   margin: 0 auto;
@@ -456,7 +459,7 @@ caption {
   list-style-type: none;
   margin-left: 0px; }
 
-/* line 128, ../../../app/stylesheets/partials/_layout.sass */
+/* line 131, ../../../app/stylesheets/partials/_layout.sass */
 #header, #banner, #footer {
   display: inline;
   float: left;
@@ -466,7 +469,7 @@ caption {
   * html #header, * html #banner, * html #footer {
     overflow-x: hidden; }
 
-/* line 132, ../../../app/stylesheets/partials/_layout.sass */
+/* line 135, ../../../app/stylesheets/partials/_layout.sass */
 #left {
   display: inline;
   float: left;
@@ -475,11 +478,11 @@ caption {
   /* line 97, ../../../../../../../../Program Files/Ruby/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.8/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
   * html #left {
     overflow-x: hidden; }
-  /* line 136, ../../../app/stylesheets/partials/_layout.sass */
+  /* line 139, ../../../app/stylesheets/partials/_layout.sass */
   #left ul {
     list-style: none;
     margin: 0; }
-    /* line 140, ../../../app/stylesheets/partials/_layout.sass */
+    /* line 143, ../../../app/stylesheets/partials/_layout.sass */
     #left ul li {
       background: url("/images/arrow.png") center right no-repeat;
       color: #fff;
@@ -488,14 +491,14 @@ caption {
       height: 1.75em;
       text-indent: 0.5em;
       margin: 0; }
-      /* line 149, ../../../app/stylesheets/partials/_layout.sass */
+      /* line 152, ../../../app/stylesheets/partials/_layout.sass */
       #left ul li a {
         display: block;
         color: #222222;
         background: #fff;
         font-size: 0.85em; }
 
-/* line 157, ../../../app/stylesheets/partials/_layout.sass */
+/* line 160, ../../../app/stylesheets/partials/_layout.sass */
 #sidebar {
   display: inline;
   float: left;
@@ -504,7 +507,7 @@ caption {
   /* line 97, ../../../../../../../../Program Files/Ruby/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.8/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
   * html #sidebar {
     overflow-x: hidden; }
-  /* line 161, ../../../app/stylesheets/partials/_layout.sass */
+  /* line 164, ../../../app/stylesheets/partials/_layout.sass */
   #sidebar .widget {
     background: #fafafa;
     min-height: 7em;
@@ -512,7 +515,7 @@ caption {
     -webkit-border-radius: 5px;
     margin-bottom: 1em; }
 
-/* line 167, ../../../app/stylesheets/partials/_layout.sass */
+/* line 170, ../../../app/stylesheets/partials/_layout.sass */
 #content {
   display: inline;
   float: left;
@@ -522,12 +525,12 @@ caption {
   * html #content {
     overflow-x: hidden; }
 
-/* line 172, ../../../app/stylesheets/partials/_layout.sass */
+/* line 175, ../../../app/stylesheets/partials/_layout.sass */
 #footer {
   margin-top: 2em;
   background: black;
   padding: 1em 0; }
-  /* line 177, ../../../app/stylesheets/partials/_layout.sass */
+  /* line 180, ../../../app/stylesheets/partials/_layout.sass */
   #footer h2, #footer dt {
     font-size: 1em;
     color: #666;
@@ -535,10 +538,10 @@ caption {
     letter-spacing: 0.2em;
     font-weight: bold;
     margin: 0 0 0.25em 0; }
-  /* line 185, ../../../app/stylesheets/partials/_layout.sass */
+  /* line 188, ../../../app/stylesheets/partials/_layout.sass */
   #footer p, #footer a {
     color: #333; }
-  /* line 188, ../../../app/stylesheets/partials/_layout.sass */
+  /* line 191, ../../../app/stylesheets/partials/_layout.sass */
   #footer #address {
     display: inline;
     float: left;
@@ -548,7 +551,7 @@ caption {
     /* line 97, ../../../../../../../../Program Files/Ruby/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.8/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
     * html #footer #address {
       overflow-x: hidden; }
-  /* line 192, ../../../app/stylesheets/partials/_layout.sass */
+  /* line 195, ../../../app/stylesheets/partials/_layout.sass */
   #footer #sitemap {
     display: inline;
     float: left;
@@ -557,14 +560,14 @@ caption {
     /* line 97, ../../../../../../../../Program Files/Ruby/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.8/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
     * html #footer #sitemap {
       overflow-x: hidden; }
-    /* line 194, ../../../app/stylesheets/partials/_layout.sass */
+    /* line 197, ../../../app/stylesheets/partials/_layout.sass */
     #footer #sitemap dl {
       float: left;
       margin: 0 1.25em; }
-      /* line 198, ../../../app/stylesheets/partials/_layout.sass */
+      /* line 201, ../../../app/stylesheets/partials/_layout.sass */
       #footer #sitemap dl dd {
         margin: 0; }
-  /* line 203, ../../../app/stylesheets/partials/_layout.sass */
+  /* line 206, ../../../app/stylesheets/partials/_layout.sass */
   #footer #copyright {
     display: inline;
     float: left;
@@ -576,6 +579,17 @@ caption {
     /* line 97, ../../../../../../../../Program Files/Ruby/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.8/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
     * html #footer #copyright {
       overflow-x: hidden; }
+
+/* line 214, ../../../app/stylesheets/partials/_layout.sass */
+#feed .feed_item {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  background: gray;
+  margin: 0 0 0.5em 0;
+  padding: 0.25em; }
+  /* line 219, ../../../app/stylesheets/partials/_layout.sass */
+  #feed .feed_item h4 {
+    margin: 0; }
 
 /* Typography */
 /* line 2, ../../../app/stylesheets/partials/_typography.sass */
