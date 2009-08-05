@@ -14,21 +14,19 @@ module ApplicationHelper
 =end
 
 	def render__partial(element)
-		
 		if controller.controller_name == 'hub_pages' || (controller.controller_name == "clubs" && controller.action_name == "index")|| controller.controller_name == 'users' 
 			render_this_or_default('hub', element)
-		elsif controller.controller_name != "admin_pages" and (controller.action_name == "show" || controller.action_name == "index")
+		elsif controller.controller_name != ("admin_pages" && "admins") and (controller.action_name == "show" || controller.action_name == "index")
 			render_this_or_default('clubs', element)
 		else
 			render_this_or_default('admin', element)
 		end
-	
 	end
 	
 	def render_this_or_default(folder, element)
-		if FileTest.exist?(File.join(RAILS_ROOT, 'app', 'views', 'layouts', folder, '_'+element+'.html.erb'))
+		if FileTest.exist?(File.join(RAILS_ROOT, 'app', 'views', 'layouts', folder, '_'+element+'.html.erb')) || FileTest.exist?(File.join(RAILS_ROOT, 'app', 'views', 'layouts', folder, '_'+element+'.html.haml'))
 			render :partial => ('layouts/'+folder+'/'+element) 
-		else
+		else	
 			render :partial => ('layouts/default/'+element)
 		end
 	end

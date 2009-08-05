@@ -6,7 +6,7 @@
 
 <div class="club">
 	<%= link_to image_tag(club.logo || "blank.gif"), (club.website || {:action => 'show', :id => club}) %>
-	<h3><%= link_to (club.name || club.official_name), :action => 'show', :id => club  %></h3>
+	<h3><%= link_to (club.name || club.official_name), (club.website || {:action => 'show', :id => club})  %></h3>
 	<span><%=h club.tagline || club.official_name || "Tagline" %></span>
 	<ul>
 	<% club.tags.each do |tag| %>

@@ -9,7 +9,7 @@
   <%= javascript_include_tag :defaults %>
   <%= javascript_include_tag "text_counter" %>
 </head>
-<body>
+<body class="<%= controller.controller_name + ' ' + controller.action_name %>">
 	<%= render__partial 'skulebar' %>
 
 	<div id="container">
@@ -23,6 +23,7 @@
 		<%= render__partial 'left' %>
 
 		<div id="content">
+			<%= render__partial 'ie6nomore' %>
 			<%= yield %>
 		</div>
 

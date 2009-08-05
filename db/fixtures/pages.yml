@@ -1,0 +1,14 @@
+Page1:
+  title: About Us
+  content: We're cool.
+  club: WebDev
+
+Page2:
+  title: History
+  content: We used to be cool.
+  club: WebDev
+    
+Page3:
+  title: Constitution
+  content: We will remain cool.
+  club: WebDev
