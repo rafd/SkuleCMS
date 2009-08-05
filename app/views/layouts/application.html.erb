@@ -14,21 +14,23 @@
 <body class="<%= controller.controller_name + ' ' + controller.action_name %>">
 	<%= render__partial 'skulebar', @club %>
 	<div id="container">
-		
 		<div id="header">
 			<%= render__partial 'heading' %>
 			<%= render__partial 'menu' %>
 			<%= render__partial 'banner' %>
 		</div>
-		
+	
 		<%= render__partial 'left' %>
+	
+		<div id="main">
+			<div id="content">
+				<%= render__partial 'ie6nomore' %>
+				<%= yield %>
+			</div>
 
-		<div id="content">
-			<%= render__partial 'ie6nomore' %>
-			<%= yield %>
+			<%= render__partial 'sidebar' %>
 		</div>
-
-		<%= render__partial 'sidebar' %>
+	
 		<%= render__partial 'footer' %>
 	</div>
 </body>

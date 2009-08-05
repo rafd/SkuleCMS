@@ -1,14 +1,7 @@
 %div#sidebar
 	%div#widget
-		%h4 Dev Links
-		%ul
-			%li= link_to 'Admin Link', club_admin_index_path(@club)
-			%li= link_to 'Downloads', club_files_path(@club)
-			%li= link_to 'Gallery', club_gallery_path(@club)
-			%li= link_to 'Groups', club_groups_path(@club)
-			%li= link_to 'Pages', club_pages_path(@club)
-			%li= link_to 'Edit', edit_club_path(@club)
-			%li= link_to 'Back', clubs_path
+		%p= @club.description
+		
 	%div#widget
 		%h4 Pages
 		%ul
@@ -23,11 +16,21 @@
 	%div#widget
 		%h4 Upcoming Events
 		%ul
-			%li
-	  			-@club.upcoming_events.each do |event|
-	    				= event.name
-	    				%em= event.location
-	    				,
-	    				=format_time(event.start)
-	    				-
-	    				=format_time(event.finish)
+			-@club.upcoming_events.each do |event|
+				%li
+					= event.name
+					%em= event.location
+					,
+					=format_time(event.start)
+					-
+					=format_time(event.finish)
+	%div#widget
+		%h4 Dev Links
+		%ul
+			%li= link_to 'Admin Link', club_admin_index_path(@club)
+			%li= link_to 'Downloads', club_files_path(@club)
+			%li= link_to 'Gallery', club_gallery_path(@club)
+			%li= link_to 'Groups', club_groups_path(@club)
+			%li= link_to 'Pages', club_pages_path(@club)
+			%li= link_to 'Edit', edit_club_path(@club)
+			%li= link_to 'Back', clubs_path
