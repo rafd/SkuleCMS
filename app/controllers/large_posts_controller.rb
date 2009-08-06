@@ -86,12 +86,11 @@ class LargePostsController < ApplicationController
   def create
     @large_post = @club.large_posts.new(params[:large_post])
 
-    @small_post = SmallPost.new
 
-    @small_post.content = "New Large Post: " + @large_post.title
-    @small_post.club_id = params[:club_id]
-
-    @small_post.save
+#    @small_post = SmallPost.new
+#    @small_post.content = "New Large Post: " + @large_post.title
+#    @small_post.club_id = params[:club_id]
+#    @small_post.save
 
     respond_to do |format|
       if @large_post.save
