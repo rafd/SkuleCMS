@@ -5,7 +5,7 @@
     <% @clubs.each do |club| %>
       <%= link_to club.name, club %><br/>
     <% end %>
-    <% if !@albums.blank? %><br/><% end %>
+    <% if !@albums.blank? || !@myAlbums.blank? %><br/><% end %>
   <% end %>
 
   <% if !@albums.blank? %>

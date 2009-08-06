@@ -94,6 +94,7 @@ return #{options[:after_update_element]}(element,value); }"  if options[:after_u
   #
   # The auto_complete_result can of course also be called from a view belonging to the 
   # auto_complete action if you need to decorate it further.
+=begin
   def auto_complete_result(entries, field1, field2, pic=nil)
     return unless entries
     items = entries.map { |entry| content_tag("li",
@@ -105,16 +106,15 @@ return #{options[:after_update_element]}(element,value); }"  if options[:after_u
     })}
     content_tag("ul", items.uniq)
   end
+=end
   
 
 
-=begin
   def auto_complete_result(entries, field, phrase = nil)
     return unless entries
     items = entries.map { |entry| content_tag("li", phrase ? highlight(entry[field], phrase) : h(entry[field])) }
     content_tag("ul", items.uniq)
   end
-=end
   
   
   
