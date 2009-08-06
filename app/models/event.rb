@@ -4,8 +4,12 @@ class Event < ActiveRecord::Base
   belongs_to      :club
   belongs_to      :user
   
-  validates_presence_of     :start, :finish, :club_id, :user_id, :location, :name
-  validates_numericality_of :club_id, :user_id
+  validates_presence_of     :start, :finish, :club_id, :location, :name
+  validates_length_of       :name, :maximum => 20
+  validates_length_of       :link, :maximum => 255
+  validates_length_of       :description, :maximum => 255
+  validates_length_of       :location, :maximum => 255
+  validates_numericality_of :club_id
   
   def start_at
     return start

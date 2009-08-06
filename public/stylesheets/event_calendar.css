@@ -7,27 +7,30 @@
     Cream: ffffdd
 */
 
-.calendar {
-  background-image: url('/images/event_calendar/75bg.png');
-  background-repeat: repeat;
+table.calendar {
   width: 525px;
   margin: auto;
 }
 
-.calendar thead {
+table.calendar thead {
   background-color: white;
 }
 
-.calendar th {
+table.calendar tbody tr{
+    background-image: url('/images/event_calendar/75bg.png');
+  background-repeat: repeat;
+}
+
+table.calendar th {
   text-align: center;
   padding: 0 0 5px 0;
 }
 
-.calendar div.clear {
+table.calendar div.clear {
   clear: both;
 }
 
-.calendar td {
+table.calendar td {
   text-align: center;
   padding: 0 0 0 0;
 }
@@ -79,7 +82,8 @@ th.monthName {
   /* background-color: #ffffdd; */
 }
 .today{
-	background-color: #ffffdd;
+	background-color: #66ffff;
+  font-weight: bold;
 }
 
 .beginning_of_week {
@@ -88,13 +92,13 @@ th.monthName {
 }
 
 /* Event blocks */
-.events { 
+table.calendar .events { 
   position: relative; 
   border-bottom: 1px solid #d5d5d5;
   border-left: 1px solid #d5d5d5;
 }
  
-.event {
+table.calendar .event {
   overflow: hidden;
   text-align: left;
   position: absolute;
@@ -102,11 +106,11 @@ th.monthName {
   line-height: 16px;
 }
 
-.event :hover {
+table.calendar .event :hover {
   background-color: #2EAC6A;
 }
  
-.event div { 
+table.calendar .event div { 
   cursor: pointer;
   padding-left: 6px; 
   color:#ffffff; 

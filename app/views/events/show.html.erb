@@ -1,9 +1,4 @@
 <p>
-  <b>User:</b>
-  <%=h @event.user.name %>
-</p>
-
-<p>
   <b>Event Name:</b>
   <%=h @event.name %>
 </p>
@@ -33,5 +28,5 @@
   <%=h @event.link %>
 </p>
 
-<%= link_to 'ICal Me', :action => 'export_events', :club_id => @club, :id => @event %> |
+<%= link_to 'ICal Format', :action => 'export_events', :club_id => @club, :id => @event %> |
 <%= link_to 'Back', :action => 'index' %>

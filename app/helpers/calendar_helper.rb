@@ -18,7 +18,7 @@ module CalendarHelper
 
     def event_calendar
       calendar event_calendar_options do |event|
-        "<a href='/events/#{event.id}' title=\"#{h(event.name)}\"><div>#{h(event.name)}</div></a>"
+        "<a href='clubs/#{event.club_id}/events/#{event.id}' title=\"#{h(event.name)} - #{h(event.club.name)}\"><div>#{h(event.name)} - #{h(event.club.name)}</div></a>"
       end
     end
 

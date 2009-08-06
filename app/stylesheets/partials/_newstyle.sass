@@ -1,0 +1,75 @@
+!left_columns= floor(4 * !blueprint_grid_columns / 24)
+!main_columns= floor(20 * !blueprint_grid_columns / 24)
+
+#header
+	+column(!main_columns, true) 
+	+prepend(!left_columns)
+
+#banner
+	+column(!main_columns) 
+#footer
+	+column(!main_columns, true) 
+	+prepend(!left_columns)
+	
+body
+	:background= !background_body
+	
+#left
+	+rounded-corners(5px 5px 0 0)
+	:background= !background_left
+	:margin 10px 0 0 10px
+	
+	//TAB STYLE
+	ul
+		li
+			:border-right none
+			:color= !color_foreground
+			:background= !background_main
+			+rounded-corners(5px 0 0 5px)
+			a
+				:background= !background_left
+				:color= !color_foreground
+				
+	
+	
+	
+	//POINTER STYLE
+	
+#main
+	+rounded-corners
+	:background= !background_main
+	:min-height 10em
+	
+#footer
+	:background none
+	:color #888
+	
+	#address
+		+prepend(0)
+		+column(6)
+		
+	h2, dt
+		:color #666
+		
+	#sitemap
+		+column(14, true)
+		
+	p, a
+		:color #888
+		
+	#copyright
+		+column(20)
+		+prepend(0)
+		//:text-align center
+		:font-size 0.8em
+		
+body.clubs
+	#main
+		+column(20, true)
+	#sidebar
+		:display none
+
+#banner
+	#info
+		:border-left= 5px solid !background_body
+		:padding-left 2em !important 

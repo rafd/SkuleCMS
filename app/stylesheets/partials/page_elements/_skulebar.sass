@@ -1,0 +1,57 @@
+#skulebar 
+	:background #eee
+	:height 2em
+	:width 97%
+	:margin 0 auto 1em
+	+rounded-corners(0 0 2px 2px)
+	:line-height 2em
+	:height 2em
+	
+	#skule
+		:float left
+		+background-icon("icons/hardhat.png")
+		
+	a
+		:color= #eee - #444
+		:font-weight normal
+				
+	#bookmarks
+		+horizontal-list
+		:float left
+		li
+			a.google
+				+background-icon("icons/google_favicon.png")
+			a.facebook
+				+background-icon("icons/favicon_facebook.gif")
+				
+	#message
+		:float left
+
+	form
+		:float left
+		:margin 0 0.5em
+		input
+			:font-size 1em
+			:height 1.3em
+			:color #999
+			:margin 0.25em
+			+rounded-corners(2px)
+			:padding 0.1em 0.25em
+			:width 10em
+			:border none
+			:background #fff url("/images/icons/magnifier.png") right center no-repeat
+		
+	#user
+		:float right
+		:display block
+		:height 2em
+		:line-height 2em
+		:padding-right 15px
+		:background url("/images/icons/bullet_arrow_down.png") right 50% no-repeat
+			
+		
+	a.more
+		+replace-text("icons/bullet_arrow_down.png")
+		:display inline-block
+		:width 10px
+		:height 2em
