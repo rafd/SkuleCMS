@@ -33,6 +33,10 @@ module ApplicationHelper
     return time.strftime('%a. %b. %d %I:%M %p')
   end
   
+  def short_time(time)
+    return time.strftime('%b. %d, %I:%M %p')
+  end
+  
   def truncate_string(text, length = 30, truncate_string = "...")
     return if text.nil?
     l = length - truncate_string.chars.length

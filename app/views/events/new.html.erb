@@ -1,30 +1,35 @@
-<h2>New event</h2>
+<h2>Create a New Event</h2>
 
 <% form_for([:club, @event], :url => {:action=> 'create'}) do |f| %>
   <%= f.error_messages %>
-  
   <p>
-    <%= f.label :name %><br />
+    <%= f.label :name %>
+    <span>The name of your club's event. Max 40 characters.</span>
     <%= f.text_field :name %>
   </p>
   <p>
-    <%= f.label :start %><br />
+    <%= f.label :start, "Start Time" %>
+    <span>The starting time of the event.</span>
     <%= f.datetime_select :start %>
   </p>
   <p>
-    <%= f.label :finish %><br />
+    <%= f.label :finish, "End Time" %>
+    <span>The finishing time of the event.</span>
     <%= f.datetime_select :finish %>
   </p>
   <p>
-    <%= f.label :location %><br />
+    <%= f.label :location %>
+    <span>The location of the event. Max 50 characters.</span>
     <%= f.text_field :location %>
   </p>
   <p>
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
+    <%= f.label :description %>
+    <span>A description of your event. Max 200 characters.</span>
+    <%= f.text_area :description, :cols => 25, :rows => 6 %>
   </p>
   <p>
-    <%= f.label :link %><br />
+    <%= f.label :link %>
+    <span>Optional: A link to your event page/site.</span>
     <%= f.text_field :link %>
   </p>
   <p>
