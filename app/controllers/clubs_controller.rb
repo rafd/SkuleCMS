@@ -19,7 +19,8 @@ class ClubsController < ApplicationController
   # GET /clubs/1.xml
   def show
     @club = Club.find(params[:id], :include => :tags)
-
+    #@feeditems = @club.small_posts << @club.large_posts
+ 
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @club }

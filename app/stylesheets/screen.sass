@@ -1,15 +1,25 @@
-body
-	background: red
-
+//Set Up
 @import partials/base.sass
 @import partials/variables.sass
-
 +blueprint-typography
 
+//Basics
 @import partials/layout.sass
 @import partials/typography.sass
-@import partials/forms.sass
 
+//Page Elements
+@import partials/page_elements/skulebar.sass
+@import partials/page_elements/header.sass
+@import partials/page_elements/left.sass
+@import partials/page_elements/footer.sass
 
 //Site Sections
-@import partials/clubs.sass
+@import partials/site_sections/clubs.sass
+@import partials/site_sections/backend.sass
+
+//Content Types
+@import partials/content_types/forms.sass
+@import partials/content_types/feed.sass
+
+//NEW STYLE
+@import partials/newstyle.sass

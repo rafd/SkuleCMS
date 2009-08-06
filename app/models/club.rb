@@ -3,12 +3,12 @@ class Club < ActiveRecord::Base
     
   has_many      :groups, :dependent => :destroy
   has_many      :events, :dependent => :destroy
-  has_many      :large_posts, :dependent => :destroy
-  has_many      :small_posts, :dependent => :destroy
   has_many      :download_folders, :dependent => :destroy
   has_many      :admins, :dependent => :destroy
   has_many      :albums, :dependent => :destroy
-  has_many			:pages, :dependent => :destroy
+  has_many      :pages, :dependent => :destroy
+  has_many      :small_posts, :dependent => :destroy
+  has_many      :large_posts, :dependent => :destroy
 
   validates_presence_of     :name, :description, :official_name
   validates_uniqueness_of   :name, :official_name
@@ -46,5 +46,9 @@ class Club < ActiveRecord::Base
   
   def upcoming_events
     return self.events.find(:all, :order => "finish", :conditions => ["finish>=?", Time.now], :limit => 3)
+  end
+  
+  def feed_items
+  	return self.small_posts + self.large_posts
   end
 end
