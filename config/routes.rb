@@ -1,4 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :admin_sessions
+
+  map.login "login", :controller => 'admin_sessions', :action => 'new'
+  map.logout "logout", :controller => 'admin_sessions', :action => 'destroy'
   
   map.connect '/clubs/:club_id/admin/:action', :controller => 'admin_pages'
   map.connect '/search/:query/', :controller => 'search', :action => 'search'
@@ -8,6 +12,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.formatted_search "/search.:format", :controller => "search", :action => "index", :method => :get 
 
+  map.resources :admin_sessions
   map.resources :clubs, :collection => { :admin => :get } do |club|
     club.resources  :files,
                     :controller => "download_folders",
@@ -46,13 +51,6 @@ ActionController::Routing::Routes.draw do |map|
                     :collection => { :admin => :get }  
                     
   end 
-
- map.calendar "/calendar/:year/:month",
-           :controller => "calendar",
-           :action => "index",
-           :year => Time.now.year,
-           :month => Time.now.month
-
 
   map.resources :admins,
   	:updates,

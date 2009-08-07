@@ -4,12 +4,16 @@
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :user_id %><br />
-    <%= f.text_field :user_id %>
+    <%= f.label :login %><br />
+    <%= f.text_field :login %>
   </p>
   <p>
-    <%= f.label :club_id %><br />
-    <%= f.text_field :club_id %>
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>
+  </p>
+  <p>
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation %>
   </p>
   <p>
     <%= f.label :event %><br />
