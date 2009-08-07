@@ -47,6 +47,7 @@ class ClubsController < ApplicationController
   # POST /clubs.xml
   def create
     @club = Club.new(params[:club])
+    @club.web_name = @club.name
     respond_to do |format|
       if @club.save
         flash[:notice] = 'Club was successfully created.'
