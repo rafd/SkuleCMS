@@ -1,8 +1,7 @@
 class LargePostsController < ApplicationController
     before_filter :load_club
-  def load_club
-    @club = Club.find(params[:club_id])
-  end
+    before_filter :auth_admin, :only => [:admin, :new, :edit, :create, :update, :destroy]
+
   
      uses_tiny_mce :options => {
                                 :theme => 'advanced',
@@ -131,5 +130,10 @@ class LargePostsController < ApplicationController
       format.html { redirect_to(admin_club_large_posts_url) }
       format.xml  { head :ok }
     end
+  end
+  
+  private
+  def load_club
+    @club = Club.find(params[:club_id])
   end
 end

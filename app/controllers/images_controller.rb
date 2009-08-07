@@ -1,5 +1,6 @@
 class ImagesController < ApplicationController
   before_filter :load_album
+  before_filter :auth_admin, :only => [:admin, :new, :edit, :create, :update, :destroy]
   def load_album
     @album = Album.find(params[:album_id], :include => :tags)
   end

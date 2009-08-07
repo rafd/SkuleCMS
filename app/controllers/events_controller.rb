@@ -2,11 +2,8 @@ require 'icalendar'
 
 class EventsController < ApplicationController
   before_filter :load_club
-  def load_club
-    @club = Club.find(params[:club_id])
-  end
-  
-  
+  before_filter :auth_admin, :only => [:admin, :new, :edit, :create, :update, :destroy]
+
   def export_events
     @calendar = Icalendar::Calendar.new      
     if (!params[:id].blank?)
@@ -140,4 +137,11 @@ class EventsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  private
+  
+  def load_club
+    @club = Club.find(params[:club_id])
+  end
+  
 end

@@ -60,9 +60,9 @@ ActionController::Routing::Routes.draw do |map|
 
 
   map.resources :admins,
-  	:updates,
-		:images,
-		:downloads,
+              :collection => { :change_password => :get, :update_password => :post}
+
+  map.resources :updates,
 		:users,
     :tags
 

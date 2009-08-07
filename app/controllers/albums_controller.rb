@@ -1,5 +1,6 @@
 class AlbumsController < ApplicationController
   before_filter :load_club
+  before_filter :auth_admin, :only => [:admin, :new, :edit, :create, :update, :destroy]
   def load_club
     @club = Club.find(params[:club_id])
   end
