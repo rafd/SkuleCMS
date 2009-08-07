@@ -1,10 +1,8 @@
 Event1:
-	name: Meeting
-	start: '2009-08-09T10:50:13-0700'
-	end: '2009-08-09T10:50:13-0700'
-	location: BA1234
-	description: Big crazy meeting.
-	link: http://www.skule.ca
-	club: WebDev
-	
-//Or use Time.now
+  name: Meeting
+  start: '2009-08-09T10:50:13-0700'
+  finish: '2009-08-09T10:50:13-0700'
+  location: BA1234
+  description: Big crazy meeting.
+  link: http://www.skule.ca
+  club: WebDev
