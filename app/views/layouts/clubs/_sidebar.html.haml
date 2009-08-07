@@ -18,12 +18,10 @@
 		%ul
 			-@club.upcoming_events.each do |event|
 				%li
+					=short_time(event.start)
+					%br/
 					= event.name
 					%em= event.location
-					,
-					=format_time(event.start)
-					-
-					=format_time(event.finish)
 	%div#widget
 		%h4 Dev Links
 		%ul

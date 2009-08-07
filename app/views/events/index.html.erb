@@ -2,7 +2,6 @@
 
 <table>
   <tr>
-    <th>User</th>
     <th>Event Name</th>
     <th>Start</th>
     <th>End</th>
@@ -13,7 +12,6 @@
 
 <% @events.each do |event| %>
   <tr>
-    <td><%=h event.user.name%></td>
     <td><%=h event.name%></td>
     <td><%=h format_time(event.start) %></td>
     <td><%=h format_time(event.finish) %></td>
@@ -26,4 +24,4 @@
 </table>
 
 <br />
-<%= link_to 'ICal Me', :action => 'export_events', :club_id => @club %>
+<%= link_to 'ICal Format', :action => 'export_events', :club_id => @club %>
