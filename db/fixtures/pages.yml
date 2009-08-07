@@ -12,3 +12,8 @@ Page3:
   title: Constitution
   content: We will remain cool.
   club: WebDev
+  
+Page4:
+  title: Links
+  content: Check out <a href="http://myego.ca/webdev/wiki">our wiki</a>.
+  club: WebDev

@@ -1,12 +1,17 @@
-%div#left
-	%ul.filter
-		%li
-			= "All"
-		%li
-			= link_to "Updates", '#'
-		%li
-			= link_to "Posts", '#'
-		%li
-			= link_to "Events", '#'
-		%li
-			= link_to "Photos", '#'
+#left
+	-if @controller.controller_name == "clubs" && @controller.action_name == "show"
+		%ul.filter
+			%li= "All"
+			%li= link_to "Updates", '#'
+			%li= link_to "Posts", '#'
+			%li= link_to "Events", '#'
+			%li= link_to "Photos", '#'
+	-else
+		-if @club.pages	
+			%ul.filter
+				-@club.pages.each do |page|
+					%li= link_to_unless_current page.title, :controller=> 'pages', :action=> 'show', :id => page
+		
+		%ul.filter
+			%li= link_to "Photos", "#"
+			%li= link_to "Members", "#"

@@ -1,0 +1,759 @@
+
+Dragonboat:
+  name: Iron Dragons
+  official_name: Iron Dragons
+  description: UofT Engineering Dragonboat Team
+  tagline: Engineering Dragonboat Team
+  website: http://dragonboat.skule.ca/
+  contact: dragonboat@skule.ca
+  affiliated: true
+#  tags: Sports
+
+############# OFFICIAL LISTING #################
+
+CinemaBlueRoom:
+  name: Cinema Blue Room 
+  contact: irena.mahdavi@utoronto.ca
+  affiliated: true
+
+BlueSkySolar:
+  name: Solar Car
+  official_name: University of Toronto Blue Sky Solar Racing
+  website: http://www.blueskysolar.utoronto.ca
+  affiliated: true
+  contact: blueskysolar@utoronto.ca 
+
+UTEC:
+  name: UTEC 
+  official_name: University of Toronto Eco-Marathon Club 
+  website: http://www.utec.skule.ca 
+  contact: contactus@utec.skule.ca 
+  affiliated: true
+#  tags: Sports
+  
+NBTC:
+  name: NBTC
+  official_name: National Business and Technology Conference 
+  website: http://www.nbtc.ca/
+  contact: jane.ip@nbtc.ca 
+  affiliated: true
+#  tags: Event
+
+LoveOfFilm:
+  name: For the Love of Film
+  official_name:
+  tagline: A Society for Film Hobbyists 
+  website:
+  contact: yw.wang@utoronto.ca 
+  affiliated: true
+#  tags: Arts, Film
+
+CESA:
+  name: CESA
+  official_name: Chinese Engineering Student's Association 
+  website: http://www.cesa.skule.ca 
+  contact: info@cesa.skule.ca
+  affiliated: true
+#  tags: Cultural
+
+UTCC:
+  name: UTCC
+  official_name: University of Toronto Concrete Canoe Team 
+  tagline: Concrete Canoe
+  website: http://www.canoe.skule.ca 
+  contact: ut.canoe@gmail.com 
+  affiliated: true
+#  tags: Design
+
+Orchestra:
+  name: Skule Orchestra 
+  official_name:
+  website: http://www.music.skule.ca/orchestra 
+  contact: orchestra@skule.ca 
+  affiliated: true
+#  tags: Music
+
+CUBE:
+  name: CUBE
+  official_name: Club for Undergraduate Biomedical Engineering 
+  website: http://www.cube.skule.ca 
+  contact: cube@skule.ca
+  affiliated: true
+#  tags: 
+
+Nanoclub:
+  name: Nanoclub 
+  official_name:
+  website:
+  contact: 
+  affiliated: true
+#  tags: 
+
+Nanoclub:
+  name: Nanoclub 
+  official_name:
+  website: http://www.nano.skule.ca 
+  contact: uoft.nanoclub@gmail.com
+  affiliated: true
+#  tags: 
+
+FSAE:
+  name: FSAE
+  official_name: The University of Toronto Formula SAE Racing Team 
+  tagline: Formula SAE
+  website: http://www.fsae.utoronto.ca 
+  contact: business@fase.utoronto.ca 
+  affiliated: true
+#  tags: 
+
+UTEFR:
+  name: UTEFR 
+  official_name: University of Toronto Engineering First Responders 
+  tagline: UofT First Responders
+  website: http://www.firstaid.skule.ca 
+  contact: firstaid@skule.ca 
+  affiliated: true
+#  tags: 
+
+WISE:
+  name: WISE
+  official_name: Women in Science and Engineering 
+  website: http://www.wise.skule.ca
+  contact: wise.club@utoronto.ca 
+  affiliated: true
+#  tags: 
+
+MA:
+  name: Material Advantage
+  official_name: Material Advantage at the University of Toronto 
+  website: http://www.asm.skule.ca 
+  contact: chair@asm.skule.ca 
+  affiliated: true
+#  tags: 
+
+RiseAndImprovize:
+  name: Rise and Improvize
+  tagline: Dance Club
+  official_name: Rise and Improvize Dance Club
+  website: http://www.rai.skule.ca/drupal-6.4/
+  contact: rai.danceclub@gmail.com 
+  affiliated: true
+#  tags: Dance, Arts
+
+FIRM:
+  name: FIRM
+  official_name: Friends of Interdisciplinary Research in Medicine 
+  website:
+  contact: firstatut@gmail.com 
+  affiliated: true
+#  tags: 
+
+iGEM:
+  name: iGEM  
+  official_name: BlueGenes
+  website: http://www.igem.skule.ca
+  contact: igem@skule.ca
+  affiliated: true
+#  tags: 
+
+ECCC:
+  name: ECCC 
+  official_name: Engineering Chinese Culture Club 
+  website: http://www.uteccc.org
+  contact: peter@uteccc.org
+  affiliated: true
+#  tags: 
+
+IESA:
+  name: IESA 
+  official_name: Iranian Engineering Students' Association 
+  website:
+  contact: iesauoft@gmail.com
+  affiliated: true
+#  tags: 
+
+OWWA:
+  name: OWWA
+  official_name: Ontario Water Works Association
+  website: 
+  contact: utoronto.owwa@gmail.com
+  affiliated: true
+#  tags: 
+
+ClimbingClub:
+  name: 
+  official_name: Skule Climbing Club
+  website: http://www.climbingclub.skule.ca
+  contact: climblingclub@skule.ca
+  affiliated: true
+#  tags: 
+
+UTCA:
+  name: UTCA
+  official_name: University of Toronto Consulting Association
+  tagline: UofT Consulting Association
+  website: http://www.utconsulting.ca/
+  contact: utca.contact@gmail.com
+  affiliated: true
+#  tags: ProfDev
+
+MDA:
+  name: MDA
+  official_name: University of Toronto Mechatronics Design Association
+  website: http://mda.sa.utoronto.ca
+  contact: mech.design@utoronto.ca
+  affiliated: true
+#  tags: 
+
+SMTA:
+  name: SMTA
+  official_name: Surface Mount Technology Association
+  website: http://www.smta.org
+  contact: nelson.to@utoronto.ca
+  affiliated: true
+#  tags: 
+
+CareerPaths:
+  name: 
+  official_name: Career Paths 
+  website: 
+  contact: careerpaths.uoft@gmail.com
+  affiliated: true
+#  tags: 
+
+StageBand:
+  name: 
+  official_name: Skule Stage Band 
+  website: http://www.music.skule.ca/stageband
+  contact: stageband@skule.ca 
+  affiliated: true
+#  tags: 
+
+ASX:
+  name: ASX
+  official_name: Astronomy and Space Exploration Society 
+  website: asx.sa.utoronto.ca
+  contact: space.society@utoronto.ca
+  affiliated: true
+#  tags: 
+
+ELG:
+  name: ELG
+  official_name: Engineering Lego Group  
+  website: http://lego.skule.ca
+  contact: lego@skule.ca
+  affiliated: true
+#  tags: 
+
+EyesOfHope:
+  name:  
+  official_name: Eyes of Hope 
+  website: 
+  contact: eyesofhope.uoft@gmail.com
+  affiliated: true
+#  tags: 
+
+CrumpledPaper:
+  name: Crumpled Paper
+  official_name: Crumpled Paper Arts and Creative Writing Magazine  
+  website: http://crumpledpaper.skule.ca
+  contact: crumpledpaper@skule.ca
+  affiliated: true
+#  tags: Arts, Publications
+
+IIE:
+  name: IIE
+  official_name: Institute of Industrial Engineering
+  website: http://www.mie.utoronto.ca/csie
+  contact: iie@skule.ca
+  affiliated: true
+#  tags: Chapter
+
+ISPE:
+  name: ISPE
+  official_name: UofT Interantional Society of Pharmaceutical Engineering 
+  website: http://ispe.skule.ca
+  contact: ispe@skule.ca 
+  affiliated: true
+#  tags: 
+
+WEAO:
+  name: WEAO
+  official_name: UofT Student Chapter of the Water Environment Association of Ontario 
+  website: http://www.weao.org/students/Chapters/University-of-Toronto-Student-Chapter.html 
+  contact: weao.group@utoronto.ca
+  affiliated: true
+#  tags: 
+
+UTAT:
+  name: UTAT
+  official_name: University of Toronto Aeronautics Team 
+  website: http://utat.skule.ca
+  contact: utat@utat.skule.ca
+  affiliated: true
+#  tags: 
+
+UTET:
+  name: UTET
+  official_name: University of Toronto Engineering Toastmasters 
+  website: http://toastmasters.skule.ca 
+  contact: toastmasters@skule.ca
+  affiliated: true
+#  tags: 
+
+EWB:
+  name: EWB
+  official_name: Engineerings Without Borders, UofT Chapter
+  website: http://www.utoronto.ewb.ca
+  contact: utoronto@ewb.ca
+  affiliated: true
+#  tags: 
+
+SSBB:
+  name: SSBB
+  official_name: Skule Stage Band Blue 
+  website: http://music.skule.ca/sbb/index.php
+  contact: stagebandblue@skule.ca
+  affiliated: true
+#  tags: 
+
+PhotographyClub:
+  name: Photography Club
+  official_name: University of Toronto Engineering Photography Club
+  website: http://photography.skule.ca
+  contact: photography@skule.ca
+  affiliated: true
+#  tags: 
+
+E4C:
+  name: E4C
+  official_name: Engineers For Christ
+  website: 
+  contact: e4christ@hotmail.com
+  affiliated: true
+#  tags: 
+
+
+########## DEPARTMENT CLUBS #####################
+
+MINCLUB:
+  name: Min Club
+  official_name: Undergraduate Mineral Engineering Club 
+  website: 
+  contact: minclub@skule.ca
+  affiliated: true
+#  tags: Department Club
+
+CIVCLUB:
+  name: Civ Club
+  official_name: Undergraduate Civil Engineering Club 
+  website: 
+  contact: civclub@skule.ca
+  affiliated: true
+#  tags: Department Club
+
+CHEMCLUB:
+  name: Chem Club
+  official_name: Undergraduate Chemical Engineering Club 
+  website: 
+  contact: chemclub@skule.ca
+  affiliated: true
+#  tags: Department Club
+
+MSECLUB:
+  name: MSE Club 
+  official_name: Undergraduate Materials Engineering Club 
+  website: 
+  contact: mseclub@skule.ca
+  affiliated: true
+#  tags: Department Club
+
+MECHCLUB:
+  name: Mech Club
+  official_name: Undergraduate Mechanical Engineering Club 
+  website: 
+  contact: mechclub@skule.ca
+  affiliated: true
+#  tags: Department Club
+
+INDYCLUB:
+  name: Indy Club
+  official_name: Undergraduate Industrial Engineering Club 
+  website: 
+  contact: indy@skule.ca
+  affiliated: true
+#  tags: Department Club
+
+ECECLUB:
+  name: ECE Club
+  official_name: Undergraduate Electrical and Computer Engineering Club 
+  website: 
+  contact: ececlub@skule.ca
+  affiliated: true
+#  tags: Department Club
+
+ENGSCICLUB:
+  name: EngSci Club
+  official_name: Undergraduate Engineering Science Club 
+  website: http://engsci.skule.ca/
+  contact: engsciclub@skule.ca 
+  affiliated: true
+#  tags: Department Club
+
+TRACKONE:
+  name: TrackOne Club
+  official_name: Undergraduate TrackOne Engineering Club
+  website: http://trackone.skule.ca
+  contact: 
+  affiliated: true
+#  tags: Department Club
+
+
+######### OTHER SITES HOSTED AT SKULE #######
+
+ASME:
+  name: ASME
+  official_name: American Society of Mechanical Engineers, UofT Student Section
+  website: http://asme.skule.ca/
+  contact: 
+  affiliated: false
+#  tags: Chapter
+
+BESA:
+  name: BESA
+  official_name: Biomedical Engineering Students' Association
+  website: http://besa.skule.ca/
+  contact: 
+  affiliated: false
+#  tags: 
+
+BlueAndGold:
+  name: Blue & Gold
+  official_name: 
+  website: http://blueandgold.skule.ca
+  contact: 
+  affiliated: false
+#  tags: 
+
+Cannon:
+  name: The Cannon
+  official_name: 
+  website: http://cannon.skule.ca
+  contact: 
+  affiliated: false
+#  tags: Publications
+
+CannonBall:
+  name: CannonBall
+  official_name: 
+  website: http://cannonball.skule.ca 
+  contact: 
+  affiliated: false
+#  tags: Event, Dance
+
+CareerFair:
+  name: Career Fair
+  official_name: 
+  website: http://careerfair.skule.ca/
+  contact: 
+  affiliated: false
+#  tags: Event
+
+Census:
+  name: Census 
+  official_name: 
+  website: http://census.skule.ca/
+  contact: 
+  affiliated: false
+#  tags: 
+
+CivYearbook:
+  name: Civ Yearbook
+  official_name: 
+  website: http://civyearbook.skule.ca/
+  contact: 
+  affiliated: false
+#  tags: 
+
+CSCHE:
+  name: CSCHE 
+  official_name: Canadian Society for Chemical Engineering, Student Branch
+  website: http://csche.skule.ca/
+  contact: 
+  affiliated: false
+#  tags: 
+
+EAA:
+  name: EAA 
+  official_name: Engineering Athletics Association 
+  website: http://eaa.skule.ca/
+  contact: 
+  affiliated: false
+#  tags: 
+
+ESEC:
+  name: ESEC
+  official_name: Engineering Science Education Conference
+  website: http://esec.skule.ca
+  contact: 
+  affiliated: false
+#  tags: Event, Conference
+
+GodivaWeek:
+  name: Godiva Week
+  official_name: 
+  website: http://godivaweek.skule.ca
+  contact: 
+  affiliated: false
+#  tags: Event
+
+GradBall:
+  name: Grad Ball
+  official_name: 
+  website: http://gradball.skule.ca
+  contact: 
+  affiliated: false
+#  tags: Event, Dance
+
+IEE:
+  name: IEE 
+  official_name: Institute of Industrial Engineers, Chapter 889 
+  website: http://iie.skule.ca/
+  contact: 
+  affiliated: false
+#  tags: Chapter
+
+Improv:
+  name: Improv 
+  official_name: 
+  website: http://improv.skule.ca/
+  contact: 
+  affiliated: false
+#  tags: 
+
+JESA:
+  name: JESA 
+  official_name: Jewish Engineering Students' Association
+  website: http://jesa.skule.ca
+  contact: 
+  affiliated: false
+#  tags: 
+
+Juggling:
+  name: Juggling Club
+  official_name: UofT Engineering Juggling Club
+  website: http://juggling.skule.ca/
+  contact: 
+  affiliated: false
+#  tags: 
+
+LGMB:
+  name: LGMB
+  official_name: Lady Godiva Memorial Bnad 
+  website: http://lgmb.skule.ca/ 
+  contact: 
+  affiliated: false
+#  tags: Music
+
+Lockers:
+  name: Lockers
+  official_name: 
+  website: http://lockers.skule.ca
+  contact: 
+  affiliated: false
+#  tags: 
+
+Moment:
+  name: Moment 
+  official_name: 
+  website: http://moment.skule.ca
+  contact: 
+  affiliated: false
+#  tags: Event, Dance
+
+Music:
+  name: Music
+  official_name: 
+  website: http://music.skule.ca
+  contact: 
+  affiliated: false
+#  tags: Music
+
+NSight:
+  name: NSight 
+  official_name: 
+  website: http://nsight.skule.ca
+  contact: 
+  affiliated: false
+#  tags: 
+
+PEOClub:
+  name: PEO Student Club 
+  official_name: Professional Engineers of Ontario, Student Club
+  website: http://peoclub.skule.ca
+  contact: 
+  affiliated: false
+#  tags: 
+
+PEOConference:
+  name: PEO Conference
+  official_name: 
+  website: http://peoconference.skule.ca
+  contact: 
+  affiliated: false
+#  tags: Event, Conference
+
+Quest:
+  name: Quest
+  official_name: 
+  website: http://quest.skule.ca
+  contact: 
+  affiliated: false
+#  tags: Event
+
+SAF:
+  name: SAF 
+  official_name: Skule Arts Festival 
+  website: http://saf.skule.ca/
+  contact: 
+  affiliated: false
+#  tags: Events, Arts
+
+Snowboard:
+  name: Snowboard Design Team
+  official_name: UofT Snowboard Design Team
+  website: http://snowboard.skule.ca
+  contact: 
+  affiliated: false
+#  tags: 
+
+Toboggan:
+  name: Concrete Toboggan
+  official_name: UofT Concrete Toboggan
+  website: http://toboggan.skule.ca/
+  contact:
+  affiliated: false
+#  tags:
+
+######## OFFICERS & ENGSOC ########
+
+VPAcademic:
+  name: VP Academic
+  official_name: 
+  website: http://academic.skule.ca/
+  contact: 
+  affiliated: true
+#  tags: Officer, EngSoc
+
+VPFinance:
+  name: VP Finance
+  official_name: 
+  website: http://finance.skule.ca/
+  contact: 
+  affiliated: true
+#  tags: Officer, EngSoc
+
+VPExternal:
+  name: VP External
+  official_name: 
+  website: http://external.skule.ca/
+  contact:
+  affiliated: true
+#  tags: Officer, EngSoc
+
+EngCom:
+  name: EngCom
+  official_name: 
+  website: http://engcom.skule.ca/
+  contact:
+  affiliated: false
+#  tags: EngSoc, Director
+
+Hiskule:
+  name: Hi-Skule
+  official_name: 
+  website: http://hiskule.skule.ca
+  contact:
+  affiliated: false
+#  tags: EngSoc, Director
+
+SkulePoints:
+  name: Skule Points
+  official_name: 
+  website: http://points.skule.ca/
+  contact:
+  affiliated: false
+#  tags: EngSoc, Director
+
+SIC:
+  name: SIC 
+  official_name: Student Issues Committee
+  website: http://sic.skule.ca
+  contact: 
+  affiliated: false
+#  tags: EngSoc, Director
+
+SkuleBook:
+  name: SkuleBook
+  official_name: 
+  website: http://skulebook.skule.ca
+  contact: 
+  affiliated: false
+#  tags: EngSoc, Publication, Director
+
+SkuleNite:
+  name: SkuleNite
+  official_name: 
+  website: http://skulenite.skule.ca
+  contact: 
+  affiliated: false
+#  tags: EngSoc, Event, Dance, Director
+
+Sponsorship:
+  name: Sponsorship
+  official_name: 
+  website: http://sponsorship.skule.ca
+  contact:
+  affiliated: false
+#  tags: EngSoc, Director
+
+Stores:
+  name: Stores
+  official_name: 
+  website: http://stores.skule.ca
+  contact:
+  affiliated: false
+#  tags: EngSoc, Director
+
+Suds:
+  name: Suds
+  official_name: 
+  website: http://suds.skule.ca
+  contact: 
+  affiliated: false
+#  tags: EngSoc, Director
+
+Toike:
+  name: Toike
+  official_name: 
+  website: http://toike.skule.ca
+  contact:
+  affiliated: false
+#  tags: EngSoc, Director, Publication
+
+Archivist:
+  name: Traditions
+  official_name: Archivist
+  website: http://traditions.skule.ca
+  contact: 
+  affiliated: false
+#  tags: EngSoc, Director
+
+UTEK:
+  name: UTEK
+  official_name: UofT Engineering Kompetition 
+  website: http://utek.skule.ca/
+  contact: 
+  affiliated: false
+#  tags: Event, Director, EngSoc
+

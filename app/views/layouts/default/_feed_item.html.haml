@@ -1,8 +1,9 @@
 =#TODO include feed_item.class as class of div
 =#     remove club.name if displayed on clubs page
-%div.feed_item[feed_item]
+.feed_item[feed_item]
 	%h4= feed_item.title if feed_item.respond_to?("title")
-	%div.content= feed_item.content
-	- unless controller.controller_name == 'clubs'
-		=link_to feed_item.club.name, {:controller=>'clubs', :action => 'show', :id => feed_item.club}, :class => 'source'
-
+	.content= feed_item.content
+	.source
+		- unless controller.controller_name == 'clubs'
+			=link_to feed_item.club.name, {:controller=>'clubs', :action => 'show', :id => feed_item.club}
+		= short_time(feed_item.updated_at)

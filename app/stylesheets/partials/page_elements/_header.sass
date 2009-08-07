@@ -6,24 +6,35 @@
 		:width 40%
 		:line-height= !header_height
 		:margin 0
+		:position relative 
+		//temp, for 'alpha' icon
 		
 		a
 			:color= !color_foreground
+			:float left
 		a:hover
 			:text-decoration none
 		
-		img
+		.avatar
 			:float left
-			:width= !header_height
-			:height= !header_height
-			:background= !color_foreground
-			:margin-right 0.25em
-			+rounded-corners(0 5px 0 5px)			
+			:margin-right 0.25em		
+			
+		.alpha
+			:background red
+			+rounded-corners(0 3px 0 3px)
+			:color #fff
+			:font-size 0.3em
+			:padding 0 0.5em
+			:text-transform uppercase
+			:margin 0.4em 0.5em
+			:height 1.5em
+			:line-height 1.5em
+			:float left
 	#menu
 		+horizontal-list
 		:float right
 		:font-size 1.25em
-		:margin= 0.9em 0
+		:margin 0.9em 0
 		
 		li
 			:margin 0 0.25em
@@ -45,13 +56,13 @@
 		
 	#banner
 		:background= url("/images/banners/skule.png") !color_foreground center center
-		+rounded-corners(5px)
-		:height= !banner_height
+		+rounded-corners(0 5px 0 5px)
+		:max-height= !banner_height
 		:margin 0.5em 0 0 0
 	
 		#info
 			:background white
-			:margin= (!banner_height - !banner_info_block_height + 20px)/2 0
+			:margin= 2em 0
 			:height= !banner_info_block_height -20px
 			:width 35%
 			:padding 10px 2em 10px 0

@@ -1,13 +1,13 @@
-%div#footer
+#footer
 	-#
-		%div#address
+		#address
 			%h2 Skule.ca
 			%p
 				B740 Sandford Fleming Building <br />
 				10 King's College Road <br />
 				Toronto, Ontario, Canada M5S 3G4
 
-		%div#sitemap
+		#sitemap
 			%dl
 				%dt About
 				%dd= link_to "History", "#"
@@ -25,19 +25,25 @@
 				%dd= link_to "Misc", "#"
 			
 			
-	%div#copyright
+	#copyright
 		Copyright © 1970-2009 
-		= link_to "University of Toronto Engineering Society", "http://engsoc.skule.ca/"
-		\. 
+		- if @club
+			= (link_to (@club.official_name || @club.name), :controller => "clubs", :action => 'show', :id => @club)+ "."
+		- else
+			= (link_to "University of Toronto Engineering Society", "http://engsoc.skule.ca/") + "." 
 		All Rights Reserved
-	-#		
-		| 
-		= link_to "Terms of Use", "#"
-		and 
-		= link_to "Privacy Policy", "#"
-		| 
-		= link_to "Help", "#"
-		and 
-		= link_to "Feedback", "#" 
-		| Updated Jan. 30, 2009
+		-#		
+			| 
+			= link_to "Terms of Use", "#"
+			and 
+			= link_to "Privacy Policy", "#"
+			| 
+			= link_to "Help", "#"
+			and 
+			= link_to "Feedback", "#"
+		- if @page
+			| Updated
+			=short_time(@page.updated_at)
+		-else
+			| Updated Aug. 7, 2009
 

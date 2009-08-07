@@ -30,11 +30,11 @@ module ApplicationHelper
   end
 
   def format_time(time)
-    return time.strftime('%a. %b. %d %I:%M %p')
+    return time.strftime('%a. %b. %e %l:%M %p')
   end
   
   def short_time(time)
-    return time.strftime('%b. %d, %I:%M %p')
+    return time.strftime('%b. %e, %l:%M %p')
   end
   
   def truncate_string(text, length = 30, truncate_string = "...")
