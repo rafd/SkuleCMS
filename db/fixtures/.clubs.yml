@@ -1,13 +1,4 @@
-WebDev:
-  name: Skule WebDev
-  official_name: Skule WebDev
-  description: Description here.
-  tagline: We Make Web Applications
-  website: http://webdev.skule.ca/
-  contact: webmaster@skule.ca
-  affiliated: false
-#  tags: 
-  
+
 Dragonboat:
   name: Iron Dragons
   official_name: Iron Dragons
@@ -16,17 +7,7 @@ Dragonboat:
   website: http://dragonboat.skule.ca/
   contact: dragonboat@skule.ca
   affiliated: true
-  
-FroshWeek:
-  name: F!rosh Week
-  official_name: Orientation
-  description: UofT Engineering Orientation
-  tagline:  Engineering Orientation
-  website: http://orientation.skule.ca/
-  contact: orientation@skule.ca
-  affiliated: false
-#  tags: Event  
-
+#  tags: Sports
 
 ############# OFFICIAL LISTING #################
 

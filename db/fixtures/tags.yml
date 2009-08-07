@@ -1,3 +1,46 @@
-Event:
-  name: event
+web:
+  name: web
+  taggings_count: 1
+
+design:
+  name: design
+  taggings_count: 1
+
+skule:
+  name: skule
+  taggings_count: 2
+
+f!rosh:
+  name: f!rosh
+  taggings_count: 1
+  
+frilly:
+  name: frilly
+  taggings_count: 1
+  
+sosh:
+  name: sosh
+  taggings_count: 1
+  
+fun:
+  name: fun
+  taggings_count: 1
+
+leadur:
+  name: leadur
+  taggings_count: 1
+  
+cute:
+  name: cute
+  taggings_count: 1
+  
+cuddly:
+  name: cuddly
+  taggings_count: 1
+  
+edible:
+  name: edible
+  taggings_count: 1
+  
+  
   
