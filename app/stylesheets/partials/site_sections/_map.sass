@@ -1,0 +1,18 @@
+body.map
+	#main
+		#content
+			+column(20)
+
+
+#map
+	:background url("/images/map.jpg") no-repeat top left
+	:height 200px
+	+rounded-corners
+	:padding-top 100px
+	
+	h2
+		:padding 1em
+		:background #fff
+		:border-left= 5px solid !background_left
+		:width 25%
+		+rounded-corners(0 5px 5px 0)

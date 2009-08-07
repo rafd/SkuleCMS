@@ -2,5 +2,4 @@
 	<% @club.pages.each do |page| %>
 	<li><%= link_to_unless_current page.title, :controller => "pages", :action => "show", :id=> page, :club_id => @club %></li>
 	<% end if @club %>
-	<li><a href="#">...</a></li>
 </ul>

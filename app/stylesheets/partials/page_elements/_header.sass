@@ -2,7 +2,6 @@
 	!header_height = 50px
 	margin: 0 0 0.5em 0
 	h1
-		//+replace-text("logo.png")
 		:float left
 		:width 40%
 		:line-height= !header_height
@@ -19,7 +18,7 @@
 			:height= !header_height
 			:background= !color_foreground
 			:margin-right 0.25em
-			
+			+rounded-corners(0 5px 0 5px)			
 	#menu
 		+horizontal-list
 		:float right
@@ -45,7 +44,7 @@
 				
 		
 	#banner
-		:background= url("/images/banners/dboat.png") !color_foreground
+		:background= url("/images/banners/skule.png") !color_foreground center center
 		+rounded-corners(5px)
 		:height= !banner_height
 		:margin 0.5em 0 0 0
