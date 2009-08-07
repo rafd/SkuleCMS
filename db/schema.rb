@@ -162,21 +162,18 @@ ActiveRecord::Schema.define(:version => 20090807050633) do
   add_index "tags", ["name"], :name => "index_tags_on_name"
   add_index "tags", ["taggings_count"], :name => "index_tags_on_taggings_count"
 
-  create_table "user_sessions", :force => true do |t|
+  create_table "updates", :force => true do |t|
+    t.integer  "club_id"
+    t.integer  "user_id"
+    t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "username"
-    t.string   "password"
   end
 
   create_table "users", :force => true do |t|
-    t.string   "username"
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "email"
-    t.string   "crypted_password"
-    t.string   "password_salt"
-    t.string   "persistence_token"
   end
 
 end
