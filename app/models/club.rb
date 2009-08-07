@@ -10,8 +10,13 @@ class Club < ActiveRecord::Base
   has_many      :small_posts, :dependent => :destroy
   has_many      :large_posts, :dependent => :destroy
 
-  validates_presence_of     :name, :description, :official_name
+  validates_presence_of     :name, :description, :official_name, :tagline
   validates_uniqueness_of   :name, :official_name
+  validates_length_of       :name, :maximum => 20
+  validates_length_of       :official_name, :maximum => 100
+  validates_length_of       :tagline, :in => 5..100
+  validates_length_of       :description, :in => 5..400
+
   
   after_create :create_member_list, :create_directory
   

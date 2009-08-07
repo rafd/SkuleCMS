@@ -1,0 +1,25 @@
+<div id="skulebar">
+	<%= link_to "Skule.ca", "/", :id => "skule" %>
+
+    <% form_for :club, @search, :url => {:controller => 'search', :action => 'search', :club_id => (club_id||nil)}  do |f| %>
+	  <%= text_field_with_auto_complete :search, :search, {}, { :url => formatted_search_path( :js), :select => :select_tag, :after_update_element => "submit", :frequency => 0.4, :method => :get, :param_name => 'search' } %>
+   	<% end %>
+	<%= link_to "+", {:controller => 'search', :action => 'advanced'}, :id => "search_adv" %>
+
+	<ul id="bookmarks">
+		<li><a href="http://www.google.com" class="google">Google</a></li>
+		<li><a href="http://www.facebook.com" class="facebook">Facebook</a></li>
+		<li><a href="#" class="more">More</a></li>
+	</ul>
+
+	<div id="message">
+	<%= flash[:notice] %>
+	</div>
+	<% if current_admin %>
+		<%= link_to current_admin.login, edit_admin_path(:current), :id=> 'user' %>
+		<%= link_to "Logout", logout_path %>
+	<% else %>
+		<%= link_to "Register", new_admin_path %> | 
+		<%= link_to "Login", login_path %>
+	<% end %>
+</div>

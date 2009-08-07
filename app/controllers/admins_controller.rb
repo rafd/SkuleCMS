@@ -3,17 +3,6 @@ class AdminsController < ApplicationController
   def load_club
     @club = Club.find(params[:club_id])
   end
-  
-  # GET /admins
-  # GET /admins.xml
-  def index
-    @admins = Admin.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @admins }
-    end
-  end
 
   # GET /admins/1
   # GET /admins/1.xml
@@ -46,11 +35,11 @@ class AdminsController < ApplicationController
   # POST /admins.xml
   def create
     @admin = Admin.new(params[:admin])
-
+    @admin.event = @admin.updates = @admin.member = @admin.group = @admin.file = @admin.gallery = false
     respond_to do |format|
       if @admin.save
-        flash[:notice] = 'Admin was successfully created.'
-        format.html { redirect_to(@admin) }
+        flash[:notice] = 'Registered admin.'
+        format.html { redirect_to(root_url) }
         format.xml  { render :xml => @admin, :status => :created, :location => @admin }
       else
         format.html { render :action => "new" }

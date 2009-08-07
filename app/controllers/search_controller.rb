@@ -2,8 +2,9 @@ class SearchController < ApplicationController
   layout 'application'
 
   def index
+    @query = params[:search]
     @club = []
-    if (@tagList = Tag.find(:all, :conditions => ['name LIKE ?', "%#{params[:search]}%"], :order => "name"))
+    if (@tagList = Tag.find(:all, :conditions => ['name LIKE ?', "%#{@query}%"], :order => "name"))
       @tagList.each do |tag|
         (Club.find_tagged_with(tag.name)).each do |club|
           @club << Club.find(club.id, :include => :tags)
@@ -24,10 +25,13 @@ class SearchController < ApplicationController
       else
         redirect_to(@club)
       end
-    elsif params[:club_id]
-      redirect_to :controller => 'search', :action => 'search', :query => params[:search][:search], :club_id => params[:club_id]
     else
-      redirect_to :controller => 'search', :action => 'search', :query => params[:search][:search]
+      redirect_to :controller => 'search', :action => 'search', :query => params[:search][:search], :club_id => params[:club_id]||nil
     end
   end
+  
+  def advanced
+    
+  end
+  
 end
