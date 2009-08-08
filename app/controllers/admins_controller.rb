@@ -1,18 +1,8 @@
 class AdminsController < ApplicationController
-  before_filter :load_club, :except => [:index, :show, :new, :update, :create, :edit, :destroy]
-  def load_club
-    @club = Club.find(params[:club_id])
-  end
+  before_filter :auth_change, :only => [:change_password, :update_password]
   
-  # GET /admins
-  # GET /admins.xml
   def index
     @admins = Admin.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @admins }
-    end
   end
 
   # GET /admins/1
@@ -30,7 +20,7 @@ class AdminsController < ApplicationController
   # GET /admins/new.xml
   def new
     @admin = Admin.new
-
+    @clubs = Club.all
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @admin }
@@ -40,19 +30,21 @@ class AdminsController < ApplicationController
   # GET /admins/1/edit
   def edit
     @admin = Admin.find(params[:id])
+    @clubs = Club.all
   end
 
   # POST /admins
   # POST /admins.xml
   def create
     @admin = Admin.new(params[:admin])
-
+    @admin.event = @admin.updates = @admin.member = @admin.group = @admin.file = @admin.gallery = false
     respond_to do |format|
       if @admin.save
-        flash[:notice] = 'Admin was successfully created.'
-        format.html { redirect_to(@admin) }
+        flash[:notice] = 'Registered admin.'
+        format.html { redirect_to((@admin.club_id.blank?)? new_club_path: club_admin_index_path (current_admin.club_id)) }
         format.xml  { render :xml => @admin, :status => :created, :location => @admin }
       else
+        @clubs = Club.all
         format.html { render :action => "new" }
         format.xml  { render :xml => @admin.errors, :status => :unprocessable_entity }
       end
@@ -67,46 +59,35 @@ class AdminsController < ApplicationController
     respond_to do |format|
       if @admin.update_attributes(params[:admin])
         flash[:notice] = 'Admin was successfully updated.'
-        format.html { redirect_to(@admin) }
+        format.html { redirect_to(root_url) }
         format.xml  { head :ok }
       else
+        @clubs = Club.all
         format.html { render :action => "edit" }
         format.xml  { render :xml => @admin.errors, :status => :unprocessable_entity }
       end
     end
   end
   
-  # GET /admins/files
-  def files
-    @download_folders = @club.download_folders
+  def change_password
+    @admin = current_admin
+  end
+  
+  def update_password
+    @admin = current_admin
 
     respond_to do |format|
-      format.html # downloads.html.erb
-      format.xml  { render :xml => @download_folders  }
+      if @admin.update_attributes(params[:admin])
+        flash[:notice] = 'Password was successfully changed.'
+        format.html { redirect_to(root_url) }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "change_password" }
+        format.xml  { render :xml => @admin.errors, :status => :unprocessable_entity }
+      end
     end
   end
-  
-  def show_files
-    begin
-      @download_folder = DownloadFolder.find(params[:folder])
-    rescue ActiveRecord::RecordNotFound
-      logger.error("Attempt to access invalid folder #{params[:folder]}" )
-      redirect_to_index("Invalid product" )
-    else
-      respond_to { |format| format.js }
-    end
-  end
-  
-  def hide_files
-    begin
-      @download_folder = DownloadFolder.find(params[:folder])
-    rescue ActiveRecord::RecordNotFound
-      logger.error("Attempt to access invalid folder #{params[:folder]}" )
-      redirect_to_index("Invalid product" )
-    else
-      respond_to { |format| format.js }
-    end
-  end
+
   # DELETE /admins/1
   # DELETE /admins/1.xml
   def destroy
@@ -119,5 +100,12 @@ class AdminsController < ApplicationController
     end
   end
   
+  private
+  
+  def auth_change
+    if current_admin.blank?
+      redirect_to login_path
+    end
+  end
   
 end

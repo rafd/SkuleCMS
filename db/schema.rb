@@ -9,7 +9,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090802222547) do
+ActiveRecord::Schema.define(:version => 20090807164926) do
+
+  create_table "admin_sessions", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "admins", :force => true do |t|
     t.integer  "user_id"
@@ -22,6 +27,10 @@ ActiveRecord::Schema.define(:version => 20090802222547) do
     t.boolean  "gallery"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "login"
+    t.string   "crypted_password"
+    t.string   "password_salt"
+    t.string   "persistence_token"
   end
 
   create_table "albums", :force => true do |t|
@@ -45,6 +54,7 @@ ActiveRecord::Schema.define(:version => 20090802222547) do
     t.string   "contact"
     t.boolean  "affiliated"
     t.string   "official_name"
+    t.string   "web_name"
   end
 
   create_table "download_folders", :force => true do |t|
@@ -152,6 +162,14 @@ ActiveRecord::Schema.define(:version => 20090802222547) do
 
   add_index "tags", ["name"], :name => "index_tags_on_name"
   add_index "tags", ["taggings_count"], :name => "index_tags_on_taggings_count"
+
+  create_table "updates", :force => true do |t|
+    t.integer  "club_id"
+    t.integer  "user_id"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "name"

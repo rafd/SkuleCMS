@@ -1,16 +1,21 @@
-<h1>Editing admin</h1>
+<h2>Editing admin</h2>
 
+<h3>User: <%=h @admin.login %></h3>
 <% form_for(@admin) do |f| %>
   <%= f.error_messages %>
-
   <p>
-    <%= f.label :user_id %><br />
-    <%= f.text_field :user_id %>
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>
   </p>
   <p>
-    <%= f.label :club_id %><br />
-    <%= f.text_field :club_id %>
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation %>
   </p>
+  <p>
+    <%= f.label :club_id, "Pick a Club" %><br />
+    <%= f.collection_select :club_id, @clubs, :id, :name, { :prompt => 'Select a Club'} %>
+  </p>
+	<% if true == false %>
   <p>
     <%= f.label :event %><br />
     <%= f.check_box :event %>
@@ -35,6 +40,7 @@
     <%= f.label :gallery %><br />
     <%= f.check_box :gallery %>
   </p>
+	<% end %>
   <p>
     <%= f.submit 'Update' %>
   </p>

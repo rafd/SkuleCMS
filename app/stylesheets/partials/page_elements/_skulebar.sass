@@ -1,12 +1,11 @@
 #skulebar 
-	:background #eee
-	:height 2em
+	:background= !background_main
 	:width 97%
-	:margin 0 auto 1em
+	:margin 0 auto 2em
 	+rounded-corners(0 0 2px 2px)
 	:line-height 2em
 	:height 2em
-	
+
 	#skule
 		:float left
 		+background-icon("icons/hardhat.png")
@@ -26,6 +25,8 @@
 				
 	#message
 		:float left
+		p
+			:margin 0
 
 	form
 		:float left
@@ -37,7 +38,7 @@
 			:margin 0.25em
 			+rounded-corners(2px)
 			:padding 0.1em 0.25em
-			:width 10em
+			:width 8em
 			:border none
 			:background #fff url("/images/icons/magnifier.png") right center no-repeat
 		
@@ -46,8 +47,8 @@
 		:display block
 		:height 2em
 		:line-height 2em
-		:padding-right 15px
-		:background url("/images/icons/bullet_arrow_down.png") right 50% no-repeat
+		//:padding-right 15px
+		//:background url("/images/icons/bullet_arrow_down.png") right 50% no-repeat
 			
 		
 	a.more

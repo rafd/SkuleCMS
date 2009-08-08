@@ -1,0 +1,19 @@
+//Our Mixins
+=rounded-corners(!rad = !corner_radius_default)
+	-moz-border-radius= !rad
+	-webkit-border-radius= !rad
+	
+=background-icon(!url)
+	:background= url("/images/"+!url) left center no-repeat
+	:padding-left 20px
+	:margin 0 0 0 0.25em
+	
+=opacity(!value)
+	:opacity= !value
+
+=shadow(!value)
+	-moz-box-shadow= !value
+	-webkit-box-shadow= !value
+	
+=styled-corners(!rad = !corner_radius_default)
+	+rounded-corners(0 !rad 0 !rad)

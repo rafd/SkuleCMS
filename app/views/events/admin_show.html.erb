@@ -1,13 +1,4 @@
-<p>
-  <b>Event Name:</b>
-  <%=h @event.name %>
-</p>
-
-<p>
-  <b>User:</b>
-  <%=h @event.user.name %>
-</p>
-
+<h2><%=h @event.name %></h2>
 <p>
   <b>Start:</b>
   <%=h format_time(@event.start) %>
@@ -28,10 +19,13 @@
   <%=h @event.description %>
 </p>
 
+<% if !@event.link.blank? %>
 <p>
   <b>Link:</b>
-  <%=h @event.link %>
+  <%= link_to @event.url, @event.url %>
 </p>
+<% end %>
+
 
 <p>
 	<% if @event.created_at != @event.updated_at%>
@@ -41,5 +35,6 @@
 </p>
 
 <%= link_to 'ICal Me', :action => 'export_events', :club_id => @club, :id => @event %> |
+<%= link_to 'ICal Format', :action => 'export_events', :club_id => @club, :id => @event %> |
 <%= link_to 'Edit', :action => 'edit', :id => @event %> |
 <%= link_to 'Back', :action => 'admin' %>

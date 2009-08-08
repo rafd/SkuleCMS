@@ -1,9 +1,22 @@
 #feed
 	.feed_item
-		+rounded-corners
-		:background #ececec
-		:margin 0.5em
-		:padding 0.25em
+		:margin 1em
+		
 		h4
 			:margin 0
+			
+		&.small_post
+			
+			div.content
+				:font-size 1.5em
+				:background #ececec
+				+styled-corners
+				:padding 1em
+				
+		&.large_post
+		
+		.source
+			:text-align right
+			:display block
+			:color #999
 			

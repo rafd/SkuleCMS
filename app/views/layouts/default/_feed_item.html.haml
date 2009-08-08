@@ -1,35 +1,36 @@
-=#TODO include feed_item.class as class of div
-=#     remove club.name if displayed on clubs page
+.feed_item[feed_item]
+	-case feed_item.class.to_s
+		-when "SmallPost" then
+			.content
+				%i "
+				%i= feed_item.content	
+				%i "
 
-%div.feed_item
-	- if feed_item.respond_to?("title")
-		%i Large Post:
-		%strong= feed_item.title
-		%br
-		%br
-		%div= feed_item.content
-	- elsif (feed_item.respond_to?("start") && feed_item.respond_to?("finish"))
-		%i Event:
-		%strong= feed_item.name
-		%br
-		%br
-		%div Starting:
-		%div= feed_item.start.to_datetime.strftime("%a, %d %b %Y, %l:%M %P").squeeze(' ')
-		%br
-		%div Where:
-		%div= feed_item.location
-		%br
-	- else
-		%i BIG OPEN QUOTE
-		%strong= feed_item.content
-		%i BIG CLOSE QUOTE
-		%br
-		%br
-	
-	%strong Created On: 
-	%h4= feed_item.created_at.to_datetime.strftime("%a, %d %b %Y, %l:%M %P").squeeze(' ')
-	%h4 linkto here
-	
-	- unless controller.controller_name == 'clubs'
-		%div= link_to feed_item.club.name, :controller=>'clubs', :action => 'show', :id => feed_item.club
+		-when "LargePost" then
+			%h3= feed_item.title
+			.content
+				%p= feed_item.content
+		-when "Event" then
+			%i Event:
+			%strong= feed_item.name
+			%br
+			%br
+			%div Starting:
+			%div= feed_item.start.to_datetime.strftime("%a, %d %b %Y, %l:%M %P").squeeze(' ')
+			%br
+			%div Where:
+			%div= feed_item.location
+			%br
+			.content= feed_item.description
+			%em= feed_item.location
+			=short_time(feed_item.start)	
+		-else
+			= feed_item.class	
+	.source
+		- unless controller.controller_name == 'clubs'
+			=link_to feed_item.club.name, {:controller=>'clubs', :action => 'show', :id => feed_item.club}
+		= short_time(feed_item.updated_at)
 
+=# if feed_item.respond_to?("title")
+	
+	

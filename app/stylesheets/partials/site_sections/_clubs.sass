@@ -1,49 +1,59 @@
-
-
+body.clubs.index
+	#main
+		#content
+			+column(20)
 
 // CLUB DIRECTORY
 // /clubs/index
-
-.club
-	:margin 0.5em
-	:width 45%
-	:float left
-	:position relative
+#clubs_container
+	:margin 0.5em 1em
 	
-	//logo
-	img
-		:width 50px
-		:height 50px
+	.club
+		:margin 0 0.5% 0.5em 0
+		:padding 2px
+		:width 32%
 		:float left
-		:border 1px solid gray
-		:margin-right 0.5em
+		:position relative
+		
+		&.onskuleclubs
+			:background #ececec
+			+styled-corners
+			ul li a
+				:color #999
 	
-	//name
-	h3
-		:margin 0
-		:font-size 1.25em
+		//logo
+		.avatar
+			:float left
+			:margin-right 0.5em
 	
-	//tagline
-	span
-		:font-style italic
-		:width 13em
-		:height 1.5em
-		:overflow hidden
-		:display block
+		//name
+		h3
+			:margin 0
+			:font-size 1.25em
 	
-	//tags
-	ul
-		+horizontal-list
-		li
-			//:margin 0 0.25em 0 0
-			:padding 0 0.5em 0 0
-			a
-				:margin 0
-	//affiliated
-	.affiliated
-		:width 5px
-		:height 5px
-		:position absolute
-		:top 0
-		:left 0
-		:background gold
+		//tagline
+		span
+			:font-style italic
+			:width 15em
+			:height 1.3em
+			:display block
+			:overflow hidden
+			:line-height 1.3em
+	
+		//tags
+		ul
+			+horizontal-list
+			li
+				//:margin 0 0.25em 0 0
+				:padding 0 0.5em 0 0
+				a
+					:margin 0
+					:color #ccc
+		//affiliated
+		.affiliated
+			:width 5px
+			:height 5px
+			:position absolute
+			:top 0
+			:left 0
+			:background gold

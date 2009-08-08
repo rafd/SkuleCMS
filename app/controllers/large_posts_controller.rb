@@ -1,8 +1,7 @@
 class LargePostsController < ApplicationController
     before_filter :load_club
-  def load_club
-    @club = Club.find(params[:club_id])
-  end
+    before_filter :auth_admin, :only => [:admin, :new, :edit, :create, :update, :destroy]
+
   
      uses_tiny_mce :options => {
                                 :theme => 'advanced',
@@ -133,8 +132,11 @@ class LargePostsController < ApplicationController
     end
   end
   
-  def time_stamp(time)
-    time.to_datetime.strftime("%a, %d %b %Y, %l:%M %P").squeeze(' ')
+
+
+  private
+  def load_club
+    @club = Club.find(params[:club_id])
   end
-  
+
 end

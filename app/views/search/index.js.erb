@@ -2,7 +2,7 @@
 	<ul id = "auto_search_results">
 		<% @club.uniq.each do |club| %>
 			<li>
-				<h4 class = "entry_name"><%= club.name %></h4>
+				<h4 class = "entry_name select_tag"><%= club.name %></h4>
 				<span class = "description"><%= club.description %></span>
 				<span class = "tag">Tag:
 				<% club.tags.each do |tag| %>
@@ -13,5 +13,10 @@
 				</span>
 			</li>
 		<% end %>
+		<li>
+			<h5 class = "entry_name">
+				Search "<span class = "select_tag"><%= @query %></span>"
+			</h5>
+		</li>
 	</ul>
 <% end %>
