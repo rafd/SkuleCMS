@@ -1,0 +1,6 @@
+- if @club.groups.count > 0 && @club.members.count > 0
+	.widget
+		%h4 Club Members
+		%ul
+			- @club.members.each do |member|
+				=h member.name
