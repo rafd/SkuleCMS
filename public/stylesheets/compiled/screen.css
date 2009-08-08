@@ -772,7 +772,7 @@ body.map #main #content {
   #map h2 {
     padding: 1em;
     background: #fff;
-    border-left: 5px solid #cccccc;
+    border-left: 10px solid #cccccc;
     width: 25%;
     -moz-border-radius: 0 5px 5px 0;
     -webkit-border-radius: 0 5px 5px 0; }

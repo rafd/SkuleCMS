@@ -3,29 +3,15 @@
 		= render :partial => 'layouts/default/avatar', :locals => {:club => feed_item.club}
 	-case feed_item.class.to_s
 		-when "SmallPost" then
-			.content
-				%i "
-				%i= feed_item.content	
-				%i "
-
+			.content= feed_item.content	
 		-when "LargePost" then
-			%h3= feed_item.title
-			.content
-				%p= feed_item.content
+			%h4= feed_item.title
+			.content= feed_item.content
 		-when "Event" then
-			%i Event:
-			%strong= feed_item.name
-			%br
-			%br
-			%div Starting:
-			%div= feed_item.start.to_datetime.strftime("%a, %d %b %Y, %l:%M %P").squeeze(' ')
-			%br
-			%div Where:
-			%div= feed_item.location
-			%br
-			.content= feed_item.description
-			%em= feed_item.location
-			=short_time(feed_item.start)	
+			%h4= feed_item.name
+			.location= feed_item.location
+			.description= feed_item.description
+			.time= short_time(feed_item.start)	
 		-else
 			= feed_item.class	
 	.source
