@@ -31,6 +31,8 @@ class ApplicationController < ActionController::Base
   def auth_admin
     if current_admin.blank?
       redirect_to login_path
+    elsif current_admin.super_admin
+      redirect_to admins_path
     elsif current_admin.club_id.blank?
       redirect_to new_club_path
     elsif current_admin.club_id != @club.id

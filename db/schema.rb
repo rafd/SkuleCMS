@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090807164926) do
+ActiveRecord::Schema.define(:version => 20090808211955) do
 
   create_table "admin_sessions", :force => true do |t|
     t.datetime "created_at"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(:version => 20090807164926) do
     t.string   "crypted_password"
     t.string   "password_salt"
     t.string   "persistence_token"
+    t.boolean  "super_admin"
   end
 
   create_table "albums", :force => true do |t|
@@ -49,7 +50,6 @@ ActiveRecord::Schema.define(:version => 20090807164926) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "tagline"
-    t.string   "logo"
     t.string   "website"
     t.string   "contact"
     t.boolean  "affiliated"

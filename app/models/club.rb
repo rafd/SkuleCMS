@@ -14,18 +14,46 @@ class Club < ActiveRecord::Base
   validates_uniqueness_of   :name, :official_name, :web_name
   validates_length_of       :name, :maximum => 20
   validates_length_of       :official_name, :maximum => 100
-  validates_length_of       :web_name, :maximum => 20
+  validates_length_of       :web_name, :maximum => 10
   validates_length_of       :tagline, :in => 5..100
   validates_length_of       :description, :in => 5..400
   validates_format_of       :web_name, :with => /^[A-Za-z\d_]+$/, :message => "name is invalid. Only letters, numbers, and underscores allowed."
   
+  attr_accessor :logo, :banner
+  
   after_create :create_member_list, :create_directory
   before_validation :lowercase_web_name
+  before_save   :save_images
+  
+  def validate
+    errors.add_to_base "Invalid logo image. Only upload png, jpg, gif, or bmp allowed." if !(check_image_type?(logo))
+    errors.add_to_base "Invalid banner image. Only upload png, jpg, gif, or bmp allowed." if !(check_image_type?(banner))
+  end
+  
+  def check_image_type?(upload)
+    if (upload.blank?)
+      return true
+    end
+    name = upload.original_filename
+    types = ['.png', '.jpg', '.jpeg', '.gif', '.bmp']
+    types.each do |check|
+      return true if name.ends_with?(check)
+    end
+    return false
+  end
   
   def lowercase_web_name
     self.web_name = self.web_name.downcase
   end
   
+  def save_images
+    if(!self.logo.blank?)
+      File.open(File.join("public/images/avatars", self.web_name), "wb") { |f| f.write(self.logo.read) }
+    end
+    if(!self.banner.blank?)
+      File.open(File.join("public/images/banners", self.web_name), "wb") { |f| f.write(self.banner.read) }
+    end
+  end  
   
   def create_directory
     directory = "#{RAILS_ROOT}/public"+"/club_data/"+self.id.to_s

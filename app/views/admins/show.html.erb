@@ -1,13 +1,14 @@
 <p>
   <b>User:</b>
-  <%=h @admin.user_id %>
+  <%=h @admin.login %>
 </p>
 
 <p>
   <b>Club:</b>
-  <%=h @admin.club_id %>
+  <%=h @admin.club.name unless @admin.club.blank? %>
 </p>
 
+<% if true == false %>
 <p>
   <b>Event:</b>
   <%=h @admin.event %>
@@ -37,7 +38,7 @@
   <b>Gallery:</b>
   <%=h @admin.gallery %>
 </p>
-
+<% end %>
 
 <%= link_to 'Edit', edit_admin_path(@admin) %> |
 <%= link_to 'Back', admins_path %>
