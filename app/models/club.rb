@@ -50,7 +50,7 @@ class Club < ActiveRecord::Base
   end
   
   def upcoming_events
-    return self.events.find(:all, :order => "finish", :conditions => ["finish>=?", Time.now], :limit => 3)
+    return self.events.find(:all, :order => "start", :conditions => ["finish>=?", Time.now.utc], :limit => 3)
   end
   
   def feed_items

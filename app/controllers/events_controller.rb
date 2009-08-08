@@ -37,8 +37,8 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.xml
   def index
-    @events = @club.events.find(:all, :order => "start")
-    
+    @events = @club.events.find(:all, :order => "start", :conditions => ["finish>=?", Time.now.utc])
+    @old_events = @club.events.find(:all, :order => "start", :conditions => ["finish<?", Time.now.utc])
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @events }
@@ -49,7 +49,9 @@ class EventsController < ApplicationController
   # GET /events/1/admin
   def admin
     if (params[:id].blank?)
-    @events = @club.events.find(:all, :order => "start")
+    @events = @club.events.find(:all, :order => "start", :conditions => ["finish>=?", Time.now.utc])
+    @old_events = @club.events.find(:all, :order => "start", :conditions => ["finish<?", Time.now.utc])
+
       respond_to do |format|
         format.html # admin.html.erb
         format.xml  { render :xml => @events }
