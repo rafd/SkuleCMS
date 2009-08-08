@@ -132,8 +132,11 @@ class LargePostsController < ApplicationController
     end
   end
   
+
+
   private
   def load_club
     @club = Club.find(params[:club_id])
   end
+
 end

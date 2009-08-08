@@ -146,4 +146,5 @@ class EventsController < ApplicationController
     @club = Club.find(params[:club_id])
   end
   
+
 end
