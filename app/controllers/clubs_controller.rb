@@ -47,14 +47,13 @@ class ClubsController < ApplicationController
   # POST /clubs.xml
   def create
     @club = Club.new(params[:club])
-    @club.web_name = @club.name
 
     respond_to do |format|
       if @club.save
         current_admin.club_id = @club.id
         current_admin.save
         flash[:notice] = 'Club was successfully created.'
-        format.html { redirect_to(@club) }
+        format.html { redirect_to club_admin_index_path(@club) }
         format.xml  { render :xml => @club, :status => :created, :location => @club }
       else
         format.html { render :action => "new" }

@@ -13,6 +13,11 @@
     <span>The official name of the club. Max 100 characters. Used in the club site's footer.</span>
     <%= f.text_field :official_name %>
   </p>
+	<p>
+    <%= f.label :web_name, "Web Name" %>
+    <span>The web version name of the club with no whitespaces. Max 20 characters. Only lowercase letters, numbers and underscores allowed.</span>
+    <%= f.text_field :web_name %>
+  </p>
   <p>
   	<%= f.label :tagline %>
   	<span>A short description of your club. Max 100 characters. Used in the club directory.</span>
