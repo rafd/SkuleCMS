@@ -1,7 +1,7 @@
 .avatar
-	:width 50px
-	:height 50px
+	:width= !avatar_size
+	:height= !avatar_size
 	:background= !color_foreground center center no-repeat
-	+rounded-corners(0 5px 0 5px)
+	+styled-corners
 	:text-indent -1000px
 	:overflow hidden

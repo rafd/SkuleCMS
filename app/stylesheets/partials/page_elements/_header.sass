@@ -1,70 +1,77 @@
 #header
 	!header_height = 50px
-	margin: 0 0 0.5em 0
 	h1
 		:float left
 		:width 40%
 		:line-height= !header_height
 		:margin 0
 		:position relative 
-		//temp, for 'alpha' icon
 		
 		a
 			:color= !color_foreground
 			:float left
-		a:hover
-			:text-decoration none
+			&:hover
+				:text-decoration none
 		
 		.avatar
 			:float left
-			:margin-right 0.25em		
+			:margin= 0 0.25em 0 -1 * !overlap		
 			
 		.alpha
 			:background red
-			+rounded-corners(0 3px 0 3px)
+			+styled-corners
 			:color #fff
 			:font-size 0.3em
 			:padding 0 0.5em
 			:text-transform uppercase
-			:margin 0.4em 0.5em
+			:margin 1.01em 0.5em
 			:height 1.5em
 			:line-height 1.5em
 			:float left
-	#menu
-		+horizontal-list
-		:float right
-		:font-size 1.25em
-		:margin 0.9em 0
+	#top
+		:background= !background_main
+		:position relative
+		:height= !avatar_size
+		:padding 10px 0
 		
-		li
-			:margin 0 0.25em
-			:padding 0 0.5em
-			:background= !color_foreground
-			+rounded-corners(4px)
-			:font-weight bold
-			:color white
-			:line-height 1.5em
-			
-			a
-				:background= !background_body
-				:font-weight normal
-				:display inline-block
-				:margin -0.25em -0.5em
+		#menu
+			+horizontal-list
+			:float right
+			:font-size 1.25em
+			:margin 0
+			:position absolute
+			:bottom 1.5em
+			:right 1em
+		
+			li
+				:margin 0 0.25em
 				:padding 0 0.5em
-				:color #000
+				:background= !color_foreground
+				+styled-corners
+				:font-weight bold
+				:color white
+				:line-height 1.5em
+			
+				a
+					:background= !background_main 
+					:font-weight normal
+					:display inline-block
+					:margin -0.25em -0.5em
+					:padding 0 0.5em
+					:color #000
 				
 		
 	#banner
 		:background= url("/images/banners/skule.png") !color_foreground center center
-		+rounded-corners(0 5px 0 5px)
-		:max-height= !banner_height
-		:margin 0.5em 0 0 0
-	
+		//+styled-corners
+		:margin= 0 0 0 -1 * !overlap
+		:padding-right= !overlap*2
+
 		#info
 			:background white
 			:margin= 2em 0
-			:height= !banner_info_block_height -20px
 			:width 35%
-			:padding 10px 2em 10px 0
-			+rounded-corners(0 5px 5px 0)
+			:padding 10px 2em
+			:border-left= !overlap solid !background_body
+			+rounded-corners(0 !corner_radius_default !corner_radius_default 0)
 			+quiet

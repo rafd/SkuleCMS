@@ -1,20 +1,21 @@
-%div#sidebar
-	%div#widget
+#sidebar
+	.widget
+		%h4 About Us
 		%p= @club.description
 		
 	-#
-		%div#widget
+		/.widget
 			%h4 Pages
 			%ul
 				-@club.pages.each do |page|
 					%li= link_to page.title, :show => page
-	%div#widget
+	.widget
 		%h4 Club Members
 		%ul
 			- if @club.groups.count > 0
 				- @club.members.each do |member|
 					=h member.name
-	%div#widget
+	.widget
 		%h4 Upcoming Events
 		%ul
 			-@club.upcoming_events.each do |event|
@@ -23,7 +24,7 @@
 					%br/
 					= event.name
 					%em= event.location
-	%div#widget
+	.widget
 		%h4 Dev Links
 		%ul
 			%li= link_to 'Admin Link', club_admin_index_path(@club)

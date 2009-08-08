@@ -1,2 +1,4 @@
-=link_to ((club.name || club.official_name), (club.website || {:controller => 'clubs', :action => 'show', :id => club}), {:class => 'avatar', :style=>"background-image:url(#{path_to_image("avatars/"+club.web_name || "blank.gif")})"})
-	
+-if club
+	=link_to ((club.name || club.official_name), (club.website || {:controller => 'clubs', :action => 'show', :id => club}), {:class => 'avatar', :style=>"background-image:url(#{path_to_image("avatars/"+club.web_name || "blank.gif")})"})
+-else
+	=link_to ("#", "#", {:class => 'avatar', :style=>"background-image:url(#{path_to_image("blank.gif")})"})

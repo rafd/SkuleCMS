@@ -1,11 +1,20 @@
+!left_columns= floor(4 * !blueprint_grid_columns / 24)
+!main_columns= floor(20 * !blueprint_grid_columns / 24)
+
 body
 	:background= !background_body
 
 #container
 	+container
+	:overflow visible
 
-#header, #banner, #footer
-	+column(!blueprint_grid_columns, true)
+#header
+	+column(!main_columns, true) 
+	+prepend(!left_columns)
+
+#banner
+	+column(!main_columns) 
+	
 
 #left
 	!left_columns= floor(4 * !blueprint_grid_columns / 24)
@@ -14,6 +23,9 @@ body
 #main
 	!content_columns= floor(20 * !blueprint_grid_columns / 24)
 	+column(!content_columns, true)
+	
+	:background= !background_main
+	:min-height 10em
 
 	#content
 		!content_columns= floor(14 * !blueprint_grid_columns / 24)
@@ -23,3 +35,7 @@ body
 	#sidebar
 		!sidebar_columns= floor(6 * !blueprint_grid_columns / 24)
 		+column(!sidebar_columns, true)
+
+#footer
+	+column(!main_columns, true) 
+	+prepend(!left_columns)

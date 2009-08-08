@@ -2,13 +2,15 @@ body.map
 	#main
 		#content
 			+column(20)
+		
 
 
 #map
 	:background url("/images/map.jpg") no-repeat top left
 	:height 200px
-	+rounded-corners
-	:padding-top 100px
+	//+rounded-corners
+	:padding 100px 0 0
+	:margin= 0 -1 * !overlap
 	
 	h2
 		:padding 1em

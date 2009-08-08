@@ -1,12 +1,11 @@
 #skulebar 
-	:background= !background_body //temporary
-	:height 2em
+	:background= !background_main
 	:width 97%
-	:margin 0 auto 1em
+	:margin 0 auto 2em
 	+rounded-corners(0 0 2px 2px)
 	:line-height 2em
 	:height 2em
-	
+
 	#skule
 		:float left
 		+background-icon("icons/hardhat.png")
@@ -26,6 +25,8 @@
 				
 	#message
 		:float left
+		p
+			:margin 0
 
 	form
 		:float left

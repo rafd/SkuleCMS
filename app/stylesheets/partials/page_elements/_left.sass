@@ -1,21 +1,25 @@
 #left
 	//note: dimensions defined in _layout.sass
+	+rounded-corners(!corner_radius_default !corner_radius_default 0 0)
+	:background= !background_left
+	:margin= 10px 0 0 !overlap
 	
 	ul
 		:list-style none
 		:margin 0 0 2em 0
 		
 		li
-			:background url("/images/arrow.png") center right no-repeat
-			:color #fff
 			:font-size 1.2em
 			:line-height 1.75em
 			:height 1.75em
 			:text-indent 0.5em
 			:margin 0
+			:color= !color_foreground
+			:background= !background_main
+			+rounded-corners(5px 0 0 5px)
 			
 			a
 				:display block
-				:color= !color_foreground
-				:background= !background_left
 				:font-size 0.85em
+				:background= !background_left
+				:color= !color_foreground

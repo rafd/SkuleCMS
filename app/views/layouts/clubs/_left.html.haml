@@ -1,11 +1,12 @@
 #left
 	-if @controller.controller_name == "clubs" && @controller.action_name == "show"
-		%ul.filter
-			%li= "All"
-			%li= link_to "Updates", '#'
-			%li= link_to "Posts", '#'
-			%li= link_to "Events", '#'
-			%li= link_to "Photos", '#'
+		-#
+			%ul.filter
+				%li= "All"
+				%li= link_to "Updates", '#'
+				%li= link_to "Posts", '#'
+				%li= link_to "Events", '#'
+				%li= link_to "Photos", '#'
 	-else
 		-if @club.pages	
 			%ul.filter

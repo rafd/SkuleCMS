@@ -54,6 +54,6 @@ class Club < ActiveRecord::Base
   end
   
   def feed_items
-  	return self.small_posts + self.large_posts
+  	return self.small_posts + self.large_posts + self.events
   end
 end

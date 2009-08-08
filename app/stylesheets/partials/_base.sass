@@ -24,21 +24,3 @@
 //!blueprint_liquid_container_width = 80%
 //!blueprint_liquid_container_min_width = 800px
 //!blueprint_liquid_grid_push_pull = -(!blueprint_liquid_grid_margin * 4)
-
-
-//Our Mixins
-=rounded-corners(!width = 5px)
-	-moz-border-radius= !width
-	-webkit-border-radius= !width
-	
-=background-icon(!url)
-	:background= url("/images/"+!url) left center no-repeat
-	:padding-left 20px
-	:margin 0 0 0 0.25em
-	
-=opacity(!value)
-	:opacity= !value
-
-=shadow(!value)
-	-moz-box-shadow= !value
-	-webkit-box-shadow= !value

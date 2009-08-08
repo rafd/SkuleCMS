@@ -1,7 +1,7 @@
 #footer
-	:margin-top 2em
-	:background black
-	:padding 1em 0
+	:margin 2em 0 1em
+	:background none
+	:color #888
 	
 	h2, dt
 		:font-size 1em
@@ -12,14 +12,13 @@
 		:margin 0 0 0.25em 0
 		
 	p, a
-		:color #333
+		:color #888
 		
 	#address
 		+column(6)
-		+prepend(0.5)
 	
 	#sitemap
-		+column(17.5,true)
+		+column(14,true)
 		dl
 			:float left
 			:margin 0 1.25em
@@ -30,8 +29,6 @@
 
 		
 	#copyright
-		+column(!blueprint_grid_columns)
-		+prepend(0.5)
-		//:text-align center
-		:font-size 0.9em
+		+column(20)
+		:font-size 0.8em
 		:margin 2em 0 0
