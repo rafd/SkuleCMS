@@ -1,29 +1,14 @@
 #sidebar
-	.widget
-		%h4 About Us
-		%p= @club.description
+	-if @club.description
+		.widget
+			%h4 About Us
+			%p= @club.description
 		
-	-#
-		/.widget
-			%h4 Pages
-			%ul
-				-@club.pages.each do |page|
-					%li= link_to page.title, :show => page
-	.widget
-		%h4 Club Members
-		%ul
-			- if @club.groups.count > 0
-				- @club.members.each do |member|
-					=h member.name
-	.widget
-		%h4 Upcoming Events
-		%ul
-			-@club.upcoming_events.each do |event|
-				%li
-					=short_time(event.start)
-					%br/
-					= event.name
-					%em= event.location
+					
+	=render :partial => 'layouts/widgets/members', :locals => {:club => @club}
+	
+	=render :partial => 'layouts/widgets/upcoming_events', :locals => {:club => @club}
+	
 	.widget
 		%h4 Dev Links
 		%ul

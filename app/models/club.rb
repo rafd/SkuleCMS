@@ -89,6 +89,12 @@ class Club < ActiveRecord::Base
   end
   
   def feed_items
-  	return self.small_posts + self.large_posts + self.events
+  	
+    feed = self.small_posts.find(:all, :order => "created_at DESC", :limit => 5) + self.large_posts.find(:all, :order => "created_at DESC", :limit => 5) + self.events.find(:all, :order => "created_at DESC", :limit => 5)
+    
+    feed = feed.sort_by{|t| t.created_at}.reverse #shouldn't be using reverse, use native reverse within sort_by
+    feed = feed[0..5]
+    return feed
   end
+ 
 end

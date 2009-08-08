@@ -2,5 +2,7 @@
 	#banner{:style => "background-image: url(\"#{path_to_image('banners/'+@club.web_name)}\")"}
 		-if @club.description && @club.web_name != "engsoc" #remove this conditional
 			#info= @club.description
+		-else
+			%div(style="height:200px")
 			
 			

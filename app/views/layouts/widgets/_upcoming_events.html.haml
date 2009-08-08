@@ -1,0 +1,9 @@
+- if club.upcoming_events
+	.widget.events
+		%h4 Upcoming Events
+		%ul
+			-club.upcoming_events.each do |event|
+				%li.meeting
+					.name= event.name
+					.time=short_time(event.start)
+					.location= event.location

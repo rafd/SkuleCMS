@@ -1,4 +1,6 @@
 .feed_item[feed_item]
+	- unless controller.controller_name == 'clubs'
+		= render :partial => 'layouts/default/avatar', :locals => {:club => feed_item.club}
 	-case feed_item.class.to_s
 		-when "SmallPost" then
 			.content= feed_item.content	
@@ -7,15 +9,15 @@
 			.content= feed_item.content
 		-when "Event" then
 			%h4= feed_item.name
-			.content= feed_item.description
-			%em= feed_item.location
-			=short_time(feed_item.start)	
+			.location= feed_item.location
+			.description= feed_item.description
+			.time= short_time(feed_item.start)	
 		-else
 			= feed_item.class	
 	.source
 		- unless controller.controller_name == 'clubs'
-			=link_to feed_item.club.name, {:controller=>'clubs', :action => 'show', :id => feed_item.club}
-		= short_time(feed_item.updated_at)
+			=link_to(feed_item.club.name, {:controller=>'clubs', :action => 'show', :id => feed_item.club})+","
+		= time_ago_in_words(feed_item.updated_at)+' ago'
 
 =# if feed_item.respond_to?("title")
 	
