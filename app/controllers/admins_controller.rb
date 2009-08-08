@@ -20,7 +20,7 @@ class AdminsController < ApplicationController
   # GET /admins/new.xml
   def new
     @admin = Admin.new
-
+    @clubs = Club.all
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @admin }
@@ -41,9 +41,10 @@ class AdminsController < ApplicationController
     respond_to do |format|
       if @admin.save
         flash[:notice] = 'Registered admin.'
-        format.html { redirect_to(root_url) }
+        format.html { redirect_to((@admin.club_id.blank?)? new_club_path: club_admin_index_path (current_admin.club_id)) }
         format.xml  { render :xml => @admin, :status => :created, :location => @admin }
       else
+        @clubs = Club.all
         format.html { render :action => "new" }
         format.xml  { render :xml => @admin.errors, :status => :unprocessable_entity }
       end

@@ -15,6 +15,10 @@
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation %>
   </p>
+	<p>
+    <%= f.label :club_id, "Pick a Club" %><br />
+    <%= f.collection_select :club_id, @clubs, :id, :name, { :prompt => 'Select a Club', :include_blank => 'None'} %>
+  </p>
   <% if true == false %>
   <p>
     <%= f.label :event %><br /> 

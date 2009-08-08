@@ -99,7 +99,7 @@ class ClubsController < ApplicationController
     if current_admin.blank?
       redirect_to login_path
     elsif !current_admin.club_id.blank? && current_admin.club_id.to_s != params[:id]
-      redirect_to club_admin_index_path (current_admin.club_id)
+      redirect_to club_admin_index_path(current_admin.club_id)
     elsif current_admin.club_id.blank?
       redirect_to new_club_path
     end
@@ -109,7 +109,7 @@ class ClubsController < ApplicationController
     if current_admin.blank?
       redirect_to login_path
     elsif !current_admin.club_id.blank?
-      redirect_to club_admin_index_path (current_admin.club_id)
+      redirect_to club_admin_index_path(current_admin.club_id)
     end
   end
 end

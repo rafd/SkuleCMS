@@ -1,12 +1,8 @@
 <h2>Editing admin</h2>
 
+<h3>User: <%=h @admin.login %></h3>
 <% form_for(@admin) do |f| %>
   <%= f.error_messages %>
-
-  <p>
-    <%= f.label :login %><br />
-    <%= f.text_field :login %>
-  </p>
   <p>
     <%= f.label :password %><br />
     <%= f.password_field :password %>
