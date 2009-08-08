@@ -33,6 +33,13 @@
   <%=h @event.link %>
 </p>
 
+<p>
+	<% if @event.created_at != @event.updated_at%>
+	Last updated:
+	<%=h @event.updated_at %>
+	<%end%>
+</p>
+
 <%= link_to 'ICal Me', :action => 'export_events', :club_id => @club, :id => @event %> |
 <%= link_to 'Edit', :action => 'edit', :id => @event %> |
 <%= link_to 'Back', :action => 'admin' %>

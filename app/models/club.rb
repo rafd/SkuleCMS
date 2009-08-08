@@ -49,6 +49,11 @@ class Club < ActiveRecord::Base
   end
   
   def feed_items
-  	return self.small_posts + self.large_posts
+  	return self.small_posts.find(:all, :order => "created_at DESC", :limit => 5) + self.large_posts.find(:all, :order => "created_at DESC", :limit => 5) + self.events.find(:all, :order => "created_at DESC", :limit => 5)
+ end
+ 
+  def time_stamp(time)
+    time.to_datetime.strftime("%a, %d %b %Y, %l:%M %P").squeeze(' ')
   end
+ 
 end

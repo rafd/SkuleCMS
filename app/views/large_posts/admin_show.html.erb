@@ -8,7 +8,12 @@
   <%= @large_post.content %>
 </p>
 
-<%= @large_post.club_id%>
+<p>
+	<% if @large_post.created_at != @large_post.updated_at%>
+	Last updated:
+	<%=h @large_post.updated_at %>
+	<%end%>
+</p>
 
 <%= link_to 'Edit', :action => 'edit', :id => @large_post %> |
 <%= link_to 'Back', :action => 'admin' %>

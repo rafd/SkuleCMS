@@ -1,8 +1,35 @@
 =#TODO include feed_item.class as class of div
 =#     remove club.name if displayed on clubs page
+
 %div.feed_item
-	%h4= feed_item.title if feed_item.respond_to?("title")
-	%div= feed_item.content
+	- if feed_item.respond_to?("title")
+		%i Large Post:
+		%strong= feed_item.title
+		%br
+		%br
+		%div= feed_item.content
+	- elsif (feed_item.respond_to?("start") && feed_item.respond_to?("finish"))
+		%i Event:
+		%strong= feed_item.name
+		%br
+		%br
+		%div Starting:
+		%div= feed_item.start.to_datetime.strftime("%a, %d %b %Y, %l:%M %P").squeeze(' ')
+		%br
+		%div Where:
+		%div= feed_item.location
+		%br
+	- else
+		%i BIG OPEN QUOTE
+		%strong= feed_item.content
+		%i BIG CLOSE QUOTE
+		%br
+		%br
+	
+	%strong Created On: 
+	%h4= feed_item.created_at.to_datetime.strftime("%a, %d %b %Y, %l:%M %P").squeeze(' ')
+	%h4 linkto here
+	
 	- unless controller.controller_name == 'clubs'
 		%div= link_to feed_item.club.name, :controller=>'clubs', :action => 'show', :id => feed_item.club
 

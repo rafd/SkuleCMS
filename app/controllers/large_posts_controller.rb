@@ -132,4 +132,9 @@ class LargePostsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def time_stamp(time)
+    time.to_datetime.strftime("%a, %d %b %Y, %l:%M %P").squeeze(' ')
+  end
+  
 end
