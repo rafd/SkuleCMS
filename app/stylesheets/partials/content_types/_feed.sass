@@ -1,22 +1,32 @@
 #feed
 	.feed_item
-		:margin 1em
+		:margin 1em 1em 1em 0
 		
 		h4
 			:margin 0
 			
 		&.small_post
 			
-			div.content
+			.content
 				:font-size 1.5em
 				:background #ececec
 				+styled-corners
-				:padding 1em
+				:padding 0.5em
+				:margin-left 0.5em
 				
 		&.large_post
+			.content
+				:padding 0.5em
 		
 		.source
 			:text-align right
 			:display block
 			:color #999
-			
+		
+		.avatar
+			:float left
+			:margin= 0 0.5em 0 -1 * !overlap
+
+body.digest
+	#feed .feed_item.small_post .content
+		:margin-left= !avatar_size
