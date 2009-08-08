@@ -1,5 +1,5 @@
 class AdminPagesController < ApplicationController
-  before_filter :load_club
+  before_filter :load_club, :auth_admin
   def load_club
     @club = Club.find(params[:club_id])
   end
@@ -41,5 +41,6 @@ class AdminPagesController < ApplicationController
   
   def settings
   
-  end 	
+  end
+  
 end

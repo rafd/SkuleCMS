@@ -1,5 +1,6 @@
 class ClubsController < ApplicationController
-  
+  before_filter :auth_admin, :only => [:edit, :update]
+  before_filter :auth_new_club, :only => [:new, :create]
   # GET /clubs
   # GET /clubs.xml
   def index
@@ -46,8 +47,12 @@ class ClubsController < ApplicationController
   # POST /clubs.xml
   def create
     @club = Club.new(params[:club])
+    @club.web_name = @club.name
+
     respond_to do |format|
       if @club.save
+        current_admin.club_id = @club.id
+        current_admin.save
         flash[:notice] = 'Club was successfully created.'
         format.html { redirect_to(@club) }
         format.xml  { render :xml => @club, :status => :created, :location => @club }
@@ -84,6 +89,26 @@ class ClubsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(clubs_url) }
       format.xml  { head :ok }
+    end
+  end
+  
+  private
+  
+  def auth_admin
+    if current_admin.blank?
+      redirect_to login_path
+    elsif !current_admin.club_id.blank? && current_admin.club_id.to_s != params[:id]
+      redirect_to club_admin_index_path(current_admin.club_id)
+    elsif current_admin.club_id.blank?
+      redirect_to new_club_path
+    end
+  end
+  
+  def auth_new_club
+    if current_admin.blank?
+      redirect_to login_path
+    elsif !current_admin.club_id.blank?
+      redirect_to club_admin_index_path(current_admin.club_id)
     end
   end
 end

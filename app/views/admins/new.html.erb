@@ -1,4 +1,4 @@
-<h1>New admin</h1>
+<h2>New admin</h2>
 
 <% form_for(@admin) do |f| %>
   <%= f.error_messages %>
@@ -15,7 +15,11 @@
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation %>
   </p>
-<!--> For later
+	<p>
+    <%= f.label :club_id, "Pick a Club" %><br />
+    <%= f.collection_select :club_id, @clubs, :id, :name, { :prompt => 'Select a Club', :include_blank => 'None'} %>
+  </p>
+  <% if true == false %>
   <p>
     <%= f.label :event %><br /> 
     <%= f.check_box :event %>
@@ -40,7 +44,7 @@
     <%= f.label :gallery %><br />
     <%= f.check_box :gallery %>
   </p>
-<-->
+	<% end %>
   <p>
     <%= f.submit 'Create' %>
   </p>

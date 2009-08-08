@@ -19,7 +19,7 @@ class AdminSessionsController < ApplicationController
     respond_to do |format|
       if @admin_session.save
         flash[:notice] = 'Logged in.'
-        format.html { redirect_to(root_url) }
+        format.html { redirect_to(club_admin_index_path (current_admin.club_id)) }
         format.xml  { render :xml => @admin_session, :status => :created, :location => @admin_session }
       else
         format.html { render :action => "new" }

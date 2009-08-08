@@ -2,11 +2,8 @@ require 'icalendar'
 
 class EventsController < ApplicationController
   before_filter :load_club
-  def load_club
-    @club = Club.find(params[:club_id])
-  end
-  
-  
+  before_filter :auth_admin, :only => [:admin, :new, :edit, :create, :update, :destroy]
+
   def export_events
     @calendar = Icalendar::Calendar.new      
     if (!params[:id].blank?)
@@ -40,8 +37,8 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.xml
   def index
-    @events = @club.events.find(:all, :order => "start")
-    
+    @events = @club.events.find(:all, :order => "start", :conditions => ["finish>=?", Time.now.utc])
+    @old_events = @club.events.find(:all, :order => "start", :conditions => ["finish<?", Time.now.utc])
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @events }
@@ -52,7 +49,9 @@ class EventsController < ApplicationController
   # GET /events/1/admin
   def admin
     if (params[:id].blank?)
-    @events = @club.events.find(:all, :order => "start")
+    @events = @club.events.find(:all, :order => "start", :conditions => ["finish>=?", Time.now.utc])
+    @old_events = @club.events.find(:all, :order => "start", :conditions => ["finish<?", Time.now.utc])
+
       respond_to do |format|
         format.html # admin.html.erb
         format.xml  { render :xml => @events }
@@ -140,4 +139,11 @@ class EventsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  private
+  
+  def load_club
+    @club = Club.find(params[:club_id])
+  end
+  
 end

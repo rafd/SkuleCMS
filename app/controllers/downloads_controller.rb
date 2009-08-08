@@ -1,5 +1,6 @@
 class DownloadsController < ApplicationController
   before_filter :load_download_folder
+  before_filter :auth_admin, :only => [:admin, :new, :edit, :create, :update, :destroy]    
   def load_download_folder
     @download_folder = DownloadFolder.find(params[:file_id])
   end
