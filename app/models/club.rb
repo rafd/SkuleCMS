@@ -14,10 +14,13 @@ class Club < ActiveRecord::Base
   validates_uniqueness_of   :name, :official_name, :web_name
   validates_length_of       :name, :maximum => 20
   validates_length_of       :official_name, :maximum => 100
+  validates_length_of       :contact, :maximum => 50
+  validates_length_of       :address, :maximum => 250
   validates_length_of       :web_name, :maximum => 10
   validates_length_of       :tagline, :in => 5..100
   validates_length_of       :description, :in => 5..400
   validates_format_of       :web_name, :with => /^[A-Za-z\d_]+$/, :message => "name is invalid. Only letters, numbers, and underscores allowed."
+  validates_format_of       :contact, :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i, :message => 'email is invalid.'
   
   attr_accessor :logo, :banner
   

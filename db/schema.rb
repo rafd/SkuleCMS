@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090810162436) do
+ActiveRecord::Schema.define(:version => 20090810214507) do
 
   create_table "admin_sessions", :force => true do |t|
     t.datetime "created_at"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(:version => 20090810162436) do
     t.string   "official_name"
     t.string   "web_name"
     t.boolean  "live"
+    t.string   "address"
   end
 
   create_table "download_folders", :force => true do |t|

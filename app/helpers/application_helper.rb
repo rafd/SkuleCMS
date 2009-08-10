@@ -66,4 +66,8 @@ module ApplicationHelper
     end
   end
   
+  def display_multi_line_string(text)
+    return text.gsub("\n", "<br />")
+  end
+  
 end
