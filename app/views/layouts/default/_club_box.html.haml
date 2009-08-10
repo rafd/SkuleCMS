@@ -1,0 +1,11 @@
+.club(class="#{"onskuleclubs" unless club.website}")
+	= render :partial => 'layouts/default/avatar', :locals => {:club => club}
+	%h3= link_to((club.name || club.official_name), (club.website || {:action => 'show', :id => club}))
+	%span=h club.tagline || club.official_name || "Tagline"
+	%ul
+		- club.tags.each do |tag|
+			%li= link_to tag, "#"
+		
+	- if club.affiliated
+		.affiliated(title="Officially Affiliated")
+			

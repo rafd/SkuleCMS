@@ -1,8 +1,7 @@
 <h2>Editing club</h2>
 
-<% form_for(@club) do |f| %>
+<% form_for(@club, :html => {:multipart => true}) do |f| %>
   <%= f.error_messages %>
-
   <p>
   	<%= f.label :name, "Short Name" %>
   	<span>The short form of your club name. Max 20 characters. Used almost everywhere.</span>
@@ -32,6 +31,16 @@
     <%= f.label :tags, "Labels" %>
     <span>Tags used to classify your club in the club directory.</span>
 		<%= f.text_field :tag_list -%>
+  </p>
+	<p>
+    <%= f.label :logo, "Logo Image" %>
+		<span>The logo image that will be displayed with the club. Max 100 KB.</span>
+  	<%= f.file_field :logo %>
+  </p>
+	<p>
+    <%= f.label :banner, "Banner Image" %>
+		<span>The banner image that will be displayed on the club website. Max 800 KB.</span>
+  	<%= f.file_field :banner %>
   </p>
   <p>
     <%= f.submit 'Update' %>

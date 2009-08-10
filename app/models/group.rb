@@ -38,7 +38,7 @@ class Group < ActiveRecord::Base
   end
   
   def create_page
-    if self.new_page != '0'
+    if self.new_page != '0' && !self.new_page.blank?
       @page = Page.new
       @page.title = self.name
       @page.club = self.club

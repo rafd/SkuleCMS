@@ -1,6 +1,7 @@
 class ClubsController < ApplicationController
   before_filter :auth_admin, :only => [:edit, :update]
   before_filter :auth_new_club, :only => [:new, :create]
+
   # GET /clubs
   # GET /clubs.xml
   def index

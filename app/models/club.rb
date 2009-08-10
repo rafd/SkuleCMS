@@ -21,16 +21,26 @@ class Club < ActiveRecord::Base
   
   attr_accessor :logo, :banner
   
-  after_create :create_member_list, :create_directory
+  after_create :create_member_list, :create_directory, :create_default_content
   before_validation :lowercase_web_name
   before_save   :save_images
   
   def validate
-    errors.add_to_base "Invalid logo image. Only upload png, jpg, gif, or bmp allowed." if !(check_image_type?(logo))
-    errors.add_to_base "Invalid banner image. Only upload png, jpg, gif, or bmp allowed." if !(check_image_type?(banner))
+    errors.add_to_base "Invalid logo image. Image must be less than 100 KB." unless valid_image_size?(logo, 100)
+    errors.add_to_base "Invalid banner image. Image must be less than 800 KB." unless valid_image_size?(banner, 800)
+    errors.add_to_base "Invalid logo image. Only upload png, jpg, gif, or bmp allowed." unless valid_image_type?(logo)
+    errors.add_to_base "Invalid banner image. Only upload png, jpg, gif, or bmp allowed." unless valid_image_type?(banner)
   end
   
-  def check_image_type?(upload)
+  def valid_image_size?(upload, max_size)
+    if (upload.blank?)
+      return true
+    end
+    max_size *= 1024
+    return File.size(upload) <= max_size
+  end
+  
+  def valid_image_type?(upload)
     if (upload.blank?)
       return true
     end
@@ -68,6 +78,28 @@ class Club < ActiveRecord::Base
     @group.name = "Member List"
     @group.misc = "Full member list of the club"
     @group.save
+  end
+  
+  def create_default_content
+    @page = self.pages.new
+    @page.title = "About Us"
+    @page.content = self.description
+    @page.save
+    
+    @page = self.pages.new
+    @page.title = "History"
+    @page.content = Time.now.strftime('%b. %d, %Y') + " - We created our SkuleClubs site!"
+    @page.save
+    
+    @page = self.pages.new
+    @page.title = "Constitution"
+    @page.content = ""
+    @page.save
+    
+    @small = self.small_posts.new
+    @small.content = "We just created a SkuleClubs site! Check it out!"
+    #@small.origin = "default?"
+    @small.save
   end
   
   def search
