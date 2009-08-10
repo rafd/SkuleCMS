@@ -5,7 +5,7 @@ class ClubsController < ApplicationController
   # GET /clubs
   # GET /clubs.xml
   def index
-    @clubs = Club.find(:all, :include => :tags)
+    @clubs = Club.find(:all, :conditions => ["live==?",true], :include => :tags)
 
     respond_to do |format|
       format.html # show.html.erb

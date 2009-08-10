@@ -21,6 +21,7 @@ class Club < ActiveRecord::Base
   
   attr_accessor :logo, :banner
   
+  before_create :hide_club
   after_create :create_member_list, :create_directory, :create_default_content
   before_validation :lowercase_web_name
   before_save   :save_images
@@ -70,6 +71,10 @@ class Club < ActiveRecord::Base
     if !File.exist?(directory)
       FileUtils.mkdir_p(directory)
     end
+  end
+  
+  def hide_club
+    self.live = false
   end
   
   def create_member_list

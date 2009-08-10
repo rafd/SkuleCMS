@@ -6,6 +6,7 @@ WebDev:
   tagline: We Make Web Applications
   contact: webmaster@skule.ca
   affiliated: false
+  live: true
 #  tags: 
   
   
@@ -18,6 +19,7 @@ FroshWeek:
   website: http://orientation.skule.ca/
   contact: orientation@skule.ca
   affiliated: false
+  live: true
 #  tags: Event
 
 EngSoc:
@@ -28,4 +30,5 @@ EngSoc:
   tagline: UofT Engineering Society
   contact: vpcomm@skule.ca
   affiliated: true
+  live: true
  

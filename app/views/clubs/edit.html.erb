@@ -42,6 +42,11 @@
 		<span>The banner image that will be displayed on the club website. Max 800 KB.</span>
   	<%= f.file_field :banner %>
   </p>
+	<p>
+    <%= f.label :live, "Make site live" %>
+		<span>Check this when the club is ready to be live and visible to everyone.</span>
+  	<%= f.check_box :live %>
+  </p>
   <p>
     <%= f.submit 'Update' %>
   </p>
