@@ -1,4 +1,4 @@
 icalendar
 haml-edge
-chriseppstein-compass
+chriseppstein-compass --source http://gems.github.com
 taps
