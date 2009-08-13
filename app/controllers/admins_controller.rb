@@ -1,5 +1,7 @@
 class AdminsController < ApplicationController
   before_filter :auth_change, :only => [:change_password, :update_password]
+  before_filter :auth_super, :only => [:index, :edit, :update, :show, :destroy]
+  before_filter :auth_new, :only => [:new, :create]
   
   def index
     @admins = Admin.all
@@ -41,7 +43,7 @@ class AdminsController < ApplicationController
     respond_to do |format|
       if @admin.save
         flash[:notice] = 'Registered admin.'
-        format.html { redirect_to((@admin.club_id.blank?)? new_club_path: club_admin_index_path (current_admin.club_id)) }
+        format.html { redirect_to(admins_path) }
         format.xml  { render :xml => @admin, :status => :created, :location => @admin }
       else
         @clubs = Club.all
@@ -59,7 +61,7 @@ class AdminsController < ApplicationController
     respond_to do |format|
       if @admin.update_attributes(params[:admin])
         flash[:notice] = 'Admin was successfully updated.'
-        format.html { redirect_to(root_url) }
+        format.html { redirect_to(admins_path) }
         format.xml  { head :ok }
       else
         @clubs = Club.all
@@ -105,6 +107,26 @@ class AdminsController < ApplicationController
   def auth_change
     if current_admin.blank?
       redirect_to login_path
+    end
+  end
+  
+  def auth_super
+    if Admin.all.blank?
+      redirect_to new_admin_path
+    elsif current_admin.blank?
+      redirect_to login_path
+    elsif !current_admin.super_admin
+      redirect_to root_path
+    end
+  end
+  
+  def auth_new
+    if !Admin.all.blank?
+      if current_admin.blank?
+        redirect_to login_path
+      elsif !current_admin.super_admin
+        redirect_to root_path
+      end
     end
   end
   

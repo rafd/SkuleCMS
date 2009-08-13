@@ -1,8 +1,7 @@
 <h2>Editing club</h2>
 
-<% form_for(@club) do |f| %>
+<% form_for(@club, :html => {:multipart => true}) do |f| %>
   <%= f.error_messages %>
-
   <p>
   	<%= f.label :name, "Short Name" %>
   	<span>The short form of your club name. Max 20 characters. Used almost everywhere.</span>
@@ -28,10 +27,35 @@
     <span>A longer description of your club. Max 400 characters. Used on the home page of your club's website.</span>
     <%= f.text_area :description %>
   </p>
+	<p>
+    <%= f.label :contact, "Contact Email" %>
+    <span>The club's main email address. This will be displayed with the clubs contact information.</span>
+    <%= f.text_field :contact %>
+  </p>
+	<p>
+    <%= f.label :address %>
+    <span>The club's address. This will be displayed with the clubs contact information.</span>
+    <%= f.text_area :address %>
+  </p>
   <p>
     <%= f.label :tags, "Labels" %>
     <span>Tags used to classify your club in the club directory.</span>
 		<%= f.text_field :tag_list -%>
+  </p>
+	<p>
+    <%= f.label :logo, "Logo Image" %>
+		<span>The logo image that will be displayed with the club. Max 100 KB.</span>
+  	<%= f.file_field :logo %>
+  </p>
+	<p>
+    <%= f.label :banner, "Banner Image" %>
+		<span>The banner image that will be displayed on the club website. Max 800 KB.</span>
+  	<%= f.file_field :banner %>
+  </p>
+	<p>
+    <%= f.label :live, "Make site live" %>
+		<span>Check this when the club is ready to be live and visible to everyone.</span>
+  	<%= f.check_box :live %>
   </p>
   <p>
     <%= f.submit 'Update' %>

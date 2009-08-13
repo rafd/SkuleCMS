@@ -1,0 +1,26 @@
+%h2 Search Results
+%p
+  -if !@clubs.blank?
+    %h4 Clubs Tagged with Query:
+    -@clubs.each do |club|
+      =link_to club.name, club
+      %br
+    -if !@albums.blank? || !@myAlbums.blank?
+      %br
+
+%p
+  -if !@albums.blank?
+    %h4 Albums in =@club.name Tagged with Query:
+    -@albums.each do |album|
+      =link_to album.name, club_album_path(album.club, album)
+      %br
+    -if !@allAlbums.blank? 
+      %br
+
+%p
+  -if !@myAlbums.blank?
+    %h4 Albums in My Clubs Tagged with Query:
+    -@myAlbums.each do |album|
+      =link_to album.name, club_album_path(album.club, album)
+      =link_to album.club.name, album.club
+    %br

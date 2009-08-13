@@ -16,8 +16,12 @@
     <%= f.password_field :password_confirmation %>
   </p>
 	<p>
-    <%= f.label :club_id, "Pick a Club" %><br />
-    <%= f.collection_select :club_id, @clubs, :id, :name, { :prompt => 'Select a Club', :include_blank => 'None'} %>
+    <%= f.label :club_id, "Select a club or allow them to create a club" %><br />
+    <%= f.collection_select :club_id, @clubs, :id, :name, { :prompt => 'Select an existing club', :include_blank => 'New Club'} %>
+  </p>
+	<p>
+    <%= f.label :super_admin %><br /> 
+    <%= f.check_box :super_admin %>
   </p>
   <% if true == false %>
   <p>

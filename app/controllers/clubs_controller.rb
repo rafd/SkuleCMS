@@ -1,10 +1,11 @@
 class ClubsController < ApplicationController
   before_filter :auth_admin, :only => [:edit, :update]
   before_filter :auth_new_club, :only => [:new, :create]
+
   # GET /clubs
   # GET /clubs.xml
   def index
-    @clubs = Club.find(:all, :include => :tags)
+    @clubs = Club.find(:all, :conditions => ["live=?",true], :include => :tags)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -30,11 +31,11 @@ class ClubsController < ApplicationController
   # GET /clubs/new
   # GET /clubs/new.xml
   def new
-    @club = Club.new
+    @new_club = Club.new
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @club }
+      format.xml  { render :xml => @new_club }
     end
   end
 
@@ -46,15 +47,15 @@ class ClubsController < ApplicationController
   # POST /clubs
   # POST /clubs.xml
   def create
-    @club = Club.new(params[:club])
+    @new_club = Club.new(params[:club])
 
     respond_to do |format|
-      if @club.save
-        current_admin.club_id = @club.id
+      if @new_club.save
+        current_admin.club_id = @new_club.id
         current_admin.save
         flash[:notice] = 'Club was successfully created.'
-        format.html { redirect_to club_admin_index_path(@club) }
-        format.xml  { render :xml => @club, :status => :created, :location => @club }
+        format.html { redirect_to club_admin_index_path(@new_club) }
+        format.xml  { render :xml => @new_club, :status => :created, :location => @new_club }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @club.errors, :status => :unprocessable_entity }
@@ -94,7 +95,9 @@ class ClubsController < ApplicationController
   private
   
   def auth_admin
-    if current_admin.blank?
+    if current_admin.super_admin
+      redirect_to root_url
+    elsif current_admin.blank?
       redirect_to login_path
     elsif !current_admin.club_id.blank? && current_admin.club_id.to_s != params[:id]
       redirect_to club_admin_index_path(current_admin.club_id)
@@ -104,7 +107,9 @@ class ClubsController < ApplicationController
   end
   
   def auth_new_club
-    if current_admin.blank?
+    if current_admin.super_admin
+      redirect_to admins_path
+    elsif current_admin.blank?
       redirect_to login_path
     elsif !current_admin.club_id.blank?
       redirect_to club_admin_index_path(current_admin.club_id)

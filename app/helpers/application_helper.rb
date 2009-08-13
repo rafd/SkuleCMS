@@ -8,7 +8,7 @@ module ApplicationHelper
   def render__partial(*args)
     @element = args[0]
 		if (args.length==1)
-      if controller.controller_name == 'hub_pages' || (controller.controller_name == "clubs" && controller.action_name == "index")|| controller.controller_name == 'users' || controller.controller_name == 'calendar' 
+      if controller.controller_name == 'hub_pages' || (controller.controller_name == "clubs" && controller.action_name == "index")|| controller.controller_name == 'users' || controller.controller_name == 'calendar' || (controller.controller_name == 'admins' && (controller.action_name != 'change_password' || controller.action_name != 'update_password' )) 
         render_this_or_default('hub', @element)
       elsif controller.controller_name != "admin_pages" and (controller.action_name == "show" || controller.action_name == "index")
         render_this_or_default('clubs', @element)
@@ -64,6 +64,10 @@ module ApplicationHelper
         render :partial => ('layouts/default/'+@element)
       end
     end
+  end
+  
+  def display_multi_line_string(text)
+    return text.gsub("\n", "<br />")
   end
   
 end

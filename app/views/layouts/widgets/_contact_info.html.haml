@@ -1,0 +1,13 @@
+- if club.contact || club.address
+	.widget.events
+		%h4 Contact Information
+		%p
+			- if club.address
+				Address:
+				%br
+				=display_multi_line_string(club.address)
+				%br
+				%br
+			- if club.contact
+				Email: 
+				=club.contact
