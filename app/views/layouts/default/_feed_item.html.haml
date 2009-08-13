@@ -17,7 +17,7 @@
 	.source
 		- unless controller.controller_name == 'clubs'
 			=link_to(feed_item.club.name, {:controller=>'clubs', :action => 'show', :id => feed_item.club})+","
-		= time_ago_in_words(feed_item.updated_at)+' ago'
+		= time_ago_in_words(feed_item.created_at)+' ago'
 
 =# if feed_item.respond_to?("title")
 	
