@@ -1,0 +1,5 @@
+#left
+	%ul
+		%li= link_to_unless_current "Admins", :controller => "admins", :action => "index"
+		%li= link_to_unless_current "Clubs", :controller => "clubs", :action => "admin"
+	

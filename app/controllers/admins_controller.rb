@@ -1,21 +1,14 @@
 class AdminsController < ApplicationController
   before_filter :auth_change, :only => [:change_password, :update_password]
-  before_filter :auth_super, :only => [:index, :edit, :update, :show, :destroy]
+  before_filter :auth_super, :only => [:index, :edit, :update, :destroy]
   before_filter :auth_new, :only => [:new, :create]
   
+  #su_admin only
   def index
     @admins = Admin.all
-  end
-
-  # GET /admins/1
-  # GET /admins/1.xml
-  def show
-    @admin = Admin.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @admin }
-    end
+    
+    @page_title = "Admins : Manage"
+    @site_section = "su_admin"
   end
 
   # GET /admins/new
@@ -23,6 +16,10 @@ class AdminsController < ApplicationController
   def new
     @admin = Admin.new
     @clubs = Club.all
+    
+    @page_title = "Admins : New"
+    @site_section = "su_admin"
+    
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @admin }
@@ -33,7 +30,20 @@ class AdminsController < ApplicationController
   def edit
     @admin = Admin.find(params[:id])
     @clubs = Club.all
+    
+    @page_title = "Admins : Edit"
+    @site_section = "su_admin"
   end
+  
+  def change_password
+    @page_title = "Change Password"
+    @site_section = "hub"
+    
+    @admin = current_admin
+  end
+  
+  
+  #############################
 
   # POST /admins
   # POST /admins.xml
@@ -71,9 +81,7 @@ class AdminsController < ApplicationController
     end
   end
   
-  def change_password
-    @admin = current_admin
-  end
+
   
   def update_password
     @admin = current_admin

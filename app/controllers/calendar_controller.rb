@@ -1,6 +1,9 @@
 class CalendarController < ApplicationController
   
   def index
+    @page_title = "Calendar"
+    @site_section = "hub"
+  
     @month = params[:month].to_i
     @year = params[:year].to_i
 

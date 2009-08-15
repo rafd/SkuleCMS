@@ -5,6 +5,9 @@ class AdminPagesController < ApplicationController
   end
   
   def index
+    @site_section = "admin"
+    @page_title = "Dashboard"
+  
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @clubs }
@@ -15,32 +18,12 @@ class AdminPagesController < ApplicationController
   
   end
   
-  def posts
-  
-  end
-  
-  def events
-  
-  end
-  
-  def photos
-  
-  end
-  
-  def pages
-  
-  end
-  
-  def members
-  
-  end
-  
-  def files
-  
-  end
-  
-  def settings
-  
-  end
+  #posts
+  #events
+  #photos
+  #pages
+  #members
+  #files
+  #setting
   
 end

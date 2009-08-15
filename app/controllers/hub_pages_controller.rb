@@ -1,7 +1,7 @@
 class HubPagesController < ApplicationController
 	def index
-		@page_title = "Skule.ca"
 		@page_banner = true
+		@site_section = "hub"
 	end
 
 	def digest
@@ -11,20 +11,18 @@ class HubPagesController < ApplicationController
 		@upcoming_events = Event.find(:all, :order => "start", :conditions => ["finish>=?", Time.now.utc], :limit => 10)
 	end
 
-	def calendar
-		@page_title = "SkuleCalendar"
-	end
+	#see calendar/index
 
-	def clubs
-		@page_title = "SkuleClubs"
-	end
+	#see clubs/index
 
 	def map
-		@page_title = "SkuleMap"
+		@page_title = "Map"
+		@site_section = "hub"
 	end
 
 	def services
 		@page_title = "Services"
+		@site_section = "hub"
 	end
 
 end

@@ -5,8 +5,11 @@ class ClubsController < ApplicationController
   # GET /clubs
   # GET /clubs.xml
   def index
+    @page_title = "Club Directory"
+    @site_section = "hub"
+    
     @clubs = Club.find(:all, :conditions => ["live=?",true], :include => :tags)
-
+    
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @clubs }
@@ -14,14 +17,20 @@ class ClubsController < ApplicationController
   end
   
   def admin
-  	@clubs = Club.all
+    @page_title = "Administrate Clubs"
+    @site_section = "su_admin"
+    
+    @clubs = Club.all
   end
 
   # GET /clubs/1
   # GET /clubs/1.xml
   def show
     @club = Club.find(params[:id], :include => :tags)
- 
+   
+    @page_title = @club.name
+    @site_section = "clubs"
+    
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @club }
@@ -32,6 +41,9 @@ class ClubsController < ApplicationController
   # GET /clubs/new.xml
   def new
     @new_club = Club.new
+    
+    @page_title = "New Club"
+    @site_section = "admin"
 
     respond_to do |format|
       format.html # new.html.erb
@@ -42,13 +54,18 @@ class ClubsController < ApplicationController
   # GET /clubs/1/edit
   def edit
     @club = Club.find(params[:id], :include => :tags)
+    
+    @page_title = "Editting "+@club.name
+    @site_section = "admin"
   end
+
+  ############################
 
   # POST /clubs
   # POST /clubs.xml
   def create
     @new_club = Club.new(params[:club])
-
+    
     respond_to do |format|
       if @new_club.save
         current_admin.club_id = @new_club.id
