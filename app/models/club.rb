@@ -128,8 +128,8 @@ class Club < ActiveRecord::Base
   	
     feed = self.small_posts.find(:all, :order => "created_at DESC", :limit => 5) + self.large_posts.find(:all, :order => "created_at DESC", :limit => 5) + self.events.find(:all, :order => "created_at DESC", :limit => 5)
     
-    feed = feed.sort_by{|t| t.created_at}.reverse #shouldn't be using reverse, use native reverse within sort_by
-    feed = feed[0..5]
+    feed = feed.sort_by{|t| t.created_at}.reverse
+    feed = feed[0..10]
     return feed
   end
  

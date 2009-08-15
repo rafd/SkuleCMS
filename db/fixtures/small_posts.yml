@@ -3,5 +3,5 @@ Post1:
   club: WebDev
 	
 Post2:
-  content: Woot!
+  content: <%= "Woot!" %>
   club: WebDev
