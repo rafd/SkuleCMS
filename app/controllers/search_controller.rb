@@ -10,6 +10,7 @@ class SearchController < ApplicationController
           @club << Club.find(club.id, :include => :tags)
         end
       end
+
     end
   end
 
@@ -31,6 +32,10 @@ class SearchController < ApplicationController
   end
   
   def advanced
+    
+  end
+  
+  def result
     
   end
   

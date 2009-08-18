@@ -62,7 +62,7 @@
 				
 		
 	#banner
-		:background= url("/images/banners/skule.png") !color_foreground center center
+		:background= url("/images/banners/skule.png") !color_foreground "center" "center"
 		//+styled-corners
 		:margin= 0 0 0 -1 * !overlap
 		:padding-right= !overlap*2
@@ -72,6 +72,6 @@
 			:margin= 2em 0
 			:width 35%
 			:padding 10px 2em
-			:border-left= !overlap solid !background_body
+			:border-left= !overlap "solid" !background_body
 			+rounded-corners(0 !corner_radius_default !corner_radius_default 0)
 			+quiet
