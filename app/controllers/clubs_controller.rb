@@ -1,3 +1,5 @@
+
+
 class ClubsController < ApplicationController
   before_filter :auth_admin, :only => [:edit, :update]
   before_filter :auth_new_club, :only => [:new, :create]
@@ -9,10 +11,10 @@ class ClubsController < ApplicationController
     @site_section = "hub"
     
     @clubs = Club.find(:all, :conditions => ["live=?",true], :include => :tags)
-    
+        
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @clubs }
+      format.xml { render :xml => @clubs }
     end
   end
   
@@ -31,9 +33,12 @@ class ClubsController < ApplicationController
     @page_title = @club.name
     @site_section = "clubs"
     
+    @all_posts = @club.posts_only
+    
+    
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @club }
+      format.xml  {} # { render :xml => @club }
     end
   end
 

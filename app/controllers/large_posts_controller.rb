@@ -1,3 +1,6 @@
+ require 'pagify/active_record'
+ require 'pagify/helper/rails'
+
 class LargePostsController < ApplicationController
     before_filter :load_club
     before_filter :auth_admin, :only => [:admin, :new, :edit, :create, :update, :destroy]
@@ -21,7 +24,7 @@ class LargePostsController < ApplicationController
   # GET /large_posts
   # GET /large_posts.xml
   def index
-    @large_posts = @club.large_posts.all
+    @large_posts = @club.large_posts.all.pagify(:page =>1, :per_page => 1)
 
     respond_to do |format|
       format.html # index.html.erb
