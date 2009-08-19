@@ -55,7 +55,7 @@ class ClubsController < ApplicationController
   def edit
     @club = Club.find(params[:id], :include => :tags)
     
-    @page_title = "Editting "+@club.name
+    @page_title = "Editing "+@club.name
     @site_section = "admin"
   end
 

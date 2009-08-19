@@ -1,9 +1,0 @@
-<h1>
-	<% if @club && @club.logo %>
-		<%= link_to image_tag(@club.logo)+@club.name, "#" %>
-	<% elsif @club && @club.name %>
-		<%= link_to image_tag("blank.gif")+@club.name, "#" %>
-	<% else %>
-		<%= image_tag("blank.gif")+"Skule.ca" %>
-	<% end %>
-</h1>

@@ -562,16 +562,21 @@ a {
     color: #666666; }
 
 /* line 1, ../../../app/stylesheets/partials/page_elements/_left.sass */
+#manage {
+  font-style: italic;
+  padding-left: 1em; }
+
+/* line 5, ../../../app/stylesheets/partials/page_elements/_left.sass */
 #left {
   -moz-border-radius: 5px 5px 0 0;
   -webkit-border-radius: 5px 5px 0 0;
   background: #cccccc;
   margin: 10px 0 0 10px; }
-  /* line 7, ../../../app/stylesheets/partials/page_elements/_left.sass */
+  /* line 11, ../../../app/stylesheets/partials/page_elements/_left.sass */
   #left ul {
     list-style: none;
     margin: 0 0 2em 0; }
-    /* line 11, ../../../app/stylesheets/partials/page_elements/_left.sass */
+    /* line 15, ../../../app/stylesheets/partials/page_elements/_left.sass */
     #left ul li {
       font-size: 1.2em;
       line-height: 1.75em;
@@ -582,7 +587,7 @@ a {
       background: white;
       -moz-border-radius: 5px 0 0 5px;
       -webkit-border-radius: 5px 0 0 5px; }
-      /* line 21, ../../../app/stylesheets/partials/page_elements/_left.sass */
+      /* line 25, ../../../app/stylesheets/partials/page_elements/_left.sass */
       #left ul li a {
         display: block;
         font-size: 0.85em;
@@ -751,6 +756,10 @@ body.clubs.index #main #content {
       top: 0;
       left: 0;
       background: gold; }
+
+/* line 1, ../../../app/stylesheets/partials/site_sections/_backend.sass */
+#quick_update {
+  overflow: hidden; }
 
 /* line 3, ../../../app/stylesheets/partials/site_sections/_map.sass */
 body.map #main #content {

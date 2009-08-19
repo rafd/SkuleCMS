@@ -31,10 +31,10 @@ class LargePostsController < ApplicationController
   
     def admin
        if (params[:id].blank?)
-         @large_posts = @club.large_posts.all
+         @posts = @club.large_posts.all + @club.small_posts.all
          respond_to do |format|
           format.html #admin.html.erb
-          format.xml { render :xml => @large_posts }
+          format.xml { render :xml => @posts }
          end
        else
            @large_post = @club.large_posts.find(params[:id])
