@@ -1,18 +1,29 @@
-<h1>Listing admins</h1>
+<h2>Super Admin Control Panel</h2>
 
+<h3>The Basics</h3>
+<ol>
+	<li>Create a new admin</li>
+	<li>Assign a decent user name and a temporary password</li>
+	<li>Either assign a club to the admin or allow them to create a new club</li>
+	<li>Do not check super admin (you cannot admin a club as a super admin)</li>
+	<li>Give the person the account and password</li>
+	<li>When they login, they will either be taken to their club admin page or a new club creation page</li>
+	<li>Take a break... you deserve it</li>
+</ol>
+
+<h2>Listing admins</h2>
+<h4>(Super Admins are bolded)</h4>
 <table>
   <tr>
     <th>User</th>
     <th>Club</th>
-
   </tr>
 
 <% @admins.each do |admin| %>
   <tr>
-    <td><%=h admin.login %></td>
+    <td><%= admin.super_admin ? '<b>' + admin.login + '</b>' : admin.login %></td>
     <td><%=h admin.club.name unless admin.club.blank? %></td>
 
-    <td><%= link_to 'Show', admin %></td>
     <td><%= link_to 'Edit', edit_admin_path(admin) %></td>
     <td><%= link_to 'Destroy', admin, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>

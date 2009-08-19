@@ -1,0 +1,22 @@
+= include_tiny_mce_if_needed
+
+%h2= (controller.action_name == "new" ? 'New Large Post' : "Editing #{large_post.title}")
+
+- form_for([:club, large_post], :url => {:action => (controller.action_name == "new" ? 'create' : 'update')}) do |f|
+	= f.error_messages
+
+	%p
+		= f.label :title
+		= f.text_field :title
+
+	%p
+		= f.label :content
+		= f.text_area :content, :class => "mceEditor"
+
+	%p
+		= f.submit (controller.action_name == "new" ? 'Create' : 'Update')
+
+- if (controller.action_name == "edit")
+	= link_to 'Show', :action => 'admin', :club_id => club, :id => large_post.id
+	|
+= link_to 'Back', :action => 'admin'

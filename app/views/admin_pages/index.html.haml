@@ -1,0 +1,19 @@
+- if !@club.live
+	%p
+		Note: Your club is not live and will not be visible in the club directory.
+		%br
+		To change this, go to Settings and check "Make Site Live"
+
+- form_for([:club, @quick_update], :url => {:controller=>'small_posts',:action=> 'create'}) do |f|
+	= f.error_messages
+
+	%p
+		= f.label :quick_update
+		= f.text_area :content, :onKeyDown => "textCounter(this,this.form.remLen,200);", :onKeyUp => "textCounter(this,this.form.remLen,200);", :rows => 3, :cols => 67, :id => "quick_update"
+	
+	Characters Left:
+	%input{"readonly", :style=>"border: 0", :type=>"text", :name=>"remLen", :size=>3, :maxlength=>3, :value=>"200"}
+
+	%p
+		= f.submit 'Create'
+		= f.submit 'Try a Large Post'

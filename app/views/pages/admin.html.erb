@@ -4,12 +4,14 @@
   <tr>
     <th>Title</th>
     <th>Content</th>
+    <th>Weight</th>
   </tr>
 
 <% @pages.each do |page| %>
   <tr>
-    <td><%=h page.title %></td>
+    <td><%= page.indented_title %></td>
     <td><%= page.content %></td>
+		<td><%= page.order %></td>
     <td><%= link_to 'Show', admin_club_page_path(@club, page) %></td>
     <td><%= link_to 'Edit', edit_club_page_path(@club, page) %></td>
     <td><%= link_to 'Destroy', club_page_path(@club, page), :confirm => 'Are you sure?', :method => :delete %></td>

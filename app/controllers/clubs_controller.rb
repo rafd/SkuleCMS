@@ -3,7 +3,8 @@
 class ClubsController < ApplicationController
   before_filter :auth_admin, :only => [:edit, :update]
   before_filter :auth_new_club, :only => [:new, :create]
-
+  before_filter :auth_super_admin_only, :only => [:admin, :destroy]
+  
   # GET /clubs
   # GET /clubs.xml
   def index
@@ -60,7 +61,7 @@ class ClubsController < ApplicationController
   def edit
     @club = Club.find(params[:id], :include => :tags)
     
-    @page_title = "Editting "+@club.name
+    @page_title = "Editing "+@club.name
     @site_section = "admin"
   end
 
@@ -80,7 +81,7 @@ class ClubsController < ApplicationController
         format.xml  { render :xml => @new_club, :status => :created, :location => @new_club }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @club.errors, :status => :unprocessable_entity }
+        format.xml  { render :xml => @new_club.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -93,7 +94,7 @@ class ClubsController < ApplicationController
     respond_to do |format|
       if @club.update_attributes(params[:club])
         flash[:notice] = 'Club was successfully updated.'
-        format.html { redirect_to(@club) }
+        format.html { redirect_to(club_admin_index_path(@club)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

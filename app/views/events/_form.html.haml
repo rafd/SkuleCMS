@@ -1,0 +1,39 @@
+%h2= (controller.action_name == "new" ? 'New Event' : "Editing #{event.name}")
+- form_for ([:club, event], :url => {:action => (controller.action_name == "new" ? 'create' : 'update')}) do |f|
+	= f.error_messages
+	%p
+		= f.label :name
+		%span The name of your club's event. Max 40 characters.
+		= f.text_field :name
+
+	%p
+		= f.label :start, "Start Time"
+		%span The starting time of the event.
+		= f.datetime_select :start
+
+	%p
+		= f.label :finish, "End Time"
+		%span The finishing time of the event.
+		= f.datetime_select :finish
+
+	%p
+		= f.label :location
+		%span The location of the event. Max 50 characters.
+		= f.text_field :location
+
+	%p
+		= f.label :description
+		%span A description of your event. Max 200 characters.
+		= f.text_area :description, :cols => 20, :rows => 6
+
+	%p
+		= f.label :link
+		%span Optional: A link to your event page/site. Max 200 characters.
+		= f.text_field :link
+
+	%p
+		= f.submit (controller.action_name == "new" ? 'Create' : 'Update')
+
+= link_to 'Show', :action => 'admin', :club_id => club, :id => event
+|
+= link_to 'Back', :action => 'admin'

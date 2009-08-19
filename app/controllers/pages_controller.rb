@@ -16,14 +16,12 @@ class PagesController < ApplicationController
                                 :theme_advanced_resizing => true,
                                 :theme_advanced_statusbar_location => 'bottom',
 
-
                               }
   
   # GET /pages
   # GET /pages.xml
   def index
-    @pages = @club.pages
-
+    @pages = @club.all_pages
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @pages }
@@ -32,7 +30,7 @@ class PagesController < ApplicationController
 
   def admin
     if (params[:id].blank?)
-      @pages = @club.pages
+      @pages = @club.all_pages
       respond_to do |format|
         format.html # index.html.erb
         format.xml  { render :xml => @pages }
@@ -61,7 +59,7 @@ class PagesController < ApplicationController
   # GET /pages/new.xml
   def new
     @page = Page.new
-
+    @pagelist = @club.all_pages
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @page }
@@ -71,6 +69,8 @@ class PagesController < ApplicationController
   # GET /pages/1/edit
   def edit
     @page = @club.pages.find(params[:id])
+    @pagelist = @club.all_pages
+    @pagelist  -= @page.all_children << @page
   end
 
   # POST /pages
@@ -83,6 +83,7 @@ class PagesController < ApplicationController
 	      format.html { redirect_to(admin_club_page_path(@club, @page)) }
         format.xml  { render :xml => @page, :status => :created, :location => @page }
       else
+        @pagelist = @club.all_pages
         format.html { render :action => "new" }
         format.xml  { render :xml => @page.errors, :status => :unprocessable_entity }
       end
@@ -100,6 +101,9 @@ class PagesController < ApplicationController
         format.html { redirect_to(admin_club_page_path(@club, @page)) }
         format.xml  { head :ok }
       else
+        @pagelist = @club.all_pages
+        @pagelist = @club.all_pages
+        @pagelist  -= @page.all_children << @page
         format.html { render :action => "edit" }
         format.xml  { render :xml => @page.errors, :status => :unprocessable_entity }
       end

@@ -1,0 +1,32 @@
+%h2 Listing Posts
+
+%table
+	%tr
+		%th Title
+		%th Content
+		%th Created At
+		%th Updated At
+
+	- @posts.each do |post|
+		%tr
+			- if (post.class.to_s == "SmallPost")
+				%td Quick Update
+			- else
+				%td= link_to post.title, :action => 'admin', :club_id => @club, :id => post
+			%td= post.content
+			%td= post.created_at
+			%td= post.updated_at
+			- if (post.class.to_s == "SmallPost")
+				%td= link_to 'Edit', :controller => 'small_posts', :action => 'edit', :id => post
+				%td= link_to 'Destroy', club_small_post_path(@club, post), :confirm => 'Are you sure?', :method => :delete
+			- else
+				%td= link_to 'Edit', :action => 'edit', :id => post
+				%td= link_to 'Destroy', club_large_post_path(@club, post), :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Quick Update', :controller => 'small_posts', :action => 'new'
+|
+= link_to 'New Large Post', :action => 'new'
+|
+= link_to 'Back',  club_admin_index_path(@club)
