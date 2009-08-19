@@ -1,7 +1,8 @@
 class ClubsController < ApplicationController
   before_filter :auth_admin, :only => [:edit, :update]
   before_filter :auth_new_club, :only => [:new, :create]
-
+  before_filter :auth_super_admin_only, :only => [:admin, :destroy]
+  
   # GET /clubs
   # GET /clubs.xml
   def index
@@ -88,7 +89,7 @@ class ClubsController < ApplicationController
     respond_to do |format|
       if @club.update_attributes(params[:club])
         flash[:notice] = 'Club was successfully updated.'
-        format.html { redirect_to(@club) }
+        format.html { redirect_to(club_admin_index_path(@club)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

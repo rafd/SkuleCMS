@@ -53,7 +53,7 @@
 		= f.file_field :banner
 
 	%p
-		= f.label :live, "Make site live"
+		= f.label :live, "Make Site Live"
 		%span Check this when the club is ready to be live and visible to everyone.
 		= f.check_box :live
 
@@ -62,4 +62,4 @@
 		
 = link_to 'Show', @club
 |
-= link_to 'Cancel', clubs_path
+= link_to 'Cancel', :controller => "admin_pages", :action=>"index", :club_id => @club

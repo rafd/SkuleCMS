@@ -40,6 +40,14 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def auth_super_admin_only
+    if current_admin.blank?
+      redirect_to login_path
+    elsif !current_admin.super_admin
+      redirect_to root_path
+    end
+  end
+
   # Scrub sensitive parameters from your log
   filter_parameter_logging :password
 end

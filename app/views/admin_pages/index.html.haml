@@ -1,3 +1,9 @@
+- if !@club.live
+	%p
+		Note: Your club is not live and will not be visible in the club directory.
+		%br
+		To change this, go to Settings and check "Make Site Live"
+
 - form_for([:club, @quick_update], :url => {:controller=>'small_posts',:action=> 'create'}) do |f|
 	= f.error_messages
 
