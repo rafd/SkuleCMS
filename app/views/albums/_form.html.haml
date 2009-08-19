@@ -1,0 +1,28 @@
+%h2= (controller.action_name == "new" ? 'New Album' : "Editing #{album.name}")
+
+- form_for(album, :url => {:action => (controller.action_name == "new" ? 'create' : 'update')}) do |f|
+	= f.error_messages
+
+	%p
+		= f.label :name
+		= f.text_field :name
+
+	%p
+		= f.label :desc
+		= f.text_field :desc
+
+	%p
+		= f.label :tags
+		= f.text_field :tag_list
+
+	%p
+		= f.label :user_id
+		= f.collection_select :user_id, User.find(:all), :id, :name, { :prompt => 'Select a User' }
+
+	%p
+		= f.submit 'Update'
+
+- if (controller.action_name == "edit")
+	= link_to 'Show', admin_club_album_path (album.club, album)
+	|
+= link_to 'Back', admin_club_gallery_path (album.club)

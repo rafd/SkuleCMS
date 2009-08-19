@@ -7,6 +7,9 @@ class SmallPostsController < ApplicationController
 
   # GET /small_posts
   # GET /small_posts.xml
+
+  # this is unneeded
+=begin
   def index
     @small_posts = @club.small_posts.all
 
@@ -15,6 +18,7 @@ class SmallPostsController < ApplicationController
       format.xml {} #{ render :xml => @small_posts }
     end
   end
+=end
 
   def admin
        if (params[:id].blank?)
@@ -74,7 +78,7 @@ class SmallPostsController < ApplicationController
         #save normally as a twit
         if @small_post.save
           flash[:notice] = 'SmallPost was successfully created.'
-          format.html { redirect_to admin_club_small_post_path(@club, @small_post) }
+          format.html { redirect_to admin_club_large_posts_path(@club) }
           format.xml  { render :xml => @small_post, :status => :created, :location => @small_post }
         else
           format.html { render :action => "new" }
@@ -92,7 +96,7 @@ class SmallPostsController < ApplicationController
     respond_to do |format|
       if @small_post.update_attributes(params[:small_post])
         flash[:notice] = 'SmallPost was successfully updated.'
-        format.html { redirect_to(@small_post) }
+        format.html { redirect_to admin_club_large_posts_path(@club) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -108,7 +112,7 @@ class SmallPostsController < ApplicationController
     @small_post.destroy
 
     respond_to do |format|
-      format.html { redirect_to(admin_club_small_posts_url) }
+      format.html { redirect_to(admin_club_large_posts_url) }
       format.xml  { head :ok }
     end
   end

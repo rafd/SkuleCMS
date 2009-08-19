@@ -1,0 +1,65 @@
+%h2 Editing #{@club.name}
+
+- form_for(@club, :html => {:multipart => true}) do |f|
+	= f.error_messages
+	%p
+		= f.label :name, "Short Name"
+		%span The short form of your club name. Max 20 characters. Used almost everywhere.
+		= f.text_field :name
+
+	%p
+		= f.label :official_name, "Official Name"
+		%span The official name of the club. Max 100 characters. Used in the club site's footer.
+		= f.text_field :official_name
+
+	%p
+		= f.label :web_name, "Web Name"
+		%span The web version name of the club with no whitespaces. Max 20 characters. Only lowercase letters, numbers and underscores allowed.
+		= f.text_field :web_name
+
+	%p
+		= f.label :tagline
+		%span A short description of your club. Max 100 characters. Used in the club directory.
+		= f.text_field :tagline
+
+	%p
+		= f.label :description
+		%span A longer description of your club. Max 400 characters. Used on the home page of your club's website.
+		= f.text_area :description
+
+	%p
+		= f.label :contact, "Contact Email"
+		%span The club's main email address. This will be displayed with the clubs contact information.
+		= f.text_field :contact
+
+	%p
+		= f.label :address
+		%span The club's address. This will be displayed with the clubs contact information.
+		= f.text_area :address
+
+	%p
+		= f.label :tags, "Labels"
+		%span Tags used to classify your club in the club directory.
+		= f.text_field :tag_list
+
+	%p
+		= f.label :logo, "Logo Image"
+		%span The logo image that will be displayed with the club. Max 100 KB.
+		= f.file_field :logo
+
+	%p
+		= f.label :banner, "Banner Image"
+		%span The banner image that will be displayed on the club website. Max 800 KB.
+		= f.file_field :banner
+
+	%p
+		= f.label :live, "Make site live"
+		%span Check this when the club is ready to be live and visible to everyone.
+		= f.check_box :live
+
+	%p
+		= f.submit 'Update'
+		
+= link_to 'Show', @club
+|
+= link_to 'Cancel', clubs_path

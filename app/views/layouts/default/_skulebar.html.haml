@@ -1,7 +1,7 @@
 %div#skulebar
   = link_to "Skule.ca", "/", :id => "skule"
   - form_for :club, @search, :url => {:controller => 'search', :action => 'search', :club_id => (club_id||nil)}  do |f|
-    = text_field_with_auto_complete :search, :search, {}, { :url => formatted_search_path( :js), :select => :select_tag, :after_update_element => "submit", :frequency => 0.4, :method => :get, :param_name => 'search' }
+    = text_field_with_auto_complete :search, :search, {}, { :url => formatted_search_path(:js), :select => :select_tag, :after_update_element => "submit", :frequency => 0.4, :method => :get, :param_name => 'search' }
   -#
     %ul#bookmarks
       %li= link_to "Google", "http://www.google.com", :class => "google"

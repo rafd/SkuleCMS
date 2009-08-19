@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-  <title>Skule.ca : <%= controller.controller_name %> - <%= controller.action_name %></title>
+  <title><%= render :partial => 'layouts/default/title' %></title>
   <%= stylesheet_link_tag 'compiled/screen.css' %>
     <%= stylesheet_link_tag 'event_calendar' %>
   <%= javascript_include_tag :defaults %>
@@ -22,7 +22,12 @@
 			<%= render__partial 'banner' %>
 		</div>
 	
-		<%= render__partial 'left' %>
+		
+		<% if @site_section %>
+			<%= render :partial => ("layouts/" + @site_section + "/left") %>
+		<% else %>
+			<%= render__partial 'left' %>
+		<% end %>
 	
 		<div id="main">
 			<div id="content">

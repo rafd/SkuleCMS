@@ -1,0 +1,14 @@
+=@page_title+" - " if @page_title 
+
+-case @site_section
+	-when "admin"
+		= "Backend - "
+	-when "su_admin"
+		= "SU-Backend - "
+
+Skule.ca
+
+-if RAILS_ENV.to_s == "development"
+	(
+	= @controller.controller_name + " : " + @controller.action_name
+	)

@@ -1,9 +1,11 @@
 LPost1:
-  title: I is title!
-  content: BLAAAAAH!
-  club: WebDev
-	
-LPost2:
   title: Me too!
   content: ZOMEGA!
   club: WebDev
+
+LPost2:
+  id: 5
+  title: Post 2
+  content: BLAAAAAH!
+  club: WebDev
+  created_at: <%= 5.days.ago %>

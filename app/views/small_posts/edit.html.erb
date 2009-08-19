@@ -1,6 +1,6 @@
 <h1>Editing small_post</h1>
 
-<% form_for(@small_post) do |f| %>
+<% form_for([:club, @small_post], :url => {:action => 'update'}) do |f| %>
   <%= f.error_messages %>
 
   <p>
@@ -11,12 +11,11 @@
 	%>
   </p>
   
-<input readonly type=text name=remLen size=3 maxlength=3 value="--"> characters left</input>
+Characters Left: <input readonly style="border: 0" type=text name=remLen size=3 maxlength=3 value="200"></input>
 
   <p>
     <%= f.submit 'Update' %>
   </p>
 <% end %>
 
-<%= link_to 'Show', @small_post %> |
-<%= link_to 'Back', small_posts_path %>
+<%= link_to 'Back', admin_club_large_posts_path(@club) %>
