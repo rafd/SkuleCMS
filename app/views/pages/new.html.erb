@@ -12,6 +12,15 @@
     <%= f.label :content %><br />
     <%= f.text_area :content, :class => "mceEditor"  %>
   </p>
+	<p>
+    <%= f.label :parent_id, "Choose a page to fall under or leave blank to be a main page." %><br />
+    <%= (f.collection_select :parent_id, @pagelist, :id, :indented_title, { :prompt => 'Select a Page', :include_blank => '--None--'}).gsub("&amp;", "&") %>
+  </p>
+	<p>
+    <%= f.label :order, "Weighting" %>
+		<span>This will affect the order in which pages are displayed</span>
+    <%= f.text_field :order %>
+  </p>
   <p>
     <%= f.submit 'Create' %>
   </p>

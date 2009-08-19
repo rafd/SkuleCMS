@@ -7,6 +7,7 @@ class AdminPagesController < ApplicationController
   def index
     @site_section = "admin"
     @page_title = "Dashboard"
+    @quick_update = @club.small_posts.new
   
     respond_to do |format|
       format.html # index.html.erb

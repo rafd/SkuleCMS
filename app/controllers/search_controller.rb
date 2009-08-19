@@ -34,4 +34,8 @@ class SearchController < ApplicationController
     
   end
   
+  def result
+    
+  end
+  
 end

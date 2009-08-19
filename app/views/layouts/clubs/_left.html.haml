@@ -10,8 +10,8 @@
 	-else
 		-if @club.pages	
 			%ul.filter
-				-@club.pages.each do |page|
-					%li= link_to_unless_current page.title, :controller=> 'pages', :action=> 'show', :id => page
+				-@club.all_pages.each do |page|
+					%li= link_to_unless_current page.indented_title, :controller=> 'pages', :action=> 'show', :id => page
 		
 		%ul.filter
 			%li= link_to "Photos", "#"
