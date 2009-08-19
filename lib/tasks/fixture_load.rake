@@ -5,5 +5,8 @@ namespace :db do
     Dir.glob(RAILS_ROOT + '/db/fixtures/*.yml').each do |file|
       Fixtures.create_fixtures('db/fixtures', File.basename(file, '.*'))
     end
+    
+    #Post-processing of data
+    Page.rebuild_tree
   end
 end

@@ -8,5 +8,10 @@
   <%= @page.content %>
 </p>
 
+<p>
+  <b>Weight:</b>
+  <%= @page.order %>
+</p>
+
 <%= link_to 'Edit', edit_club_page_path(@club, @page) %> |
 <%= link_to 'Back', :action => 'admin' %>

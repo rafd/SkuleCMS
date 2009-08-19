@@ -77,7 +77,7 @@ class Club < ActiveRecord::Base
   end
   
   def hide_club
-    self.live = false
+    #self.live
   end
   
   def create_member_list
@@ -89,19 +89,28 @@ class Club < ActiveRecord::Base
   end
   
   def create_default_content
+    @root_page = self.pages.new
+    @root_page.save_with_validation(false)
+    
     @page = self.pages.new
     @page.title = "About Us"
     @page.content = self.description
+    @page.order = "3"
+    @page.parent_id = @root_page.id
     @page.save
     
     @page = self.pages.new
     @page.title = "History"
     @page.content = Time.now.strftime('%b. %d, %Y') + " - We created our SkuleClubs site!"
+    @page.order = "2"
+    @page.parent_id = @root_page.id
     @page.save
     
     @page = self.pages.new
     @page.title = "Constitution"
     @page.content = ""
+    @page.order = "1"
+    @page.parent_id = @root_page.id
     @page.save
     
     @small = self.small_posts.new
@@ -120,12 +129,24 @@ class Club < ActiveRecord::Base
     return self.groups.find(:first, :conditions => {:parent_id => nil})
   end
   
+  def root_page
+    return self.pages.find(:first, :conditions => {:parent_id => nil})
+  end
+  
   def members
     return self.member_list.users
   end
   
   def upcoming_events
     return self.events.find(:all, :order => "start", :conditions => ["finish>=?", Time.now.utc], :limit => 3)
+  end
+  
+  def main_pages
+    return self.root_page.children
+  end
+  
+  def all_pages
+    return self.pages.find(:all, :conditions => ["parent_id IS NOT ?", nil], :order => 'lft')
   end
   
   def feed_items

@@ -58,7 +58,7 @@ class ClubsController < ApplicationController
         format.xml  { render :xml => @new_club, :status => :created, :location => @new_club }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @club.errors, :status => :unprocessable_entity }
+        format.xml  { render :xml => @new_club.errors, :status => :unprocessable_entity }
       end
     end
   end
