@@ -169,4 +169,13 @@ class Club < ActiveRecord::Base
     return feed
   end
  
+   def posts_only
+    
+    feed = self.small_posts.find(:all, :order => "created_at DESC") + self.large_posts.find(:all, :order => "created_at DESC")
+    
+    feed = feed.sort_by{|t| t.created_at}.reverse
+    return feed
+  end
+ 
+ 
 end
