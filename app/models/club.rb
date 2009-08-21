@@ -1,3 +1,5 @@
+require "will_paginate"
+
 class Club < ActiveRecord::Base
   acts_as_taggable
     
