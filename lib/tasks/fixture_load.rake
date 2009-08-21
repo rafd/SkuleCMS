@@ -8,5 +8,7 @@ namespace :db do
     
     #Post-processing of data
     Page.rebuild_tree
+    Group.rebuild_tree
+    Membership.rebuild_memberships
   end
 end

@@ -8,10 +8,13 @@
   <%=h (@group.parent.blank?) ? "" : @group.parent.name %></td>
 </p>
 <p>
-  <b>Misc:</b>
+  <b>Description:</b>
   <%=h @group.misc %>
 </p>
-
+<p>
+  <b>Weighting:</b>
+  <%=h @group.order %>
+</p>
 <p>
   <b>Members:</b>
   <ul>
@@ -22,6 +25,7 @@
   </ul>
 </p>
 
+<%= link_to 'Add Members', :action => 'add_member' %> |
 <% unless @group.is_member_list? %>
 <%= link_to 'Edit', :action => 'edit', :id => @group %> |
 <% end %>

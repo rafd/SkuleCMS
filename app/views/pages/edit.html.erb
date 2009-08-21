@@ -3,9 +3,9 @@
 
 <% form_for([:club, @page], :url => {:action=> 'update'}) do |f| %>
   <%= f.error_messages %>
-
   <p>
-    <%= f.label :title %><br />
+    <%= f.label :title %>
+		<span>The title of the Page.</span>
     <%= f.text_field :title %>
   </p>
   <p>
@@ -13,12 +13,13 @@
     <%= f.text_area :content, :class => "mceEditor" %>
   </p>
 	<p>
-    <%= f.label :parent_id, "Choose a page to fall under or leave blank to be a main page." %><br />
+    <%= f.label :parent_id, "Hierarchy" %>
+		<span>Choose an existing page to fall under or leave blank to be a main page.</span>
     <%= (f.collection_select :parent_id, @pagelist, :id, :indented_title, { :prompt => 'Select a Page', :include_blank => '--None--'}).gsub("&amp;", "&") %>
   </p>
 	<p>
     <%= f.label :order, "Weighting" %>
-		<span>This will affect the order in which pages are displayed</span>
+		<span>This will affect the order in which pages are displayed. Lower values are displayed first.</span>
     <%= f.text_field :order %>
   </p>
   <p>

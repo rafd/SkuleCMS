@@ -3,6 +3,7 @@ Group1:
   name: Member List
 	
 Group2:
+  id: 39421
   club: WebDev
   name: Member List
   
@@ -13,3 +14,17 @@ Group3:
 Group4:
   club: FroshWeek
   name: Member List
+
+WebDevGroup1:
+  club: WebDev
+  name: SkuleClubs Project
+  parent_id: 39421
+  bns_parent_id: 39421
+  order: 1
+  
+WebDevGroup2:
+  club: WebDev
+  name: SkuleMaps Project
+  parent_id: 39421
+  bns_parent_id: 39421
+  order: 2

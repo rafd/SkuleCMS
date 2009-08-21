@@ -7,9 +7,11 @@ class Page < ActiveRecord::Base
                     :text_coloumn => "title"
   
  
-  validates_presence_of     :title, :order
+  validates_length_of     :title, :in => 3..50
   validates_uniqueness_of   :title, :case_sensitive => false, :scope => [:club_id]
+  validates_numericality_of :order
   
+  attr_protected :club_id, :created_at, :updated_at
   after_save :move_to_parent
   
   def move_to_parent
@@ -31,7 +33,7 @@ class Page < ActiveRecord::Base
     end
   end
   
-  #Don't use unless necessary
+  #This is for fixture loading. Don't use unless necessary.
   def self.rebuild_tree
     renumber_all
     Page.all.each do |page|
