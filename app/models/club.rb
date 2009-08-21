@@ -1,3 +1,5 @@
+require "will_paginate"
+
 class Club < ActiveRecord::Base
   acts_as_taggable
     
@@ -150,6 +152,7 @@ class Club < ActiveRecord::Base
     
     feed = feed.sort_by{|t| t.created_at}.reverse
     feed = feed[0..10]
+    #feed.paginate :page => params[:page], :per_page => 2, :order => 'created_at DESC'
     return feed
   end
  
@@ -159,6 +162,11 @@ class Club < ActiveRecord::Base
     
     feed = feed.sort_by{|t| t.created_at}.reverse
     return feed
+  end
+  
+  def test
+      paginate :per_page => 5, :page => page,
+           :order => "created_at DESC"
   end
  
  

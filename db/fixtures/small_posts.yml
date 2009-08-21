@@ -5,3 +5,4 @@ Post1:
 Post2:
   content: <%= "Woot!" %>
   club: WebDev
+  created_at: 2.days.ago
