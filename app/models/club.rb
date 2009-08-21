@@ -12,8 +12,9 @@ class Club < ActiveRecord::Base
   has_many      :small_posts, :dependent => :destroy
   has_many      :large_posts, :dependent => :destroy
 
-  validates_presence_of     :name, :description, :official_name, :tagline, :web_name
-  validates_uniqueness_of   :name, :official_name, :web_name
+  validates_uniqueness_of   :name, :case_sensitive => false
+  validates_uniqueness_of   :official_name, :case_sensitive => false
+  validates_uniqueness_of   :web_name, :case_sensitive => false
   validates_length_of       :name, :maximum => 20
   validates_length_of       :official_name, :maximum => 100
   validates_length_of       :contact, :maximum => 50
@@ -22,7 +23,9 @@ class Club < ActiveRecord::Base
   validates_length_of       :tagline, :in => 5..100
   validates_length_of       :description, :in => 5..400
   validates_format_of       :web_name, :with => /^[A-Za-z\d_]+$/, :message => "name is invalid. Only letters, numbers, and underscores allowed."
-  validates_format_of       :contact, :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i, :message => 'email is invalid.'
+  validates_format_of       :contact, :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i, :allow_blank => true, :message => 'email is invalid.'
+  
+  attr_accessible :name, :description, :official_name, :tagline, :web_name, :contact, :address, :live
   
   attr_accessor :logo, :banner
   
@@ -92,7 +95,7 @@ class Club < ActiveRecord::Base
     @page = self.pages.new
     @page.title = "About Us"
     @page.content = self.description
-    @page.order = "3"
+    @page.order = "1"
     @page.parent_id = @root_page.id
     @page.save
     
@@ -106,7 +109,7 @@ class Club < ActiveRecord::Base
     @page = self.pages.new
     @page.title = "Constitution"
     @page.content = ""
-    @page.order = "1"
+    @page.order = "3"
     @page.parent_id = @root_page.id
     @page.save
     
@@ -123,11 +126,24 @@ class Club < ActiveRecord::Base
   end
   
   def member_list
-    return self.groups.find(:first, :conditions => {:parent_id => nil})
+    @group = self.groups.find(:first, :conditions => {:parent_id => nil})
+    if @group.blank?
+      @group = Group.new
+      @group.club_id = self.id
+      @group.name = "Member List"
+      @group.misc = "Full member list of the club"
+      @group.save
+    end
+    return @group
   end
   
   def root_page
-    return self.pages.find(:first, :conditions => {:parent_id => nil})
+    @root_page = self.pages.find(:first, :conditions => {:parent_id => nil})
+    if @root_page.blank?
+      @root_page = self.pages.new
+      @root_page.save_with_validation(false)
+    end
+    return @root_page
   end
   
   def members

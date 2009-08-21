@@ -8,11 +8,13 @@
 				%li= link_to "Events", '#'
 				%li= link_to "Photos", '#'
 	-else
-		-if @club.pages	
-			%ul.filter
-				-@club.all_pages.each do |page|
-					%li= link_to_unless_current page.indented_title, :controller=> 'pages', :action=> 'show', :id => page
-		
+		-if @club.main_pages
+			%dl.filter
+				-@club.main_pages.each do |page|
+					%dt= link_to_unless_current page.title, :controller=> 'pages', :action=> 'show', :id => page
+					-page.children.each do |child|
+						%dd= link_to_unless_current child.title, :controller=> 'pages', :action=> 'show', :id => child
+
 		%ul.filter
 			%li= link_to "Photos", "#"
 			%li= link_to "Members", "#"

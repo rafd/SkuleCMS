@@ -8,7 +8,7 @@ class Page < ActiveRecord::Base
   
  
   validates_presence_of     :title, :order
-  validates_uniqueness_of   :title, :scope => [:club_id]
+  validates_uniqueness_of   :title, :case_sensitive => false, :scope => [:club_id]
   
   after_save :move_to_parent
   
