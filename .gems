@@ -2,3 +2,4 @@ icalendar
 haml-edge
 chriseppstein-compass --source http://gems.github.com
 taps
+mislav-will_paginate --version "~> 2.3.11" --source http://gems.github.com
