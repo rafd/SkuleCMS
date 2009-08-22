@@ -66,6 +66,12 @@ module ApplicationHelper
     end
   end
   
+  def display_all_tags_classes(club)
+    @tagline = ''
+    club.tags.each { |tag| @tagline += ' TAG_' + tag.name }
+    return @tagline
+  end
+  
   def display_multi_line_string(text)
     return text.gsub("\n", "<br />")
   end

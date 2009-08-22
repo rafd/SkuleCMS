@@ -597,6 +597,15 @@ a {
     #left ul dd, #left dl dd {
       font-size: 1em;
       text-indent: 1em; }
+  /* line 38, ../../../app/stylesheets/partials/page_elements/_left.sass */
+  #left #club_tags p {
+    font-size: 1em; }
+    /* line 41, ../../../app/stylesheets/partials/page_elements/_left.sass */
+    #left #club_tags p .active {
+      font-size: 1.2em;
+      background: white;
+      -moz-border-radius: 5px 5px 5px 5px;
+      -webkit-border-radius: 5px 5px 5px 5px; }
 
 /* line 3, ../../../app/stylesheets/partials/page_elements/_sidebar.sass */
 #sidebar .widget {

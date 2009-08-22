@@ -10,6 +10,7 @@ class ClubsController < ApplicationController
   def index
     @page_title = "Club Directory"
     @site_section = "hub"
+    @page_left = "club_tags_list"
     
     @clubs = Club.find(:all, :conditions => ["live=?",true], :include => :tags)
         

@@ -1,0 +1,5 @@
+#club_tags
+	%h4 Filter By Tags
+	%p
+		-Tag.find(:all).each do |tag|
+			= link_to tag, "#", :class => ('taglist LEFT_TAG_' + tag.name)
