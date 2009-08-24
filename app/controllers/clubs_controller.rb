@@ -12,7 +12,8 @@ class ClubsController < ApplicationController
     @site_section = "hub"
     @page_left = "club_tags_list"
     
-    @clubs = Club.find(:all, :conditions => ["live=?",true], :include => :tags)
+    @clubs = Club.find(:all, :conditions => ["live=?",true], :include => :tags, :order => "name ASC")
+    @tags = Club.find_related_tags("club")   
         
     respond_to do |format|
       format.html # show.html.erb

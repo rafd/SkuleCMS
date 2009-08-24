@@ -5,42 +5,21 @@ web:
 design:
   name: design
   taggings_count: 1
-
-skule:
-  name: skule
+  
+engsoc:
+  name: engsoc
   taggings_count: 2
 
-f!rosh:
-  name: f!rosh
+event:
+  name: event
   taggings_count: 1
   
-frilly:
-  name: frilly
+student_gov:
+  name: student government
   taggings_count: 1
   
-sosh:
-  name: sosh
+club:
+  name: club
   taggings_count: 1
-  
-fun:
-  name: fun
-  taggings_count: 1
-
-leadur:
-  name: leadur
-  taggings_count: 1
-  
-cute:
-  name: cute
-  taggings_count: 1
-  
-cuddly:
-  name: cuddly
-  taggings_count: 1
-  
-edible:
-  name: edible
-  taggings_count: 1
-  
   
   

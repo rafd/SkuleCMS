@@ -1,5 +1,5 @@
 #club_tags
-	%h4 Filter By Tags
-	%p
-		-Tag.find(:all).each do |tag|
-			= link_to tag, "#", :class => ('taglist LEFT_TAG_' + tag.name)
+	%dl
+		%dt Filter by Tags
+		-@tags.each do |tag|
+			%dd= link_to tag, "#", :class => ('taglist LEFT_TAG_' + tag.name)

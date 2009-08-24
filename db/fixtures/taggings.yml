@@ -6,7 +6,7 @@
 2:
   taggable_type: Club
   taggable: WebDev
-  tag: skule
+  tag: club
 
 3:
   taggable_type: Club
@@ -16,45 +16,20 @@
 4:
   taggable_type: Club
   taggable: FroshWeek
-  tag: f!rosh
-
-5:
-  taggable_type: Club
-  taggable: FroshWeek
-  tag: frilly
-
-6:
-  taggable_type: Club
-  taggable: FroshWeek
-  tag: sosh
+  tag: engsoc
 
 7:
   taggable_type: Club
   taggable: FroshWeek
-  tag: fun
-
-8:
-  taggable_type: Club
-  taggable: FroshWeek
-  tag: leadur
+  tag: event
 
 9:
   taggable_type: Club
   taggable: EngSoc
-  tag: skule
+  tag: engsoc
 
 10:
   taggable_type: Club
   taggable: EngSoc
-  tag: cute
-
-11:
-  taggable_type: Club
-  taggable: EngSoc
-  tag: cuddly
-
-12:
-  taggable_type: Club
-  taggable: EngSoc
-  tag: edible
+  tag: student_gov
   

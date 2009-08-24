@@ -1,10 +1,7 @@
 #auto_search_result_list
 	-if @club
-		%ul#auto_search_result_items
+		.clubs_container
 			-@club.uniq.each do |club|
 				= render :partial => 'layouts/default/club_box', :locals => {:club => club}
-			%li
-				%h5.entry_name
-					Search "
-					%span.select_tag=@query
-					"
+			%div
+				="Search for "+@query

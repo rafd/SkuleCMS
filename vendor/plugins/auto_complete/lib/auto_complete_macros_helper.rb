@@ -112,8 +112,9 @@ return #{options[:after_update_element]}(element,value); }"  if options[:after_u
 
   def auto_complete_result(entries, field, phrase = nil)
     return unless entries
-    items = entries.map { |entry| content_tag("li", phrase ? highlight(entry[field], phrase) : h(entry[field])) }
-    content_tag("ul", items.uniq)
+    #items = entries.map { |entry| content_tag("li", phrase ? highlight(entry[field], phrase) : h(entry[field])) }
+    #content_tag("ul", items.uniq)
+    items = entries.map { |entry| content_tag("div", phrase ? highlight(entry[field], phrase) : h(entry[field])) }
   end
   
   
@@ -131,6 +132,7 @@ return #{options[:after_update_element]}(element,value); }"  if options[:after_u
   end
 
   private
+  
     def auto_complete_stylesheet
       content_tag('style', <<-EOT, :type => Mime::CSS)
         div.auto_complete {
@@ -158,5 +160,4 @@ return #{options[:after_update_element]}(element,value); }"  if options[:after_u
         }
       EOT
     end
-
 end   

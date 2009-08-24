@@ -593,14 +593,17 @@ a {
         font-size: 0.85em;
         background: #cccccc;
         color: #222222; }
-    /* line 31, ../../../app/stylesheets/partials/page_elements/_left.sass */
+        /* line 31, ../../../app/stylesheets/partials/page_elements/_left.sass */
+        #left ul li a.active, #left ul dt a.active, #left ul dd a.active, #left dl li a.active, #left dl dt a.active, #left dl dd a.active {
+          font-style: italic; }
+    /* line 35, ../../../app/stylesheets/partials/page_elements/_left.sass */
     #left ul dd, #left dl dd {
       font-size: 1em;
       text-indent: 1em; }
-  /* line 38, ../../../app/stylesheets/partials/page_elements/_left.sass */
+  /* line 42, ../../../app/stylesheets/partials/page_elements/_left.sass */
   #left #club_tags p {
     font-size: 1em; }
-    /* line 41, ../../../app/stylesheets/partials/page_elements/_left.sass */
+    /* line 45, ../../../app/stylesheets/partials/page_elements/_left.sass */
     #left #club_tags p .active {
       font-size: 1.2em;
       background: white;
@@ -684,92 +687,102 @@ a {
     * html #footer #copyright {
       overflow-x: hidden; }
 
-/* line 3, ../../../app/stylesheets/partials/site_sections/_clubs.sass */
-body.clubs.index #main #content {
+/* line 1, ../../../app/stylesheets/partials/page_elements/_search_results.sass */
+div.auto_complete {
+  width: 325px !important; }
+
+/* line 6, ../../../app/stylesheets/partials/page_elements/_search_results.sass */
+#auto_search_result_list .clubs_container .club {
+  width: 100%;
+  float: none; }
+
+/* line 4, ../../../app/stylesheets/partials/site_sections/_clubs.sass */
+body.clubs.index #main #content,
+body.services #main #content {
   display: inline;
   float: left;
   margin-right: 10px;
   width: 790px; }
   /* line 97, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-  * html body.clubs.index #main #content {
+  * html body.clubs.index #main #content,
+  * html body.services #main #content {
     overflow-x: hidden; }
 
-/* line 8, ../../../app/stylesheets/partials/site_sections/_clubs.sass */
-#clubs_container {
+/* line 9, ../../../app/stylesheets/partials/site_sections/_clubs.sass */
+.clubs_container {
   margin: 0.5em 1em; }
-
-/* line 12, ../../../app/stylesheets/partials/site_sections/_clubs.sass */
-#clubs_container .club, #auto_search_results .club {
-  margin: 0 0.5% 0.5em 0;
-  padding: 2px;
-  width: 32%;
-  float: left;
-  position: relative; }
-  /* line 19, ../../../app/stylesheets/partials/site_sections/_clubs.sass */
-  #clubs_container .club.onskuleclubs, #auto_search_results .club.onskuleclubs {
-    background: #ececec;
-    -moz-border-radius: 0 5px 0 5px;
-    -webkit-border-radius: 0 5px 0 5px; }
-    /* line 22, ../../../app/stylesheets/partials/site_sections/_clubs.sass */
-    #clubs_container .club.onskuleclubs ul li a, #auto_search_results .club.onskuleclubs ul li a {
-      color: #999; }
-  /* line 26, ../../../app/stylesheets/partials/site_sections/_clubs.sass */
-  #clubs_container .club .avatar, #auto_search_results .club .avatar {
+  /* line 11, ../../../app/stylesheets/partials/site_sections/_clubs.sass */
+  .clubs_container .club {
+    margin: 0 0.5% 0.5em 0;
+    padding: 2px;
+    width: 32%;
     float: left;
-    margin-right: 0.5em; }
-  /* line 31, ../../../app/stylesheets/partials/site_sections/_clubs.sass */
-  #clubs_container .club h3, #auto_search_results .club h3 {
-    margin: 0;
-    font-size: 1.25em; }
-  /* line 36, ../../../app/stylesheets/partials/site_sections/_clubs.sass */
-  #clubs_container .club span, #auto_search_results .club span {
-    font-style: italic;
-    width: 15em;
-    height: 1.3em;
-    display: block;
-    overflow: hidden;
-    line-height: 1.3em; }
-  /* line 45, ../../../app/stylesheets/partials/site_sections/_clubs.sass */
-  #clubs_container .club ul, #auto_search_results .club ul {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    outline: 0;
-    overflow: hidden;
-    display: inline-block; }
-    /* line 5, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/compass/stylesheets/compass/utilities/general/_hacks.sass */
-    #clubs_container .club ul, #auto_search_results .club ul {
-      display: block; }
-    /* line 50, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal_list.sass */
-    #clubs_container .club ul li, #auto_search_results .club ul li {
-      list-style-type: none;
-      margin-left: 0px;
-      white-space: nowrap;
-      display: inline;
+    position: relative; }
+    /* line 18, ../../../app/stylesheets/partials/site_sections/_clubs.sass */
+    .clubs_container .club.onskuleclubs {
+      background: #ececec;
+      -moz-border-radius: 0 5px 0 5px;
+      -webkit-border-radius: 0 5px 0 5px; }
+      /* line 21, ../../../app/stylesheets/partials/site_sections/_clubs.sass */
+      .clubs_container .club.onskuleclubs ul li a {
+        color: #999; }
+    /* line 25, ../../../app/stylesheets/partials/site_sections/_clubs.sass */
+    .clubs_container .club .avatar {
       float: left;
-      padding-left: 4px;
-      padding-right: 4px; }
-      /* line 40, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal_list.sass */
-      #clubs_container .club ul li.first, #auto_search_results .club ul li.first {
-        padding-left: 0px; }
-      /* line 42, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal_list.sass */
-      #clubs_container .club ul li.last, #auto_search_results .club ul li.last {
-        padding-right: 0px; }
-    /* line 47, ../../../app/stylesheets/partials/site_sections/_clubs.sass */
-    #clubs_container .club ul li, #auto_search_results .club ul li {
-      padding: 0 0.5em 0 0; }
-      /* line 50, ../../../app/stylesheets/partials/site_sections/_clubs.sass */
-      #clubs_container .club ul li a, #auto_search_results .club ul li a {
-        margin: 0;
-        color: #ccc; }
-  /* line 54, ../../../app/stylesheets/partials/site_sections/_clubs.sass */
-  #clubs_container .club .affiliated, #auto_search_results .club .affiliated {
-    width: 5px;
-    height: 5px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: gold; }
+      margin-right: 0.5em; }
+    /* line 30, ../../../app/stylesheets/partials/site_sections/_clubs.sass */
+    .clubs_container .club h3 {
+      margin: 0;
+      font-size: 1.25em; }
+    /* line 35, ../../../app/stylesheets/partials/site_sections/_clubs.sass */
+    .clubs_container .club span {
+      font-style: italic;
+      width: 15em;
+      height: 1.3em;
+      display: block;
+      overflow: hidden;
+      line-height: 1.3em; }
+    /* line 44, ../../../app/stylesheets/partials/site_sections/_clubs.sass */
+    .clubs_container .club ul {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      outline: 0;
+      overflow: hidden;
+      display: inline-block; }
+      /* line 5, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/compass/stylesheets/compass/utilities/general/_hacks.sass */
+      .clubs_container .club ul {
+        display: block; }
+      /* line 50, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal_list.sass */
+      .clubs_container .club ul li {
+        list-style-type: none;
+        margin-left: 0px;
+        white-space: nowrap;
+        display: inline;
+        float: left;
+        padding-left: 4px;
+        padding-right: 4px; }
+        /* line 40, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal_list.sass */
+        .clubs_container .club ul li.first {
+          padding-left: 0px; }
+        /* line 42, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal_list.sass */
+        .clubs_container .club ul li.last {
+          padding-right: 0px; }
+      /* line 46, ../../../app/stylesheets/partials/site_sections/_clubs.sass */
+      .clubs_container .club ul li {
+        padding: 0 0.5em 0 0; }
+        /* line 49, ../../../app/stylesheets/partials/site_sections/_clubs.sass */
+        .clubs_container .club ul li a {
+          margin: 0;
+          color: #ccc; }
+    /* line 53, ../../../app/stylesheets/partials/site_sections/_clubs.sass */
+    .clubs_container .club .affiliated {
+      width: 5px;
+      height: 5px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: gold; }
 
 /* line 1, ../../../app/stylesheets/partials/site_sections/_backend.sass */
 #quick_update {

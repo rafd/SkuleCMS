@@ -1,4 +1,5 @@
-#clubs_container
+.clubs_container
 	-@clubs.each do |club|
-		= render :partial => 'layouts/default/club_box', :locals => {:club => club}
+		-unless club.tag_list.include?("engsoc")
+			= render :partial => 'layouts/default/club_box', :locals => {:club => club, :ignore => "club"}
 			
