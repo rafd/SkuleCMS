@@ -1,6 +1,6 @@
 class GroupsController < ApplicationController
   before_filter :load_club
-  before_filter :auth_admin, :only => [:admin, :new, :edit, :create, :update, :destroy]
+  before_filter :auth_admin, :only => [:admin, :new, :edit, :create, :update, :destroy, :add_member, :create_membership, :kick]
   def load_club
     @club = Club.find(params[:club_id])
   end
@@ -9,8 +9,7 @@ class GroupsController < ApplicationController
   # GET /groups.xml
   def index
     @groups = @club.groups
-    @roots = @club.groups.find(:all, :conditions => {:parent_id => nil})
-    puts @club.groups.new().club_id.to_s
+    @grouplist = @club.groups.find(:all, :conditions => ["parent_id IS NOT ?", nil], :order => 'lft')
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @groups }
@@ -22,7 +21,7 @@ class GroupsController < ApplicationController
   def admin
     if (params[:id].blank?)
       @groups = @club.groups
-      @roots = @club.groups.find(:all, :conditions => {:parent_id => nil})
+      @grouplist = @club.groups.find(:all, :conditions => ["parent_id IS NOT ?", nil], :order => 'lft')
       respond_to do |format|
         format.html # index.html.erb
         format.xml  { render :xml => @groups }
@@ -52,7 +51,7 @@ class GroupsController < ApplicationController
   # GET /groups/new.xml
   def new
     @group = @club.groups.new
-    @grouplist = @club.groups
+    @grouplist = @grouplist = @club.groups.find(:all, :conditions => ["parent_id IS NOT ?", nil], :order => 'lft')
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @group }
@@ -62,7 +61,7 @@ class GroupsController < ApplicationController
   # GET /groups/1/edit
   def edit
     @group = @club.groups.find(params[:id])
-    @grouplist = @club.groups
+    @grouplist = @club.groups.find(:all, :conditions => ["parent_id IS NOT ?", nil], :order => 'lft')
     @grouplist -= @group.all_children << @group
   end
 
@@ -73,10 +72,14 @@ class GroupsController < ApplicationController
     respond_to do |format|
       if @group.save
         flash[:notice] = 'Group was successfully created.'
-        format.html { redirect_to admin_club_group_path(@club, @group) }
+        if (!@group.new_page.blank? && @group.new_page != '0')
+          format.html { redirect_to new_club_page_path(@club)}
+        else
+          format.html { redirect_to admin_club_group_path(@club, @group) }
+        end
         format.xml  { render :xml => @group, :status => :created, :location => @group }
       else
-        @grouplist = @club.groups
+        @grouplist = @club.groups.find(:all, :conditions => ["parent_id IS NOT ?", nil], :order => 'lft')
         format.html { render :action => "new" }
         format.xml  { render :xml => @group.errors, :status => :unprocessable_entity }
       end
@@ -98,9 +101,8 @@ class GroupsController < ApplicationController
         format.html { redirect_to admin_club_group_path(@club, @group) }
         format.xml  { head :ok }
       else
-        @grouplist = @club.groups
-        @grouplist.delete(@group.all_children)
-        @grouplist.delete(@group)
+        @grouplist = @club.groups.find(:all, :conditions => ["parent_id IS NOT ?", nil], :order => 'lft')
+        @grouplist -= @group.all_children << @group
         format.html { render :action => "edit" }
         format.xml  { render :xml => @group.errors, :status => :unprocessable_entity }
       end
@@ -120,9 +122,7 @@ class GroupsController < ApplicationController
   end
   
   def add_member
-    @groups = @club.groups
-    @membership = Membership.new
-    @users = User.find(:all)
+    @user = User.new
     respond_to do |format|
       format.html
       format.xml  { render :xml => @group }
@@ -130,15 +130,24 @@ class GroupsController < ApplicationController
   end
   
   def create_membership
-    @membership = Membership.new(params[:membership])
+    @group = @club.groups.find(params[:id])
+    @user = User.find(:first, :conditions => {:name => params[:user][:name]})    
+    if @user.blank?
+      @user = @group.users.new(params[:user])
+    else
+      @user_already_created = true
+    end
     respond_to do |format|
-      if @membership.save
-        flash[:notice] = 'Membership was successfully created.'
-        format.html { redirect_to admin_club_group_path(@club, @membership.group) }
+      if @user_already_created || @user.save
+        @membership = Membership.new
+        @membership.user = @user
+        @membership.group = @group
+        @membership.save
+        flash[:notice] = 'Member was successfully created.'
+        format.html { redirect_to admin_club_group_path(@club, @group) }
         format.xml  { render :xml => @membership, :status => :created, :location => @membership }
       else
-        @groups = @club.groups
-        @users = User.find(:all)
+        @user = User.new
         format.html { render :action => "add_member" }
         format.xml  { render :xml => @membership.errors, :status => :unprocessable_entity }
       end
@@ -148,7 +157,15 @@ class GroupsController < ApplicationController
   def kick
     @membership = Membership.find(params[:member])
     @group = @membership.group
-    @membership.destroy
+    if @group.is_member_list?
+      @memberships = Membership.find(:all, :conditions => {:user_id => @membership.user_id})
+      @memberships.each do |member|
+        member.destroy
+      end
+    else
+      @membership.destroy
+    end
+    
 
     respond_to do |format|
       format.html { redirect_to admin_club_group_path(@club, @group) }

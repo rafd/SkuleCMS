@@ -1,3 +1,5 @@
+require "will_paginate"
+
 class ClubsController < ApplicationController
   before_filter :auth_admin, :only => [:edit, :update]
   before_filter :auth_new_club, :only => [:new, :create]
@@ -8,12 +10,13 @@ class ClubsController < ApplicationController
   def index
     @page_title = "Club Directory"
     @site_section = "hub"
+    @page_left = "club_tags_list"
     
     @clubs = Club.find(:all, :conditions => ["live=?",true], :include => :tags)
-    
+        
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @clubs }
+      format.xml { render :xml => @clubs }
     end
   end
   
@@ -32,9 +35,13 @@ class ClubsController < ApplicationController
     @page_title = @club.name
     @site_section = "clubs"
     
+    @all_posts = @club.posts_only
+    
+    @feed = @club.feed_items.paginate :page => params[:page], :per_page => 2, :order => 'created_at DESC'
+    
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @club }
+      format.xml  {} # { render :xml => @club }
     end
   end
 

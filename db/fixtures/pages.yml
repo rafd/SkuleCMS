@@ -1,51 +1,52 @@
-<% @WebDev = Club.find(:first, :conditions => {:name => 'WebDev'}) %>
 Page0:
   club: WebDev
+  id: 123456
 
 Page1:
   title: About Us
   content: We're cool.
   club: WebDev
-  parent_id: <%= @WebDev.root_page.id %>
-  bns_parent_id: <%= @WebDev.root_page.id %>
+  parent_id: 123456
+  bns_parent_id: 123456
   order: 1
   
 Page2:
   title: History
   content: We used to be cool.
   club: WebDev
-  parent_id: <%= @WebDev.root_page.id %>
-  bns_parent_id: <%= @WebDev.root_page.id %>
+  parent_id: 123456
+  bns_parent_id: 123456
   order: 2
+  id: 654321
     
 Page3:
   title: Constitution
   content: We will remain cool.
   club: WebDev
-  parent_id: <%= @WebDev.root_page.id %>
-  bns_parent_id: <%= @WebDev.root_page.id %>
+  parent_id: 123456
+  bns_parent_id: 123456
   order: 3
     
 Page4:
   title: Links
   content: Check out <a href="http://myego.ca/webdev/wiki">our wiki</a>.
   club: WebDev
-  parent_id: <%= @WebDev.root_page.id %>
-  bns_parent_id: <%= @WebDev.root_page.id %>
+  parent_id: 123456
+  bns_parent_id: 123456
   order: 4
 
 Page5:
   title: Making of SkuleMaps
   content: We are making it cool.
   club: WebDev
-  parent_id: <%= @WebDev.pages.find(:first,:conditions => {:title => 'History'}).id %>
-  bns_parent_id: <%= @WebDev.pages.find(:first,:conditions => {:title => 'History'}).id %>
+  parent_id: 654321
+  bns_parent_id: 654321
   order: 5
   
 Page6:
   title: Making of SkuleClubs
   content: We made it cool.
   club: WebDev
-  parent_id: <%= @WebDev.pages.find(:first,:conditions => {:title => 'History'}).id %>
-  bns_parent_id: <%= @WebDev.pages.find(:first,:conditions => {:title => 'History'}).id %>
+  parent_id: 654321
+  bns_parent_id: 654321
   order: 4

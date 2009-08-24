@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090812232609) do
+ActiveRecord::Schema.define(:version => 20090820175732) do
 
   create_table "admin_sessions", :force => true do |t|
     t.datetime "created_at"
@@ -100,6 +100,7 @@ ActiveRecord::Schema.define(:version => 20090812232609) do
     t.datetime "updated_at"
     t.integer  "parent_id"
     t.integer  "bns_parent_id"
+    t.integer  "order"
   end
 
   create_table "images", :force => true do |t|
@@ -169,14 +170,6 @@ ActiveRecord::Schema.define(:version => 20090812232609) do
 
   add_index "tags", ["name"], :name => "index_tags_on_name"
   add_index "tags", ["taggings_count"], :name => "index_tags_on_taggings_count"
-
-  create_table "updates", :force => true do |t|
-    t.integer  "club_id"
-    t.integer  "user_id"
-    t.text     "content"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "users", :force => true do |t|
     t.string   "name"

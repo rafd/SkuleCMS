@@ -35,8 +35,8 @@ ActionController::Routing::Routes.draw do |map|
                     :collection => { :admin => :get }
     
     club.resources  :groups,
-                    :member => { :kick => :delete, :admin => :get },
-                    :collection => { :add_member => :get, :create_membership => :post, :admin => :get }
+                    :member => { :kick => :delete, :admin => :get, :add_member => :get, :create_membership => :post },
+                    :collection => { :admin => :get }
                     
     club.resources  :events,
                     :member => { :admin => :get, :export_events => :get },

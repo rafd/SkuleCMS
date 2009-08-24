@@ -2,17 +2,25 @@
 <% form_for([:club, @group], :url => {:action=> 'update'}) do |f| %>
   <%= f.error_messages %>
   <p>
-    <%= f.label :name %><br />
+    <%= f.label :name %>
+		<span>The name of the group.</span>
     <%= f.text_field :name %>
   </p>
   <p>
-    <%= f.label :misc %><br />
+    <%= f.label :misc, 'Description' %>
+		<span>A short description of the group.</span>
     <%= f.text_area :misc %>
   </p>
   <p>
-    <%= f.label :parent_id, "Subgroup of..." %><br />
-    <%= f.collection_select :parent_id, @grouplist, :id, :name, { :prompt => 'Select a Group', :include_blank => 'None'} %>
+    <%= f.label :parent_id, "Hierarchy" %>
+		<span>Choose an existing group to fall under or leave blank to be a main group.</span>
+    <%= (f.collection_select :parent_id, @grouplist, :id, :indented_name, { :prompt => 'Select a Group', :include_blank => 'None'}).gsub("&amp;", "&") %>
   </p>
+  <p>
+    <%= f.label :order, "Weighting" %>
+		<span>This will affect the order in which pages are displayed. Lower values are displayed first.</span>
+    <%= f.text_field :order %>
+  </p>	
   <p>
     <%= f.submit 'Update' %>
   </p>

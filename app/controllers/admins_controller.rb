@@ -50,6 +50,8 @@ class AdminsController < ApplicationController
   def create
     @admin = Admin.new(params[:admin])
     @admin.event = @admin.updates = @admin.member = @admin.group = @admin.file = @admin.gallery = false
+    @admin.super_admin = params[:admin][:super_admin]
+    @admin.club_id = params[:admin][:club_id]
     respond_to do |format|
       if @admin.save
         flash[:notice] = 'Registered admin.'
@@ -67,7 +69,8 @@ class AdminsController < ApplicationController
   # PUT /admins/1.xml
   def update
     @admin = Admin.find(params[:id])
-
+    @admin.super_admin = params[:admin][:super_admin]
+    @admin.club_id = params[:admin][:club_id]
     respond_to do |format|
       if @admin.update_attributes(params[:admin])
         flash[:notice] = 'Admin was successfully updated.'

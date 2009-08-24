@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_filter :auth_admin, :only => [:admin, :new, :edit, :create, :update, :destroy]
   # GET /users
   # GET /users.xml
   def index

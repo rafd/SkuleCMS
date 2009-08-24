@@ -11,6 +11,8 @@ class Event < ActiveRecord::Base
   validates_length_of       :location, :maximum => 50
   validates_numericality_of :club_id
   
+  attr_accessible :start, :finish, :location, :name, :description, :link
+  
   def start_at
     return start
   end

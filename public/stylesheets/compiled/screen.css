@@ -573,11 +573,11 @@ a {
   background: #cccccc;
   margin: 10px 0 0 10px; }
   /* line 11, ../../../app/stylesheets/partials/page_elements/_left.sass */
-  #left ul {
+  #left ul, #left dl {
     list-style: none;
     margin: 0 0 2em 0; }
     /* line 15, ../../../app/stylesheets/partials/page_elements/_left.sass */
-    #left ul li {
+    #left ul li, #left ul dt, #left ul dd, #left dl li, #left dl dt, #left dl dd {
       font-size: 1.2em;
       line-height: 1.75em;
       height: 1.75em;
@@ -588,11 +588,24 @@ a {
       -moz-border-radius: 5px 0 0 5px;
       -webkit-border-radius: 5px 0 0 5px; }
       /* line 25, ../../../app/stylesheets/partials/page_elements/_left.sass */
-      #left ul li a {
+      #left ul li a, #left ul dt a, #left ul dd a, #left dl li a, #left dl dt a, #left dl dd a {
         display: block;
         font-size: 0.85em;
         background: #cccccc;
         color: #222222; }
+    /* line 31, ../../../app/stylesheets/partials/page_elements/_left.sass */
+    #left ul dd, #left dl dd {
+      font-size: 1em;
+      text-indent: 1em; }
+  /* line 38, ../../../app/stylesheets/partials/page_elements/_left.sass */
+  #left #club_tags p {
+    font-size: 1em; }
+    /* line 41, ../../../app/stylesheets/partials/page_elements/_left.sass */
+    #left #club_tags p .active {
+      font-size: 1.2em;
+      background: white;
+      -moz-border-radius: 5px 5px 5px 5px;
+      -webkit-border-radius: 5px 5px 5px 5px; }
 
 /* line 3, ../../../app/stylesheets/partials/page_elements/_sidebar.sass */
 #sidebar .widget {

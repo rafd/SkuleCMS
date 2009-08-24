@@ -1,2 +1,3 @@
 #feed
-	= render :partial => "layouts/default/feed_item", :collection => @club.feed_items 
+	= render :partial => "layouts/default/feed_item", :collection => @feed
+	= will_paginate @feed

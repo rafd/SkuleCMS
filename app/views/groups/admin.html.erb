@@ -4,9 +4,8 @@
   <tr>
     <th>Name</th>
     <th>Parent</th>
-    <th>Misc</th>
-    <th>Lft</th>
-    <th>Rgt</th>
+    <th>Description</th>
+		<th>Weight</th>
   </tr>
 
 <% @groups.each do |group| %>
@@ -14,8 +13,7 @@
     <td><%=h group.name %></td>
     <td><%=h (group.parent.blank?) ? "" : group.parent.name %></td>
     <td><%=h group.misc %></td>
-    <td><%=h group.lft %></td>
-    <td><%=h group.rgt %></td>
+		<td><%=h group.order %></td>
 
     <td><%= link_to 'Show', :action => 'admin', :club_id => @club, :id => group %></td>
     
@@ -28,29 +26,32 @@
 </table>
 <h3>Tree Structure</h3>
 <ul>
-  <% @roots.each do |group| -%>
-    <%=h group.name -%>
-    <ul>
-    <% @curLevel = 1 -%>
-    <% group.all_children.each do |groupy| -%>
-      <% if(groupy.level > @curLevel) -%>
-        <ul><% @curLevel += 1  -%>
-        <li><%=h groupy.name -%></li>
-      <% elsif groupy.level == @curLevel  -%>
-        <li><%=h groupy.name -%></li>
-      <% else  %>
-        <% while(groupy.level< @curLevel) -%>
-          <% @curLevel -= 1 -%>
-          </ul>
-        <% end  -%>
-        <li><%=h groupy.name -%></li>
-      <% end  -%>
-    <% end -%>
-    </ul>
+  <%=h @club.member_list.name -%>
+	<ul>
+
+  <% @curLevel = 1 -%>
+  <% @grouplist.each do |group| -%>
+	<% @level = group.level %>
+    <% if(@level > @curLevel) -%>
+      <ul><% @curLevel += 1  -%>
+      <li><%=h group.name -%></li>
+    <% elsif @level == @curLevel  -%>
+      <li><%=h group.name -%></li>
+    <% else -%>
+      <% while(@level < @curLevel) -%>
+        <% @curLevel -= 1 -%>
+        </ul>
+      <% end -%>
+      <li><%=h group.name -%></li>
+    <% end  -%>
   <% end -%>
+  <% while(1< @curLevel) -%>
+    <% @curLevel -= 1 -%>
+    </ul>
+  <% end  -%>
+	</ul>
 </ul>
 <br />
 
 <%= link_to 'New group', :action => 'new' %> |
-<%= link_to 'Add Members', :action => 'add_member' %> |
 <%= link_to 'Back', club_admin_index_path(@club) %>

@@ -1,3 +1,3 @@
-%div#left
+#left
 	-if @page_left
-		- render :partial => @page_left
+		= render :partial => ("layouts/" + @site_section + "/" + @page_left)

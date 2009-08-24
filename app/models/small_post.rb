@@ -11,4 +11,6 @@ class SmallPost < ActiveRecord::Base
                       :too_long => "Error: Sorry, you can only have a maximum of %d characters. Would you like to try a twat instead?",
                       :too_short => "Error: Sorry, you need a minimum of %d characters to make a post."
 
+  attr_accessible :content
+
 end
