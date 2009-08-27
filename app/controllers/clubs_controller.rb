@@ -36,9 +36,9 @@ class ClubsController < ApplicationController
     @page_title = @club.name
     @site_section = "clubs"
     
-    @all_posts = @club.posts_only
+    @all_posts = @club.feed_output(@club.small_posts.all, @club.large_posts.all)
     
-    @feed = @club.feed_items.paginate :page => params[:page], :per_page => 2, :order => 'created_at DESC'
+    @feed = @club.feed_items.paginate :page => params[:page], :per_page => 4
     
     respond_to do |format|
       format.html # show.html.erb

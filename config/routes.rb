@@ -68,7 +68,7 @@ ActionController::Routing::Routes.draw do |map|
 
 	
   map.connect '/about', :controller => 'hub_pages', :action => 'about'
-  map.connect '/digest', :controller => 'hub_pages', :action => 'digest'
+  map.connect '/digest.:format', :controller => 'hub_pages', :action => 'digest'
   map.connect '/calendar', :controller => 'hub_pages', :action => 'calendar'
   map.connect '/map', :controller => 'hub_pages', :action => 'map'
   map.connect '/services', :controller => 'hub_pages', :action => 'services'

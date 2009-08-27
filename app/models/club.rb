@@ -164,20 +164,20 @@ class Club < ActiveRecord::Base
   
   def feed_items
   	
-    feed = self.small_posts.find(:all, :order => "created_at DESC", :limit => 5) + self.large_posts.find(:all, :order => "created_at DESC", :limit => 5) + self.events.find(:all, :order => "created_at DESC", :limit => 5)
-    
-    feed = feed.sort_by{|t| t.created_at}.reverse
-    feed = feed[0..10]
+    feed = feed_output(self.small_posts.find(:all, :limit => 5), self.large_posts.find(:all, :limit => 5) + self.events.find(:all, :limit => 5))
+    #feed = feed[0..20]
     return feed
   end
  
-   def posts_only
-    
-    feed = self.small_posts.find(:all, :order => "created_at DESC") + self.large_posts.find(:all, :order => "created_at DESC")
-    
-    feed = feed.sort_by{|t| t.created_at}.reverse
-    return feed
+
+  def feed_output(*feeds)
+    feed_out = []
+    feeds.each do |feed|
+      feed_out = feed_out + feed
+    end
+    feed_out = feed_out.sort_by{|t| t.created_at}.reverse
+    return feed_out
+
   end
- 
  
 end
