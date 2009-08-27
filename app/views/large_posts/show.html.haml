@@ -1,0 +1,13 @@
+.entry
+	%h2=h @large_post.title
+
+	.content
+		= @large_post.content
+
+	%p
+		-if @large_post.created_at != @large_post.updated_at
+			Updated
+			= time_ago_in_words(@large_post.updated_at)+' ago.'
+		-else
+			Created
+			= time_ago_in_words(@large_post.created_at)+' ago.'

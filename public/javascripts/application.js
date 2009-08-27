@@ -12,11 +12,11 @@ document.observe('dom:loaded', function() {
 				return value.substring(0,9) == "LEFT_TAG_";
 			});
 			tag = tag.substring(5);
-			if (!element.hasClassName('active'))
+			if (!element.hasClassName('selected'))
 			{
 				if (numActive ==0)
 				{
-						element.toggleClassName('active');
+						element.toggleClassName('selected');
 						$('clubs_container').immediateDescendants().each(function(club){
 							if (!club.hasClassName(tag)){
 								//club.fade({ duration: effectDuration , queue: { position: 'end', scope: tag } });
@@ -35,7 +35,7 @@ document.observe('dom:loaded', function() {
 				}
 				else if (numActive < 10)
 				{
-						element.toggleClassName('active');
+						element.toggleClassName('selected');
 						$('clubs_container').immediateDescendants().each(function(club){
 							if (club.hasClassName(tag)){
 								//club.appear({ duration: effectDuration , queue: { position: 'end', scope: tag } });
@@ -59,7 +59,7 @@ document.observe('dom:loaded', function() {
 			}
 			else
 			{
-				element.toggleClassName('active');
+				element.toggleClassName('selected');
 				for (var x = 0; x<10; x++)
 				{
 					if (tags[x]== tag)

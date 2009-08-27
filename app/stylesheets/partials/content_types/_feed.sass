@@ -1,9 +1,24 @@
 #feed
 	.feed_item
 		:margin 1em 1em 1em 0
+		:position relative
 		
 		h4
 			:margin 0
+			:font-size 1.5em
+			:margin-left 0.5em
+			
+			a
+				:padding 0 0em
+				:margin-left 0em
+				:color black
+				:font-weight normal
+		
+		.content
+			:background #ececec
+			+styled-corners
+			:padding= 0.5em * 1.5
+			:margin-left= 0.5em * 1.5
 			
 		&.small_post
 			
@@ -13,11 +28,18 @@
 				+styled-corners
 				:padding 0.5em
 				:margin-left 0.5em
+				:color black
 				
 		&.large_post
-			.content
-				:padding 0.5em
 		
+		&.event
+			.locationtime
+				:position absolute
+				:top 0
+				:right 0
+				:margin 0.25em
+				span
+					:margin-left 1em
 		.source
 			:text-align right
 			:display block
@@ -26,7 +48,26 @@
 		.avatar
 			:float left
 			:margin= 0 0.5em 0 -1 * !overlap
+	.pagination
+		:position relative
+		:text-align center
+		:font-size 1.25em
+		:margin 1em
+		span, a
+			:padding 0 0.25em
+		.disabled
+			:display none
+		.prev_page
+			:position absolute
+			:left 0
+		.current
+		.next_page
+			:position absolute
+			:right 0
 
 body.digest
-	#feed .feed_item.small_post .content
-		:margin-left= !avatar_size
+	#feed 
+		.feed_item
+			h4,
+			.content
+				:margin-left= !avatar_size
