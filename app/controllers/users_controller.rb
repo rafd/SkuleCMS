@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
   before_filter :auth_admin, :only => [:admin, :new, :edit, :create, :update, :destroy]
+  before_filter :disable_everything
+  def disable_everything
+    redirect_to root_path
+  end
   # GET /users
   # GET /users.xml
   def index

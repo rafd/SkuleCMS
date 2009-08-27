@@ -5,15 +5,21 @@
 		-when "SmallPost" then
 			.content= feed_item.content	
 		-when "LargePost" then
-			%h4= feed_item.title
-			.content= feed_item.content
-			= link_to 'link', :controller=> feed_item.class.to_s.tableize, :action => 'show', :id => feed_item.id, :club_id => feed_item.club.id
+			%h4= link_to feed_item.title, {:controller=> feed_item.class.to_s.tableize, :action => 'show', :id => feed_item.id, :club_id => feed_item.club.id}, :title => "Read Post"
+			.content
+				-if feed_item.content.length > 155
+					= feed_item.content[0..155] + "..."
+					= link_to 'Keep Reading &raquo;', {:controller=> feed_item.class.to_s.tableize, :action => 'show', :id => feed_item.id, :club_id => feed_item.club.id}, :title => "Keep Reading"
+				-else
+					= feed_item.content 
 		-when "Event" then
-			%h4= feed_item.name
-			.location= feed_item.location
-			.description= feed_item.description
-			.time= short_time(feed_item.start)	
-			= link_to 'link', :controller=> feed_item.class.to_s.tableize, :action => 'show', :id => feed_item.id, :club_id => feed_item.club.id
+			%h4= link_to feed_item.name, "#"
+			.locationtime
+				%span.location= feed_item.location
+				%span.time= short_time(feed_item.start)
+			.content
+				= feed_item.description
+				= link_to 'Find Out More &raquo;', :controller=> feed_item.class.to_s.tableize, :action => 'show', :id => feed_item.id, :club_id => feed_item.club.id
 		-else
 			= feed_item.class	
 	.source

@@ -1,20 +1,16 @@
 #left
-	-if @controller.controller_name == "clubs" && @controller.action_name == "show"
+	%dl
+		%dt= link_to_unless_current "Feed", {:controller => "clubs", :action => "show", :id => @club}, :class=> ("active" if @controller.action_name == "show" && @controller.controller_name == "large_posts" || @controller.controller_name == "small_posts" )
 		-#
-			%ul.filter
-				%li= "All"
-				%li= link_to "Updates", '#'
-				%li= link_to "Posts", '#'
-				%li= link_to "Events", '#'
-				%li= link_to "Photos", '#'
-	-else
-		-if @club.main_pages
-			%dl.filter
-				-@club.main_pages.each do |page|
-					%dt= link_to_unless_current page.title, :controller=> 'pages', :action=> 'show', :id => page
-					-page.children.each do |child|
-						%dd= link_to_unless_current child.title, :controller=> 'pages', :action=> 'show', :id => child
+			%dt= link_to "Photos", "#"
+			%dt= link_to "Members", "#"
+		
+	-if @club.main_pages
+		%dl
+			-@club.main_pages.each do |page|
+				%dt= link_to_unless_current page.title, :controller=> 'pages', :action=> 'show', :id => page, :club_id => @club
+				-page.children.each do |child|
+					%dd= link_to_unless_current child.title, :controller=> 'pages', :action=> 'show', :id => child, :club_id => @club
 
-		%ul.filter
-			%li= link_to "Photos", "#"
-			%li= link_to "Members", "#"
+	
+		

@@ -12,8 +12,8 @@
 		:list-style none
 		:margin 0 0 2em 0
 		
-		li, dt, dd
-			:font-size 1.2em
+		li, dt, dd, .active
+			
 			:line-height 1.75em
 			:height 1.75em
 			:text-indent 0.5em
@@ -21,6 +21,10 @@
 			:color= !color_foreground
 			:background= !background_main
 			+rounded-corners(5px 0 0 5px)
+			:font-weight normal
+			
+		li, dt, dd
+			:font-size 1.2em
 			
 			a
 				:display block
@@ -29,7 +33,10 @@
 				:color= !color_foreground
 				
 				&.active
-					:font-style italic
+					:font-size 1em
+					
+				&.selected
+					:color white
 					
 			
 		dd

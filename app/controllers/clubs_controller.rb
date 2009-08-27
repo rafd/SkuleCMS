@@ -33,7 +33,7 @@ class ClubsController < ApplicationController
   def show
     @club = Club.find(params[:id], :include => :tags)
    
-    @page_title = @club.name
+    @page_title = ""
     @site_section = "clubs"
     
     @all_posts = @club.feed_output(@club.small_posts.all, @club.large_posts.all)
@@ -83,6 +83,9 @@ class ClubsController < ApplicationController
         format.html { redirect_to club_admin_index_path(@new_club) }
         format.xml  { render :xml => @new_club, :status => :created, :location => @new_club }
       else
+        @page_title = "New Club"
+        @site_section = "admin"
+        
         format.html { render :action => "new" }
         format.xml  { render :xml => @new_club.errors, :status => :unprocessable_entity }
       end
@@ -100,6 +103,8 @@ class ClubsController < ApplicationController
         format.html { redirect_to(club_admin_index_path(@club)) }
         format.xml  { head :ok }
       else
+        @page_title = "Editing "+@club.name
+        @site_section = "admin"
         format.html { render :action => "edit" }
         format.xml  { render :xml => @club.errors, :status => :unprocessable_entity }
       end

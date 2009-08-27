@@ -9,6 +9,7 @@ class ImagesController < ApplicationController
   
   # GET /images
   # GET /images.xml
+=begin
   def index
     @tags = Tag.find(:all, :conditions => ['name LIKE ?', "%#{params[:search]}%"])
     #Category.find(:all, :conditions => ['name LIKE ?', "%#{params[:search]}%"])
@@ -19,12 +20,15 @@ class ImagesController < ApplicationController
  #     format.xml  { render :xml => @images }
  #   end
   end
+=end
 
   # GET /images/1
   # GET /images/1.xml
   def show
     @image = Image.find(params[:id], :include => :tags)
-
+    
+    @page_title = "Showing " + @image.name
+    @site_section = "clubs"
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @image }
@@ -36,6 +40,9 @@ class ImagesController < ApplicationController
   def new
     @image = Image.new
     @user = User.find(:all)
+    
+    @page_title = "New Image"
+    @site_section = "admin"
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @image }
@@ -45,6 +52,9 @@ class ImagesController < ApplicationController
   # GET /images/1/edit
   def edit
     @image = @album.images.find(params[:id])
+    
+    @page_title = "Editing " + @image.name
+    @site_section = "admin"
   end
 
   # POST /images
@@ -60,6 +70,8 @@ class ImagesController < ApplicationController
         format.xml  { render :xml => @image, :status => :created, :location => @image }
       else
         @user = User.find(:all)
+        @page_title = "New Image"
+        @site_section = "admin"
         format.html { render :action => "new" }
         format.xml  { render :xml => @image.errors, :status => :unprocessable_entity }
       end
@@ -77,6 +89,8 @@ class ImagesController < ApplicationController
         format.html { redirect_to(@image) }
         format.xml  { head :ok }
       else
+        @page_title = "Editing " + @image.name
+        @site_section = "admin"
         format.html { render :action => "edit" }
         format.xml  { render :xml => @image.errors, :status => :unprocessable_entity }
       end

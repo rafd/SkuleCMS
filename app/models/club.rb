@@ -25,7 +25,7 @@ class Club < ActiveRecord::Base
   validates_format_of       :web_name, :with => /^[A-Za-z\d_]+$/, :message => "name is invalid. Only letters, numbers, and underscores allowed."
   validates_format_of       :contact, :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i, :allow_blank => true, :message => 'email is invalid.'
   
-  attr_accessible :name, :description, :official_name, :tagline, :web_name, :contact, :address, :live
+  attr_accessible :name, :description, :official_name, :tagline, :web_name, :contact, :address, :live, :tags, :taglist
   
   attr_accessor :logo, :banner
   
