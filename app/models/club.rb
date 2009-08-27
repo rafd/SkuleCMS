@@ -29,7 +29,7 @@ class Club < ActiveRecord::Base
   
   attr_accessor :logo, :banner
   
-  after_create :create_member_list, :create_directory, :create_default_content
+  after_create :create_default_content, :create_member_list, :create_directory
   before_validation :lowercase_web_name
   before_save   :save_images
   
