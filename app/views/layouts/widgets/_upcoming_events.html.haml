@@ -1,4 +1,4 @@
-- if club.upcoming_events
+- if !club.upcoming_events.blank?
 	.widget.events
 		%h4 Upcoming Events
 		%ul

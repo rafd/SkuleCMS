@@ -41,7 +41,7 @@
 			= link_to "Help", "#"
 			and 
 			= link_to "Feedback", "#"
-		- if @page
+		- if @page && @page.updated_at
 			| Updated
 			=short_time(@page.updated_at)
 		-else

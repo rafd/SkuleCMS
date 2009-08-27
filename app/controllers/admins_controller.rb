@@ -59,6 +59,8 @@ class AdminsController < ApplicationController
         format.xml  { render :xml => @admin, :status => :created, :location => @admin }
       else
         @clubs = Club.all
+        @page_title = "Admins : New"
+        @site_section = "su_admin"
         format.html { render :action => "new" }
         format.xml  { render :xml => @admin.errors, :status => :unprocessable_entity }
       end
@@ -78,6 +80,8 @@ class AdminsController < ApplicationController
         format.xml  { head :ok }
       else
         @clubs = Club.all
+        @page_title = "Admins : Edit"
+        @site_section = "su_admin"
         format.html { render :action => "edit" }
         format.xml  { render :xml => @admin.errors, :status => :unprocessable_entity }
       end
@@ -95,6 +99,8 @@ class AdminsController < ApplicationController
         format.html { redirect_to(root_url) }
         format.xml  { head :ok }
       else
+        @page_title = "Change Password"
+        @site_section = "hub"
         format.html { render :action => "change_password" }
         format.xml  { render :xml => @admin.errors, :status => :unprocessable_entity }
       end

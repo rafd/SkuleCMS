@@ -2,7 +2,7 @@
 
 .club(class="#{"onskuleclubs" unless club.website} #{display_all_tags_classes(club)}")
 	= render :partial => 'layouts/default/avatar', :locals => {:club => club}
-	%h3= link_to((club.name || club.official_name), (club.website || {:action => 'show', :id => club}))
+	%h3= link_to((club.name || club.official_name), (club.website || {:controller => 'clubs', :action => 'show', :id => club}))
 	%span=h club.tagline || club.official_name || "Tagline"
 	%ul
 		- club.tags.each do |tag|

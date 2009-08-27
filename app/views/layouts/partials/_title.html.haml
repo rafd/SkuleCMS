@@ -1,10 +1,12 @@
-=@page_title+" - " if @page_title 
+=@page_title+" - " unless @page_title.blank?
 
 -case @site_section
 	-when "admin"
 		= "Backend - "
 	-when "su_admin"
 		= "SU-Backend - "
+	-when "clubs"
+		= @club.name + " - "
 
 Skule.ca
 

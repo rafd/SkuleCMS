@@ -25,27 +25,34 @@ class LargePostsController < ApplicationController
   def index
     @large_posts = @club.large_posts.all.paginate :page => params[:page], :per_page => 1, :order => 'created_at DESC'
 
+    @page_title = "Large Posts Listing"
+    @site_section = "clubs"
+
     respond_to do |format|
       format.html # index.html.erb
       format.xml  {} #{ render :xml => @large_posts }
     end
   end
   
-    def admin
-       if (params[:id].blank?)
-         @posts = @club.large_posts.all + @club.small_posts.all
-         respond_to do |format|
-          format.html #admin.html.erb
-          format.xml { render :xml => @posts }
-         end
-       else
-           @large_post = @club.large_posts.find(params[:id])
-           
-         respond_to do |format|
-          format.html { render :action => "admin_show" }
-          format.xml  { render :xml => @large_post }
-        end  
+  def admin
+    if (params[:id].blank?)
+      @posts = @club.large_posts.all + @club.small_posts.all
+      @page_title = "Large Posts Listing"
+      @site_section = "admin"
+      respond_to do |format|
+        format.html #admin.html.erb
+        format.xml { render :xml => @posts }
       end
+    else
+      @large_post = @club.large_posts.find(params[:id])
+      
+      @page_title = "Showing " + @large_post.title
+      @site_section = "admin"
+      respond_to do |format|
+        format.html { render :action => "admin_show" }
+        format.xml  { render :xml => @large_post }
+      end  
+    end
   end
 
 
@@ -53,7 +60,9 @@ class LargePostsController < ApplicationController
   # GET /large_posts/1.xml
   def show
     @large_post = @club.large_posts.find(params[:id])
-
+    
+    @page_title = "Showing " + @large_post.title
+    @site_section = "clubs"
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @large_post }
@@ -67,7 +76,9 @@ class LargePostsController < ApplicationController
     
     @large_post.content = params[:content] if params[:content]
     @large_post.club_id = params[:club_id]
-    
+
+    @page_title = "New Large Post"
+    @site_section = "admin"
 
     respond_to do |format|
       format.html # new.html.erb
@@ -80,6 +91,9 @@ class LargePostsController < ApplicationController
   # GET /large_posts/1/edit
   def edit
     @large_post = @club.large_posts.find(params[:id])
+    
+    @page_title = "Editing " + @large_post.title
+    @site_section = "admin"
   end
 
   # POST /large_posts
@@ -99,6 +113,8 @@ class LargePostsController < ApplicationController
         format.html { redirect_to admin_club_large_post_path(@club, @large_post) }
         format.xml  { render :xml => @large_post, :status => :created, :location => @large_post }
       else
+        @page_title = "New Large Post"
+        @site_section = "admin"
         format.html { render :action => "new" }
         format.xml  { render :xml => @large_post.errors, :status => :unprocessable_entity }
       end
@@ -116,6 +132,8 @@ class LargePostsController < ApplicationController
         format.html { redirect_to admin_club_large_post_path(@club, @large_post) }
         format.xml  { head :ok }
       else
+        @page_title = "Editing " + @large_post.title
+        @site_section = "admin"
         format.html { render :action => "edit" }
         format.xml  { render :xml => @large_post.errors, :status => :unprocessable_entity }
       end

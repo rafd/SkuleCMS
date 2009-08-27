@@ -21,27 +21,33 @@ class SmallPostsController < ApplicationController
 =end
 
   def admin
-       if (params[:id].blank?)
-         @small_posts = @club.small_posts.all
-         respond_to do |format|
-          format.html #admin.html.erb
-          format.xml { render :xml => @small_posts }
-         end
-       else
-           @small_post = @club.small_posts.find(params[:id])
-           
-         respond_to do |format|
-          format.html { render :action => "admin_show" }
-          format.xml  { render :xml => @small_post }
-        end  
+    if (params[:id].blank?)
+      @small_posts = @club.small_posts.all
+      @page_title = "Small Posts Listing"
+      @site_section = "admin"
+      respond_to do |format|
+        format.html #admin.html.erb
+        format.xml { render :xml => @small_posts }
       end
+    else
+      @small_post = @club.small_posts.find(params[:id])
+      
+      @page_title = "Showing Small Post"
+      @site_section = "admin"
+      respond_to do |format|
+        format.html { render :action => "admin_show" }
+        format.xml  { render :xml => @small_post }
+      end  
+    end
   end
 
   # GET /small_posts/1
   # GET /small_posts/1.xml
   def show
     @small_post = @club.small_posts.find(params[:id])
-
+    @page_title = "Showing Small Post"
+    @site_section = "clubs"
+    
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @small_post }
@@ -53,6 +59,9 @@ class SmallPostsController < ApplicationController
   def new
     @small_post = @club.small_posts.new
 
+    @page_title = "Creating Small Post"
+    @site_section = "admin"
+
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @small_post }
@@ -63,6 +72,9 @@ class SmallPostsController < ApplicationController
   # GET /small_posts/1/edit
   def edit
     @small_post = @club.small_posts.find(params[:id])
+    
+    @page_title = "Editing Small Post"
+    @site_section = "admin"
   end
 
   # POST /small_posts
@@ -71,7 +83,7 @@ class SmallPostsController < ApplicationController
     @small_post = @club.small_posts.new(params[:small_post])
 
     respond_to do |format|
-      if params[:commit] == "Try a Twat"
+      if params[:commit] == "Try a Large Post"
         #redirect
         format.html { redirect_to :controller => "large_posts", :action => "new", :content => params[:small_post][:content] }
       else
@@ -81,6 +93,8 @@ class SmallPostsController < ApplicationController
           format.html { redirect_to admin_club_large_posts_path(@club) }
           format.xml  { render :xml => @small_post, :status => :created, :location => @small_post }
         else
+          @page_title = "Creating Small Post"
+          @site_section = "admin"
           format.html { render :action => "new" }
           format.xml  { render :xml => @small_post.errors, :status => :unprocessable_entity }
         end
@@ -99,6 +113,8 @@ class SmallPostsController < ApplicationController
         format.html { redirect_to admin_club_large_posts_path(@club) }
         format.xml  { head :ok }
       else
+        @page_title = "Editing Small Post"
+        @site_section = "admin"
         format.html { render :action => "edit" }
         format.xml  { render :xml => @small_post.errors, :status => :unprocessable_entity }
       end

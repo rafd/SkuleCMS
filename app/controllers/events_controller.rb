@@ -37,6 +37,9 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.xml
   def index
+    @page_title = "Event Listing"
+    @site_section = "clubs"
+    
     @events = @club.events.find(:all, :order => "start", :conditions => ["finish>=?", Time.now.utc])
     @old_events = @club.events.find(:all, :order => "start", :conditions => ["finish<?", Time.now.utc])
     respond_to do |format|
@@ -49,8 +52,11 @@ class EventsController < ApplicationController
   # GET /events/1/admin
   def admin
     if (params[:id].blank?)
-    @events = @club.events.find(:all, :order => "start", :conditions => ["finish>=?", Time.now.utc])
-    @old_events = @club.events.find(:all, :order => "start", :conditions => ["finish<?", Time.now.utc])
+      @page_title = "Event Listing"
+      @site_section = "admin"
+      
+      @events = @club.events.find(:all, :order => "start", :conditions => ["finish>=?", Time.now.utc])
+      @old_events = @club.events.find(:all, :order => "start", :conditions => ["finish<?", Time.now.utc])
 
       respond_to do |format|
         format.html # admin.html.erb
@@ -58,6 +64,8 @@ class EventsController < ApplicationController
       end
     else
       @event = @club.events.find(params[:id])
+      @page_title = "Showing " + @event.name
+      @site_section = "admin"
       respond_to do |format|
         format.html { render :action => "admin_show" }
         format.xml  { render :xml => @event }
@@ -70,6 +78,8 @@ class EventsController < ApplicationController
   def show
     @event = @club.events.find(params[:id])
 
+    @page_title = "Showing " + @event.name
+    @site_section = "clubs"
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @event }
@@ -79,6 +89,9 @@ class EventsController < ApplicationController
   # GET /events/new
   # GET /events/new.xml
   def new
+    @page_title = "New Event"
+    @site_section = "admin"
+    
     @event = Event.new
     @users = User.find(:all)
     respond_to do |format|
@@ -90,6 +103,10 @@ class EventsController < ApplicationController
   # GET /events/1/edit
   def edit
     @event = @club.events.find(params[:id])
+    
+    @page_title = "Editing " +@event.name
+    @site_section = "admin"
+    
     @users = User.find(:all)
   end
 
@@ -103,6 +120,8 @@ class EventsController < ApplicationController
         format.html { redirect_to admin_club_event_path(@club, @event) }
         format.xml  { render :xml => @event, :status => :created, :location => @event }
       else
+        @page_title = "New Event"
+        @site_section = "admin"
         @users = User.find(:all)
         format.html { render :action => "new" }
         format.xml  { render :xml => @event.errors, :status => :unprocessable_entity }
@@ -122,6 +141,8 @@ class EventsController < ApplicationController
         format.xml  { head :ok }
       else
         @users = User.find(:all)
+        @page_title = "Editing " +@event.name
+        @site_section = "admin"
         format.html { render :action => "edit" }
         format.xml  { render :xml => @event.errors, :status => :unprocessable_entity }
       end

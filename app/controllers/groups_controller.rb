@@ -10,6 +10,9 @@ class GroupsController < ApplicationController
   def index
     @groups = @club.groups
     @grouplist = @club.groups.find(:all, :conditions => ["parent_id IS NOT ?", nil], :order => 'lft')
+    
+    @page_title = "Group Listing"
+    @site_section = "clubs"
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @groups }
@@ -22,6 +25,9 @@ class GroupsController < ApplicationController
     if (params[:id].blank?)
       @groups = @club.groups
       @grouplist = @club.groups.find(:all, :conditions => ["parent_id IS NOT ?", nil], :order => 'lft')
+      
+      @page_title = "Group Listing"
+      @site_section = "admin"
       respond_to do |format|
         format.html # index.html.erb
         format.xml  { render :xml => @groups }
@@ -29,6 +35,9 @@ class GroupsController < ApplicationController
     else
       @group = @club.groups.find(params[:id])
       @page = @club.pages.find(:first, :conditions=> ["title=?",@group.name])
+      
+      @page_title = "Showing " + @group.name
+      @site_section = "admin"
       respond_to do |format|
         format.html { render :action => "admin_show" }
         format.xml  { render :xml => @group }
@@ -41,6 +50,9 @@ class GroupsController < ApplicationController
   def show
     @group = @club.groups.find(params[:id])
     @page = @club.pages.find(:first, :conditions=> ["title=?",@group.name])
+    
+    @page_title = "Showing " + @group.name
+    @site_section = "clubs"
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @group }
@@ -52,6 +64,9 @@ class GroupsController < ApplicationController
   def new
     @group = @club.groups.new
     @grouplist = @grouplist = @club.groups.find(:all, :conditions => ["parent_id IS NOT ?", nil], :order => 'lft')
+    
+    @page_title = "New Group"
+    @site_section = "admin"
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @group }
@@ -63,6 +78,9 @@ class GroupsController < ApplicationController
     @group = @club.groups.find(params[:id])
     @grouplist = @club.groups.find(:all, :conditions => ["parent_id IS NOT ?", nil], :order => 'lft')
     @grouplist -= @group.all_children << @group
+    
+    @page_title = "Editing " + @group.name
+    @site_section = "admin"
   end
 
   # POST /groups
@@ -80,6 +98,8 @@ class GroupsController < ApplicationController
         format.xml  { render :xml => @group, :status => :created, :location => @group }
       else
         @grouplist = @club.groups.find(:all, :conditions => ["parent_id IS NOT ?", nil], :order => 'lft')
+        @page_title = "New Group"
+        @site_section = "admin"
         format.html { render :action => "new" }
         format.xml  { render :xml => @group.errors, :status => :unprocessable_entity }
       end
@@ -103,6 +123,9 @@ class GroupsController < ApplicationController
       else
         @grouplist = @club.groups.find(:all, :conditions => ["parent_id IS NOT ?", nil], :order => 'lft')
         @grouplist -= @group.all_children << @group
+        
+        @page_title = "Editing " + @group.name
+        @site_section = "admin"
         format.html { render :action => "edit" }
         format.xml  { render :xml => @group.errors, :status => :unprocessable_entity }
       end
@@ -123,6 +146,10 @@ class GroupsController < ApplicationController
   
   def add_member
     @user = User.new
+    @group = @club.groups.find(params[:id])
+    
+    @page_title = "Adding New Member to " + @group.name
+    @site_section = "admin"
     respond_to do |format|
       format.html
       format.xml  { render :xml => @group }
@@ -148,6 +175,8 @@ class GroupsController < ApplicationController
         format.xml  { render :xml => @membership, :status => :created, :location => @membership }
       else
         @user = User.new
+        @page_title = "Adding New Member to " + @group.name
+        @site_section = "admin"
         format.html { render :action => "add_member" }
         format.xml  { render :xml => @membership.errors, :status => :unprocessable_entity }
       end

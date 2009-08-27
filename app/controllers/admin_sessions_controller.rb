@@ -5,6 +5,8 @@ class AdminSessionsController < ApplicationController
   def new
     @admin_session = AdminSession.new
 
+    @page_title = "Login"
+    @site_section = "hub"
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @admin_session }
@@ -22,6 +24,8 @@ class AdminSessionsController < ApplicationController
         format.html { redirect_to(current_admin.super_admin ? admins_path : (current_admin.club_id.blank?)? new_club_path: club_admin_index_path(current_admin.club_id)) }
         format.xml  { render :xml => @admin_session, :status => :created, :location => @admin_session }
       else
+        @page_title = "Login"
+        @site_section = "hub"
         format.html { render :action => "new" }
         format.xml  { render :xml => @admin_session.errors, :status => :unprocessable_entity }
       end
