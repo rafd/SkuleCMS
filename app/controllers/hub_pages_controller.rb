@@ -6,7 +6,8 @@ class HubPagesController < ApplicationController
 
 	def digest
 		@page_title = "The Digest"
-		
+    @site_section = "hub"
+    
 		@feed_items = LargePost.all + SmallPost.all + Event.all
 		@upcoming_events = Event.find(:all, :order => "start", :conditions => ["finish>=?", Time.now.utc], :limit => 10)
 	end

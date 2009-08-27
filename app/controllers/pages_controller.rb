@@ -22,6 +22,9 @@ class PagesController < ApplicationController
   # GET /pages.xml
   def index
     @pages = @club.all_pages
+    
+    @page_title = "Page Listing"
+    @site_section = "clubs"
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @pages }
@@ -31,12 +34,16 @@ class PagesController < ApplicationController
   def admin
     if (params[:id].blank?)
       @pages = @club.all_pages
+      @page_title = "Page Listing"
+      @site_section = "admin"
       respond_to do |format|
         format.html # index.html.erb
         format.xml  { render :xml => @pages }
       end
     else
       @page = @club.pages.find(params[:id])
+      @page_title = "Showing "+ @page.title
+      @site_section = "admin"
       respond_to do |format|
         format.html { render :action => "admin_show" }
         format.xml  { render :xml => @page }
@@ -48,7 +55,8 @@ class PagesController < ApplicationController
   # GET /pages/1.xml
   def show
     @page = @club.pages.find(params[:id])
-
+    @page_title = @page.title
+    @site_section = "clubs"
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @page }
@@ -60,6 +68,9 @@ class PagesController < ApplicationController
   def new
     @page = Page.new
     @pagelist = @club.all_pages
+    
+    @page_title = "New Page"
+    @site_section = "admin"
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @page }
@@ -71,6 +82,9 @@ class PagesController < ApplicationController
     @page = @club.pages.find(params[:id])
     @pagelist = @club.all_pages
     @pagelist  -= @page.all_children << @page
+    
+    @page_title = "Editing " + @page.title
+    @site_section = "admin"
   end
 
   # POST /pages
@@ -84,6 +98,9 @@ class PagesController < ApplicationController
         format.xml  { render :xml => @page, :status => :created, :location => @page }
       else
         @pagelist = @club.all_pages
+        
+        @page_title = "New Page"
+        @site_section = "admin"
         format.html { render :action => "new" }
         format.xml  { render :xml => @page.errors, :status => :unprocessable_entity }
       end
@@ -104,6 +121,9 @@ class PagesController < ApplicationController
         @pagelist = @club.all_pages
         @pagelist = @club.all_pages
         @pagelist  -= @page.all_children << @page
+        
+        @page_title = "Editing " + @page.title
+        @site_section = "admin"
         format.html { render :action => "edit" }
         format.xml  { render :xml => @page.errors, :status => :unprocessable_entity }
       end

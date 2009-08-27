@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-  <title><%= render :partial => 'layouts/default/title' %></title>
+  <title><%= render :partial => 'layouts/partials/title' %></title>
   <!-- Like what you see? Want to get invovled? 
   	You should join the Skule WebDev Club!
   	Email webmaster@skule.ca for more info.
@@ -16,33 +16,27 @@
     <%= javascript_include_tag "event_calendar" %>
 </head>
 <body class="<%= controller.controller_name + ' ' + controller.action_name %>">
-	<%= render__partial 'skulebar', @club %>
+
+	<%= render :partial => ("layouts/partials/skulebar"), :locals => { :club_id => @club } %>
 	<div id="container">
 		<div id="header">
 			<div id="top">
-				<%= render__partial 'heading' %>
-				<%= render__partial 'menu' %>
+				<%= render :partial => ("layouts/" + @site_section + "/heading") %>
+				<%= render :partial => ("layouts/" + @site_section + "/menu") %>
 			</div>
-			<%= render__partial 'banner' %>
+			<%= render :partial => ("layouts/" + @site_section + "/banner") %>
 		</div>
-	
-		
-		<% if @site_section %>
-			<%= render :partial => ("layouts/" + @site_section + "/left") %>
-		<% else %>
-			<%= render__partial 'left' %>
-		<% end %>
-	
+		<%= render :partial => ("layouts/" + @site_section + "/left") %>
 		<div id="main">
 			<div id="content">
-				<%= render__partial 'ie6nomore' %>
+				<%= render :partial => ("layouts/partials/ie6nomore") %>
 				<%= yield %>
 			</div>
 
-			<%= render__partial 'sidebar' %>
+			<%= render :partial => ("layouts/" + @site_section + "/sidebar") %>
 		</div>
 	
-		<%= render__partial 'footer' %>
+		<%= render :partial => ("layouts/partials/footer") %>
 	</div>
 </body>
 </html>

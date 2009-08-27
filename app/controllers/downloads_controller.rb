@@ -8,7 +8,8 @@ class DownloadsController < ApplicationController
   # GET /downloads.xml
   def index
     @downloads = @download_folder.downloads
-
+    @page_title = "Download Listing"
+    @site_section = "clubs"
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @downloads }
@@ -19,7 +20,9 @@ class DownloadsController < ApplicationController
   # GET /downloads/1.xml
   def show
     @download = @download_folder.downloads.find(params[:id])
-
+    
+    @page_title = "Showing " + @download.name
+    @site_section = "clubs"
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @download }
@@ -30,6 +33,9 @@ class DownloadsController < ApplicationController
   # GET /downloads/new.xml
   def new
     @download = Download.new
+    
+    @page_title = "New Download"
+    @site_section = "admin"
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @download }
@@ -39,6 +45,9 @@ class DownloadsController < ApplicationController
   # GET /downloads/1/edit
   def edit
     @download = @download_folder.downloads.find(params[:id])
+    
+    @page_title = "Editing " + @download.name
+    @site_section = "admin"
   end
 
   # POST /downloads
@@ -53,6 +62,8 @@ class DownloadsController < ApplicationController
         format.html { redirect_to(admin_club_file_path(@download.download_folder.club, @download.download_folder)) }
         format.xml  { render :xml => @download, :status => :created, :location => @download }
       else
+        @page_title = "New Download"
+        @site_section = "admin"
         format.html { render :action => "new" }
         format.xml  { render :xml => @download.errors, :status => :unprocessable_entity }
       end
@@ -70,6 +81,8 @@ class DownloadsController < ApplicationController
         format.html { redirect_to(admin_club_file_path(@download.download_folder.club, @download.download_folder)) }
         format.xml  { head :ok }
       else
+        @page_title = "Editing " + @download.name
+        @site_section = "admin"
         format.html { render :action => "edit" }
         format.xml  { render :xml => @download.errors, :status => :unprocessable_entity }
       end

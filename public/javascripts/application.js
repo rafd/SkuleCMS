@@ -17,7 +17,7 @@ document.observe('dom:loaded', function() {
 				if (numActive ==0)
 				{
 						element.toggleClassName('selected');
-						$('clubs_container').immediateDescendants().each(function(club){
+						$$('div#content .clubs_container div.club').each(function(club){
 							if (!club.hasClassName(tag)){
 								//club.fade({ duration: effectDuration , queue: { position: 'end', scope: tag } });
 								new Effect.Fade(club, { duration: effectDuration , queue: { position: 'end', scope: tag } });
@@ -36,7 +36,7 @@ document.observe('dom:loaded', function() {
 				else if (numActive < 10)
 				{
 						element.toggleClassName('selected');
-						$('clubs_container').immediateDescendants().each(function(club){
+						$$('div#content .clubs_container div.club').each(function(club){
 							if (club.hasClassName(tag)){
 								//club.appear({ duration: effectDuration , queue: { position: 'end', scope: tag } });
 								new Effect.Appear(club, { duration: effectDuration , queue: { position: 'end', scope: tag } });
@@ -70,14 +70,14 @@ document.observe('dom:loaded', function() {
 				}
 				if (numActive ==1)
 				{
-						$('clubs_container').immediateDescendants().each(function(club){
+						$$('div#content .clubs_container div.club').each(function(club){
 								//club.appear({ duration: effectDuration , queue: { position: 'end', scope: tag } });
 								new Effect.Appear(club, { duration: effectDuration , queue: { position: 'end', scope: tag } });
 						});
 				}
 				else
 				{
-						$('clubs_container').immediateDescendants().each(function(club){
+						$$('div#content .clubs_container div.club').each(function(club){
 							if (club.hasClassName(tag))
 							{
 								var check = false;
