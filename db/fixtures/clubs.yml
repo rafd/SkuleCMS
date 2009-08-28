@@ -1,14 +1,13 @@
-WebDev:
-  name: WebDev
-  web_name: webdev
-  official_name: Skule Web Development Club
-  description: Our goal is to rectify the poor presence of web development at UofT by fostering the learning of webdev at Skule, and to develop some kick-ass Skule-related webapps.
-  tagline: We Make Web Applications
-  contact: webmaster@skule.ca
-  affiliated: false
+#### ENGSOC SERVICES ####
+EngSoc:
+  name: EngSoc
+  web_name: engsoc
+  official_name: University of Toronto Engineering Society
+  description: UofT Engineering Society
+  tagline: UofT Engineering Society
+  contact: vpcomm@skule.ca
+  address: "B740 Sandford Fleming Building\n10 King's College Road\nToronto, Ontario, Canada M5S 3G4"
   live: true
-#  tags: 
-  
   
 FroshWeek:
   name: F!rosh Week
@@ -18,18 +17,781 @@ FroshWeek:
   tagline:  Engineering Orientation
   website: http://orientation.skule.ca/
   contact: orientation@skule.ca
-  affiliated: false
   live: true
-#  tags: Event
 
-EngSoc:
-  name: EngSoc
-  web_name: engsoc
-  official_name: University of Toronto Engineering Society
-  description: UofT Engineering Society
-  tagline: UofT Engineering Society
-  contact: vpcomm@skule.ca
-  address: "B740 Sandford Fleming Building\n10 King's College Road\nToronto, Ontario, Canada M5S 3G4"
-  affiliated: true
+BlueAndGold:
+  name: Blue & Gold
+  web_name: blueandgold
+  official_name: 
+  website: http://blueandgold.skule.ca
+  live: true
+  
+Cannon:
+  name: The Cannon
+  web_name: cannon
+  official_name: 
+  website: http://cannon.skule.ca
+  live: true
+  
+CannonBall:
+  name: CannonBall
+  web_name: cannonball
+  official_name: 
+  website: http://cannonball.skule.ca
+  live: true
+  
+CareerFair:
+  name: Career Fair
+  web_name: careerfair
+  official_name: 
+  website: http://careerfair.skule.ca/
+  live: true
+
+Census:
+  name: Census
+  web_name: census
+  official_name: 
+  website: http://census.skule.ca/
+  live: true
+  
+GodivaWeek:
+  name: Godiva Week
+  web_name: godivaweek
+  official_name: 
+  website: http://godivaweek.skule.ca
+  live: true
+
+GradBall:
+  name: Grad Ball
+  web_name: gradball
+  official_name: 
+  website: http://gradball.skule.ca
+  live: true 
+
+Lockers:
+  name: Lockers
+  web_name: lockers
+  official_name: 
+  website: http://lockers.skule.ca
+  live: true 
+
+Quest:
+  name: Quest
+  web_name: quest
+  official_name: 
+  website: http://quest.skule.ca
+  live: true 
+
+VPAcademic:
+  name: VP Academic
+  web_name: academic
+  official_name: 
+  website: http://academic.skule.ca/
+  live: true 
+
+VPFinance:
+  name: VP Finance
+  web_name: finance
+  official_name: 
+  website: http://finance.skule.ca/
+  live: true 
+
+VPExternal:
+  name: VP External
+  web_name: external
+  official_name: 
+  website: http://external.skule.ca/
+  live: true 
+
+EngCom:
+  name: EngCom
+  web_name: engcom
+  official_name: 
+  website: http://engcom.skule.ca/
+  live: true 
+
+Hiskule:
+  name: Hi-Skule
+  web_name: hiskule
+  official_name: 
+  website: http://hiskule.skule.ca
+  live: true 
+
+SkulePoints:
+  name: Skule Points
+  web_name: points
+  official_name: 
+  website: http://points.skule.ca/
+  live: true 
+
+SIC:
+  name: SIC
+  web_name: sic
+  tagline: Student Issues Committee
+  official_name: Student Issues Committee
+  website: http://sic.skule.ca
+  live: true 
+
+SkuleBook:
+  name: SkuleBook
+  web_name: skulebook
+  official_name: 
+  website: http://skulebook.skule.ca
+  live: true 
+
+SkuleNite:
+  name: SkuleNite
+  web_name: skulenite
+  official_name: 
+  website: http://skulenite.skule.ca
+  live: true 
+
+Sponsorship:
+  name: Sponsorship
+  web_name: sponsorship
+  official_name: 
+  website: http://sponsorship.skule.ca
+  live: true 
+
+Stores:
+  name: Stores
+  web_name: stores
+  official_name: 
+  website: http://stores.skule.ca
+  live: true 
+
+Suds:
+  name: Suds
+  web_name: suds
+  official_name: 
+  website: http://suds.skule.ca
+  live: true 
+
+Toike:
+  name: Toike
+  web_name: toike
+  official_name: 
+  website: http://toike.skule.ca
+  live: true 
+
+Archivist:
+  name: Archivist
+  web_name: traditions
+  official_name: 
+  website: http://traditions.skule.ca
+  live: true  
+
+UTEK:
+  name: UTEK
+  web_name: utek
+  official_name: UofT Engineering Kompetition
+  website: http://utek.skule.ca/
+  live: true  
+
+#### DEPARTMENT CLUBS ####
+
+MINCLUB:
+  name: Min Club
+  web_name: min
+  official_name: Undergraduate Mineral Engineering Club
+  website:
+  contact: minclub@skule.ca
+  live: true
+
+CIVCLUB:
+  name: Civ Club
+  web_name: civ
+  official_name: Undergraduate Civil Engineering Club
+  website:
+  contact: civclub@skule.ca
   live: true
  
+CHEMCLUB:
+  name: Chem Club
+  web_name: chem
+  official_name: Undergraduate Chemical Engineering Club
+  website:
+  contact: chemclub@skule.ca
+  live: true
+ 
+MSECLUB:
+  name: MSE Club
+  web_name: mse
+  official_name: Undergraduate Materials Engineering Club
+  website:
+  contact: mseclub@skule.ca
+  live: true
+ 
+MECHCLUB:
+  name: Mech Club
+  web_name: mech
+  official_name: Undergraduate Mechanical Engineering Club
+  website:
+  contact: mechclub@skule.ca
+  live: true
+ 
+INDYCLUB:
+  name: Indy Club
+  web_name: indy
+  official_name: Undergraduate Industrial Engineering Club
+  website:
+  contact: indy@skule.ca
+  live: true
+ 
+ECECLUB:
+  name: ECE Club
+  web_name: ece
+  official_name: Undergraduate Electrical and Computer Engineering Club
+  website:
+  contact: ececlub@skule.ca
+  live: true
+ 
+ENGSCICLUB:
+  name: EngSci Club
+  web_name: engsci
+  official_name: Undergraduate Engineering Science Club
+  website: http://engsci.skule.ca/
+  contact: engsciclub@skule.ca
+  live: true
+ 
+TRACKONE:
+  name: TrackOne Club
+  web_name: trackone
+  official_name: Undergraduate TrackOne Engineering Club
+  website: http://trackone.skule.ca
+  contact:
+  live: true
+
+#### AFFILIATED CLUBS #### (tagged w/ Affiliated)
+
+Nscientia: 
+  name: NScientia!
+  web_name: nscientia
+  official_name: Nscientia!
+  description: A web space created by Engineering Science students for EngSci students containing industry news and helpful information specifically geared towards Engineering Science students. 
+  tagline:  Additicia Vacua Notitia
+  website: http://www.nscientia.com
+  contact:
+  live: true  
+
+EAA:
+  name: EAA
+  web_name: eaa
+  official_name: Engineering Athletics Association
+  description: An organization providing a range of athletic activities, sports and tournaments to Skule allowing members to participate at all levels. 
+  tagline:  Engineering Athletics Association
+  website: http://eaa.skule.ca
+  contact: eaa@skule.ca
+  live: true
+
+ASME:
+  name: ASME
+  web_name: asme
+  official_name: American Society of Mechanical Engineers University of Toronto Student Section
+  description: ASME provides student with the tools necessary to open doors in their social and career-related lives as engineers. 
+  tagline:  American Society of Mechanical Engineers
+  website: http://asme.skule.ca
+  contact: asme@skule.ca
+  live: true 
+
+E4C: 
+  name: Engineers for Christ
+  web_name: E4C
+  official_name: Engineers for Christ
+  description: E4C is dedicated to raise awareness, as well as nurture the spiritual side of a variety of different students. 
+  tagline:  Engineers for Christ
+  website: 
+  contact: e4christ@hotmail.com
+  live: true
+
+EPC: 
+  name: Engineering Photography Club
+  web_name: EPC
+  official_name: University of Toronto Engineering Photography Club
+  description: The EPC aims to develop photography skills of existing photographers in the Engineering Skule. 
+  tagline:  Engineering Photography Club
+  website: photography.skule.ca
+  contact: photography@skule.ca 
+  live: true
+
+SSBB:
+  name: Stage Band Blue 
+  web_name: music
+  official_name: Skule Stage Band Blue
+  description: Stage Band Blue is the new band created to accommodate the huge number of Skule musicians interested in playing jazz. 
+  tagline:  Skule Stage Band Blue
+  website: music.skule.ca/sbb/index.php
+  contact: stagebandblue@skule.ca
+  live: true
+
+EWB: 
+  name: Engineers Without Borders
+  web_name: ewb
+  official_name: Engineers Without Borders, U of T Chapter
+  description: EWB promotes awareness about issues in international development which are not discussed in our engineering curriculum. 
+  tagline:  EWB
+  website: http://www.utoronto.ewb.ca
+  contact: utoronto@ewb.ca
+  live: true
+
+UTET: 
+  name: Toastmasters
+  web_name: toastmasters 
+  official_name: University of Toronto Engineering Toastmasters
+  description: The goal of toastmasters is to develop communications skills and leadership skills in each of its members. 
+  tagline: UofT Engineering Toastmasters
+  website:  toastmasters.skule.ca
+  contact: toastmasters@skule.ca
+  live: true
+
+UTAT: 
+  name: UTAT
+  web_name: utat
+  official_name: University of Toronto Aeronautics Team 
+  description:  All new members will be highly involved in the aircraft design process which includes aerodynamic and structural analysis, construction and optimization. 
+  tagline: Aeronautics Team
+  website:  utat.skule.ca
+  contact: utat@utat.skule.ca
+  live: true
+
+WEAO: 
+  name: Water Environment Association of Ontario
+  web_name: weao
+  official_name: U of T Student Chapter of the Water Environment Association of Ontario
+  description: WEAO provides students with avenues for professional development and exchange of information between student members and professionals in the Water and Wastewater Industries. 
+  tagline: U of T Student Chapter of WEAO
+  website: http://www.weao.org/students/StudentChapters.html
+  contact: weao.group@utoronto.ca
+  live: true
+
+ISPE: 
+  name: ISPE
+  web_name: ISPE 
+  official_name: U of T International Society for Pharmaceutical Engineering
+  description: ISPE organizes various activities related to the pharmaceutical industry with the goal of facilitating personal discovery of what the pharmaceutical industry may have for each student. 
+  tagline: Int. Society for Pharma Eng.
+  website: ispe.skule.ca
+  contact: ispe@skule.ca
+  live: true
+
+IIE: 
+  name: IIE
+  web_name: IIE
+  official_name: Institute of Industrial Engineers
+  description: IIE serves many industrial engineers around the world by carrying the IIE mission. 
+  tagline: IIE
+  website: http://www.mie.utoronto.cs/csie
+  contact: iie@skule.ca
+  live: true
+
+CrumpledArt: 
+  name: Crumpled Paper
+  web_name: crumpledpaper
+  official_name: Crumpled Paper Art and Creative Writing Magazine
+  description: Crumpled Paper provides both a medium and a community where engineering students are encouraged to express themselves creatively, as well as meet peers with similar artistic and literary interests. 
+  tagline: Crumpled Paper
+  website: crumpledpaper.skule.ca
+  contact: crumpledpaper@skule.ca
+  live: true
+
+NSBE:
+  name: NSBE
+  web_name: NSBE
+  official_name: National Society of Black Engineers
+  description: NSBE's mission is to increase the number of culturally responsible black engineers who excel academically, succeed professionally and positively impact the community at U of T. 
+  tagline: NSBE
+  website: http://www.nsbeutoronto.ca
+  contact: nsbe@utoronto.ca
+  live: true
+
+EyesofHope: 
+  name: EyesofHope
+  web_name: Eyesofhope
+  official_name: Eyes of Hope
+  description: Eyes of Hope promotes engineers' responsibility for society, raise student awareness toward children welfare and education, support children education in developing countries and help to provide shelter for local families in need. 
+  tagline: Eyes of Hope
+  website: 
+  contact: eyesofhope.ut@gmail.com
+  live: true
+
+ELG: 
+  name: Lego Club
+  web_name: Lego
+  official_name: Engineering Lego Group
+  description: This club gives engineering students a change to use their skills in a fun manner where the consequences of failure are far less than in real life. 
+  tagline: Lego Group
+  website: lego.skule.ca
+  contact: lego@skule.ca
+  live: true
+
+ASX: 
+  name: ASX
+  web_name: asx
+  official_name: Astronomy and Space Exploration Society
+  description:  A club where you can learn about astronomy and space exploration, including history and newest developments. 
+  tagline: Astronomy and Space Exploration
+  website: asx.sa.utoronto.ca
+  contact: space.society@utoronto.ca
+  live: true
+
+SSB: 
+  name: Stage Band
+  web_name: stageband
+  official_name: Skule Stage Band
+  description:  Stageband performs to grand acclaim at many Skule events, including the best-attended dances of the year as well as suds, the EngSci Dinner Dance and the Skule Music Concert. 
+  tagline: Skule Stage Band
+  website: music/skule.ca/stageband
+  contact: stageband@skule.ca
+  live: true
+
+Career Paths: 
+  name: Career Paths
+  web_name: careerpaths
+  official_name: Career Paths
+  description:  Career Ppaths is working to promote a culture of awareness, curiosity and understanding of the prospective careers available to the U of T engineering community. 
+  tagline: Career Paths
+  website: 
+  contact: careerpaths.uft@gmail.com
+  live: true
+
+Nsight: 
+  name: Nsight
+  web_name: nsight
+  official_name: NSight - Engineering Science Mentorship Program 
+  description:  Various events held to promote the Engineering Science Mentorship program. 
+  tagline: EngSci Mentorship
+  website: http://www.nsight.skule.ca
+  contact: nsight.mentors@gmail.com
+  live: true
+
+SMTA: 
+  name: SMTA
+  web_name: SMTA
+  official_name: Surface Mount Technology Association 
+  description: SMTA is a student run campus association to advance the microelectronics industry 
+  tagline: SMTA
+  website: http://www.smta.org
+  contact: nelson.to@utoronto.ca
+  live: true
+
+UTEC: 
+  name: Eco-Marathon Club
+  web_name: UTEC
+  official_name: University of Toronto Eco-Marathon Club
+  description:  A club which organizes a local competition to promote a fuel efficient car made from a smart car assembly technique. 
+  tagline: UTEC
+  website: http://www.utec.skule.ca
+  contact: contactus@utec.skule.ca
+  live: true
+
+BlueSky: 
+  name: Blue Sky Solar
+  web_name: blueskysolar
+  official_name: University of Toronto Blue Sky Solar Racing
+  description:  Allows engineering students practical experience in design and fabrication as well as exposure to working with industry. 
+  tagline: Solar Car Racing
+  website: http://www.blueskysolar.utoronto.ca
+  contact: blueskysolar@utoronto.ca
+  live: true
+
+CinemaBlueRoom: 
+  name: Cinema Blue Room
+  web_name: blueroom
+  official_name: Cinema Blue Room
+  description:  Cinema Blue Room creates movie nights for the Engineering Students. 
+  tagline: Cinema Blue Room
+  website: 
+  contact: irena.mahdavi@utoronto.ca
+  live: true
+
+NBTC:
+  name: NBTC
+  web_name: NBTC
+  official_name: National Business and Technology Conference
+  description: At NBTC 2009, we recognize that change is good. With the theme of "Adaptability - Succeeding in a Changing World", examples are drawn from different industries in changing circumstances, how some businesses steady their feet on unfamiliar grounds and turn changes into their innovative successes. Delegates are welcomed to learn from our keynote speakers and join a series of seminars and workshops to explore the true colours of today's work environment, intertwined with many business and technology opportunities.
+  tagline: NBTC
+  website: http://www.nbtc.ca
+  contact: jane.ip@nbtc.ca
+  live: true
+
+LoveofFilm: 
+  name: LoveOfFilm
+  web_name: loveoffilm
+  official_name: For the Love of Film 
+  description: For the Love of Film is established for all students at the University of Toronto who love watching brilliant films and has an interest in expressing themselves through the medium of film.
+  tagline: a society for film hobbyists
+  website: 
+  contact: yw.wang@utoronto.ca
+  live: true
+
+UTCC: 
+  name: UTCC
+  web_name: Canoe
+  official_name: University of Toronto Concrete Canoe Team
+  description: As you may expect, we take concrete, a material normally strong in compression and weak in tension (not to mention really dense), and turn it on its head. When we are done with it, we have concrete that is not only good in tension, but less dense than water! Each year, we design, test, and construct our own concrete mix and canoe design, which is raced against other universities annually. 
+  tagline: University of Toronto Concrete Canoe Team
+  website: http://www.canoe.skule.ca
+  contact: ut.canoe@gmail.com
+  live: true
+
+CESA: 
+  name: CESA
+  web_name: cesa
+  official_name: Chinese Engineering Students' Association
+  description: The University of Toronto Chinese Engineering Students' Association (U of T CESA) is a student-run, non-profit organization dedicated to promoting Chinese culture, friendship, and communication between its ethnically diverse members. Running for the 34th year beginning May 2008, CESA is one of the largest clubs within the engineering faculty, having approximately 350 undergraduate students, graduate students and alumni. CESA is a university-recognized club providing many events and services throughout the year. We give our members the opportunity to learn, have fun, meet new people and help others around campus and in the Greater Toronto Area.
+  tagline: Chinese Eng. Students' Assoc.
+  website: http://www.cesa.skule.ca
+  contact: info@cesa.skule.ca
+  live: true
+
+SkuleOrchestra: 
+  name: Orchestra
+  web_name: Orchestra
+  official_name: Skule Orchestra
+  description: Welcome to the orchestra! Skule Orchestra is a 50 member symphonic orchestra of string, wind, and percussion instrumentalists. The orchestra is a place for students to have fun performing challenging repertoire ranging from Mozart to Mahler. We hold weekly rehearsals and various exciting events during the year, including concerts, a clinic, trips to local music events, socials, and Moment, the Valentine's Ball. There's a lot of opportunity to meet fun people with a shared interest in music. If you played an instrument in high school, this could be the ensemble for you!
+  tagline: Skule Orchestra
+  website: http://www.music.skule.ca/orchestra
+  contact: orchestra@skule.ca
+  live: true
+
+CUBE: 
+  name: CUBE
+  web_name: CUBE
+  official_name: Club for Undergraduate Biomedical Engineering
+  description: CUBE is an student-run club whose mandate is to promote biomedical engineering at the undergraduate level. The oldest and largest chapter was founded in 1997 by Mark Ebden and Ran Gilad at the University of Toronto. Currently, the Toronto chapter has over 400 members from assorted programs and faculties. For more on the history of CUBE,  click hereOur purpose is to disseminate knowledge pertaining to the biomedical field, as well as to serve as a point of contact between students, researchers, and industry. In addition, individual chapters are encouraged to present some of the research being done at their respective universities.
+  tagline: Club for Undergrad Biomed Eng.
+  website: http://www.cube.skule.ca
+  contact: cube@skule.ca
+  live: true
+
+Nanoclub:
+  name: Nanoclub
+  web_name: nanoclub
+  official_name: Nanoclub
+  description: The Nanoclub aims to promote nanotechnology at the University of Toronto. We are entirely student-run, but receive support from the Department of Materials Science Engineering and the Engineering Society (Skule™). Our members are drawn from a wide spectrum of disciplines at U of T, reflecting the interdisciplinary nature of nanoscience.
+  tagline: Nanoclub
+  website: http://www.nano.skule.ca
+  contact: uoft.nanoclub@gmail.com
+  live: true
+
+FSAE: 
+  name: FSAE
+  web_name: FSAE
+  official_name: The University of Toronto Formula SAE Racing Team
+  description: The University of Toronto Formula SAE Racing Team is a student-run Engineering design team that designs, builds and races an open-wheel, open-cockpit race vehicle. Founded in 1997, we built our first competition vehicle (UT99) in 1999 and in the past years have won numerous awards and three Formula Student Championship titles gaining international recognition amongst our peers. The team is based at the University of Toronto St. George Campus and is comprised of undergraduate and graduate students mainly from the Faculty of Engineering, but also from various other faculties within the University. Members of our team gain valuable technical experience through applying classroom knowledge to real-world problems and applications, enabling them to have a competitive edge that employers seek. Every year, members of our team are hired by industry for intership positions through the University of Toronto Professional Experience Year Program, helping them explore and start potential career paths. 
+  tagline: FSAE
+  website: http://www.fsae.utoronto.ca
+  contact: business@fase.utoronto.ca
+  live: true
+
+UTEFR: 
+  name: UTEFR
+  web_name: UTEFR
+  official_name: University of Toronto Engineering First Responders
+  description: The University of Toronto Engineering First Responders is a volunteer organization providing flexible and continuous training to engineers who want to increase their confidence and knowledge in first aid techniques (while managing a heavy work load). By increasing competency in pre-hospital first-aid treatment, UTEFR enhances the safety of on-campus events. UTEFR members will receive professional training and certification in Emergency and Standard First Aid, CPR-C, International Trauma Life Support, Automated External Defibrillation, and wilderness survival along with other essential skills and knowledge. The organization also offers opportunities to practice your skills, in the forms of competitions, charity events, and patrolling campus events.
+  tagline: UTEFR
+  website: http://www.firstaid.skule.ca
+  contact: firstaid@skule.ca
+  live: true
+
+WISE: 
+  name: wise
+  web_name: wise
+  official_name: Women in Science and Engineering
+  description: Women in Science and Engineering - University of Toronto (WISE U of T) is a co-ed student organization open to all persons in the University of Toronto community, including all students, staff and alumnae. Established in 1999, WISE arose as a forum for peers to share their experiences. 
+  tagline: wise
+  website: http://www.wise.skule.ca
+  contact: wise.club@utoronto.ca
+  live: true
+
+MA: 
+  name: Material Advantage
+  web_name: ma
+  official_name: Material Advantage at the University of Toronto
+  description: Becoming a member gives you a chance to meet other engineering students and professionals in the field of Materials Engineering. It allows you to become involved in plant tours, conferences, workshops, and contests. Once you become a member you will have access to an online database of job postings avaliable for those looking for jobs. Additional benefits of becoming a member can be found here. 
+  tagline: Material Advantage
+  website: http://www.asm.skule.ca
+  contact: chair@asm.skule.ca
+  live: true
+
+RAI: 
+  name: RAI
+  web_name: RAI
+  official_name: Rise and Improvize Dance Club
+  description: Rise and Improvize (RAI) is a competition-oriented dance club which was founded in December 2007. The goal of the club is to compete in at least one regional competition every year. Auditions are strictly for those who would wish to go to competitions at the end of the year. For those who would like to be a member and attend free classes throughout the year, create an account on our website!Rise and Improvize is not only about one dance style or a particular genre. Depending on the number of competent choreographers we select at our auditions, we intend to compete under a new dance genre every year. 
+  tagline: Rise and Improvize Dance Club
+  website: http://www.rai.skule.ca/drupal-6.4/
+  contact: rai.danceclub@gmail.com
+  live: true
+
+FIRM: 
+  name: FIRM
+  web_name: FIRM 
+  official_name: Friends of Interdisciplinary Research in Medicine
+  description: FIRM@UT aims to promote awareness among undergraduate and graduate students for the trend towards integration of different disciplinary studies in solving real-life medical problems. Academic, career-developing, and social events shall be hosted to give opportunities for members to be exposed to the interdisciplinary fields involved, and to interact with other fellow students, faculty members, and staffs.
+  tagline: Friends of Interdisciplinary Research in Medicine
+  website: 
+  contact: firstatut@gmail.com
+  live: true
+
+UTECC: 
+  name: UTECC
+  web_name: UTECC
+  official_name: University of Toronto Engineering Chinese Club
+  description: The Engineering Chinese Culture Club is a non-profit student organization in the University of Toronto. It was founded in 2005 by Electrical Engineering students. The majority of our members are Mandarin speaking students. The primary goal of our club is to provide both a platform and a network for Chinese students in Faculty of Applied Science and Engineering to gain competitive edge in career planning and graduate school application. Differing from the Chinese Engineering Student Association (CESA), ECCC sees the need of creating a home for students who are originally from mainland China since the number of students from there is dramatically increasing in recent years. We recruited about 200 members and 15 executive members last year.
+  tagline: University of Toronto Engineering Chinese Club
+  website: http://www.uteccc.org
+  contact: peter@uteccc.org
+  live: true
+
+IESA: 
+  name: IESA
+  web_name: IESA 
+  official_name: Iranian Engineering Students' Association
+  description: The Iranian Engineering Students’ Association (IESA) is a non-profit organization dedicating its efforts to promoting the Iranian culture between its ethnically diverse members. IESA’s goal is to improve the student life and experience in university for all its members through events organized through out the year, and also simply by being there to help those in need for various academic reasons, such as picking streams, courses, filling application and etc.
+  tagline: Iranian Engineering Students' Association
+  website: 
+  contact: iesauoft@gmail.com
+  live: true
+
+OWWA: 
+  name: OWWA
+  web_name: OWWA
+  official_name: Ontario Water Works Association
+  description: The Ontario Water Works Association (OWWA) student chapter offers students interested in the drinking water industry the opportunity to be part of the industry through networking events and socials, technical seminars and plant tours
+  tagline: Ontario Water Works Association
+  website: 
+  contact: utoronto.owwa@gmail.com
+  live: true
+
+ClimbingClub: 
+  name: ClimbingClub
+  web_name: ClimbingClub
+  official_name: Skule Climbing Club
+  description: The Skule Climbing Club is a great way for experienced climbers to climb with a group. It also is a great way for anybody who is interested in trying climbing for the first time to get into the fun and challenging sport.  
+  tagline: Skule Climbing Club
+  website: http://www.climbingclub.skule.ca
+  contact: climblingclub@skule.ca
+  live: true
+
+UTCA: 
+  name: UTCA
+  web_name: utca
+  official_name: University of Toronto Consulting Association
+  description: The University of Toronto Consulting Association (UTCA) is a student run organization that aims to connect UofT students with professional consulting firms. UTCA hosts several events throughout the school year that allow students to gain exposure to the consulting world.
+  tagline: UofT Consulting Association
+  website: http://www.utconsulting.ca
+  contact: utca.contact@gmail.com
+  live: true
+
+MDA: 
+  name: MDA
+  web_name: mda
+  official_name: University of Toronto Mechatronics Design Association
+  description: The University of Toronto Mechatronics Design Association (UTMDA) is a student group that applies our knowledge of engineering sciences to annually produce an entry for the Autonomous Underwater Vehicle competition. In order to complete this competition, students design sonar, and camera systems, power electronics, and control systems. Along with the supporting mechanical design for a fast and submersible vehicle. As students involved in MDA develop their skills as engineers, they also learn valuable lessons in teamwork, management, and public relations.
+  tagline: University of Toronto Mechatronics Design Association
+  website: mda.sa.utoronto.ca
+  contact: mech.design@utoronto.ca
+  live: true
+  
+TAO: 
+  name: TAO
+  web_name: takeaction
+  official_name: Take Action! Organization
+  description: TAO is a group of change-oriented individuals striving to bring about positive change in society. 
+  tagline: Take Action! Organization
+  website: 
+  contact: takeactionorg@gmail.com
+  live: true
+  
+#### OTHER CLUBS ####
+BESA:
+  name: BESA
+  web_name: besa
+  official_name: Biomedical Engineering Students' Association
+  website: http://besa.skule.ca/
+  live: true
+  
+Dragonboat:
+  name: Iron Dragons
+  web_name: dragonboat
+  official_name: Iron Dragons
+  description: UofT Engineering Dragonboat Team
+  tagline: Engineering Dragonboat Team
+  website: http://dragonboat.skule.ca/
+  contact: dragonboat@skule.ca
+  live: true
+  
+WebDev:
+  name: WebDev
+  web_name: webdev
+  official_name: Skule Web Development Club
+  description: Our goal is to rectify the poor presence of web development at UofT by fostering the learning of webdev at Skule, and to develop some kick-ass Skule-related webapps.
+  tagline: We Make Web Applications
+  contact: webmaster@skule.cai
+  live: true
+  
+ESEC:
+  name: ESEC
+  official_name: Engineering Science Education Conference
+  website: http://esec.skule.ca
+  
+IEE:
+  name: IEE
+  official_name: Institute of Industrial Engineers, Chapter 889
+  website: http://iie.skule.ca/
+
+Improv:
+  name: Improv
+  official_name: Improv Club
+  website: http://improv.skule.ca/
+
+JESA:
+  name: JESA
+  official_name: Jewish Engineering Students' Association
+  website: http://jesa.skule.ca
+ 
+Juggling:
+  name: Juggling Club
+  official_name: UofT Enmgineering Juggling Club
+  website: http://juggling.skule.ca/
+
+LGMB:
+  name: LGMB
+  official_name: Lady Godiva Memorial Bnad
+  website: http://lgmb.skule.ca/
+  
+Moment:
+  name: Moment
+  official_name:
+  website: http://moment.skule.ca
+
+Music:
+  name: Music
+  official_name:
+  website: http://music.skule.ca
+
+PEOClub:
+  name: PEO Student Club
+  official_name: Professional Engineers of Ontario, Student Club
+  website: http://peoclub.skule.ca
+
+PEOConference:
+  name: PEO Conference
+  official_name:
+  website: http://peoconference.skule.ca
+
+SAF:
+  name: SAF
+  official_name: Skule Arts Festival
+  website: http://saf.skule.ca/
+
+Snowboard:
+  name: Snowboard Design Team
+  official_name: UofT Snowboard Design Team
+  website: http://snowboard.skule.ca
+ 
+Toboggan:
+  name: Concrete Toboggan
+  official_name: UofT Concrete Toboggan
+  website: http://toboggan.skule.ca/

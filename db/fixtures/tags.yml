@@ -1,25 +1,151 @@
-web:
-  name: web
-  taggings_count: 1
+#### CLUB TAGS ####
+
+arts:
+  name: arts
+  taggings_count: 0
+
+sports:
+  name: sports
+  taggings_count: 0
+
+profdev:
+  name: profdev
+  taggings_count: 0
+
+cultural:
+  name: cultural
+  taggings_count: 0
 
 design:
   name: design
-  taggings_count: 1
+  taggings_count: 0
+
+depclub:
+  name: depclub
+  taggings_count: 0
+
+depspecific:
+  name: depspecific
+  taggings_count: 0
+
+academics:
+  name: academics
+  taggings_count: 0
+
+mentorship:
+  name: mentorship
+  taggings_count: 0
+
+science:
+  name: science
+  taggings_count: 0
+
+hobby:
+  name: hobby
+  taggings_count:  0 
+
+engdesign:
+  name: engdesign
+  taggings_count: 0 
+
+religous:
+  name: religous
+  taggings_count: 0 
+
+social:
+  name: social
+  taggings_count: 0
+
+arts:
+  name: arts
+  taggings_count: 0
+
+photo:
+  name: photo
+  taggings_count: 0
+
+music:
+  name: music
+  taggings_count: 0 
+
+publications:
+  name: publications
+  taggings_count: 0
+
+dance:
+  name: dance
+  taggings_count: 0 
+
+community:
+  name: community
+  taggings_count: 0
+
+development:
+  name: development
+  taggings_count: 0
+
+charitable:
+  name: charitable
+  taggings_count: 0
+
+profchapter:
+  name: profchapter
+  taggings_count: 0
+
+competitive:
+  name: competitive
+  taggings_count: 0
+
+conference:
+  name: conference
+  taggings_count: 0
+
+environment:
+  name: environment
+  taggings_count: 0
+
+competition:
+  name: competition
+  taggings_count: 0
+
+web:
+  name: web
+  taggings_count: 0
   
+dance:
+  name: dance
+  taggings_count: 0
+  
+officer:
+  name: officer
+  taggings_count: 0
+  
+#### UTILITY TAGS ####
+
 engsoc:
   name: engsoc
-  taggings_count: 2
+  taggings_count: 100
 
 event:
   name: event
-  taggings_count: 1
-  
-student_gov:
-  name: student government
-  taggings_count: 1
-  
+  taggings_count: 0
+
 club:
   name: club
-  taggings_count: 1
+  taggings_count: 100
+  
+affiliated:
+  name: affiliated
+  taggings_count: 0
+  
+#### OTHER TAGS ####
+
+
+
+  
+
+  
+  
+
   
   

@@ -1,5 +1,5 @@
 .clubs_container
 	-@clubs.each do |club|
-		-unless club.tag_list.include?("engsoc")
-			= render :partial => 'layouts/default/club_box', :locals => {:club => club, :ignore => "club"}
+		-if club.tag_list.include?("club") #TODO: remove when optimized in controller
+			= render :partial => 'layouts/default/club_box', :locals => {:club => club, :ignore => ["club", "affiliated"]}
 			

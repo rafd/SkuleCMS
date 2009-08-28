@@ -12,6 +12,7 @@ class ClubsController < ApplicationController
     @site_section = "hub"
     @page_left = "club_tags_list"
     
+    #TODO: only send @clubs that are tagged with club
     @clubs = Club.find(:all, :conditions => ["live=?",true], :include => :tags, :order => "name ASC")
     @tags = Club.find_related_tags("club")   
         

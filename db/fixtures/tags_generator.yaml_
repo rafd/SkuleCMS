@@ -1,0 +1,411 @@
+--- 
+#### ENGSOC ####
+
+EngSoc:
+- engsoc
+
+FroshWeek:
+- engsoc
+- event
+
+BlueAndGold:
+- engsoc
+
+Cannon:
+- engsoc
+- publications
+
+CannonBall:
+- engsoc
+- dance
+- event
+
+CareerFair:
+- engsoc
+- event
+
+Census:
+- engsoc
+
+GodivaWeek:
+- engsoc
+- event
+
+GradBall:
+- engsoc
+- event
+- dance
+
+Lockers:
+- engsoc
+
+Quest:
+- engsoc
+- event
+
+VPAcademic:
+- engsoc
+- officer
+
+VPFinance:
+- engsoc
+- officer
+ 
+VPExternal:
+- engsoc
+- officer
+
+EngCom:
+- engsoc
+
+Hiskule:
+- engsoc
+
+SkulePoints:
+- engsoc
+
+SIC:
+- engsoc
+
+SkuleBook:
+- engsoc
+- publications
+
+SkuleNite:
+- engsoc
+- event
+- dance
+
+Sponsorship:
+- engsoc
+
+Stores:
+- engsoc
+
+Suds:
+- engsoc
+
+Toike:
+- engsoc
+- publications
+
+Archivist:
+- engsoc
+
+UTEK:
+- engsoc
+- event
+
+#### DEPARTMENT CLUBS ####
+
+MINCLUB:
+- club
+- depclub
+- affiliated
+
+CIVCLUB:
+- club
+- depclub
+- affiliated
+
+CHEMCLUB:
+- club
+- depclub
+- affiliated
+
+MSECLUB:
+- club
+- depclub
+- affiliated
+
+MECHCLUB:
+- club
+- depclub
+- affiliated
+
+INDYCLUB:
+- club
+- depclub
+- affiliated
+
+ECECLUB:
+- club
+- depclub
+- affiliated
+
+ENGSCI:
+- club
+- depclub
+- affiliated
+
+TRACKONE:
+- club
+- depclub
+- affiliated
+
+#### AFFILIATED CLUBS ####
+Nscientia:
+- club
+- affiliated
+- web
+
+EAA:
+- club
+- affiliated
+- sports
+
+ASME:
+- club
+- affiliated
+- profchapter
+
+E4C:
+- club
+- affiliated
+- religous
+
+EPC:
+- club
+- affiliated
+- arts
+- photo
+
+SSBB:
+- club
+- affiliated
+- arts
+- music
+
+EWB:
+- club
+- affiliated
+- development
+
+UTET:
+- club
+- affiliated
+- profdev
+
+UTAT:
+- club
+- affiliated
+- engdesign
+
+WEAO:
+- club
+- affiliated
+- profchapter
+
+ISPE:
+- club
+- affiliated
+- profchapter
+
+IIE:
+- club
+- affiliated
+- profchapter
+
+CrumpledArt:
+- club
+- affiliated
+- publications
+- arts
+- design
+
+NSBE:
+- club
+- affiliated
+- cultural
+
+EyesofHope:
+- club
+- affiliated
+- development
+
+ASX:
+- club
+- affiliated
+- hobby
+- science
+
+SSB:
+- club
+- affiliated
+- arts
+- music
+
+CareerPaths:
+- club
+- affiliated
+- profdev
+
+Nsight:
+- club
+- affiliated
+- academics
+- mentorship
+
+UTEC:
+- club
+- affiliated
+- engdesign
+
+BlueSky:
+- club
+- affiliated
+- engdesign
+
+SMTA:
+- club
+- affiliated
+
+CinemaBlueRoom:
+- club
+- affiliated
+
+NBTC:
+- club
+- affiliated
+
+LoveofFilm:
+- club
+- affiliated
+
+UTCC:
+- club
+- affiliated
+
+CESA:
+- club
+- affiliated
+
+SkuleOrchestra:
+- club
+- affiliated
+
+CUBE:
+- club
+- affiliated
+
+Nanoclub:
+- club
+- affiliated
+
+FSAE:
+- club
+- affiliated
+
+UTEFR: 
+- club
+- affiliated
+
+WISE: 
+- club
+- affiliated
+
+MA:
+- club
+- affiliated
+
+RAI: 
+- club
+- affiliated
+
+FIRM: 
+- club
+- affiliated
+
+UTECC: 
+- club
+- affiliated
+
+IESA: 
+- club
+- affiliated
+
+OWWA:
+- club
+- affiliated
+
+ClimbingClub:
+- club
+- affiliated
+
+UTCA: 
+- club
+- affiliated
+
+MDA: 
+- club
+- affiliated
+
+TAO:
+- club
+- affiliated
+
+
+#### OTHER CLUBS ####
+BESA:
+- club
+
+Dragonboat:
+- club
+- sports
+
+WebDev:
+- club
+- design
+- web
+
+ESEC:
+- club
+- event
+
+IEE:
+- club
+- profchapter
+
+Improv:
+- club
+- hobby
+
+JESA:
+- club
+- religous
+
+Juggling:
+- club
+- hobby
+
+LGMB: 
+- club
+- music
+- arts
+
+Moment:
+- club
+- music
+- event
+
+PEOClub:
+- club
+- profchapter
+
+PEOConference: 
+- club
+- event
+
+SAF:
+- club
+- arts
+- event
+
+Snowboard:
+- club
+- sports
+- engdesign
+
+Toboggan:
+- club
+- sports

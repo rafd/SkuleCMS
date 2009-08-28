@@ -1,6 +1,6 @@
 - ignore = [] unless ignore
 
-.club(class="#{"onskuleclubs" unless club.website} #{display_all_tags_classes(club)}")
+.club(class="#{"onskuleclubs" unless club.website} #{display_all_tags_classes(club)} visible")
 	= render :partial => 'layouts/default/avatar', :locals => {:club => club}
 	%h3= link_to((club.name || club.official_name), (club.website || {:controller => 'clubs', :action => 'show', :id => club}))
 	%span=h club.tagline || club.official_name || "Tagline"
@@ -9,6 +9,7 @@
 			-unless ignore.include?(tag.name)
 				%li= link_to tag, "#"
 		
-	- if club.affiliated
-		.affiliated(title="Officially Affiliated")
+	- club.tags.each do |tag| 
+		-if tag.name == "affiliated"
+			.affiliated(title="Officially Affiliated")
 			

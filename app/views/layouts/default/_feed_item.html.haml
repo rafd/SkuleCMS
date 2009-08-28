@@ -13,7 +13,7 @@
 				-else
 					= feed_item.content 
 		-when "Event" then
-			%h4= link_to feed_item.name, "#"
+			%h4= link_to feed_item.name, :controller=> feed_item.class.to_s.tableize, :action => 'show', :id => feed_item.id, :club_id => feed_item.club.id
 			.locationtime
 				%span.location= feed_item.location
 				%span.time= short_time(feed_item.start)
