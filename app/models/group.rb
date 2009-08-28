@@ -10,7 +10,7 @@ class Group < ActiveRecord::Base
   validates_uniqueness_of   :name, :case_sensitive => false, :scope => [:club_id]
   validates_numericality_of :order
 
-  attr_protected :club_id, :created_at, :updated_at, :memberships_ids, :users_ids
+  attr_protected :id, :club_id, :created_at, :updated_at, :memberships_ids, :users_ids
 
   acts_as_nested_set  :parent_column => "bns_parent_id",
                       :left_column => "lft",

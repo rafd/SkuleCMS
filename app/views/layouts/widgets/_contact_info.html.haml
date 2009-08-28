@@ -2,12 +2,12 @@
 	.widget.events
 		%h4 Contact Information
 		%p
-			- if club.address
+			- if !club.address.blank?
 				Address:
 				%br
 				=display_multi_line_string(club.address)
 				%br
 				%br
-			- if club.contact
+			- if !club.contact.blank?
 				Email: 
 				=club.contact

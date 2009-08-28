@@ -2,103 +2,43 @@
 // This file is automatically included by javascript_include_tag :defaults
 
 document.observe('dom:loaded', function() {
-	var numActive = 0;
-	var tags = new Array (10);
-	var effectDuration = 0.2;
+	var selectedTags = [];
+	
+	var clubs = $$('#content .clubs_container')[0];
+	
+	
 	$$('a.taglist').each(function(elmt) {
 		elmt.observe('click', function (event){
-			var element = event.element();
-			var tag = $w(element.className).find(function(value){
+			var tag = $w(elmt.className).find(function(value){
 				return value.substring(0,9) == "LEFT_TAG_";
 			});
-			tag = tag.substring(5);
-			if (!element.hasClassName('selected'))
-			{
-				if (numActive ==0)
-				{
-						element.toggleClassName('selected');
-						$$('div#content .clubs_container div.club').each(function(club){
-							if (!club.hasClassName(tag)){
-								//club.fade({ duration: effectDuration , queue: { position: 'end', scope: tag } });
-								new Effect.Fade(club, { duration: effectDuration , queue: { position: 'end', scope: tag } });
-								}
-						});
-						for (var x = 0; x<10; x++)
-						{
-							if (tags[x]== null)
-							{
-								tags[x] = tag;
-								break;
-							}	
+			var tag = tag.substring(5);
+			
+			elmt.toggleClassName('selected');
+			
+			if(elmt.hasClassName('selected')){
+				selectedTags.push(tag);
+				//TODO: test if including .visible makes it faster or slower
+				clubs.select('div.club.visible:not(.'+tag+')').each(function(club){ //only visible clubs
+					club.removeClassName('visible');
+					club.addClassName('hidden');
+				});
+			} else { 
+				selectedTags = selectedTags.without(tag);
+				clubs.select('div.club.hidden').each(function(club){ //only hidden clubs
+					var show = true;
+					selectedTags.each(function(tagg){
+						if(!club.hasClassName(tagg)){
+							show = false;
 						}
-						numActive ++;
-				}
-				else if (numActive < 10)
-				{
-						element.toggleClassName('selected');
-						$$('div#content .clubs_container div.club').each(function(club){
-							if (club.hasClassName(tag)){
-								//club.appear({ duration: effectDuration , queue: { position: 'end', scope: tag } });
-								new Effect.Appear(club, { duration: effectDuration , queue: { position: 'end', scope: tag } });
-							}	
-						});
-						for (var x = 0; x<10; x++)
-						{
-							if (tags[x]== null)
-							{
-								tags[x] = tag;
-								break;
-							}	
-						}
-						numActive ++;
-				}
-				else
-				{
-						//Do nothing
-				}
+					});
+					if(show){
+						club.removeClassName('hidden');
+						club.addClassName('visible');
+					}
+				});
 			}
-			else
-			{
-				element.toggleClassName('selected');
-				for (var x = 0; x<10; x++)
-				{
-					if (tags[x]== tag)
-					{
-						tags[x] = null;
-						break;
-					}	
-				}
-				if (numActive ==1)
-				{
-						$$('div#content .clubs_container div.club').each(function(club){
-								//club.appear({ duration: effectDuration , queue: { position: 'end', scope: tag } });
-								new Effect.Appear(club, { duration: effectDuration , queue: { position: 'end', scope: tag } });
-						});
-				}
-				else
-				{
-						$$('div#content .clubs_container div.club').each(function(club){
-							if (club.hasClassName(tag))
-							{
-								var check = false;
-								for (var x = 0; x<10; x++)
-								{
-									if (tags[x] != null && club.hasClassName(tags[x]))
-									{
-										check = true;
-										break;
-									}	
-								}
-								if (!check)
-								{
-									//club.fade({ duration: effectDuration , queue: { position: 'end', scope: tag } });
-									new Effect.Fade(club, { duration: effectDuration , queue: { position: 'end', scope: tag } });
-								}	
-							}
-						});
-				}
-				numActive --;	
-			}
+			
 		});
 	});
 });

@@ -14,6 +14,8 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :admin_sessions
   map.resources :clubs, :collection => { :admin => :get } do |club|
+    club.edit_tags "edit_tags", :controller => "clubs", :action => "edit_tags", :method => :get 
+    club.update_tags "update_tags", :controller => "clubs", :action => "update_tags", :method => :put 
     club.resources  :files,
                     :controller => "download_folders",
                     :has_many => :downloads,
@@ -66,7 +68,6 @@ ActionController::Routing::Routes.draw do |map|
 		:users,
     :tags
 
-	
   map.connect '/about', :controller => 'hub_pages', :action => 'about'
   map.connect '/digest.:format', :controller => 'hub_pages', :action => 'digest'
   map.connect '/calendar', :controller => 'hub_pages', :action => 'calendar'
