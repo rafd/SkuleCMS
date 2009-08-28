@@ -1,11 +1,3 @@
 -if @controller.controller_name == "hub_pages" && @controller.action_name == "digest"
 	#sidebar
-		.widget
-			%h4 Upcoming Events
-			%ul
-				-@upcoming_events.each do |event|
-					%li
-						=short_time(event.start)
-						%br/
-						= event.name
-						%em= event.location
+		=render :partial => 'layouts/widgets/upcoming_events', :locals => {:events => @upcoming_events}

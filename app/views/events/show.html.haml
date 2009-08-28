@@ -1,0 +1,30 @@
+
+= render :partial => 'layouts/partials/date_ticker', :locals => {:date => @event.start}
+
+%h2=h @event.name
+
+%span.timelocation
+	%span.time= format_time(@event.start) + " until " + format_time(@event.finish) 
+	%span.location=h @event.location 
+
+
+%p
+	=h @event.description 
+
+
+-unless !@event.link.blank? 
+	%p
+		Link:
+		= link_to @event.url, @event.url 
+
+  
+
+
+-if @event.created_at != @event.updated_at
+	%p
+		Last updated:
+		=h @event.updated_at 
+	
+
+%p
+	= link_to 'iCal', :action => 'export_events', :club_id => @club, :id => @event  |

@@ -632,17 +632,37 @@ a {
     color: #666666; }
   /* line 15, ../../../app/stylesheets/partials/page_elements/_sidebar.sass */
   #sidebar .widget.events ul {
-    list-style: none; }
+    list-style: none;
+    margin: 0; }
     /* line 18, ../../../app/stylesheets/partials/page_elements/_sidebar.sass */
-    #sidebar .widget.events ul .meeting .name {
-      text-transform: uppercase; }
-    /* line 20, ../../../app/stylesheets/partials/page_elements/_sidebar.sass */
-    #sidebar .widget.events ul .meeting .time {
-      display: inline; }
-    /* line 22, ../../../app/stylesheets/partials/page_elements/_sidebar.sass */
-    #sidebar .widget.events ul .meeting .location {
-      display: inline;
-      font-style: italic; }
+    #sidebar .widget.events ul li {
+      margin: 0.5em 0; }
+      /* line 20, ../../../app/stylesheets/partials/page_elements/_sidebar.sass */
+      #sidebar .widget.events ul li .name {
+        text-transform: uppercase;
+        height: 1.1em;
+        line-height: 1.1em;
+        overflow: hidden; }
+      /* line 25, ../../../app/stylesheets/partials/page_elements/_sidebar.sass */
+      #sidebar .widget.events ul li .timelocation {
+        color: #666666; }
+        /* line 27, ../../../app/stylesheets/partials/page_elements/_sidebar.sass */
+        #sidebar .widget.events ul li .timelocation .time {
+          display: inline; }
+        /* line 29, ../../../app/stylesheets/partials/page_elements/_sidebar.sass */
+        #sidebar .widget.events ul li .timelocation .location {
+          display: inline;
+          font-style: italic;
+          height: 1.1em;
+          line-height: 1.1em;
+          overflow: hidden; }
+  /* line 35, ../../../app/stylesheets/partials/page_elements/_sidebar.sass */
+  #sidebar .widget.events .date_ticker {
+    font-size: 0.8em;
+    width: 3em;
+    height: 3em;
+    float: left;
+    margin-right: 0.5em; }
 
 /* line 1, ../../../app/stylesheets/partials/page_elements/_footer.sass */
 #footer {
@@ -719,9 +739,17 @@ body.services #main #content {
     overflow-x: hidden; }
 
 /* line 9, ../../../app/stylesheets/partials/site_sections/_clubs.sass */
+body.events .date_ticker {
+  float: left;
+  margin: 0 0.5em 0 -10px; }
+/* line 12, ../../../app/stylesheets/partials/site_sections/_clubs.sass */
+body.events h2 {
+  margin-bottom: -0.25em; }
+
+/* line 17, ../../../app/stylesheets/partials/site_sections/_clubs.sass */
 .clubs_container {
   margin: 0.5em 1em; }
-  /* line 11, ../../../app/stylesheets/partials/site_sections/_clubs.sass */
+  /* line 19, ../../../app/stylesheets/partials/site_sections/_clubs.sass */
   .clubs_container .club {
     margin: 0 0.5% 0.5em 0;
     padding: 2px;
@@ -730,23 +758,23 @@ body.services #main #content {
     width: 32%;
     float: left;
     position: relative; }
-    /* line 20, ../../../app/stylesheets/partials/site_sections/_clubs.sass */
+    /* line 28, ../../../app/stylesheets/partials/site_sections/_clubs.sass */
     .clubs_container .club.onskuleclubs {
       background: #ececec;
       -moz-border-radius: 0 5px 0 5px;
       -webkit-border-radius: 0 5px 0 5px; }
-      /* line 23, ../../../app/stylesheets/partials/site_sections/_clubs.sass */
+      /* line 31, ../../../app/stylesheets/partials/site_sections/_clubs.sass */
       .clubs_container .club.onskuleclubs ul li a {
         color: #999; }
-    /* line 27, ../../../app/stylesheets/partials/site_sections/_clubs.sass */
+    /* line 35, ../../../app/stylesheets/partials/site_sections/_clubs.sass */
     .clubs_container .club .avatar {
       float: left;
       margin-right: 0.5em; }
-    /* line 32, ../../../app/stylesheets/partials/site_sections/_clubs.sass */
+    /* line 40, ../../../app/stylesheets/partials/site_sections/_clubs.sass */
     .clubs_container .club h3 {
       margin: 0;
       font-size: 1.25em; }
-    /* line 37, ../../../app/stylesheets/partials/site_sections/_clubs.sass */
+    /* line 45, ../../../app/stylesheets/partials/site_sections/_clubs.sass */
     .clubs_container .club span {
       font-style: italic;
       width: 15em;
@@ -754,7 +782,7 @@ body.services #main #content {
       display: block;
       overflow: hidden;
       line-height: 1.3em; }
-    /* line 46, ../../../app/stylesheets/partials/site_sections/_clubs.sass */
+    /* line 54, ../../../app/stylesheets/partials/site_sections/_clubs.sass */
     .clubs_container .club ul {
       margin: 0;
       padding: 0;
@@ -780,14 +808,14 @@ body.services #main #content {
         /* line 42, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal_list.sass */
         .clubs_container .club ul li.last {
           padding-right: 0px; }
-      /* line 48, ../../../app/stylesheets/partials/site_sections/_clubs.sass */
+      /* line 56, ../../../app/stylesheets/partials/site_sections/_clubs.sass */
       .clubs_container .club ul li {
         padding: 0 0.5em 0 0; }
-        /* line 51, ../../../app/stylesheets/partials/site_sections/_clubs.sass */
+        /* line 59, ../../../app/stylesheets/partials/site_sections/_clubs.sass */
         .clubs_container .club ul li a {
           margin: 0;
           color: #ccc; }
-    /* line 55, ../../../app/stylesheets/partials/site_sections/_clubs.sass */
+    /* line 63, ../../../app/stylesheets/partials/site_sections/_clubs.sass */
     .clubs_container .club .affiliated {
       width: 5px;
       height: 5px;
@@ -825,6 +853,108 @@ body.map #main #content {
     -moz-border-radius: 0 5px 5px 0;
     -webkit-border-radius: 0 5px 5px 0; }
 
+
+/* line 10, ../../../app/stylesheets/partials/site_sections/_hub.sass */
+body.calendar #main #content {
+  display: inline;
+  float: left;
+  margin-right: 10px;
+  width: 790px; }
+  /* line 97, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
+  * html body.calendar #main #content {
+    overflow-x: hidden; }
+
+/* line 3, ../../../app/stylesheets/partials/site_sections/_calendar.sass */
+body.calendar table.calendar {
+  width: 525px;
+  margin: auto; }
+  /* line 7, ../../../app/stylesheets/partials/site_sections/_calendar.sass */
+  body.calendar table.calendar thead {
+    background-color: white; }
+  /* line 10, ../../../app/stylesheets/partials/site_sections/_calendar.sass */
+  body.calendar table.calendar tbody tr {
+    background-image: url('/images/event_calendar/75bg.png');
+    background-repeat: repeat; }
+  /* line 14, ../../../app/stylesheets/partials/site_sections/_calendar.sass */
+  body.calendar table.calendar th {
+    text-align: center;
+    padding: 0 0 5px 0; }
+  /* line 18, ../../../app/stylesheets/partials/site_sections/_calendar.sass */
+  body.calendar table.calendar div.clear {
+    clear: both; }
+  /* line 21, ../../../app/stylesheets/partials/site_sections/_calendar.sass */
+  body.calendar table.calendar td {
+    text-align: center;
+    padding: 0 0 0 0; }
+  /* line 25, ../../../app/stylesheets/partials/site_sections/_calendar.sass */
+  body.calendar table.calendar th.monthName {
+    font-size: 16px;
+    font-weight: bold; }
+  /* line 29, ../../../app/stylesheets/partials/site_sections/_calendar.sass */
+  body.calendar table.calendar .events {
+    position: relative;
+    border-bottom: 1px solid #d5d5d5;
+    border-left: 1px solid #d5d5d5; }
+  /* line 34, ../../../app/stylesheets/partials/site_sections/_calendar.sass */
+  body.calendar table.calendar .event {
+    overflow: hidden;
+    text-align: left;
+    position: absolute;
+    font-size: 12px;
+    line-height: 16px; }
+    /* line 41, ../../../app/stylesheets/partials/site_sections/_calendar.sass */
+    body.calendar table.calendar .event:hover {
+      background-color: #2EAC6A; }
+    /* line 44, ../../../app/stylesheets/partials/site_sections/_calendar.sass */
+    body.calendar table.calendar .event div {
+      cursor: pointer;
+      padding-left: 6px;
+      color: #ffffff;
+      text-decoration: none; }
+/* line 50, ../../../app/stylesheets/partials/site_sections/_calendar.sass */
+body.calendar .dayName th {
+  font-size: 11px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  background-color: #303030;
+  color: white; }
+/* line 57, ../../../app/stylesheets/partials/site_sections/_calendar.sass */
+body.calendar .otherMonth, body.calendar .day, body.calendar .specialDay {
+  font-size: 11px;
+  text-align: center;
+  padding: 2px 0;
+  padding-left: 1px;
+  border-right: 1px solid #d5d5d5;
+  border-bottom: 1px dotted #bbbbbb; }
+/* line 65, ../../../app/stylesheets/partials/site_sections/_calendar.sass */
+body.calendar .otherMonth {
+  color: #d5d5d5;
+  background-color: white; }
+/* line 69, ../../../app/stylesheets/partials/site_sections/_calendar.sass */
+body.calendar .day, body.calendar .specialDay {
+  padding: 0;
+  background-color: #ecede2; }
+/* line 73, ../../../app/stylesheets/partials/site_sections/_calendar.sass */
+body.calendar .specialDay {
+  color: white; }
+  /* line 76, ../../../app/stylesheets/partials/site_sections/_calendar.sass */
+  body.calendar .specialDay a, body.calendar .specialDay a:visited, body.calendar .specialDay a:hover {
+    color: white;
+    text-decoration: none;
+    padding: 1em; }
+  /* line 81, ../../../app/stylesheets/partials/site_sections/_calendar.sass */
+  body.calendar .specialDay a:hover {
+    color: white;
+    background-color: black; }
+/* line 87, ../../../app/stylesheets/partials/site_sections/_calendar.sass */
+body.calendar .today {
+  background-color: #66ffff;
+  font-weight: bold; }
+/* line 91, ../../../app/stylesheets/partials/site_sections/_calendar.sass */
+body.calendar .beginning_of_week {
+  border-left: 1px solid #d5d5d5;
+  padding-left: 0; }
+
 /* line 3, ../../../app/stylesheets/partials/content_types/_forms.sass */
 form label {
   font-weight: bold;
@@ -854,9 +984,17 @@ form span {
     background: #ececec;
     -moz-border-radius: 0 5px 0 5px;
     -webkit-border-radius: 0 5px 0 5px;
-    padding: 0.75em;
-    margin-left: 0.75em; }
-  /* line 25, ../../../app/stylesheets/partials/content_types/_feed.sass */
+    padding: 0.375em 0.75em;
+    margin-left: 0.75em;
+    position: relative; }
+    /* line 24, ../../../app/stylesheets/partials/content_types/_feed.sass */
+    #feed .feed_item .content a.more {
+      display: block;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      padding: 0.375em 0.75em; }
+  /* line 33, ../../../app/stylesheets/partials/content_types/_feed.sass */
   #feed .feed_item.small_post .content {
     font-size: 1.5em;
     background: #ececec;
@@ -865,53 +1003,63 @@ form span {
     padding: 0.5em;
     margin-left: 0.5em;
     color: black; }
-  /* line 36, ../../../app/stylesheets/partials/content_types/_feed.sass */
+  /* line 44, ../../../app/stylesheets/partials/content_types/_feed.sass */
   #feed .feed_item.event .locationtime {
     position: absolute;
     top: 0;
     right: 0;
-    margin: 0.25em; }
-    /* line 41, ../../../app/stylesheets/partials/content_types/_feed.sass */
+    margin: 0.5em -0.25em 0 0;
+    color: #999; }
+    /* line 50, ../../../app/stylesheets/partials/content_types/_feed.sass */
     #feed .feed_item.event .locationtime span {
-      margin-left: 1em; }
-  /* line 43, ../../../app/stylesheets/partials/content_types/_feed.sass */
+      margin: 0 0.25em; }
+  /* line 52, ../../../app/stylesheets/partials/content_types/_feed.sass */
   #feed .feed_item .source {
     text-align: right;
     display: block;
     color: #999; }
-  /* line 48, ../../../app/stylesheets/partials/content_types/_feed.sass */
-  #feed .feed_item .avatar {
+  /* line 57, ../../../app/stylesheets/partials/content_types/_feed.sass */
+  #feed .feed_item .avatar, #feed .feed_item .date_ticker {
     float: left;
     margin: 0 0.5em 0 -10px; }
-/* line 51, ../../../app/stylesheets/partials/content_types/_feed.sass */
+/* line 61, ../../../app/stylesheets/partials/content_types/_feed.sass */
 #feed .pagination {
   position: relative;
   text-align: center;
   font-size: 1.25em;
   margin: 1em; }
-  /* line 56, ../../../app/stylesheets/partials/content_types/_feed.sass */
+  /* line 66, ../../../app/stylesheets/partials/content_types/_feed.sass */
   #feed .pagination span, #feed .pagination a {
     padding: 0 0.25em; }
-  /* line 58, ../../../app/stylesheets/partials/content_types/_feed.sass */
+  /* line 68, ../../../app/stylesheets/partials/content_types/_feed.sass */
   #feed .pagination .disabled {
     display: none; }
-  /* line 60, ../../../app/stylesheets/partials/content_types/_feed.sass */
+  /* line 70, ../../../app/stylesheets/partials/content_types/_feed.sass */
   #feed .pagination .prev_page {
     position: absolute;
     left: 0;
     bottom: 0; }
-  /* line 64, ../../../app/stylesheets/partials/content_types/_feed.sass */
+  /* line 74, ../../../app/stylesheets/partials/content_types/_feed.sass */
   #feed .pagination .current {
     font-size: 1.5em; }
-  /* line 66, ../../../app/stylesheets/partials/content_types/_feed.sass */
+  /* line 76, ../../../app/stylesheets/partials/content_types/_feed.sass */
   #feed .pagination .next_page {
     position: absolute;
     right: 0;
     bottom: 0; }
 
-/* line 74, ../../../app/stylesheets/partials/content_types/_feed.sass */
+/* line 81, ../../../app/stylesheets/partials/content_types/_feed.sass */
+#add_feed_item_link {
+  display: block;
+  text-align: right;
+  text-transform: capitalize;
+  margin: 0 1em; }
+
+/* line 89, ../../../app/stylesheets/partials/content_types/_feed.sass */
 body.digest #feed .feed_item h4,
-body.digest #feed .feed_item .content {
+body.digest #feed .feed_item .content,
+#feed .feed_item.event h4,
+#feed .feed_item.event .content {
   margin-left: 50px; }
 
 /* line 1, ../../../app/stylesheets/partials/content_types/_avatar.sass */
@@ -924,3 +1072,35 @@ body.digest #feed .feed_item .content {
   -webkit-border-radius: 0 5px 0 5px;
   text-indent: -1000px;
   overflow: hidden; }
+
+/* line 1, ../../../app/stylesheets/partials/content_types/_date_ticker.sass */
+.date_ticker {
+  font-size: 16px;
+  width: 50px;
+  height: 50px; }
+  /* line 6, ../../../app/stylesheets/partials/content_types/_date_ticker.sass */
+  .date_ticker .month {
+    -moz-border-radius: 0 5px 0 5px;
+    -webkit-border-radius: 0 5px 0 5px;
+    background: #D51007;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    font-size: 0.8em;
+    letter-spacing: 0.1em;
+    position: relative;
+    top: 5px;
+    margin-top: -5px; }
+  /* line 17, ../../../app/stylesheets/partials/content_types/_date_ticker.sass */
+  .date_ticker .day_of_month {
+    -moz-border-radius: 0 0 0 5px;
+    -webkit-border-radius: 0 0 0 5px;
+    padding-top: 5px;
+    color: black;
+    background: white;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.25em;
+    border-color: #E0E0E0;
+    border-style: solid;
+    border-width: 0 1px 1px; }

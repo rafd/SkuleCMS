@@ -14,11 +14,27 @@
 		&.events
 			ul
 				:list-style none
-				.meeting
+				:margin 0
+				li
+					:margin 0.5em 0
 					.name
 						:text-transform uppercase
-					.time
-						:display inline
-					.location
-						:display inline
-						:font-style italic
+						:height 1.1em
+						:line-height 1.1em
+						:overflow hidden
+					.timelocation
+						+quiet
+						.time
+							:display inline
+						.location
+							:display inline
+							:font-style italic
+							:height 1.1em
+							:line-height 1.1em
+							:overflow hidden
+			.date_ticker
+				:font-size 0.8em
+				:width 3em
+				:height 3em
+				:float left
+				:margin-right 0.5em
