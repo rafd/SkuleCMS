@@ -12,7 +12,9 @@
 
   %div#user	
     -if current_admin
-      = link_to current_admin.login, (current_admin.super_admin ? admins_path : change_password_admins_path)
+      = link_to current_admin.login, (current_admin.super_admin ? admins_path : (current_admin.club_id.blank? ? new_club_path : club_admin_index_path(current_admin.club_id) ) )
+      |
+      = link_to "Account", change_password_admins_path
       |
       = link_to "Logout", logout_path
     -else

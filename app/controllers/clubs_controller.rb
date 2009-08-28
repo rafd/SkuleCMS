@@ -3,7 +3,7 @@ require "will_paginate"
 class ClubsController < ApplicationController
   before_filter :auth_admin, :only => [:edit, :update]
   before_filter :auth_new_club, :only => [:new, :create]
-  before_filter :auth_super_admin_only, :only => [:admin, :destroy]
+  before_filter :auth_super_admin_only, :only => [:admin, :destroy, :edit_tags, :update_tags]
   
   # GET /clubs
   # GET /clubs.xml
@@ -128,7 +128,7 @@ class ClubsController < ApplicationController
   def edit_tags
     @club = Club.find(params[:club_id], :include => :tags)
     @page_title = "Editing "+@club.name+"'s Tags"
-    @site_section = "admin"
+    @site_section = "su_admin"
   end
 
   def update_tags
@@ -141,7 +141,7 @@ class ClubsController < ApplicationController
         format.xml  { head :ok }
       else
         @page_title = "Editing "+@club.name+"'s Tags"
-        @site_section = "admin"
+        @site_section = "su_admin"
         format.html { render :action => "edit_tags" }
         format.xml  { render :xml => @club.errors, :status => :unprocessable_entity }
       end
