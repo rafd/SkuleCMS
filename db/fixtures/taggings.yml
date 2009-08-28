@@ -1,35 +1,18 @@
-1:
-  taggable_type: Club
-  taggable: WebDev
-  tag: design
-  
-2:
-  taggable_type: Club
-  taggable: WebDev
-  tag: club
+<%
+require "yaml"
+@club_tags = YAML.load_file(File.join(File.expand_path(File.dirname(__FILE__)), 'db/fixtures/tags_generator.yaml_'))
 
-3:
-  taggable_type: Club
-  taggable: WebDev
-  tag: web
+@club_tags.each do |club, tags| 
+  tags.each do |tag|
+%>
 
-4:
+<%= club + tag + "_tagging:" %>
   taggable_type: Club
-  taggable: FroshWeek
-  tag: engsoc
+  taggable: <%= club %>
+  tag: <%= tag %>
+  	
+<% 
+  end  
+end 
+%>
 
-7:
-  taggable_type: Club
-  taggable: FroshWeek
-  tag: event
-
-9:
-  taggable_type: Club
-  taggable: EngSoc
-  tag: engsoc
-
-10:
-  taggable_type: Club
-  taggable: EngSoc
-  tag: student_gov
-  

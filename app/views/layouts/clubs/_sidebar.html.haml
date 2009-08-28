@@ -10,14 +10,3 @@
 	=render :partial => 'layouts/widgets/upcoming_events', :locals => {:club => @club}
 	
 	=render :partial => 'layouts/widgets/contact_info', :locals => {:club => @club}
-	
-	.widget
-		%h4 Dev Links
-		%ul
-			%li= link_to 'Admin Link', club_admin_index_path(@club)
-			%li= link_to 'Downloads', club_files_path(@club)
-			%li= link_to 'Gallery', club_gallery_path(@club)
-			%li= link_to 'Groups', club_groups_path(@club)
-			%li= link_to 'Pages', club_pages_path(@club)
-			%li= link_to 'Edit', edit_club_path(@club)
-			%li= link_to 'Back', clubs_path
