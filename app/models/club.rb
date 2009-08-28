@@ -172,12 +172,8 @@ class Club < ActiveRecord::Base
     return self.pages.find(:all, :conditions => ["parent_id IS NOT ?", nil], :order => 'lft')
   end
   
-  def feed_items
-  	
-    feed = feed_output(self.small_posts.find(:all, :limit => 5), self.large_posts.find(:all, :limit => 5) + self.events.find(:all, :limit => 5))
-    #feed = feed[0..20]
-    return feed
-  end
+  
+
  
 
   def feed_output(*feeds)

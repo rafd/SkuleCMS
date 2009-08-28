@@ -8,8 +8,9 @@ class HubPagesController < ApplicationController
 		@page_title = "The Digest"
 
 		
-		@feed_items = feed_output(LargePost.all, SmallPost.all, Event.all)
-
+		@feed_items = feed_output(LargePost.find(:all, :order => "created_at DESC", :limit => 10), SmallPost.find(:all, :order => "created_at DESC", :limit => 10), Event.find(:all, :order => "created_at DESC", :limit => 10))
+    @feed_items = @feed_items[0..9]
+    
     @site_section = "hub"
     
 		@upcoming_events = Event.find(:all, :order => "start", :conditions => ["finish>=?", Time.now.utc], :limit => 10)

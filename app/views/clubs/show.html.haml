@@ -1,5 +1,5 @@
 #feed
 	= render :partial => "layouts/partials/feed_item", :collection => @feed
-	= will_paginate @feed
+= render :partial => "layouts/partials/add_feed_item_link", :locals => {:club => @club, :time => @feed_earliest_time}
 	
 %br

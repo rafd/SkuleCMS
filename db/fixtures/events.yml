@@ -5,6 +5,7 @@ Event1:
   location: BA1234
   description: Big crazy meeting.
   club: WebDev
+  created_at: <%= 2.minutes.ago %>
 
 Event2:
   name: Possible SkuleClubs Launch Dates
