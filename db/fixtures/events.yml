@@ -6,3 +6,4 @@ Event1:
   description: Big crazy meeting.
   link: http://www.skule.ca
   club: WebDev
+  created_at: <%= 2.minutes.ago %>

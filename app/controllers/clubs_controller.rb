@@ -36,14 +36,37 @@ class ClubsController < ApplicationController
     @page_title = ""
     @site_section = "clubs"
     
-    @all_posts = @club.feed_output(@club.small_posts.all, @club.large_posts.all)
+    @all_posts = @club.feed_output(@club.small_posts.find(:all, :order => "created_at DESC", :limit => 10), @club.large_posts.find(:all, :order => "created_at DESC", :limit => 10))
+    @all_posts = @all_posts[0..9]
     
-    @feed = @club.feed_items.paginate :page => params[:page], :per_page => 4
+    @feed = @club.feed_output(@club.small_posts.find(:all, :order => "created_at DESC", :limit => 10), @club.large_posts.find(:all, :order => "created_at DESC", :limit => 10),@club.events.find(:all, :order => "created_at DESC", :limit => 10) )
+    @feed = @feed[0..2]
+    if @feed[0] != nil
+      @feed_earliest_time = @feed[-1].created_at
+    else
+      @feed_earliest_time = 0
+    end
+    
+    # remove:  @feed = @club.feed_items.paginate :page => params[:page], :per_page => 4
     
     respond_to do |format|
       format.html # show.html.erb
       format.xml  {} # { render :xml => @club }
     end
+  end
+
+  def add_feed_item
+    @club = Club.find(params[:id])
+    @feed = @club.feed_output(@club.small_posts.find(:all, :conditions => ["created_at < ?", params[:time]], :order => "created_at DESC", :limit => "10"), @club.large_posts.find(:all, :conditions => ["created_at < ?", params[:time]], :order => "created_at DESC", :limit => "10"),@club.events.find(:all, :conditions => ["created_at < ?", params[:time]], :order => "created_at DESC", :limit => "10") )
+    @feed = @feed[0..0]
+
+    if @feed[0] != nil
+      @feed_earliest_time = @feed[-1].created_at
+    else
+      @feed_earliest_time = 0
+    end
+    
+    
   end
 
   # GET /clubs/new
