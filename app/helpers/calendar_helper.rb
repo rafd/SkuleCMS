@@ -18,7 +18,11 @@ module CalendarHelper
 
     def event_calendar
       calendar event_calendar_options do |event|
-        "<a href='clubs/#{event.club_id}/events/#{event.id}' title=\"#{h(event.name)} - #{h(event.club.name)}\"><div>#{h(event.name)} - #{h(event.club.name)}</div></a>"
+        if event.link.blank?
+          link_to("<div>" + event.name + " - " + event.club.name + "</div>", {:controller => 'events', :action => 'show', :club_id => event.club_id, :id => event.id}, :title => event.name + " - " + event.club.name)
+        else
+          link_to("<div>" + event.name + " - " + event.club.name + "</div>", event.link, :title => event.name + " - " + event.club.name)        
+        end
       end
     end
 
