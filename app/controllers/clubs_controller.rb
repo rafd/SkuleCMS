@@ -123,11 +123,36 @@ class ClubsController < ApplicationController
     end
   end
   
+  
+  def edit_tags
+    @club = Club.find(params[:club_id], :include => :tags)
+    @page_title = "Editing "+@club.name+"'s Tags"
+    @site_section = "admin"
+  end
+
+  def update_tags
+    @club = Club.find(params[:club_id], :include => :tags)
+
+    respond_to do |format|
+      if @club.update_attribute("tag_list", params[:club][:tag_list])
+        flash[:notice] = "Club's tags was successfully updated."
+        format.html { redirect_to(club_admin_index_path(@club)) }
+        format.xml  { head :ok }
+      else
+        @page_title = "Editing "+@club.name+"'s Tags"
+        @site_section = "admin"
+        format.html { render :action => "edit_tags" }
+        format.xml  { render :xml => @club.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+
   private
   
   def auth_admin
     if current_admin.super_admin
-      redirect_to root_url
+      redirect_to club_edit_tags_path(params[:id])
     elsif current_admin.blank?
       redirect_to login_path
     elsif !current_admin.club_id.blank? && current_admin.club_id.to_s != params[:id]

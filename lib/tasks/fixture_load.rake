@@ -10,5 +10,9 @@ namespace :db do
     Page.rebuild_tree
     Group.rebuild_tree
     Membership.rebuild_memberships
+    Tag.find(:all).each do |tag|
+      tag.taggings_count = 0
+      tag.save
+    end 
   end
 end
