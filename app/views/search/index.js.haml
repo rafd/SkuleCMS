@@ -2,6 +2,6 @@
 	-if @club
 		.clubs_container
 			-@club.uniq.each do |club|
-				= render :partial => 'layouts/default/club_box', :locals => {:club => club}
+				= render :partial => 'layouts/partials/club_box', :locals => {:club => club}
 			%div
 				="Search for "+@query

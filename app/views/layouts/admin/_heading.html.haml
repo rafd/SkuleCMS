@@ -1,4 +1,4 @@
 %h1
-	= render :partial => 'layouts/default/avatar', :locals => {:club => @club}
+	= render :partial => 'layouts/partials/avatar', :locals => {:club => @club}
 	- if @club
 		= link_to @club.name, :controller => 'clubs', :action => 'show', :id=>@club
