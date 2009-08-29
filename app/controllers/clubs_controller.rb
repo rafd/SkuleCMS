@@ -2,6 +2,7 @@ require "will_paginate"
 
 class ClubsController < ApplicationController
   before_filter :auth_admin, :only => [:edit, :update]
+  before_filter :auth_su_admin, :only => [:edit_tags, :update_tags]
   before_filter :auth_new_club, :only => [:new, :create]
   before_filter :auth_super_admin_only, :only => [:admin, :destroy]
   
@@ -160,6 +161,15 @@ class ClubsController < ApplicationController
       redirect_to club_admin_index_path(current_admin.club_id)
     elsif current_admin.club_id.blank?
       redirect_to new_club_path
+    end
+  end
+
+  def auth_su_admin
+    if current_admin.blank?
+	  redirect_to login_path
+	elsif !current_admin.super_admin
+      flash[:notice] = 'Access denied.'
+      redirect_to root_url
     end
   end
   

@@ -55,15 +55,11 @@ q, blockquote {
 img a {
   border: none; }
 
-<<<<<<< HEAD
-/* line 22, ../../../../../../Development/Ruby/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.11/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-=======
 /* line 7, ../../../app/stylesheets/partials/_base.sass */
 .hidden {
   display: none; }
 
-/* line 22, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.1/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
->>>>>>> 65f94f7ef5556a5b5da466b8639f18cd8199df4c
+/* line 22, ../../../../../../Development/Ruby/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.11/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
 body {
   line-height: 1.5;
   font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
