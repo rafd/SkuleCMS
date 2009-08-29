@@ -1,9 +1,13 @@
-- if !club.upcoming_events.blank?
+- unless events.blank?
 	.widget.events
 		%h4 Upcoming Events
 		%ul
-			-club.upcoming_events.each do |event|
-				%li.meeting
-					.name= event.name
-					.time=short_time(event.start)
-					.location= event.location
+			-events.each do |event|
+				%li
+					= render :partial => 'layouts/partials/date_ticker', :locals => {:date => event.start}
+					.name(title="#{event.name}")= event.name
+					.timelocation
+						.time=event.start.strftime('%a. @ %I:%M%p')
+						|
+						.location
+							= abbrev(event.location, 10)

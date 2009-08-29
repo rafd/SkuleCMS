@@ -733,65 +733,78 @@ WebDev:
   
 ESEC:
   name: ESEC
+  web_name: ESEC
   official_name: Engineering Science Education Conference
   website: http://esec.skule.ca
   
 IEE:
   name: IEE
+  web_name: IEE
   official_name: Institute of Industrial Engineers, Chapter 889
   website: http://iie.skule.ca/
 
 Improv:
   name: Improv
+  web_name: Improv
   official_name: Improv Club
   website: http://improv.skule.ca/
 
 JESA:
   name: JESA
+  web_name: JESA
   official_name: Jewish Engineering Students' Association
   website: http://jesa.skule.ca
  
 Juggling:
   name: Juggling Club
+  web_name: JugglingClub
   official_name: UofT Enmgineering Juggling Club
   website: http://juggling.skule.ca/
 
 LGMB:
   name: LGMB
+  web_name: LGMB
   official_name: Lady Godiva Memorial Bnad
   website: http://lgmb.skule.ca/
   
 Moment:
   name: Moment
+  web_name: Moment
   official_name:
   website: http://moment.skule.ca
 
 Music:
   name: Music
+  web_name: Music
   official_name:
   website: http://music.skule.ca
 
 PEOClub:
   name: PEO Student Club
+  web_name: PEOStudentClub
   official_name: Professional Engineers of Ontario, Student Club
   website: http://peoclub.skule.ca
 
 PEOConference:
   name: PEO Conference
+  web_name: PEOConference
   official_name:
   website: http://peoconference.skule.ca
 
 SAF:
   name: SAF
+  web_name: SAF
   official_name: Skule Arts Festival
   website: http://saf.skule.ca/
 
 Snowboard:
   name: Snowboard Design Team
+  web_name: SnowboardDesignTeam
   official_name: UofT Snowboard Design Team
   website: http://snowboard.skule.ca
  
 Toboggan:
   name: Concrete Toboggan
+  web_name: ConcreteToboggan
   official_name: UofT Concrete Toboggan
   website: http://toboggan.skule.ca/

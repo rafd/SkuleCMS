@@ -1,25 +1,28 @@
 .feed_item[feed_item]
-	- unless controller.controller_name == 'clubs'
-		= render :partial => 'layouts/partials/avatar', :locals => {:club => feed_item.club}
+	- short_length = (controller_name == "clubs" ? 160 : 144)
 	-case feed_item.class.to_s
 		-when "SmallPost" then
+			- unless controller.controller_name == 'clubs'
+				= render :partial => 'layouts/partials/avatar', :locals => {:club => feed_item.club}
 			.content= feed_item.content	
 		-when "LargePost" then
 			%h4= link_to feed_item.title, {:controller=> feed_item.class.to_s.tableize, :action => 'show', :id => feed_item.id, :club_id => feed_item.club.id}, :title => "Read Post"
+			- unless controller.controller_name == 'clubs'
+				= render :partial => 'layouts/partials/avatar', :locals => {:club => feed_item.club}
 			.content
-				-if feed_item.content.length > 155
-					= feed_item.content[0..155] + "..."
-					= link_to 'Keep Reading &raquo;', {:controller=> feed_item.class.to_s.tableize, :action => 'show', :id => feed_item.id, :club_id => feed_item.club.id}, :title => "Keep Reading"
-				-else
-					= feed_item.content 
+				=summarize(feed_item.content, short_length, "Keep Reading &raquo;", {:controller=> feed_item.class.to_s.tableize, :action => 'show', :id => feed_item.id, :club_id => feed_item.club.id}, {:class=>"more"})
+				
 		-when "Event" then
-			%h4= link_to feed_item.name, :controller=> feed_item.class.to_s.tableize, :action => 'show', :id => feed_item.id, :club_id => feed_item.club.id
+			= render :partial => 'layouts/partials/date_ticker', :locals => {:date => feed_item.start}
+			%h4= link_to abbrev(feed_item.name, 28), :controller=> feed_item.class.to_s.tableize, :action => 'show', :id => feed_item.id, :club_id => feed_item.club.id
+										
 			.locationtime
-				%span.location= feed_item.location
-				%span.time= short_time(feed_item.start)
+				%span.time= feed_item.start.strftime('%A @ %I:%M%p')
+				|
+				%span.location= abbrev(feed_item.location, 12)
+				
 			.content
-				= feed_item.description
-				= link_to 'Find Out More &raquo;', :controller=> feed_item.class.to_s.tableize, :action => 'show', :id => feed_item.id, :club_id => feed_item.club.id
+				= summarize(feed_item.description, 144, 'Find Out More &raquo;', {:controller=> feed_item.class.to_s.tableize, :action => 'show', :id => feed_item.id, :club_id => feed_item.club.id}, {:class=>"more"})
 		-else
 			= feed_item.class	
 	.source

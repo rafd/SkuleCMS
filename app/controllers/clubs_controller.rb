@@ -4,7 +4,7 @@ class ClubsController < ApplicationController
   before_filter :auth_admin, :only => [:edit, :update]
   before_filter :auth_su_admin, :only => [:edit_tags, :update_tags]
   before_filter :auth_new_club, :only => [:new, :create]
-  before_filter :auth_super_admin_only, :only => [:admin, :destroy]
+  before_filter :auth_super_admin_only, :only => [:admin, :destroy, :edit_tags, :update_tags]
   
   # GET /clubs
   # GET /clubs.xml
@@ -38,14 +38,36 @@ class ClubsController < ApplicationController
     @page_title = ""
     @site_section = "clubs"
     
-    @all_posts = @club.feed_output(@club.small_posts.all, @club.large_posts.all)
+    @all_posts = @club.feed_output(@club.small_posts.find(:all, :order => "created_at DESC", :limit => 10), @club.large_posts.find(:all, :order => "created_at DESC", :limit => 10))
+    @all_posts = @all_posts[0..9]
     
-    @feed = @club.feed_items.paginate :page => params[:page], :per_page => 4
+    @feed = @club.feed_output(@club.small_posts.find(:all, :order => "created_at DESC", :limit => 10), @club.large_posts.find(:all, :order => "created_at DESC", :limit => 10),@club.events.find(:all, :order => "created_at DESC", :limit => 10) )
+    @feed = @feed[0..2]
+    if @feed[0] != nil
+      @feed_earliest_time = @feed[-1].created_at
+    else
+      @feed_earliest_time = 0
+    end
+    
+    # remove:  @feed = @club.feed_items.paginate :page => params[:page], :per_page => 4
     
     respond_to do |format|
       format.html # show.html.erb
       format.xml  {} # { render :xml => @club }
     end
+  end
+
+  def add_feed_item
+    @club = Club.find(params[:id])
+    @feed = @club.feed_output(@club.small_posts.find(:all, :conditions => ["created_at < ?", params[:time]], :order => "created_at DESC", :limit => 5), @club.large_posts.find(:all, :conditions => ["created_at < ?", params[:time]], :order => "created_at DESC", :limit => "10"),@club.events.find(:all, :conditions => ["created_at < ?", params[:time]], :order => "created_at DESC", :limit => "10") )
+
+    if @feed[0] != nil
+      @feed_earliest_time = @feed[-1].created_at
+    else
+      @feed_earliest_time = 0
+    end
+    
+    
   end
 
   # GET /clubs/new
@@ -129,7 +151,7 @@ class ClubsController < ApplicationController
   def edit_tags
     @club = Club.find(params[:club_id], :include => :tags)
     @page_title = "Editing "+@club.name+"'s Tags"
-    @site_section = "admin"
+    @site_section = "su_admin"
   end
 
   def update_tags
@@ -142,7 +164,7 @@ class ClubsController < ApplicationController
         format.xml  { head :ok }
       else
         @page_title = "Editing "+@club.name+"'s Tags"
-        @site_section = "admin"
+        @site_section = "su_admin"
         format.html { render :action => "edit_tags" }
         format.xml  { render :xml => @club.errors, :status => :unprocessable_entity }
       end

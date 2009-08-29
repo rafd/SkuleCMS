@@ -1,6 +1,7 @@
 Post1:
   content: Hello World!
   club: WebDev
+  created_at: <%= 6.hours.ago %>
 	
 Post2:
   content: <%= "Woot!" %>
