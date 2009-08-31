@@ -7,8 +7,7 @@ ActionController::Routing::Routes.draw do |map|
   map.connect '/clubs/:club_id/admin/:action', :controller => 'admin_pages'
   map.connect '/search/:query/', :controller => 'search', :action => 'search'
   map.connect '/search/clubs/:club_id/query/:query/', :controller => 'search', :action => 'search'
-  map.connect '/search', :controller => 'search', :action => 'advanced'
-  map.connect '/search/:query/', :controller => 'search', :action => 'advanced'
+  #map.connect '/search', :controller => 'search', :action => 'advanced'
   
   map.formatted_search "/search.:format", :controller => "search", :action => "index", :method => :get 
 

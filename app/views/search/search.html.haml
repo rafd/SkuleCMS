@@ -1,12 +1,25 @@
-%h2 Search Results
-%p
-  -if !@clubs.blank?
-    %h4 Clubs Tagged with Query:
-    -@clubs.each do |club|
-      =link_to club.name, club
+- form_tag( 'search') do |f|
+  %p
+    = text_field_tag :search
+    = submit_tag 'Search'
+
+%h2 Search Results: "#{@query}"
+
+.clubs_container
+  -@tagList.each do |tag|
+    -if !tag.blank?
+      %h3 Results for related tag "#{tag.name}"
+      %p
+        %h4 Clubs Tagged with #{tag}: 
+        -find_clubs_tagged_with(tag).each do |club|
+          = render :partial => 'layouts/partials/club_box', :locals => {:club => club}
       %br
-    -if !@albums.blank? || !@myAlbums.blank?
       %br
+      %br
+      %br
+      -if !@albums.blank? || !@myAlbums.blank?
+        %br
+
 
 %p
   -if !@albums.blank?
