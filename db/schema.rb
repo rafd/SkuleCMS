@@ -83,11 +83,11 @@ ActiveRecord::Schema.define(:version => 20090831032300) do
     t.datetime "start"
     t.datetime "finish"
     t.string   "location"
-    t.string   "description"
     t.string   "link"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
+    t.text     "description"
   end
 
   create_table "groups", :force => true do |t|
