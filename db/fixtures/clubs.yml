@@ -808,3 +808,96 @@ Toboggan:
   web_name: ConcreteToboggan
   official_name: UofT Concrete Toboggan
   website: http://toboggan.skule.ca/
+
+                                             
+iGem:
+  name: BlueGenes iGem
+  web_name: igem
+  official_name: BlueGenes iGem University of Toronto 
+  description: iGem provides students an opportunity for hands-on design and bio lab experiences and training, with the chance to compete at a world class competition at MIT. 
+  tagline: BlueGenes iGem
+  website: http://igem.skule.ca
+  contact: igem@skule.ca
+  live: true
+
+UTAG: 
+  name: UTAG
+  web_name: utag
+  official_name: University of Toronto Advertising Group 
+  description:  UTAG proposes an in depth way for outgoing and active students to understand principles of marketing and advertising. 
+  tagline: University of Toronto Advertising Group
+  website: http://utadvertising.ca
+  contact: tim@chen.name
+  live: true
+
+BrassRing: 
+  name: BrassRing
+  web_name: brassring
+  official_name: Brass Ring
+  description: Engineering brass quintet music group/ 
+  tagline: Brass Ring
+  website: http://music.skule.ca
+  contact: brassring@skule.ca
+  live: true
+
+SkuleChoir:  
+  name: SkuleChoir
+  web_name: skulechoir
+  official_name: Skule Choir
+  description: An engineering music choir. 
+  tagline: Skule Choir
+  website: http://music.skule.ca
+  contact: whitaik.lee@utoronto.ca
+  live: true
+
+EMC: 
+  name: EMC
+  web_name: emc
+  official_name: University of Toronto Environmental Management Committee
+  description: Educate students on environment and provide environmental impact audits for clubs.  
+  tagline: U of T Environmental Management Committee
+  website: http://emc.skule.ca
+  contact: emc@skule.ca
+  live: true
+
+SDT: 
+  name: UTSDT
+  web_name: sdt
+  official_name: University of Toronto Snowboard Design Team
+  description: Design and develop new technologies for snowboards.  
+  tagline: U of T Snowboard Design Team
+  website: http://snowboard.skule.ca
+  contact: m.dick@utoronto.ca
+  live: true
+
+SAF: 
+  name: SAF
+  web_name: arts
+  official_name: Skule Arts Festival
+  description: Annual arts festival where skule visual arts are displayed  
+  tagline: Skule Arts Festival
+  website: http://saf.skule.ca
+  contact: leigh.davis@utoronto.ca
+  live: true
+
+CNCCC:
+  name: CNCCC
+  web_name: cnccc
+  official_name: Canadian National Concrete Canoe Competition 2010
+  description: Concrete Canoe 2010 competition, national competitors will be attending. 
+  tagline: Canadian National Concrete Canoe Competition 2010
+  website: www.concretecanoe.ca
+  contact: paul@concretecanoe.ca
+  live: true
+
+IEEE:
+  name: IEEE
+  web_name: IEEE
+  official_name: IEEE University of Toronto Student Branch 
+  description: The IEEE is a non profit organization and is the world’s leading professional association for the advancement of technology. 
+  tagline: IEEE University of Toronto Student Branch
+  website: http://ieee.toronto.edu/drupal/
+  contact: contact@ieee.ece.utoronto.ca
+  live: true
+
+
