@@ -11,7 +11,6 @@ set :use_sudo, false
 
 set :deploy_via, :remote_cache
 
-set :deploy_to, "/home/currmap/apps/currmap"
 set :git_enable_submodules, 1
 set :user, 'currmap'
 set :ssh_options, { :forward_agent => true }
@@ -52,12 +51,11 @@ end
 # If you aren't deploying to /u/apps/#{application} on the target
 # servers (which is the default), you can specify the actual location
 # via the :deploy_to variable:
- set :deploy_to, "/home/currmap/#{application}"
+ set :deploy_to, "/home/skule/domains/redux.skule.ca/#{application}"
 
 # If you aren't using Subversion to manage your source code, specify
 # your SCM below:
 # set :scm, :subversion
 # see a full list by running "gem contents capistrano | grep 'scm/'"
 
-role :web, "currmap.myego.ca"
-
+role :web, "redux.skule.ca"
