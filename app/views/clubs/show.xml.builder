@@ -22,7 +22,7 @@ xml.rss "version" => "2.0", "xmlns:dc" => "http://purl.org/dc/elements/1.1/" do
        end
        xml.description all_post.content
        xml.guid        url_for :only_path => false, :controller=> all_post.class.to_s.tableize, :action => 'show', :id => all_post.id, :club_id => all_post.club.id
-       xml.description all_post.content
+       xml.pubDate        all_post.created_at
      end
    end
  end
