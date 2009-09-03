@@ -4,18 +4,34 @@ class HubPagesController < ApplicationController
 		@site_section = "hub"
 	end
 
+
+
 	def digest
 		@page_title = "The Digest"
 
-		
-		@feed_items = feed_output(LargePost.find(:all, :order => "created_at DESC", :limit => 10), SmallPost.find(:all, :order => "created_at DESC", :limit => 10), Event.find(:all, :order => "created_at DESC", :limit => 10))
-    @feed_items = @feed_items[0..9]
+
+    respond_to do |format|
+      format.html {
+        @feed = feed_output([LargePost, SmallPost, Event], feed_list_length,:all,{:order => "created_at DESC", :limit => feed_list_length})
+        @feed_earliest_time = feed_earliest_time(@feed)
+        }
+      format.xml  {
+        @feed = feed_output([LargePost, SmallPost, Event], feed_rss_length,:all,{:order => "created_at DESC", :limit => feed_rss_length})
+        }
+    end
     
     @site_section = "hub"
     
 		@upcoming_events = Event.find(:all, :order => "start", :conditions => ["finish>=?", Time.now.utc], :limit => 10)
   
-  
+  end
+
+  def add_feed_item
+    
+    @feed = feed_output([LargePost, SmallPost, Event], feed_add_length, :all, { :conditions => ["created_at < ?", params[:time]], :order => "created_at DESC", :limit => feed_add_length})
+    @feed_earliest_time = feed_earliest_time(@feed)
+
+
   end
 
 	#see calendar/index
@@ -37,15 +53,5 @@ class HubPagesController < ApplicationController
 		@tags = Club.find_related_tags("engsoc")
 end
 
-private
-  def feed_output(*feeds)
-    feed_out = []
-    feeds.each do |feed|
-      feed_out = feed_out + feed
-    end
-    feed_out = feed_out.sort_by{|t| t.created_at}.reverse
-    return feed_out
-
-  end
 
 end

@@ -1,5 +1,3 @@
-require "will_paginate"
-
 class Club < ActiveRecord::Base
   acts_as_taggable
     
@@ -171,19 +169,6 @@ class Club < ActiveRecord::Base
   def all_pages
     return self.pages.find(:all, :conditions => ["parent_id IS NOT ?", nil], :order => 'lft')
   end
-  
-  
 
- 
-
-  def feed_output(*feeds)
-    feed_out = []
-    feeds.each do |feed|
-      feed_out = feed_out + feed
-    end
-    feed_out = feed_out.sort_by{|t| t.created_at}.reverse
-    return feed_out
-
-  end
  
 end
