@@ -11,7 +11,7 @@ class Page < ActiveRecord::Base
   validates_uniqueness_of   :title, :case_sensitive => false, :scope => [:club_id]
   validates_numericality_of :order
   
-  attr_protected :club_id, :created_at, :updated_at
+  attr_protected :id, :club_id, :created_at, :updated_at
   after_save :move_to_parent
   
   def move_to_parent
