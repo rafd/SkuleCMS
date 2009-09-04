@@ -1,0 +1,25 @@
+%h2 Editing #{@club.name}'s Settings
+
+- form_tag :action => :update_settings, :id => @club do
+	%fieldset
+		%legend Banner Settings
+		%p Change whether the banner gets shown on specific pages.
+		%p
+			= check_box_tag 'banner_clubs', 'All', @club.show_banner?('clubs')
+			= label_tag 'banner_clubs', "Main Club Page"			
+		- @controller_names.each do |name|
+			%p
+				= check_box_tag 'banner_' + name, 'All', @club.show_banner?(name)
+				= label_tag 'banner_' + name, "All " + name.titleize + " Pages"	
+		%fieldset
+			%legend Banner settings for Custom Pages
+			%p
+				= check_box_tag 'banner_pages_index', 'Index', !@pageIndex.blank?
+				= label_tag 'banner_pages_index', "Pages Directory"
+			- @pages.each do |page|
+				%p
+					= check_box_tag 'banner_pages_' + page.id.to_s, page.id.to_s, page.show_banner?
+					= label_tag 'banner_pages_' + page.id.to_s, page.title
+	%p= submit_tag 'Update'
+
+

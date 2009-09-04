@@ -26,6 +26,10 @@ class Page < ActiveRecord::Base
     end
   end
   
+  def show_banner?
+    return ( Setting.find(:first, :conditions => ['club_id = ? AND option_name = ? AND name = ? AND value = ?', self.club_id, 'Banner', 'pages', self.id.to_s]).blank? ? false : true )
+  end
+  
   def order_by_weight
     @sorted = self.children.sort_by{ |i| i[:order] }
     1.upto(@sorted.length-1) do |n|
