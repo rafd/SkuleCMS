@@ -3,7 +3,7 @@
 - form_tag :action => :update_settings, :id => @club do
 	%fieldset
 		%legend Banner Settings
-		%p Change whether the banner gets shown on specific pages.
+		%h4 Change whether the banner gets shown on specific pages.
 		%p
 			= check_box_tag 'banner_clubs', 'All', @club.show_banner?('clubs')
 			= label_tag 'banner_clubs', "Main Club Page"			
@@ -12,7 +12,7 @@
 				= check_box_tag 'banner_' + name, 'All', @club.show_banner?(name)
 				= label_tag 'banner_' + name, "All " + name.titleize + " Pages"	
 		%fieldset
-			%legend Banner settings for Custom Pages
+			%legend Custom Pages
 			%p
 				= check_box_tag 'banner_pages_index', 'Index', !@pageIndex.blank?
 				= label_tag 'banner_pages_index', "Pages Directory"

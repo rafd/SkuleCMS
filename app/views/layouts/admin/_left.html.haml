@@ -14,4 +14,7 @@
 				%li= link_to_unless_current "Members", :controller => "groups", :action=>"admin", :club_id => @club
 				%li= link_to_unless_current "Pages", :controller => "pages", :action=>"admin", :club_id => @club
 
-			%li= link_to_unless_current "Settings", :controller => "clubs", :action=>"edit", :id => @club
+			%li Settings
+			%ul#settings
+				%li= link_to_unless_current "Visual Tweaks", :controller => "clubs", :action=>"settings", :id => @club
+				%li= link_to_unless_current "Profile", :controller => "clubs", :action=>"edit", :id => @club

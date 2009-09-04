@@ -46,7 +46,6 @@ ActiveRecord::Schema.define(:version => 20090901233739) do
 
   create_table "clubs", :force => true do |t|
     t.string   "name"
-    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "tagline"
@@ -57,6 +56,7 @@ ActiveRecord::Schema.define(:version => 20090901233739) do
     t.string   "web_name"
     t.boolean  "live"
     t.string   "address"
+    t.text     "description"
   end
 
   create_table "download_folders", :force => true do |t|
@@ -83,11 +83,11 @@ ActiveRecord::Schema.define(:version => 20090901233739) do
     t.datetime "start"
     t.datetime "finish"
     t.string   "location"
-    t.string   "description"
     t.string   "link"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
+    t.text     "description"
   end
 
   create_table "groups", :force => true do |t|

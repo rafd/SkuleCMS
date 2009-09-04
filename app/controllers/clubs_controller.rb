@@ -1,5 +1,3 @@
-require "will_paginate"
-
 class ClubsController < ApplicationController
   before_filter :auth_admin, :only => [:edit, :update, :settings, :update_settings]
   before_filter :auth_new_club, :only => [:new, :create]
@@ -44,18 +42,24 @@ class ClubsController < ApplicationController
     @page_title = ""
     @site_section = "clubs"
     
-    @all_posts = @club.feed_output(@club.small_posts.find(:all, :order => "created_at DESC", :limit => 10), @club.large_posts.find(:all, :order => "created_at DESC", :limit => 10))
-    @all_posts = @all_posts[0..9]
     
-    @feed = @club.feed_output(@club.small_posts.find(:all, :order => "created_at DESC", :limit => 10), @club.large_posts.find(:all, :order => "created_at DESC", :limit => 10),@club.events.find(:all, :order => "created_at DESC", :limit => 10) )
-    @feed = @feed[0..2]
-    if @feed[0] != nil
-      @feed_earliest_time = @feed[-1].created_at
-    else
-      @feed_earliest_time = 0
+    
+    respond_to do |format|
+      format.html {
+        @feed = feed_output([@club.small_posts, @club.large_posts, @club.events], feed_list_length, :all, :order => "created_at DESC", :limit => feed_list_length)
+        @feed_earliest_time = feed_earliest_time(@feed)
+        }
+      format.xml {
+        @feed = feed_output([@club.small_posts, @club.large_posts, @club.events], feed_rss_length, :all, {:order => "created_at DESC", :limit => feed_rss_length})
+        
+        if @feed[0] == nil
+          render :xml => @club
+        end
+        
+        }
     end
+
     
-    # remove:  @feed = @club.feed_items.paginate :page => params[:page], :per_page => 4
     
     respond_to do |format|
       format.html # show.html.erb
@@ -65,15 +69,11 @@ class ClubsController < ApplicationController
 
   def add_feed_item
     @club = Club.find(params[:id])
-    @feed = @club.feed_output(@club.small_posts.find(:all, :conditions => ["created_at < ?", params[:time]], :order => "created_at DESC", :limit => 5), @club.large_posts.find(:all, :conditions => ["created_at < ?", params[:time]], :order => "created_at DESC", :limit => "10"),@club.events.find(:all, :conditions => ["created_at < ?", params[:time]], :order => "created_at DESC", :limit => "10") )
+    
+    @feed = feed_output([@club.small_posts, @club.large_posts, @club.events], feed_add_length, :all, { :conditions => ["created_at < ?", params[:time]], :order => "created_at DESC", :limit => feed_add_length})
+   
+    @feed_earliest_time = feed_earliest_time(@feed)
 
-    if @feed[0] != nil
-      @feed_earliest_time = @feed[-1].created_at
-    else
-      @feed_earliest_time = 0
-    end
-    
-    
   end
 
   # GET /clubs/new

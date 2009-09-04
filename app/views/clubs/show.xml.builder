@@ -3,27 +3,43 @@ xml.instruct!
 xml.rss "version" => "2.0", "xmlns:dc" => "http://purl.org/dc/elements/1.1/" do
  xml.channel do
 
-   xml.title       "all_posts"
-   xml.link        url_for :only_path => false, :controller => 'clubs', :action => 'show', :id => @all_posts[0].club.id
-   xml.description "all_posts! holy shit!"
+   xml.title       @feed[0].club.name
+   xml.link        url_for :only_path => false, :controller => 'clubs', :action => 'show', :id => @feed[0].club.id
+   xml.description @feed[0].club.tagline
    
-   
-   @all_posts.each do |all_post|
+   xml.image do
+     xml.title     @feed[0].club.name
+     xml.link      url_for :only_path => false, :controller => 'clubs', :action => 'show', :id => @feed[0].club.id
+     xml.url       path_to_image(FileTest.exist?("public/images/avatars/"+@feed[0].club.web_name) ? "avatars/"+@feed[0].club.web_name : "blank.gif")
+   end
+ 
+     
+@feed.each do |feed_item|
      xml.item do      
-       if all_post.class.to_s == "LargePost" then
-         xml.title       all_post.title
-       else
-         xml.title       all_post.content
+       case feed_item.class.to_s
+         when "SmallPost" then
+           xml.title          feed_item.content
+           xml.link           url_for :only_path => false, :controller=> 'clubs', :action => 'show', :id => feed_item.club.id
+           xml.description    feed_item.content
+           #xml.guid           url_for :only_path => false, :controller=> 'clubs', :action => 'show', :id => feed_item.club.id
+           xml.pubDate        feed_item.created_at
+         when "LargePost" then
+           xml.title          feed_item.title
+           xml.link           url_for :only_path => false, :controller=> feed_item.class.to_s.tableize, :action => 'show', :id => feed_item.id, :club_id => feed_item.club.id
+           xml.description    feed_item.content
+           xml.guid           url_for :only_path => false, :controller=> feed_item.class.to_s.tableize, :action => 'show', :id => feed_item.id, :club_id => feed_item.club.id
+           xml.pubDate        feed_item.created_at
+         when "Event" then
+           xml.title          feed_item.name
+           xml.link           url_for :only_path => false, :controller=> feed_item.class.to_s.tableize, :action => 'show', :id => feed_item.id, :club_id => feed_item.club.id
+           xml.description    short_time(feed_item.start) + " @ " + feed_item.location + ": " + feed_item.description
+           xml.guid           url_for :only_path => false, :controller=> feed_item.class.to_s.tableize, :action => 'show', :id => feed_item.id, :club_id => feed_item.club.id
+           xml.pubDate        feed_item.created_at
        end
-       if all_post.class.to_s == "SmallPost" then
-         xml.link      url_for :only_path => false, :controller=> 'clubs', :action => 'show', :id => @all_posts[0].club.id
-       else
-         xml.link        url_for :only_path => false, :controller=> all_post.class.to_s.tableize, :action => 'show', :id => all_post.id, :club_id => all_post.club.id
-       end
-       xml.description all_post.content
-       xml.guid        url_for :only_path => false, :controller=> all_post.class.to_s.tableize, :action => 'show', :id => all_post.id, :club_id => all_post.club.id
-       xml.description all_post.content
      end
    end
+   
+   
+   
  end
 end
