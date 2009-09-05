@@ -9,17 +9,13 @@
 		%tr
 			%td=h club.name 
 			%td
-				= link_to 'Events', club_events_path(club)
-				|
-				= link_to 'Files', club_files_path(club) 
-				|
-				= link_to 'Galleries', club_gallery_path(club)
-				|
-				= link_to 'Groups', club_groups_path(club)
+				= link_to 'Administer', club_admin_index_path(club)
 				|
 				= link_to 'Show', club 
 				|
 				= link_to 'Edit', edit_club_path(club)
+				|
+				= link_to 'Tags', club_edit_tags_path(club)
 				|
 				= link_to 'Destroy', club, :confirm => 'Are you sure?', :method => :delete
 
@@ -33,13 +29,7 @@
 		%tr
 			%td=h club.name 
 			%td
-				= link_to 'Events', club_events_path(club)
-				|
-				= link_to 'Files', club_files_path(club) 
-				|
-				= link_to 'Galleries', club_gallery_path(club)
-				|
-				= link_to 'Groups', club_groups_path(club)
+				= link_to 'Administer', club_admin_index_path(club)
 				|
 				= link_to 'Show', club 
 				|

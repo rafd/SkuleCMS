@@ -215,11 +215,9 @@ class ClubsController < ApplicationController
   def auth_admin
     if current_admin.blank?
       redirect_to login_path
-    elsif current_admin.super_admin
-      redirect_to club_edit_tags_path(params[:id])
-    elsif !current_admin.club_id.blank? && current_admin.club_id.to_s != params[:id]
+    elsif !current_admin.super_admin && !current_admin.club_id.blank? && current_admin.club_id.to_s != params[:id]
       redirect_to club_admin_index_path(current_admin.club_id)
-    elsif current_admin.club_id.blank?
+    elsif !current_admin.super_admin && current_admin.club_id.blank?
       redirect_to new_club_path
     end
   end
@@ -227,9 +225,7 @@ class ClubsController < ApplicationController
   def auth_new_club
     if current_admin.blank?
       redirect_to login_path
-    elsif current_admin.super_admin
-      redirect_to admins_path
-    elsif !current_admin.club_id.blank?
+    elsif !current_admin.super_admin && !current_admin.club_id.blank?
       redirect_to club_admin_index_path(current_admin.club_id)
     end
   end

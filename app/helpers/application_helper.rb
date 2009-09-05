@@ -23,6 +23,16 @@ module ApplicationHelper
     return time.strftime('%a. %b. %d %I:%M %p')
   end
   
+  def proper_url(url)
+    if url.blank?
+      return nil
+    elsif !(url.to_s =~ /https?:\/\/.*/)
+     return "http://" + url.to_s
+    else
+      return url.to_s
+    end
+  end
+  
   def short_time(time)
     #return time.strftime('%b. %e, %l:%M %p')
     return time.strftime('%b. %d, %I:%M %p')

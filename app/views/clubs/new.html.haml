@@ -48,6 +48,13 @@
 		= f.file_field :banner
 
 	%p
+		= f.label :website, "External Website Url"
+		%span
+			The external website url will redirect any links from the SkuleClubs site to your own website. |
+			Leave this field blank if you wish to use all the features provided by SkuleClubs.
+		= f.text_field :website
+
+	%p
 		= f.submit 'Create'
 		
 = link_to 'Cancel', clubs_path
