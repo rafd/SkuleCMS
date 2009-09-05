@@ -12,7 +12,7 @@ ActionController::Routing::Routes.draw do |map|
   map.formatted_search "/search.:format", :controller => "search", :action => "index", :method => :get 
 
   map.resources :admin_sessions
-  map.resources :clubs, :collection => { :admin => :get }, :member => { :settings => :get, :change_settings => :post}  do |club|
+  map.resources :clubs, :collection => { :admin => :get } do |club|
     club.edit_tags "edit_tags", :controller => "clubs", :action => "edit_tags", :method => :get 
     club.update_tags "update_tags", :controller => "clubs", :action => "update_tags", :method => :put 
     club.resources  :files,

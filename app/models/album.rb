@@ -8,14 +8,6 @@ class Album < ActiveRecord::Base
   validates_numericality_of :club_id, :user_id
   validates_uniqueness_of   :name, :scope => [:club_id]
   
-  attr_protected :id,
-                :club_id,
-                :user_id,
-                :image_ids,
-                :created_at,
-                :updated_at,
-                :locked
-  
   after_save :create_directory
   
   def create_directory

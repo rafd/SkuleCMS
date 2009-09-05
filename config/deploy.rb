@@ -12,7 +12,7 @@ set :use_sudo, false
 set :deploy_via, :remote_cache
 
 set :git_enable_submodules, 1
-set :user, 'currmap'
+set :user, 'skule'
 set :ssh_options, { :forward_agent => true }
 
 role :app, "rafd.xen.prgmr.com"

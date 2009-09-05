@@ -5,6 +5,5 @@ class User < ActiveRecord::Base
     
     validates_uniqueness_of   :name
     validates_length_of       :name, :in => 3..30
-    
     attr_accessible :name
 end

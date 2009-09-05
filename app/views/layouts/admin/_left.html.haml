@@ -1,20 +1,20 @@
 #left
 	- unless @controller.controller_name == "admin_sessions"
-		%ul.filter
-			%li= link_to_unless_current "Dashboard", :controller => "admin_pages", :action=>"index", :club_id => @club
-			%li Manage
-			%ul#manage
-				%li= link_to_unless_current "Posts", :controller => "large_posts", :action=>"admin", :club_id => @club
-				-# %li= link_to_unless_current "Small Posts", :controller => "small_posts", :action=>"admin", :club_id => @club
-				%li= link_to_unless_current "Events", :controller => "events", :action=>"admin", :club_id => @club
-				%br
-				%li= link_to_unless_current "Photos", :controller => "albums", :action=>"admin", :club_id => @club
-				%li= link_to_unless_current "Files", :controller => "download_folders", :action=>"admin", :club_id => @club
-				%br
-				%li= link_to_unless_current "Members", :controller => "groups", :action=>"admin", :club_id => @club
-				%li= link_to_unless_current "Pages", :controller => "pages", :action=>"admin", :club_id => @club
+		%dl
+			%dt= link_to_unless_current "Dashboard", :controller => "admin_pages", :action=>"index", :club_id => @club
+			
+			%dt= link_to "Manage", :controller => "large_posts", :action=>"admin", :club_id => @club
+			%dd= link_to_unless_current "Posts", :controller => "large_posts", :action=>"admin", :club_id => @club
+			-# %li= link_to_unless_current "Small Posts", :controller => "small_posts", :action=>"admin", :club_id => @club
+			%dd.space_after= link_to_unless_current "Events", :controller => "events", :action=>"admin", :club_id => @club
+			-# %dd= link_to_unless_current "Photos", :controller => "albums", :action=>"admin", :club_id => @club
+			-# %dd= link_to_unless_current "Files", :controller => "download_folders", :action=>"admin", :club_id => @club
+			-#%br
+			%dd= link_to_unless_current "Members", :controller => "groups", :action=>"admin", :club_id => @club
+			-#%dd = "Lists"
+			%dd= link_to_unless_current "Pages", :controller => "pages", :action=>"admin", :club_id => @club
 
-			%li Settings
-			%ul#settings
-				%li= link_to_unless_current "Visual Tweaks", :controller => "clubs", :action=>"settings", :id => @club
-				%li= link_to_unless_current "Profile", :controller => "clubs", :action=>"edit", :id => @club
+			%dt= link_to "Settings", :controller => "clubs", :action=>"edit", :id => @club
+			%dd= link_to_unless_current "Club Profile", :controller => "clubs", :action=>"edit", :id => @club
+			%dd= link_to_unless_current "Website Display", "#"
+			

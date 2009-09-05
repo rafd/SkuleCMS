@@ -1,5 +1,7 @@
+require "will_paginate"
+
 class ClubsController < ApplicationController
-  before_filter :auth_admin, :only => [:edit, :update, :settings, :update_settings]
+  before_filter :auth_admin, :only => [:edit, :update]
   before_filter :auth_new_club, :only => [:new, :create]
   before_filter :auth_super_admin_only, :only => [:admin, :destroy, :edit_tags, :update_tags]
   
@@ -42,24 +44,18 @@ class ClubsController < ApplicationController
     @page_title = ""
     @site_section = "clubs"
     
+    @all_posts = @club.feed_output(@club.small_posts.find(:all, :order => "created_at DESC", :limit => 10), @club.large_posts.find(:all, :order => "created_at DESC", :limit => 10))
+    @all_posts = @all_posts[0..9]
     
-    
-    respond_to do |format|
-      format.html {
-        @feed = feed_output([@club.small_posts, @club.large_posts, @club.events], feed_list_length, :all, :order => "created_at DESC", :limit => feed_list_length)
-        @feed_earliest_time = feed_earliest_time(@feed)
-        }
-      format.xml {
-        @feed = feed_output([@club.small_posts, @club.large_posts, @club.events], feed_rss_length, :all, {:order => "created_at DESC", :limit => feed_rss_length})
-        
-        if @feed[0] == nil
-          render :xml => @club
-        end
-        
-        }
+    @feed = @club.feed_output(@club.small_posts.find(:all, :order => "created_at DESC", :limit => 10), @club.large_posts.find(:all, :order => "created_at DESC", :limit => 10),@club.events.find(:all, :order => "created_at DESC", :limit => 10) )
+    @feed = @feed[0..2]
+    if @feed[0] != nil
+      @feed_earliest_time = @feed[-1].created_at
+    else
+      @feed_earliest_time = 0
     end
-
     
+    # remove:  @feed = @club.feed_items.paginate :page => params[:page], :per_page => 4
     
     respond_to do |format|
       format.html # show.html.erb
@@ -69,11 +65,15 @@ class ClubsController < ApplicationController
 
   def add_feed_item
     @club = Club.find(params[:id])
-    
-    @feed = feed_output([@club.small_posts, @club.large_posts, @club.events], feed_add_length, :all, { :conditions => ["created_at < ?", params[:time]], :order => "created_at DESC", :limit => feed_add_length})
-   
-    @feed_earliest_time = feed_earliest_time(@feed)
+    @feed = @club.feed_output(@club.small_posts.find(:all, :conditions => ["created_at < ?", params[:time]], :order => "created_at DESC", :limit => 5), @club.large_posts.find(:all, :conditions => ["created_at < ?", params[:time]], :order => "created_at DESC", :limit => "10"),@club.events.find(:all, :conditions => ["created_at < ?", params[:time]], :order => "created_at DESC", :limit => "10") )
 
+    if @feed[0] != nil
+      @feed_earliest_time = @feed[-1].created_at
+    else
+      @feed_earliest_time = 0
+    end
+    
+    
   end
 
   # GET /clubs/new
@@ -177,46 +177,14 @@ class ClubsController < ApplicationController
     end
   end
 
-  def settings
-    @club = Club.find(params[:id])
-    @page_title = "Changing "+@club.name+"'s Settings"
-    @site_section = "admin"
-    @pages = @club.all_pages
-    @controller_names = ['groups', 'events', 'large_posts', 'albums', 'images', 'download_folders', 'downloads', 'calendar']
-    @pageIndex = @club.settings.find(:first, :conditions => ['option_name = ? AND name = ? AND value = ?', 'Banner', 'pages', 'Index'])
-    respond_to do |format|
-      format.html 
-    end   
-    
-  end
-  
-  def update_settings
-    @club = Club.find(params[:id])
-    @controller_names = ['clubs', 'groups', 'events', 'large_posts', 'albums', 'images', 'download_folders', 'downloads', 'calendar']
-    @controller_names.each do |name|
-      @club.set_settings(!params[('banner_' + name).to_sym].blank?, 'Banner', name, 'All')
-    end
-    # Drop previous settings and re-create (easier code-wise)
-    @pages = @club.all_pages
-    @pages.each do |page|
-      @club.set_settings(!params[('banner_pages_'+page.id.to_s).to_sym].blank?, 'Banner', 'pages', page.id.to_s)
-    end
-    @club.set_settings(!params[('banner_pages_index').to_sym].blank?, 'Banner', 'pages', 'Index')
-    respond_to do |format|
-      flash[:notice] = "Club's settings were successfully updated."
-      format.html { redirect_to(club_admin_index_path(@club)) }
-      format.xml  { head :ok }
-    end
-  end
-
 
   private
   
   def auth_admin
-    if current_admin.blank?
-      redirect_to login_path
-    elsif current_admin.super_admin
+    if current_admin.super_admin
       redirect_to club_edit_tags_path(params[:id])
+    elsif current_admin.blank?
+      redirect_to login_path
     elsif !current_admin.club_id.blank? && current_admin.club_id.to_s != params[:id]
       redirect_to club_admin_index_path(current_admin.club_id)
     elsif current_admin.club_id.blank?
@@ -225,10 +193,10 @@ class ClubsController < ApplicationController
   end
   
   def auth_new_club
-    if current_admin.blank?
-      redirect_to login_path
-    elsif current_admin.super_admin
+    if current_admin.super_admin
       redirect_to admins_path
+    elsif current_admin.blank?
+      redirect_to login_path
     elsif !current_admin.club_id.blank?
       redirect_to club_admin_index_path(current_admin.club_id)
     end

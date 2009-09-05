@@ -28,24 +28,3 @@ WebDevGroup2:
   parent_id: 39421
   bns_parent_id: 39421
   order: 2
-  
-WebDevGroup3:
-  club: WebDev
-  name: SkuleVotes Project
-  parent_id: 39421
-  bns_parent_id: 39421
-  order: 3
-  
-WebDevGroup4:
-  club: WebDev
-  name: SkuleCourses Project
-  parent_id: 39421
-  bns_parent_id: 39421
-  order: 4
-  
-WebDevGroup5:
-  club: WebDev
-  name: SkuleUsers Project
-  parent_id: 39421
-  bns_parent_id: 39421
-  order: 5
