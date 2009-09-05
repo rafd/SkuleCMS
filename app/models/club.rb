@@ -206,6 +206,6 @@ class Club < ActiveRecord::Base
       if (!@setting.blank?)
         @setting.destroy
       end
-  end
- 
+    end
+  end 
 end

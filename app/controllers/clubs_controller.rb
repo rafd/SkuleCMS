@@ -60,7 +60,7 @@ class ClubsController < ApplicationController
   def add_feed_item
     @club = Club.find(params[:id])
    
-    @feed = feed_output([@club.small_posts, @club.large_posts, @club.events], feed_add_length, :all, { :conditions => ["created_at < ?", params[:time]], :order => "created_at DESC", :limit => feed_add_length}   
+    @feed = feed_output([@club.small_posts, @club.large_posts, @club.events], feed_add_length, :all, { :conditions => ["created_at < ?", params[:time]], :order => "created_at DESC", :limit => feed_add_length})
     @feed_earliest_time = feed_earliest_time(@feed)   
   end
 

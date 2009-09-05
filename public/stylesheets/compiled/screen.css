@@ -554,12 +554,16 @@ a {
         margin: -0.25em -0.5em;
         padding: 0.05em 0.51em;
         color: #000; }
-/* line 64, ../../../app/stylesheets/partials/page_elements/_header.sass */
+        /* line 62, ../../../app/stylesheets/partials/page_elements/_header.sass */
+        #header #top #menu li a.active {
+          -moz-border-radius: 0 5px 0 5px;
+          -webkit-border-radius: 0 5px 0 5px; }
+/* line 66, ../../../app/stylesheets/partials/page_elements/_header.sass */
 #header #banner {
   background: url('/images/banners/skule.png') #222222 center center;
   margin: 0 0 0 -10px;
   padding-right: 20px; }
-  /* line 70, ../../../app/stylesheets/partials/page_elements/_header.sass */
+  /* line 72, ../../../app/stylesheets/partials/page_elements/_header.sass */
   #header #banner #info {
     background: white;
     margin: 2em 0;
@@ -869,14 +873,23 @@ body.map #main #content {
     -moz-border-radius: 0 5px 5px 0;
     -webkit-border-radius: 0 5px 5px 0; }
 
+/* line 4, ../../../app/stylesheets/partials/site_sections/_hub.sass */
+body.hub_pages #header .avatar, body.clubs.index #header .avatar {
+  background-image: url(/images/avatars/skule.png) !important;
+  background-color: #fff;
+  -moz-border-radius: 0 0 0 0;
+  -webkit-border-radius: 0 0 0 0;
+  margin: 0 5px 0 10px !important; }
 
-/* line 10, ../../../app/stylesheets/partials/site_sections/_hub.sass */
+/* line 14, ../../../app/stylesheets/partials/site_sections/_hub.sass */
+body.hub_pages.index #main #content,
 body.calendar #main #content {
   display: inline;
   float: left;
   margin-right: 10px;
   width: 790px; }
   /* line 101, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.14/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
+  * html body.hub_pages.index #main #content,
   * html body.calendar #main #content {
     overflow-x: hidden; }
 
@@ -979,6 +992,25 @@ form label {
 /* line 8, ../../../app/stylesheets/partials/content_types/_forms.sass */
 form span {
   display: block; }
+/* line 11, ../../../app/stylesheets/partials/content_types/_forms.sass */
+form fieldset {
+  border: solid 1px #000000;
+  padding: 0.4em;
+  margin: 0.4em; }
+  /* line 16, ../../../app/stylesheets/partials/content_types/_forms.sass */
+  form fieldset label {
+    display: inline; }
+  /* line 19, ../../../app/stylesheets/partials/content_types/_forms.sass */
+  form fieldset legend {
+    padding: 0.2em;
+    font-weight: bold;
+    font-size: 1.5em; }
+  /* line 24, ../../../app/stylesheets/partials/content_types/_forms.sass */
+  form fieldset fieldset {
+    border: solid 1px #000000; }
+  /* line 27, ../../../app/stylesheets/partials/content_types/_forms.sass */
+  form fieldset legend {
+    font-size: 1.3em; }
 
 /* line 2, ../../../app/stylesheets/partials/content_types/_feed.sass */
 #feed .feed_item {
