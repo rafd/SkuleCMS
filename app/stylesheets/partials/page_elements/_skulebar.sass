@@ -1,14 +1,21 @@
 #skulebar 
-	:background= !background_main
-	:width 97%
 	:margin 0 auto 2em
-	+rounded-corners(0 0 2px 2px)
 	:line-height 2em
 	:height 2em
 
 	#skule
 		:float left
-		+background-icon("icons/hardhat.png")
+		:background #fff 5px url(/images/icons/hardhat.png) no-repeat
+		+rounded-corners(0 0 2px 2px)
+		:margin 0 0 0 5%
+		:text-align center
+
+		:text-transform capitalize
+		:font-weight bold
+		:padding 0 0.5em 0 25px
+		&:hover
+			:text-decoration none
+			:color #000
 		
 	a
 		:color= #eee - #444
@@ -56,3 +63,6 @@
 		:display inline-block
 		:width 10px
 		:height 2em
+	
+		
+		
