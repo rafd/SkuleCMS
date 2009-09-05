@@ -1,4 +1,4 @@
--if @club.show_banner?(@controller.controller_name, params[:id])
+-if @controller.controller_name == "clubs" && @controller.action_name == "show"
 	#banner{:style => "background-image: url(\"#{path_to_image('banners/'+@club.web_name)}\")"}
 		-if @club.description && @club.web_name != "engsoc" #remove this conditional
 			#info= @club.description

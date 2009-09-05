@@ -5,11 +5,6 @@ class Download < ActiveRecord::Base
   validates_numericality_of :download_folder_id
   validates_uniqueness_of   :name
 
-  attr_protected :id,
-                :download_folder_id,
-                :created_at,
-                :updated_at
-  
   def self.save(upload)
     if (upload.blank?)
       return ""

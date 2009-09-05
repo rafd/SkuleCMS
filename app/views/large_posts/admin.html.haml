@@ -12,8 +12,8 @@
 			- if (post.class.to_s == "SmallPost")
 				%td Quick Update
 			- else
-				%td= link_to post.title, :action => 'admin', :club_id => @club, :id => post
-			%td= post.content
+				%td= link_to post.title, :action => 'show', :club_id => @club, :id => post
+			%td= post.content[0..10]
 			%td= post.created_at
 			%td= post.updated_at
 			- if (post.class.to_s == "SmallPost")

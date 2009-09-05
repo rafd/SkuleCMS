@@ -6,13 +6,7 @@ class Image < ActiveRecord::Base
   
   validates_presence_of     :name, :album_id, :user_id, :url
   validates_numericality_of :user_id, :album_id
-
-  attr_protected :id,
-                :album_id,
-                :user_id,
-                :created_at,
-                :updated_at
-
+    
   def search
 
   end

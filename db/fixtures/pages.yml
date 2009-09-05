@@ -3,7 +3,6 @@ Page0:
   id: 123456
 
 Page1:
-  id: 654320
   title: About Us
   content: We're cool.
   club: WebDev
@@ -12,13 +11,13 @@ Page1:
   order: 1
   
 Page2:
-  id: 654321
   title: History
   content: We used to be cool.
   club: WebDev
   parent_id: 123456
   bns_parent_id: 123456
   order: 2
+  id: 654321
     
 Page3:
   title: Constitution

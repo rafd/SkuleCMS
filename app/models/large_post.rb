@@ -1,13 +1,9 @@
 class LargePost < ActiveRecord::Base
   
-  belongs_to      :club
-  belongs_to      :user
+    belongs_to      :club
+    belongs_to      :user
   
-  attr_protected :id,
-                :club_id,
-                :user_id,
-                :created_at,
-                :updated_at
+  attr_accessible :title, :content
   
   minLimit = 2.freeze
   maxLimit = 100.freeze

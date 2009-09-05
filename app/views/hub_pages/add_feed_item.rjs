@@ -1,7 +1,0 @@
-
-if (@feed_earliest_time != 0)
-  page.replace :add_feed_item_link, :partial => 'layouts/partials/add_feed_item_link', :locals => {:club => nil, :time => @feed_earliest_time}
-  page.insert_html :bottom, :feed, :partial => "layouts/partials/feed_item", :collection => @feed
-else
-  page.replace :add_feed_item_link, :partial => 'layouts/partials/add_feed_item_stop'
-end
