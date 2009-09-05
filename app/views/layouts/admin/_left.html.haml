@@ -16,5 +16,5 @@
 
 			%dt= link_to "Settings", :controller => "clubs", :action=>"edit", :id => @club
 			%dd= link_to_unless_current "Club Profile", :controller => "clubs", :action=>"edit", :id => @club
-			%dd= link_to_unless_current "Website Display", "#"
+			%dd= link_to_unless_current "Website Tweaks", :controller => "clubs", :action=>"settings", :id => @club
 			

@@ -11,7 +11,7 @@ class Page < ActiveRecord::Base
   validates_uniqueness_of   :title, :case_sensitive => false, :scope => [:club_id]
   validates_numericality_of :order
   
-  attr_protected :club_id, :created_at, :updated_at
+  attr_protected :id, :club_id, :created_at, :updated_at
   after_save :move_to_parent
   
   def move_to_parent
@@ -26,6 +26,10 @@ class Page < ActiveRecord::Base
     end
   end
   
+  def show_banner?
+    return ( Setting.find(:first, :conditions => ['club_id = ? AND option_name = ? AND name = ? AND value = ?', self.club_id, 'Banner', 'pages', self.id.to_s]).blank? ? false : true )
+  end
+
   def order_by_weight
     @sorted = self.children.sort_by{ |i| i[:order] }
     1.upto(@sorted.length-1) do |n|

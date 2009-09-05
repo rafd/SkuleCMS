@@ -11,7 +11,8 @@ class Club < ActiveRecord::Base
   has_many      :pages, :dependent => :destroy
   has_many      :small_posts, :dependent => :destroy
   has_many      :large_posts, :dependent => :destroy
-
+  has_many      :settings, :dependent => :destroy
+  
   validates_uniqueness_of   :name, :case_sensitive => false
   validates_uniqueness_of   :official_name, :case_sensitive => false
   validates_uniqueness_of   :web_name, :case_sensitive => false
@@ -26,25 +27,26 @@ class Club < ActiveRecord::Base
   validates_format_of       :contact, :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i, :allow_blank => true, :message => 'email is invalid.'
   
   attr_protected :id,
-                :groups_ids,
-                :events_ids,
+                :group_ids,
+                :event_ids,
                 :download_folders_ids,
-                :admins_ids,
-                :albums_ids,
-                :pages_ids,
-                :small_posts_ids,
+                :admin_ids,
+                :album_ids,
+                :page_ids,
+                :small_post_ids,
                 :large_post_ids,
+                :setting_ids,
                 :created_at,
                 :updated_at
   
   attr_accessor :logo, :banner
   
-  after_create :create_default_content, :create_member_list, :create_directory
+  after_create :create_default_content, :create_member_list, :create_directory, :create_settings
   before_validation :lowercase_web_name
   before_save   :save_images
   
   def validate
-    errors.add_to_base "Invalid logo image. Image must be less than 100 KB." unless valid_image_size?(logo, 100)
+    errors.add_to_base "Invalid logo image. Image must be less than 50 KB." unless valid_image_size?(logo, 50)
     errors.add_to_base "Invalid banner image. Image must be less than 800 KB." unless valid_image_size?(banner, 800)
     errors.add_to_base "Invalid logo image. Only upload png, jpg, gif, or bmp allowed." unless valid_image_type?(logo)
     errors.add_to_base "Invalid banner image. Only upload png, jpg, gif, or bmp allowed." unless valid_image_type?(banner)
@@ -63,7 +65,7 @@ class Club < ActiveRecord::Base
       return true
     end
     name = upload.original_filename
-    types = ['.png', '.jpg', '.jpeg', '.gif', '.bmp']
+    types = ['.png', '.jpg', '.jpeg', '.gif']
     types.each do |check|
       return true if name.ends_with?(check)
     end
@@ -91,10 +93,10 @@ class Club < ActiveRecord::Base
   end
   
   def create_member_list
-    @group = Group.new
-    @group.club_id = self.id
+    @group = self.groups.new
     @group.name = "Member List"
     @group.misc = "Full member list of the club"
+    @group.order = 1
     @group.save
   end
   
@@ -128,7 +130,11 @@ class Club < ActiveRecord::Base
     #@small.origin = "default?"
     @small.save
   end
-  
+
+  def create_settings
+    self.set_settings(true, 'Banner', 'clubs', 'All')
+  end
+
   def search
   end
   
@@ -173,17 +179,33 @@ class Club < ActiveRecord::Base
   end
   
   
-
- 
-
-  def feed_output(*feeds)
-    feed_out = []
-    feeds.each do |feed|
-      feed_out = feed_out + feed
+  def show_banner?(name, id = nil)
+    if id.blank?
+      @setting = self.settings.find(:first, :conditions => ["option_name = ? AND name = ? AND ( value = ? OR value = ? )", 'Banner', name, 'Index', 'All']) 
+    else
+      @setting = self.settings.find(:first, :conditions => ["option_name = ? AND name = ? AND ( value = ? OR value = ? )", 'Banner', name, id, 'All'])
     end
-    feed_out = feed_out.sort_by{|t| t.created_at}.reverse
-    return feed_out
+    if @setting.blank? 
+      return false
+    else
+      return true
+    end
+  end
 
+  def set_settings(active, option_name, name, value)
+    if (active)
+      if (self.settings.find(:first, :conditions => ["option_name = ? AND name = ? AND value = ?", option_name, name, value]).blank?)
+        @setting = self.settings.new
+        @setting.option_name = option_name
+        @setting.name = name
+        @setting.value = value
+        @setting.save
+      end
+    else
+      @setting = self.settings.find(:first, :conditions => ['option_name = ? AND name = ? AND value = ?', option_name, name, value])
+      if (!@setting.blank?)
+        @setting.destroy
+      end
   end
  
 end
