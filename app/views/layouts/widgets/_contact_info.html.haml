@@ -1,9 +1,9 @@
-- if club.contact || club.address
+- if !(club.contact.blank? && club.address.blank?)
 	.widget.events
 		%h4 Contact Information
 		- unless club.address.blank?
 			%strong Address:
-			=display_multi_line_Wstring(club.address)
+			=display_multi_line_string(club.address)
 		- unless club.contact.blank?
 			%strong Email: 
 			=club.contact

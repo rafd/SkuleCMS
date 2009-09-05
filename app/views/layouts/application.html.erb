@@ -14,8 +14,9 @@
   <%= javascript_include_tag :defaults %>
   <%= javascript_include_tag "text_counter" %>
     <%= javascript_include_tag "event_calendar" %>
+    <link rel="shortcut icon" href="/images/favicons/skule.ico" />
 	
-	<% if (controller.controller_name == 'clubs' && controller.action_name == 'show') %>
+	<% if (controller.controller_name == 'clubs' && controller.action_name == 'show' && @feed[0] != nil) %>
 		<%= auto_discovery_link_tag(:rss, :controller => 'clubs', :action => 'show', :format => :xml) %>
 	<% elsif (controller.controller_name == 'hub_pages' && controller.action_name == 'digest')%>
 		<%= auto_discovery_link_tag(:rss, :controller => 'hub_pages', :action => 'digest', :format => :xml) %>
@@ -45,6 +46,7 @@
 		<%= render :partial => ("layouts/partials/footer") %>
 	</div>
 	<%= render :partial => ("layouts/partials/analytics") %>
-	<%= render :partial => ("layouts/partials/feedback") %>
+	<%= # render :partial => ("layouts/partials/feedback")
+	 %>
 </body>
 </html>

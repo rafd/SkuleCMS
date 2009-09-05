@@ -74,7 +74,6 @@ SkuleBook:
 SkuleNite:
 - engsoc
 - event
-- dance
 
 Sponsorship:
 - engsoc
@@ -168,7 +167,6 @@ EPC:
 - club
 - affiliated
 - arts
-- photo
 
 SSBB:
 - club
@@ -227,7 +225,6 @@ ASX:
 - club
 - affiliated
 - hobby
-- science
 
 SSB:
 - club
@@ -243,8 +240,6 @@ CareerPaths:
 Nsight:
 - club
 - affiliated
-- academics
-- mentorship
 
 UTEC:
 - club
@@ -267,6 +262,7 @@ CinemaBlueRoom:
 NBTC:
 - club
 - affiliated
+- event
 
 LoveofFilm:
 - club
@@ -279,10 +275,13 @@ UTCC:
 CESA:
 - club
 - affiliated
+- cultural
 
 SkuleOrchestra:
 - club
 - affiliated
+- arts
+- music
 
 CUBE:
 - club
@@ -295,6 +294,7 @@ Nanoclub:
 FSAE:
 - club
 - affiliated
+- engdesign
 
 UTEFR: 
 - club
@@ -311,6 +311,7 @@ MA:
 RAI: 
 - club
 - affiliated
+- arts
 
 FIRM: 
 - club
@@ -335,10 +336,12 @@ ClimbingClub:
 UTCA: 
 - club
 - affiliated
+- profdev
 
 MDA: 
 - club
 - affiliated
+- engdesign
 
 TAO:
 - club
@@ -401,23 +404,24 @@ SAF:
 - arts
 - event
 
-Snowboard:
-- club
-- sports
-- engdesign
-
 Toboggan:
 - club
-- sports
+- competitive
 
 iGem:
 - club
+- competitive
 
 UTAG:
 - club
 
+SDT:
+- club
+- engdesign
+
 BrassRing:
 - club
+- music
 
 SkuleChoir:
 - club
@@ -433,7 +437,10 @@ SAF:
 
 CNCCC:
 - club
+- engdesign
+- competitive
 
 IEEE:
 - club
+- profchapter
 

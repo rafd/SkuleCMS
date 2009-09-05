@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090831032300) do
+ActiveRecord::Schema.define(:version => 20090901233739) do
 
   create_table "admin_sessions", :force => true do |t|
     t.datetime "created_at"
@@ -140,6 +140,15 @@ ActiveRecord::Schema.define(:version => 20090831032300) do
     t.integer  "rgt"
     t.integer  "parent_id"
     t.integer  "order"
+  end
+
+  create_table "settings", :force => true do |t|
+    t.integer  "club_id"
+    t.string   "name"
+    t.string   "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "option_name"
   end
 
   create_table "small_posts", :force => true do |t|
