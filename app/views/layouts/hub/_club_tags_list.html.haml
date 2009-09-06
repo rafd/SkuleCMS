@@ -2,6 +2,7 @@
 	%dl
 		%dt Filter by Tags
 		-@tags.each do |tag|
-			%dd
-				= link_to tag, "#", :class => ('taglist LEFT_TAG_' + tag.name)
+			-if tag.taggings_count > 0
+				%dd
+					= link_to tag, "#", :class => ('taglist LEFT_TAG_' + tag.name)
 	

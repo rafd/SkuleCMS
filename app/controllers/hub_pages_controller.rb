@@ -1,5 +1,7 @@
 class HubPagesController < ApplicationController
-	def index
+  caches_page :index, :services
+  
+  def index
 		@page_banner = true
 		@site_section = "hub"
 	end
@@ -43,5 +45,4 @@ class HubPagesController < ApplicationController
 		@clubs = Club.find(:all, :conditions => ["live=?",true], :include => :tags, :order => "name ASC")   
 		@tags = Club.find_related_tags("engsoc")
     end
-
 end

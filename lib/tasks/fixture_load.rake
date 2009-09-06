@@ -7,11 +7,11 @@ namespace :db do
     end
     
     #Post-processing of data
-    Page.rebuild_tree
-    Group.rebuild_tree
-    Membership.rebuild_memberships
+#    Page.rebuild_tree
+#    Group.rebuild_tree
+#    Membership.rebuild_memberships
     Tag.find(:all).each do |tag|
-      tag.taggings_count = 0
+      tag.taggings_count = tag.taggings.count
       tag.save
     end 
   end

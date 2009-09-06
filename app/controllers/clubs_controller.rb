@@ -4,7 +4,9 @@ class ClubsController < ApplicationController
   before_filter :auth_admin, :only => [:edit, :update, :settings, :update_settings]
   before_filter :auth_new_club, :only => [:new, :create]
   before_filter :auth_super_admin_only, :only => [:admin, :destroy, :edit_tags, :update_tags]
-  
+
+  caches :index
+
   # GET /clubs
   # GET /clubs.xml
   def index

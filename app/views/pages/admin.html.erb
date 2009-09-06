@@ -10,7 +10,7 @@
 <% @pages.each do |page| %>
   <tr>
     <td><%= page.indented_title %></td>
-    <td><%= page.content %></td>
+    <td><%= page.content[0..20] %></td>
 		<td><%= page.order %></td>
     <td><%= link_to 'Show', admin_club_page_path(@club, page) %></td>
     <td><%= link_to 'Edit', edit_club_page_path(@club, page) %></td>
@@ -21,5 +21,4 @@
 
 <br />
 
-<%= link_to 'New pages', new_club_page_path(@club) %> |
-<%= link_to 'Back', club_admin_index_path(@club) %>
+<%= link_to 'New Page', new_club_page_path(@club) %>

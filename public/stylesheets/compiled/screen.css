@@ -470,22 +470,23 @@ a {
 /* line 3, ../../../app/stylesheets/partials/page_elements/_header.sass */
 #header h1 {
   float: left;
-  width: 40%;
+  width: 50%;
+  overflow: hidden;
   line-height: 50px;
   margin: 0;
   position: relative; }
-  /* line 10, ../../../app/stylesheets/partials/page_elements/_header.sass */
+  /* line 11, ../../../app/stylesheets/partials/page_elements/_header.sass */
   #header h1 a {
     color: #222222;
     float: left; }
-    /* line 13, ../../../app/stylesheets/partials/page_elements/_header.sass */
+    /* line 14, ../../../app/stylesheets/partials/page_elements/_header.sass */
     #header h1 a:hover {
       text-decoration: none; }
-  /* line 16, ../../../app/stylesheets/partials/page_elements/_header.sass */
+  /* line 17, ../../../app/stylesheets/partials/page_elements/_header.sass */
   #header h1 .avatar {
     float: left;
     margin: 0 0.25em 0 -10px; }
-  /* line 20, ../../../app/stylesheets/partials/page_elements/_header.sass */
+  /* line 21, ../../../app/stylesheets/partials/page_elements/_header.sass */
   #header h1 .alpha {
     background: red;
     -moz-border-radius: 0 5px 0 5px;
@@ -498,13 +499,13 @@ a {
     height: 1.5em;
     line-height: 1.5em;
     float: left; }
-/* line 31, ../../../app/stylesheets/partials/page_elements/_header.sass */
+/* line 32, ../../../app/stylesheets/partials/page_elements/_header.sass */
 #header #top {
   background: white;
   position: relative;
   height: 50px;
   padding: 10px 0; }
-  /* line 37, ../../../app/stylesheets/partials/page_elements/_header.sass */
+  /* line 38, ../../../app/stylesheets/partials/page_elements/_header.sass */
   #header #top #menu {
     margin: 0;
     padding: 0;
@@ -536,7 +537,7 @@ a {
       /* line 42, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.14/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal_list.sass */
       #header #top #menu li.last {
         padding-right: 0px; }
-    /* line 46, ../../../app/stylesheets/partials/page_elements/_header.sass */
+    /* line 47, ../../../app/stylesheets/partials/page_elements/_header.sass */
     #header #top #menu li {
       margin: 0 0.25em;
       padding: 0 0.5em;
@@ -546,7 +547,7 @@ a {
       font-weight: bold;
       color: white;
       line-height: 1.5em; }
-      /* line 55, ../../../app/stylesheets/partials/page_elements/_header.sass */
+      /* line 56, ../../../app/stylesheets/partials/page_elements/_header.sass */
       #header #top #menu li a {
         background: white;
         font-weight: normal;
@@ -554,16 +555,16 @@ a {
         margin: -0.25em -0.5em;
         padding: 0.05em 0.51em;
         color: #000; }
-        /* line 62, ../../../app/stylesheets/partials/page_elements/_header.sass */
+        /* line 63, ../../../app/stylesheets/partials/page_elements/_header.sass */
         #header #top #menu li a.active {
           -moz-border-radius: 0 5px 0 5px;
           -webkit-border-radius: 0 5px 0 5px; }
-/* line 66, ../../../app/stylesheets/partials/page_elements/_header.sass */
+/* line 67, ../../../app/stylesheets/partials/page_elements/_header.sass */
 #header #banner {
   background: url('/images/banners/skule.png') #222222 center center;
   margin: 0 0 0 -10px;
   padding-right: 20px; }
-  /* line 72, ../../../app/stylesheets/partials/page_elements/_header.sass */
+  /* line 73, ../../../app/stylesheets/partials/page_elements/_header.sass */
   #header #banner #info {
     background: white;
     margin: 2em 0;
