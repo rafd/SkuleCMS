@@ -13,10 +13,7 @@
         %h4 Clubs Tagged with #{tag}: 
         -find_clubs_tagged_with(tag).each do |club|
           = render :partial => 'layouts/partials/club_box', :locals => {:club => club}
-      %br
-      %br
-      %br
-      %br
+      %br{:clear=>:both}
       -if !@albums.blank? || !@myAlbums.blank?
         %br
 

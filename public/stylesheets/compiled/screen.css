@@ -843,7 +843,41 @@ body.events h2 {
 #quick_update {
   overflow: hidden; }
 
-/* line 9, ../../../app/stylesheets/partials/site_sections/_backend.sass */
+/* line 4, ../../../app/stylesheets/partials/site_sections/_backend.sass */
+.left_box {
+  width: 7px;
+  height: 32px;
+  background-image: url('/images/tagbox.left.png');
+  clear: left;
+  float: left; }
+
+/* line 11, ../../../app/stylesheets/partials/site_sections/_backend.sass */
+.right_box {
+  width: 7px;
+  height: 32px;
+  background-image: url('/images/tagbox.right.png');
+  float: left; }
+
+/* line 18, ../../../app/stylesheets/partials/site_sections/_backend.sass */
+.selected .tagbox {
+  background-image: url('/images/tagbox.2.png'); }
+/* line 20, ../../../app/stylesheets/partials/site_sections/_backend.sass */
+.selected .left_box {
+  background-image: url('/images/tagbox.2.left.png'); }
+/* line 22, ../../../app/stylesheets/partials/site_sections/_backend.sass */
+.selected .right_box {
+  background-image: url('/images/tagbox.2.right.png'); }
+
+/* line 25, ../../../app/stylesheets/partials/site_sections/_backend.sass */
+.tagbox {
+  width: 100px;
+  height: 32px;
+  padding: 0 5px 0 0;
+  background-image: url('/images/tagbox.png');
+  display: block;
+  float: left; }
+
+/* line 38, ../../../app/stylesheets/partials/site_sections/_backend.sass */
 body.admin_pages #left dl dt,
 body.edit #left dl dt,
 body.admin #left dl dt {

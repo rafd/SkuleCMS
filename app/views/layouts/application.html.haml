@@ -1,0 +1,40 @@
+!!!
+
+%html{:xmlns=>"http://www.w3.org/1999/xhtml", "xml:lang"=>"en", :lang=>"en"}
+	%head
+		%meta{"http-equiv"=>"content-type", :content=>"text/html;charset=UTF-8"}
+		%title= render :partial => 'layouts/partials/title'
+		/
+			Like what you see? Want to get invovled? 
+			You should join the Skule WebDev Club!
+			Email webmaster@skule.ca for more info.
+		= stylesheet_link_tag 'compiled/screen.css'
+		= stylesheet_link_tag 'event_calendar'
+		= javascript_include_tag :defaults
+		= javascript_include_tag "text_counter"
+		= javascript_include_tag "event_calendar"
+	
+		- if currentpage([ 'clubs', 'show'])
+			= auto_discovery_link_tag(:rss, :controller => 'clubs', :action => 'show', :format => :xml)
+		- elsif currentpage([ 'clubs', 'index'])
+			= javascript_include_tag "club_index"
+		- elsif currentpage([ 'clubs', 'edit_tags'])
+			= javascript_include_tag "tag_interface"
+		- elsif currentpage([ 'hub_pages', 'digest'])
+			= auto_discovery_link_tag(:rss, :controller => 'hub_pages', :action => 'digest', :format => :xml)
+	%body{:class => "#{controller.controller_name} #{controller.action_name}"}
+		= render :partial => ("layouts/partials/skulebar"), :locals => { :club_id => @club }
+		#container
+			#header
+				#top
+					= render :partial => ("layouts/" + @site_section + "/heading")
+					= render :partial => ("layouts/" + @site_section + "/menu")
+				= render :partial => ("layouts/" + @site_section + "/banner")
+			= render :partial => ("layouts/" + @site_section + "/left")
+			#main
+				#content
+					= render :partial => ("layouts/partials/ie6nomore")
+					= yield
+				= render :partial => ("layouts/" + @site_section + "/sidebar")
+	
+			= render :partial => ("layouts/partials/footer")
