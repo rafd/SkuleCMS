@@ -21,7 +21,7 @@ class Group < ActiveRecord::Base
   after_save :move_to_parent
   
   def check_parent_id
-    if self.parent_id.blank?
+    if self.parent_id.blank? && !self.is_member_list?
       self.parent_id = self.club.member_list.id
     end
   end
