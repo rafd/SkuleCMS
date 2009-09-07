@@ -6,7 +6,7 @@ class ClubsController < ApplicationController
   before_filter :auth_super_admin_only, :only => [:admin, :destroy, :edit_tags, :update_tags]
 
   caches_page :index
-
+  cache_sweeper :club_sweeper
 
   # GET /clubs
   # GET /clubs.xml

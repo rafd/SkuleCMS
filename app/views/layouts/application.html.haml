@@ -9,9 +9,9 @@
 			You should join the Skule WebDev Club!
 			Email webmaster@skule.ca for more info.
 		= stylesheet_link_tag 'compiled/screen.css'
-		= stylesheet_link_tag 'event_calendar'
 		= javascript_include_tag :defaults
 		= javascript_include_tag "text_counter"
+		= javascript_include_tag "event_calendar"
 	
 		- if currentpage([ 'clubs', 'show'])
 			= auto_discovery_link_tag(:rss, :controller => 'clubs', :action => 'show', :format => :xml)
