@@ -5,6 +5,10 @@ class ClubsController < ApplicationController
   before_filter :auth_new_club, :only => [:new, :create]
   before_filter :auth_super_admin_only, :only => [:admin, :destroy, :edit_tags, :update_tags]
   
+#				= check_box_tag "#{tag.name}", {},{}, {:class => 'chk chl'}
+
+
+
   # GET /clubs
   # GET /clubs.xml
   def index
@@ -27,6 +31,7 @@ class ClubsController < ApplicationController
 	club.update_attribute("live", true)
 	render :text => "Live!"
   end
+  
   
   def admin
     @page_title = "Administrate Clubs"
@@ -72,8 +77,6 @@ class ClubsController < ApplicationController
     else
       @feed_earliest_time = 0
     end
-    
-    
   end
 
   # GET /clubs/new
@@ -155,26 +158,22 @@ class ClubsController < ApplicationController
   
   
   def edit_tags
-    @club = Club.find(params[:club_id], :include => :tags)
     @page_title = "Editing "+@club.name+"'s Tags"
     @site_section = "su_admin"
+    @club = Club.find(params[:club_id], :include => :tags)
+	@tags = Club.find_related_tags("club")
   end
 
   def update_tags
     @club = Club.find(params[:club_id], :include => :tags)
-
-    respond_to do |format|
-      if @club.update_attribute("tag_list", params[:club][:tag_list])
-        flash[:notice] = "Club's tags was successfully updated."
-        format.html { redirect_to(club_admin_index_path(@club)) }
-        format.xml  { head :ok }
-      else
-        @page_title = "Editing "+@club.name+"'s Tags"
-        @site_section = "su_admin"
-        format.html { render :action => "edit_tags" }
-        format.xml  { render :xml => @club.errors, :status => :unprocessable_entity }
-      end
-    end
+	if !params[:selected].blank?
+		@club.tag_list += ' ' + params[:selected]
+	elsif !params[:unselected].blank?
+		@club.tag_list = @club.tag_list.sub(params[:unselected], '')
+	end
+    @club.update_attribute("tag_list", @club.tag_list)
+	redirect_to login_path
+	#this shouldn't be needed, but POST get a 500 server error if this line is left out - there's no update_tags haml
   end
 
 

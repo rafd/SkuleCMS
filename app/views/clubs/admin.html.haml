@@ -7,7 +7,7 @@
 	
 	- @live_clubs.each do |club|
 		%tr
-			%td=h club.name 
+			%td=link_to club.name , club
 			%td
 				= link_to 'Events', club_events_path(club)
 				|
@@ -17,9 +17,7 @@
 				|
 				= link_to 'Groups', club_groups_path(club)
 				|
-				= link_to 'Show', club 
-				|
-				= link_to 'Edit', edit_club_path(club)
+				= link_to 'Edit Tags', club_edit_tags_path(club)
 				|
 				= link_to 'Destroy', club, :confirm => 'Are you sure?', :method => :delete
 
