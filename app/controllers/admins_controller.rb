@@ -15,7 +15,7 @@ class AdminsController < ApplicationController
   # GET /admins/new.xml
   def new
     @admin = Admin.new
-    @clubs = Club.all
+    @clubs = Club.find(:all, :order => "name ASC")
     
     @page_title = "Admins : New"
     @site_section = "su_admin"

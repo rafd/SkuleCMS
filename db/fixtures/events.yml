@@ -5,7 +5,7 @@ Event1:
   location: BA1234
   description: Big crazy meeting.
   club: WebDev
-  created_at: <%= 2.minutes.ago %>
+  created_at: <%= 2.minutes.ago.utc.to_s(:db) %>
 
 Event2:
   name: Possible SkuleClubs Launch Dates
@@ -14,6 +14,7 @@ Event2:
   location: World Wide Web (Turn right at 404)
   description: Launching the SkuleClubs for public use.
   club: WebDev
+  created_at: <%= 4.minutes.ago.utc.to_s(:db) %>
   
 Event3:
   name: Date Check
@@ -22,15 +23,17 @@ Event3:
   location: Date Check
   description: Date Check
   club: WebDev
+  created_at: <%= 6.minutes.ago.utc.to_s(:db) %>
   
 Frosh1:
   name: Arrival
   start: '2009-09-05 08:00:00'
   finish: '2009-09-05 09:00:00'
   location: Convocation Hall
-  description: Sign in at Convocation Hall and pick up your F!rosh kit ... and be sure to protect your hard hat from the Art Scie's!!
+  description: Sign in at Convocation Hall and pick up your F!rosh kit ... and be sure to protect your hard hat from the ArtScies!!
   link: http://orientation.skule.ca/
   club: FroshWeek
+  created_at: <%= 8.minutes.ago.utc.to_s(:db) %>
   
 Frosh2:
   name: Matriculation
@@ -40,6 +43,7 @@ Frosh2:
   description: Learn about F!rosh week, Engineering and U of T in general. Even take an oath to officially become a U of T engineering Skulemate
   link: http://orientation.skule.ca/
   club: FroshWeek
+  created_at: <%= 10.minutes.ago.utc.to_s(:db) %>
   
 Frosh3:
   name: Campus Tours + BBQ + Dye Station
@@ -49,6 +53,7 @@ Frosh3:
   description: Follow the leedurs and explore OUR campus! Show your engineering spirit and get dyed purple at the Dye Station ... and don’t forget pick up some lunch too!
   link: http://orientation.skule.ca/
   club: FroshWeek
+  created_at: <%= 12.minutes.ago.utc.to_s(:db) %>
   
 Frosh4:
   name: F!rosh Picture
@@ -58,6 +63,7 @@ Frosh4:
   description: Take a secret group picture with your favorite Leedurs! You won’t know what it is till you pick up your free Skule (year) Book included in the price of your frosh kit.
   link: http://orientation.skule.ca/
   club: FroshWeek
+  created_at: <%= 14.minutes.ago.utc.to_s(:db) %>
   
 Frosh5:
   name: Downtown Walkaround
@@ -67,6 +73,7 @@ Frosh5:
   description: Grasp a look around the city, show our spirit! Follow over 1100 Leedurs and other F!rosh, march through Toronto downtown as we yell out our cheers, PROUD and LOUD!!
   link: http://orientation.skule.ca/
   club: FroshWeek
+  created_at: <%= 16.minutes.ago.utc.to_s(:db) %>
   
 Frosh6:
   name: Dinner
@@ -76,6 +83,7 @@ Frosh6:
   description: Eat Food!
   link: http://orientation.skule.ca/
   club: FroshWeek
+  created_at: <%= 18.minutes.ago.utc.to_s(:db) %>
   
 Frosh7:
   name: Tutorial
@@ -85,6 +93,7 @@ Frosh7:
   description: Not exactly as fun as the other events but still a good event to go to in order to get the heads up for the test tomorrow.
   link: http://orientation.skule.ca/
   club: FroshWeek
+  created_at: <%= 20.minutes.ago.utc.to_s(:db) %>
   
 Frosh8:
   name: Blue & Gold Movie Night
@@ -94,6 +103,7 @@ Frosh8:
   description: Lay back and relax, watch what will surely be a great movie with your friends and enjoy some tasty snacks!
   link: http://orientation.skule.ca/
   club: FroshWeek
+  created_at: <%= 22.minutes.ago.utc.to_s(:db) %>
   
 Frosh9:
   name: Secondary Education Evaluation
@@ -103,7 +113,7 @@ Frosh9:
   description: Be prepared to solve some intense problems! Yes this is a real test but don't worry it won't affect your grades.
   link: http://orientation.skule.ca/
   club: FroshWeek
-  
+  created_at: <%= 24.minutes.ago.utc.to_s(:db) %>
 Frosh10:
   name: Engineering Clubs Day
   start: '2009-09-06 11:00:00'
@@ -112,6 +122,7 @@ Frosh10:
   description: Grasp a look at an assortment of high tech and interesting undergrad Engineering Clubs which you can get involved in. We have numerous clubs to cover a diverse range of interests! Also bring an empty stomach and enjoy a yummy lunch!
   link: http://orientation.skule.ca/
   club: FroshWeek
+  created_at: <%= 26.minutes.ago.utc.to_s(:db) %>
   
 Frosh11:
   name: Lunch
@@ -121,6 +132,7 @@ Frosh11:
   description: Eat More Food!
   link: http://orientation.skule.ca/
   club: FroshWeek
+  created_at: <%= 28.minutes.ago.utc.to_s(:db) %>
   
 Frosh12:
   name: Charity Buskerfest
@@ -130,6 +142,7 @@ Frosh12:
   description: Take to the streets of Toronto and do some good! F!rosh groups will be singing, dancing, hoola-hooping, and playing instruments to help raise money for the Starlight Starbright Children’s Foundation. Bring your team to victory, and an iPod Shuffle may be yours!
   link: http://orientation.skule.ca/
   club: FroshWeek
+  created_at: <%= 30.minutes.ago.utc.to_s(:db) %>
   
 Frosh12:
   name: Casey ST Jones Comedy/Hypnosis Show
@@ -139,6 +152,7 @@ Frosh12:
   description: Watch your fellow F!rosh and Leedurs, get hypnotized and do hilarious things! Given by a professional who has traveled all over the world performing it’s a comedy show with the twist of getting hysterical reactions using Casey’s hypnotic suggestions.
   link: http://orientation.skule.ca/
   club: FroshWeek
+  created_at: <%= 32.minutes.ago.utc.to_s(:db) %>
   
 Frosh13:
   name: Dinner
@@ -148,6 +162,7 @@ Frosh13:
   description: Eat Food!
   link: http://orientation.skule.ca/
   club: FroshWeek
+  created_at: <%= 2.years.ago.utc.to_s(:db) %>
   
 Frosh14:
   name: Bananas! Suds
@@ -157,3 +172,4 @@ Frosh14:
   description: Officially the first SUDS of the year, we open at 4pm. Come to the basement of Sandford Fleming after the long day to relax - until everything goes Bananas! The Banana Split competition starts (~7:30pm). Get your name in the Banana-Eating Hall-of-fame. Compete for Prestige! Glory! Prizes! Or just come along to watch your fellow classmates stuff bananas in their faces.
   link: http://orientation.skule.ca/
   club: FroshWeek
+  created_at: <%= 1.year.ago.utc.to_s(:db) %>

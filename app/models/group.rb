@@ -10,15 +10,21 @@ class Group < ActiveRecord::Base
   validates_uniqueness_of   :name, :case_sensitive => false, :scope => [:club_id]
   validates_numericality_of :order
 
-  attr_protected :id, :club_id, :created_at, :updated_at, :memberships_ids, :users_ids
+  attr_protected :id, :club_id, :created_at, :updated_at, :membership_ids, :user_ids
 
   acts_as_nested_set  :parent_column => "bns_parent_id",
                       :left_column => "lft",
                       :right_column => "rgt",
                       :text_coloumn => "name"
-                      
+  
+  before_save :check_parent_id
   after_save :move_to_parent
   
+  def check_parent_id
+    if self.parent_id.blank?
+      self.parent_id = self.club.member_list.id
+    end
+  end
   
   def new_page
     @new_page
@@ -34,6 +40,7 @@ class Group < ActiveRecord::Base
         self.move_to_child_of(self.club.groups.find(self.parent_id))
       else
         self.parent_id = self.club.member_list.id
+        puts self.club.member_list.id
         self.move_to_child_of(self.club.member_list)
       end
       self.parent.order_by_weight
@@ -49,6 +56,10 @@ class Group < ActiveRecord::Base
   
   #This is for fixture loading. Don't use unless necessary.
   def self.rebuild_tree
+    @clubs = Club.all
+    @clubs.each do |club|
+      club.member_list
+    end
     renumber_all
     Group.all.each do |group|
       group.order_by_weight

@@ -12,7 +12,7 @@
 		= f.text_area :content, :onKeyDown => "textCounter(this,this.form.remLen,200);", :onKeyUp => "textCounter(this,this.form.remLen,200);", :rows => 3, :cols => 67, :id => "quick_update"
 	
 	Characters Left:
-	%input{"readonly", :style=>"border: 0", :type=>"text", :name=>"remLen", :size=>3, :maxlength=>3, :value=>"200"}
+	%input{:readonly => true, :style=>"border: 0", :type=>"text", :name=>"remLen", :size=>3, :maxlength=>3, :value=>"200"}
 
 	%p
 		= f.submit 'Create'

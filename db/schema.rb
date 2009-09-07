@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090820175732) do
+ActiveRecord::Schema.define(:version => 20090901233739) do
 
   create_table "admin_sessions", :force => true do |t|
     t.datetime "created_at"
@@ -46,7 +46,6 @@ ActiveRecord::Schema.define(:version => 20090820175732) do
 
   create_table "clubs", :force => true do |t|
     t.string   "name"
-    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "tagline"
@@ -57,6 +56,7 @@ ActiveRecord::Schema.define(:version => 20090820175732) do
     t.string   "web_name"
     t.boolean  "live"
     t.string   "address"
+    t.text     "description"
   end
 
   create_table "download_folders", :force => true do |t|
@@ -83,11 +83,11 @@ ActiveRecord::Schema.define(:version => 20090820175732) do
     t.datetime "start"
     t.datetime "finish"
     t.string   "location"
-    t.string   "description"
     t.string   "link"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
+    t.text     "description"
   end
 
   create_table "groups", :force => true do |t|
@@ -140,6 +140,15 @@ ActiveRecord::Schema.define(:version => 20090820175732) do
     t.integer  "rgt"
     t.integer  "parent_id"
     t.integer  "order"
+  end
+
+  create_table "settings", :force => true do |t|
+    t.integer  "club_id"
+    t.string   "name"
+    t.string   "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "option_name"
   end
 
   create_table "small_posts", :force => true do |t|

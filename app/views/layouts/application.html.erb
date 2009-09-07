@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title><%= render :partial => 'layouts/partials/title' %></title>
+  <!-- Like what you see? Want to get invovled? 
+  	You should join the Skule WebDev Club!
+  	Email webmaster@skule.ca for more info.
+  -->
+  <%= stylesheet_link_tag 'compiled/screen.css' %>
+    <%= stylesheet_link_tag 'event_calendar' %>
+  <%= javascript_include_tag :defaults %>
+  <%= javascript_include_tag "text_counter" %>
+    <%= javascript_include_tag "event_calendar" %>
+    <link rel="shortcut icon" href="/images/favicons/skule.ico" />
+	
+	<% if (controller.controller_name == 'clubs' && controller.action_name == 'show' && @feed[0] != nil) %>
+		<%= auto_discovery_link_tag(:rss, :controller => 'clubs', :action => 'show', :format => :xml) %>
+	<% elsif (controller.controller_name == 'hub_pages' && controller.action_name == 'digest')%>
+		<%= auto_discovery_link_tag(:rss, :controller => 'hub_pages', :action => 'digest', :format => :xml) %>
+	<% end %>
+</head>
+<body class="<%= controller.controller_name + ' ' + controller.action_name %>">
+
+	<%= render :partial => ("layouts/partials/skulebar"), :locals => { :club_id => @club } %>
+	<div id="container">
+		<div id="header">
+			<div id="top">
+				<%= render :partial => ("layouts/" + @site_section + "/heading") %>
+				<%= render :partial => ("layouts/" + @site_section + "/menu") %>
+			</div>
+			<%= render :partial => ("layouts/" + @site_section + "/banner") %>
+		</div>
+		<%= render :partial => ("layouts/" + @site_section + "/left") %>
+		<div id="main">
+			<div id="content">
+				<%= render :partial => ("layouts/partials/ie6nomore") %>
+				<%= yield %>
+			</div>
+
+			<%= render :partial => ("layouts/" + @site_section + "/sidebar") %>
+		</div>
+	
+		<%= render :partial => ("layouts/partials/footer") %>
+	</div>
+	<%= render :partial => ("layouts/partials/analytics") %>
+	<%= # render :partial => ("layouts/partials/feedback")
+	 %>
+</body>
+</html>

@@ -83,7 +83,7 @@ module ActiveRecord
 AND #{Tagging.table_name}.taggable_id IN (#{related_ids})
 AND #{Tagging.table_name}.tag_id = #{Tag.table_name}.id",
             :order => options[:order] || "count DESC, #{Tag.table_name}.name",
-            :group => "#{Tag.table_name}.id, #{Tag.table_name}.name HAVING #{Tag.table_name}.name NOT IN (#{parsed_tags.map { |n| quote_value(n) }.join(",")})"
+            :group => "#{Tag.table_name}.id, #{Tag.table_name}.name, #{Tag.table_name}.taggings_count HAVING #{Tag.table_name}.name NOT IN (#{parsed_tags.map { |n| quote_value(n) }.join(",")})"
           }))
         end
       end
