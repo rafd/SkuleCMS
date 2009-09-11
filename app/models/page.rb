@@ -16,7 +16,7 @@ class Page < ActiveRecord::Base
   after_save :move_to_parent
   
   def check_parent_id
-    if self.parent_id.blank?
+    if self.parent_id.blank? && !self.title.blank?
       self.parent_id = self.club.root_page.id
     end
   end

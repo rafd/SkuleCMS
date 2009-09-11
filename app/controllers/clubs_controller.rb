@@ -6,6 +6,7 @@ class ClubsController < ApplicationController
   before_filter :auth_super_admin_only, :only => [:admin, :destroy, :edit_tags, :update_tags]
 
   caches_page :index
+  cache_sweeper :club_sweeper
 
   # GET /clubs
   # GET /clubs.xml
@@ -29,6 +30,7 @@ class ClubsController < ApplicationController
 	club.update_attribute("live", true)
 	render :text => "Live!"
   end
+  
   
   def admin
     @page_title = "Administrate Clubs"
@@ -61,7 +63,7 @@ class ClubsController < ApplicationController
 
   def add_feed_item
     @club = Club.find(params[:id])
-   
+
     @feed = feed_output([@club.small_posts, @club.large_posts, @club.events], feed_add_length, :all, { :conditions => ["created_at < ?", params[:time]], :order => "created_at DESC", :limit => feed_add_length})
     @feed_earliest_time = feed_earliest_time(@feed)   
   end
@@ -145,26 +147,22 @@ class ClubsController < ApplicationController
   
   
   def edit_tags
-    @club = Club.find(params[:club_id], :include => :tags)
     @page_title = "Editing "+@club.name+"'s Tags"
     @site_section = "su_admin"
+    @club = Club.find(params[:club_id], :include => :tags)
+	@tags = Club.find_related_tags("club")
   end
 
   def update_tags
     @club = Club.find(params[:club_id], :include => :tags)
-
-    respond_to do |format|
-      if @club.update_attribute("tag_list", params[:club][:tag_list])
-        flash[:notice] = "Club's tags was successfully updated."
-        format.html { redirect_to(club_admin_index_path(@club)) }
-        format.xml  { head :ok }
-      else
-        @page_title = "Editing "+@club.name+"'s Tags"
-        @site_section = "su_admin"
-        format.html { render :action => "edit_tags" }
-        format.xml  { render :xml => @club.errors, :status => :unprocessable_entity }
-      end
-    end
+	if !params[:selected].blank?
+		@club.tag_list += ' ' + params[:selected]
+	elsif !params[:unselected].blank?
+		@club.tag_list = @club.tag_list.sub(params[:unselected], '')
+	end
+    @club.update_attribute("tag_list", @club.tag_list)
+	redirect_to login_path
+	#this shouldn't be needed, but POST get a 500 server error if this line is left out - there's no update_tags haml
   end
 
   def settings

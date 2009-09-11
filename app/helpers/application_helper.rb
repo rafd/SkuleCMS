@@ -3,6 +3,14 @@
 #require "openssl"
 
 module ApplicationHelper
+  def currentpage(*args)
+	arg1 = args[0][0]
+	arg2 = args[0][1]
+	if args.size == 1
+		return ((controller.controller_name==arg1) && (controller.action_name==arg2))
+	end
+	return ((controller.controller_name==arg1) && (controller.action_name==arg2)) || currentpage(args - [[args[0]],[args[1]]])
+  end
   
   def abbrev(string, maxlength)
   	if string.length > maxlength

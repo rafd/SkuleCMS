@@ -1,11 +1,29 @@
 %h2 Editing #{@club.name}'s Tags
 
 - form_for( @club, :url => { :action => :update_tags, :method => :put }) do |f|
-	= f.error_messages
+	%p#no_js
+		= f.text_field :tag_list
+		= f.label :tags, 'Tags'
 
 	%p
-		= f.label :tags, 'Labels'
-		%span Tags used to classify your club in the club directory.
-		= f.text_field :tag_list
+		- @tags.each do |tag|
+			- if (@club.tags.include?(tag))
+				%div{:id=>"#{tag.name}", :class=>'tags selected'}
+					.left_box
+					.tagbox
+						= f.label @club, "#{tag.name}", :style => "display: inline;"
+						= f.label @club, "#{tag.taggings_count}", :style => "display: inline;"
+					.right_box
+				%br
+			- else
+				%div{:id=>"#{tag.name}", :class=>'tags'}
+					.left_box
+					.tagbox
+						= f.label @club, "#{tag.name}", :style => "display: inline;"
+						= f.label @club, "#{tag.taggings_count}", :style => "display: inline;"
+					.right_box
+				%br
+				
+	
 
 	= f.submit 'Update Tags'

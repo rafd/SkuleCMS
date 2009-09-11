@@ -12,7 +12,7 @@
 	=h @event.description 
 
 
--unless !@event.link.blank? 
+-unless @event.link.blank? 
 	%p
 		Link:
 		= link_to @event.url, @event.url 
