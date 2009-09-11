@@ -99,14 +99,14 @@ VPAcademic:
   web_name: academic
   official_name: 
   website: http://academic.skule.ca/
-  live: false 
+  live: true 
 
 VPFinance:
   name: VP Finance
   web_name: finance
   official_name: 
   website: http://finance.skule.ca/
-  live: false 
+  live: true 
 
 VPExternal:
   name: VP External
