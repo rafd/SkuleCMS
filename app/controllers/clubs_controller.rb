@@ -155,6 +155,8 @@ class ClubsController < ApplicationController
 
   def update_tags
     @club = Club.find(params[:club_id], :include => :tags)
+    expire_page(:controller => 'clubs', :action => 'index')
+    expire_page(:controller => 'hub', :action => 'services')
 	if !params[:selected].blank?
 		@club.tag_list += ' ' + params[:selected]
 	elsif !params[:unselected].blank?

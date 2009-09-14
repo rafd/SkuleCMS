@@ -11,6 +11,6 @@ class ClubSweeper < ActionController::Caching::Sweeper
   
   def expire_cache(club)
     expire_page(:controller => 'clubs', :action => 'index')
-    expire_page(:controller => 'hub', :action => 'services')
+    expire_page(:controller => 'hub_pages', :action => 'services')
   end
 end
