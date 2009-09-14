@@ -15,7 +15,7 @@
 	
 		- if currentpage([ 'clubs', 'show'])
 			= auto_discovery_link_tag(:rss, :controller => 'clubs', :action => 'show', :format => :xml)
-		- elsif currentpage([ 'clubs', 'index'])
+		- elsif currentpage([ 'clubs', 'index']) || currentpage('hub_pages', 'services'])
 			= javascript_include_tag "club_index"
 		- elsif currentpage([ 'clubs', 'edit_tags'])
 			= javascript_include_tag "tag_interface"
