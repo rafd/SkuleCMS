@@ -27,7 +27,10 @@ class HubPagesController < ApplicationController
     @feed_earliest_time = feed_earliest_time(@feed)
   end
 
-	#see calendar/index
+  def calendar
+  	@page_title = "Calendar"
+  	@site_section = "hub"
+  end
 
 	#see clubs/index
 

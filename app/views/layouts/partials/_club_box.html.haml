@@ -11,7 +11,7 @@
 	%ul
 		- club.tags.each do |tag|
 			-unless ignore.include?(tag.name)
-				%li= link_to tag, "#"
+				%li= tag
 		
 	- club.tags.each do |tag| 
 		-if tag.name == "affiliated"
