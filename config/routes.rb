@@ -53,13 +53,6 @@ ActionController::Routing::Routes.draw do |map|
                     
   end 
 
-  map.calendar "/calendar/:year/:month",
-           :controller => "calendar",
-           :action => "index",
-           :year => Time.now.year,
-           :month => Time.now.month
-
-
   map.resources :admins,
               :collection => { :change_password => :get, :update_password => :post}
 
