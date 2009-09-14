@@ -118,7 +118,7 @@ module SymetrieCom
         if block_given?
           tree.map{|item| [yield(item), item.id] }
         else  
-          tree.map{|item| [ "#{'··' * item.level}#{item[text_column]}", item.id]}
+          tree.map{|item| [ "#{'--' * item.level}#{item[text_column]}", item.id]}
         end
       end  
     end
