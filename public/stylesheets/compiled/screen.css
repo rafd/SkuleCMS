@@ -473,7 +473,7 @@ a {
   width: 50%;
   overflow: hidden;
   line-height: 50px;
-  margin: 0 0 0 -10px;
+  margin: 0 0 0 10px;
   position: relative; }
   /* line 11, ../../../app/stylesheets/partials/page_elements/_header.sass */
   #header h1 a {
@@ -912,7 +912,7 @@ body.hub_pages #header .avatar, body.clubs.index #header .avatar {
   background-color: #fff;
   -moz-border-radius: 0 0 0 0;
   -webkit-border-radius: 0 0 0 0;
-  margin: 0 5px 0 20px !important; }
+  margin: 0 5px 0 0 !important; }
 
 /* line 14, ../../../app/stylesheets/partials/site_sections/_hub.sass */
 body.hub_pages.index #main #content,
