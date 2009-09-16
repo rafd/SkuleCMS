@@ -1,4 +1,8 @@
 %h2= @page_title
+
+= link_to 'Edit All Tags', "#", :id => ( "edit_all_tags")
+
+
 %h3 Live Clubs
 %table
 	%tr
@@ -11,11 +15,29 @@
 			%td
 				= link_to 'Administer', club_admin_index_path(club)
 				|
-				= link_to 'Edit Tags', club_edit_tags_path(club)
+				= link_to 'Edit Tags', "#", :class => ( "edit_tag #{club.id}")
 				|
 				= link_to 'Edit Profile', edit_club_path(club)
 				|
 				= link_to 'Destroy', club, :confirm => 'Are you sure?', :method => :delete
+				
+				- form_for( club, :url => { :action => :update_tags, :method => :put }) do |f|
+					%div{ :class => "edit_tags_module", :id => "#{club.id}" }
+						= f.hidden_field "tag_list_#{club.id}", :value => club.tag_list
+						= f.label :tags, 'Tags'
+						= f.hidden_field :club_id, :value => club.id
+						= f.submit 'Update Tags'
+						
+						- @tags.each do |tag|
+							%div{:id=>"#{tag.name}", :class=>( "tags #{club.id} " + ((club.tags.include?(tag))? 'selected' : ''))}
+								.tagbox
+									= f.label @club, "#{tag.name}", :style => "display: inline;"
+									= f.label @club, "#{tag.taggings_count}", :style => "display: inline;"
+							%br
+		
+				
+				
+				
 
 %h3 Hidden Clubs
 %table
@@ -29,7 +51,7 @@
 			%td
 				= link_to 'Administer', club_admin_index_path(club)
 				|
-				= link_to 'Edit Tags', club_edit_tags_path(club)
+				= link_to 'Edit Tags', "#", :class => ( "edit_tag #{club.id}")
 				|
 				= link_to 'Edit Profile', edit_club_path(club)
 				|

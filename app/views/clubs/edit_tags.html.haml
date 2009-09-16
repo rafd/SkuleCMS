@@ -4,26 +4,14 @@
 	%p#no_js
 		= f.text_field :tag_list
 		= f.label :tags, 'Tags'
-
+		= f.submit 'Update Tags'
+		
 	%p
 		- @tags.each do |tag|
-			- if (@club.tags.include?(tag))
-				%div{:id=>"#{tag.name}", :class=>'tags selected'}
-					.left_box
-					.tagbox
-						= f.label @club, "#{tag.name}", :style => "display: inline;"
-						= f.label @club, "#{tag.taggings_count}", :style => "display: inline;"
-					.right_box
-				%br
-			- else
-				%div{:id=>"#{tag.name}", :class=>'tags'}
-					.left_box
-					.tagbox
-						= f.label @club, "#{tag.name}", :style => "display: inline;"
-						= f.label @club, "#{tag.taggings_count}", :style => "display: inline;"
-					.right_box
-				%br
-				
-	
-
-	= f.submit 'Update Tags'
+			%div{:id=>"#{tag.name}", :class=>( 'tags ' + ((@club.tags.include?(tag))? 'selected' : ''))}
+				.left_box
+				.tagbox
+					= f.label @club, "#{tag.name}", :style => "display: inline;"
+					= f.label @club, "#{tag.taggings_count}", :style => "display: inline;"
+				.right_box
+			%br

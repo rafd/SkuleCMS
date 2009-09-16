@@ -35,8 +35,11 @@ class ClubsController < ApplicationController
   def admin
     @page_title = "Administrate Clubs"
     @site_section = "su_admin"
-    
-    @live_clubs = Club.find(:all, :conditions => ["live=?" , true], :order => "name ASC")
+
+    @clubs = Club.find(:all, :include => :tags)
+
+	@tags = Club.find_related_tags("club")
+    @live_clubs = Club.find(:all, :include => :tags, :conditions => ["live=?" , true], :order => "name ASC")
     @hidden_clubs = Club.find(:all, :conditions => ["live=?" , false], :order => "name ASC")
   end
 
@@ -145,24 +148,12 @@ class ClubsController < ApplicationController
     end
   end
   
-  
-  def edit_tags
-    @page_title = "Editing "+@club.name+"'s Tags"
-    @site_section = "su_admin"
-    @club = Club.find(params[:club_id], :include => :tags)
-	@tags = Club.find_related_tags("club")
-  end
 
   def update_tags
-    @club = Club.find(params[:club_id], :include => :tags)
-	if !params[:selected].blank?
-		@club.tag_list += ' ' + params[:selected]
-	elsif !params[:unselected].blank?
-		@club.tag_list = @club.tag_list.sub(params[:unselected], '')
-	end
+    @club = Club.find(params[:club][:club_id], :include => :tags) 
+	@club.tag_list = params[:club]["tag_list_" + @club.id.to_s]
     @club.update_attribute("tag_list", @club.tag_list)
-	redirect_to login_path
-	#this shouldn't be needed, but POST get a 500 server error if this line is left out - there's no update_tags haml
+	redirect_to :action => :admin
   end
 
   def settings

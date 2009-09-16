@@ -7,14 +7,13 @@ ActionController::Routing::Routes.draw do |map|
   map.connect '/clubs/:club_id/admin/:action', :controller => 'admin_pages'
   map.connect '/search/:query/', :controller => 'search', :action => 'search'
   map.connect '/search/clubs/:club_id/query/:query/', :controller => 'search', :action => 'search'
+  map.connect '/clubs/admin/update_tags', :controller => "clubs", :action => "update_tags", :method => :put 
   #map.connect '/search', :controller => 'search', :action => 'advanced'
   
   map.formatted_search "/search.:format", :controller => "search", :action => "index", :method => :get 
 
   map.resources :admin_sessions
   map.resources :clubs, :collection => { :admin => :get }, :member => { :settings => :get, :change_settings => :post} do |club|
-    club.edit_tags "edit_tags", :controller => "clubs", :action => "edit_tags", :method => :get 
-    club.update_tags "update_tags", :controller => "clubs", :action => "update_tags", :method => :put 
     club.resources  :files,
                     :controller => "download_folders",
                     :has_many => :downloads,
