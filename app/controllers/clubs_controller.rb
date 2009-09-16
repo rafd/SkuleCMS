@@ -6,7 +6,7 @@ class ClubsController < ApplicationController
   before_filter :auth_super_admin_only, :only => [:admin, :destroy, :edit_tags, :update_tags]
 
   caches_page :index
-
+  cache_sweeper :club_sweeper
 
   # GET /clubs
   # GET /clubs.xml
@@ -152,6 +152,8 @@ class ClubsController < ApplicationController
   def update_tags
     @club = Club.find(params[:club][:club_id], :include => :tags) 
 	@club.tag_list = params[:club]["tag_list_" + @club.id.to_s]
+    expire_page(:controller => 'clubs', :action => 'index')
+    expire_page(:controller => 'hub', :action => 'services')
     @club.update_attribute("tag_list", @club.tag_list)
 	redirect_to :action => :admin
   end
