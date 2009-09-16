@@ -841,45 +841,57 @@ body.events h2 {
 #quick_update {
   overflow: hidden; }
 
-/* line 4, ../../../app/stylesheets/partials/site_sections/_backend.sass */
-.left_box {
-  width: 7px;
-  height: 32px;
-  background-image: url('/images/tagbox.left.png');
-  clear: left;
-  float: left; }
+/* line 6, ../../../app/stylesheets/partials/site_sections/_backend.sass */
+ul.tags {
+  float: right; }
+  /* line 9, ../../../app/stylesheets/partials/site_sections/_backend.sass */
+  ul.tags li .count {
+    width: 3em;
+    float: left; }
 
-/* line 11, ../../../app/stylesheets/partials/site_sections/_backend.sass */
-.right_box {
-  width: 7px;
-  height: 32px;
-  background-image: url('/images/tagbox.right.png');
-  float: left; }
+/* line 15, ../../../app/stylesheets/partials/site_sections/_backend.sass */
+.edit_tags_module ul li {
+  float: left;
+  font-size: 0.8em;
+  font-weight: normal;
+  margin: 0 0.25em; }
+  /* line 20, ../../../app/stylesheets/partials/site_sections/_backend.sass */
+  .edit_tags_module ul li label {
+    font-weight: normal; }
+  /* line 22, ../../../app/stylesheets/partials/site_sections/_backend.sass */
+  .edit_tags_module ul li.selected {
+    font-weight: bold;
+    text-decoration: underline;
+    color: #000; }
 
-/* line 18, ../../../app/stylesheets/partials/site_sections/_backend.sass */
-.selected .tagbox {
-  background-image: url('/images/tagbox.2.png'); }
-/* line 20, ../../../app/stylesheets/partials/site_sections/_backend.sass */
-.selected .left_box {
-  background-image: url('/images/tagbox.2.left.png'); }
-/* line 22, ../../../app/stylesheets/partials/site_sections/_backend.sass */
-.selected .right_box {
-  background-image: url('/images/tagbox.2.right.png'); }
-
-/* line 25, ../../../app/stylesheets/partials/site_sections/_backend.sass */
+/* line 27, ../../../app/stylesheets/partials/site_sections/_backend.sass */
 .tagbox {
   width: 100px;
+  font-size: 0.8em;
+  border-radius: 0.5em;
+  -moz-border-radius: 0.5em;
   height: 32px;
   padding: 0 5px 0 0;
-  background-image: url('/images/tagbox.png');
+  background-color: #CCCCCC;
+  color: #111111;
   display: block;
   float: left; }
 
-/* line 38, ../../../app/stylesheets/partials/site_sections/_backend.sass */
+/* line 44, ../../../app/stylesheets/partials/site_sections/_backend.sass */
 body.admin_pages #left dl dt,
 body.edit #left dl dt,
 body.admin #left dl dt {
   margin: 1em 0 0; }
+
+/* line 47, ../../../app/stylesheets/partials/site_sections/_backend.sass */
+body.edit_tags #main #content {
+  display: inline;
+  float: left;
+  margin-right: 10px;
+  width: 790px; }
+  /* line 101, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.14/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
+  * html body.edit_tags #main #content {
+    overflow-x: hidden; }
 
 /* line 3, ../../../app/stylesheets/partials/site_sections/_map.sass */
 body.map #main #content {

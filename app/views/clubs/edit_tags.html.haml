@@ -1,11 +1,33 @@
-%h2 Editing #{@club.name}'s Tags
+%h2 Tags for #{@club.name}
 
+-tagcount = @tags.length
+-tagcolumns = [@tags[0..tagcount/3], @tags[tagcount/3...2*tagcount/3], @tags[2*tagcount/3..tagcount-1]]
+-tagcolumns.each do |tags|
+	%ul.tags
+		-tags.each do |tag|
+			%li
+				%span.count= tag.taggings_count.to_s
+				%span.name= tag.name
+			
 - form_for( @club, :url => { :action => :update_tags, :method => :put }) do |f|
-	%p#no_js
-		= f.text_field :tag_list
+	%p
 		= f.label :tags, 'Tags'
+		= f.text_field :tag_list
+		= f.hidden_field :id, :value => @club.id
+	%p
 		= f.submit 'Update Tags'
+		| 
+		=link_to "Cancel", :action => "admin"
 		
+%h3 Notes:
+%ul
+	%li "club" tag = appear in club list
+	%li "engsoc" tag = appear in services list
+
+
+
+	
+-#
 	%p
 		- @tags.each do |tag|
 			%div{:id=>"#{tag.name}", :class=>( 'tags ' + ((@club.tags.include?(tag))? 'selected' : ''))}

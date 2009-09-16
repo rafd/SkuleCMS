@@ -92,6 +92,14 @@ class ClubsController < ApplicationController
     @page_title = "Editing "+@club.name
     @site_section = "admin"
   end
+  
+  def edit_tags
+  	@club = Club.find(params[:id], :include => :tags)
+  	@tags = Tag.all
+    
+    @page_title = "Tags for "+@club.name
+    @site_section = "su_admin"
+  end
 
   ############################
 
@@ -150,11 +158,14 @@ class ClubsController < ApplicationController
   
 
   def update_tags
-    @club = Club.find(params[:club][:club_id], :include => :tags) 
-	@club.tag_list = params[:club]["tag_list_" + @club.id.to_s]
+    #@club = Club.find(params[:club][:club_id], :include => :tags) 
+	#@club.tag_list = params[:club]["tag_list_" + @club.id.to_s]
+	@club = Club.find(params[:club][:id], :include => :tags)
+    @club.update_attribute("tag_list", params[:club][:tag_list])
+    
     expire_page(:controller => 'clubs', :action => 'index')
     expire_page(:controller => 'hub', :action => 'services')
-    @club.update_attribute("tag_list", @club.tag_list)
+
 	redirect_to :action => :admin
   end
 

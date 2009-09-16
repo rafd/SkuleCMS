@@ -23,11 +23,7 @@ document.observe('dom:loaded', function() {
 	$$('a.edit_tag').each(function(elmt) {
 		elmt.observe('click', function (event){
 			event.stop();
-			var tag_module = $(($w(elmt.className))[1])
-			if (tag_module.visible())
-				tag_module.hide();
-			else
-				tag_module.show();
+			$(($w(elmt.className))[1]).toggle();
 		});
 	});
 	
