@@ -27,6 +27,15 @@ class Club < ActiveRecord::Base
   validates_format_of       :contact, :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i, :allow_blank => true, :message => 'email is invalid.'
   validates_length_of       :website, :in => 3..200, :allow_blank => true
   
+  
+  def to_s
+    web_name
+  end
+  
+  def to_param
+    "#{to_s.parameterize}"
+  end
+  
   attr_protected :id,
                 :group_ids,
                 :event_ids,
@@ -151,6 +160,7 @@ class Club < ActiveRecord::Base
       @group.misc = "Full member list of the club"
       @group.order = 1
       @group.save
+      @group.move_to_root
     end
     return @group
   end
@@ -161,6 +171,7 @@ class Club < ActiveRecord::Base
       @root_page = self.pages.new
       @root_page.order = 1
       @root_page.save_with_validation(false)
+      @root_page.move_to_root
     end
     return @root_page
   end

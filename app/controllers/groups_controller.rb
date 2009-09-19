@@ -1,9 +1,6 @@
 class GroupsController < ApplicationController
   before_filter :load_club
   before_filter :auth_admin, :only => [:admin, :new, :edit, :create, :update, :destroy, :add_member, :create_membership, :kick]
-  def load_club
-    @club = Club.find(params[:club_id])
-  end
   
   # GET /groups
   # GET /groups.xml
@@ -87,6 +84,8 @@ class GroupsController < ApplicationController
   # POST /groups.xml
   def create
     @group = @club.groups.new(params[:group])
+    @group.parent_id = params[:group][:parent_id];
+    @group.bns_parent_id = params[:group][:parent_id];
     respond_to do |format|
       if @group.save
         flash[:notice] = 'Group was successfully created.'
@@ -110,7 +109,8 @@ class GroupsController < ApplicationController
   # PUT /groups/1.xml
   def update
     @group = @club.groups.find(params[:id])
-    
+    @group.parent_id = params[:group][:parent_id];
+    @group.bns_parent_id = params[:group][:parent_id];
     respond_to do |format|
       if (@group.is_member_list?)
         flash[:notice] = 'Cannot edit the member list.'

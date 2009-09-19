@@ -6,15 +6,15 @@
 				= render :partial => 'layouts/partials/avatar', :locals => {:club => feed_item.club}
 			.content= feed_item.content	
 		-when "LargePost" then
-			%h4= link_to feed_item.title, {:controller=> feed_item.class.to_s.tableize, :action => 'show', :id => feed_item.id, :club_id => feed_item.club.id}, :title => "Read Post"
+			%h4= link_to feed_item.title, {:controller=> feed_item.class.to_s.tableize, :action => 'show', :id => feed_item.id, :club_id => feed_item.club}, :title => "Read Post"
 			- unless controller.controller_name == 'clubs'
 				= render :partial => 'layouts/partials/avatar', :locals => {:club => feed_item.club}
 			.content
-				=summarize(feed_item.content, short_length, "Keep Reading &raquo;", {:controller=> feed_item.class.to_s.tableize, :action => 'show', :id => feed_item.id, :club_id => feed_item.club.id}, {:class=>"more"})
+				=summarize(feed_item.content, short_length, "Keep Reading &raquo;", {:controller=> feed_item.class.to_s.tableize, :action => 'show', :id => feed_item.id, :club_id => feed_item.club}, {:class=>"more"})
 				
 		-when "Event" then
 			= render :partial => 'layouts/partials/date_ticker', :locals => {:date => feed_item.start}
-			%h4= link_to abbrev(feed_item.name, 28), :controller=> feed_item.class.to_s.tableize, :action => 'show', :id => feed_item.id, :club_id => feed_item.club.id
+			%h4= link_to abbrev(feed_item.name, 28), :controller=> feed_item.class.to_s.tableize, :action => 'show', :id => feed_item.id, :club_id => feed_item.club
 										
 			.locationtime
 				%span.time= feed_item.start.strftime('%A @ %I:%M%p')
@@ -22,7 +22,7 @@
 				%span.location= abbrev(feed_item.location, 12)
 				
 			.content
-				= summarize(feed_item.description, 144, 'Find Out More &raquo;', {:controller=> feed_item.class.to_s.tableize, :action => 'show', :id => feed_item.id, :club_id => feed_item.club.id}, {:class=>"more"})
+				= summarize(feed_item.description, 144, 'Find Out More &raquo;', {:controller=> feed_item.class.to_s.tableize, :action => 'show', :id => feed_item.id, :club_id => feed_item.club}, {:class=>"more"})
 		-else
 			= feed_item.class	
 	.source

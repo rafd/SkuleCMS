@@ -27,8 +27,8 @@ class SearchController < ApplicationController
         @clubs = Club.find_tagged_with(params[:query]) 
         @myAlbums = Album.find_tagged_with(params[:query])
         if params[:club_id]
-          @club = Club.find(params[:club_id])
-          @albums = @myAlbums & Club.find(params[:club_id]).albums
+          @club = Club.find_by_web_name(params[:club_id])
+          @albums = @myAlbums & Club.find_by_web_name(params[:club_id]).albums
         end
       else
         redirect_to(@club)

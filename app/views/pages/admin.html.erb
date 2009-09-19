@@ -10,7 +10,7 @@
 <% @pages.each do |page| %>
   <tr>
     <td><%= page.indented_title %></td>
-    <td><%= page.content[0..20] %></td>
+    <td><%=h page.content[0..20] %></td>
 		<td><%= page.order %></td>
     <td><%= link_to 'Show', admin_club_page_path(@club, page) %></td>
     <td><%= link_to 'Edit', edit_club_page_path(@club, page) %></td>

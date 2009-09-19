@@ -151,12 +151,5 @@ class LargePostsController < ApplicationController
       format.xml  { head :ok }
     end
   end
-  
-
-
-  private
-  def load_club
-    @club = Club.find(params[:club_id])
-  end
 
 end

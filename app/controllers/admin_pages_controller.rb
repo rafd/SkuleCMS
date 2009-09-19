@@ -1,8 +1,5 @@
 class AdminPagesController < ApplicationController
   before_filter :load_club, :auth_admin
-  def load_club
-    @club = Club.find(params[:club_id])
-  end
   
   def index
     @site_section = "admin"
