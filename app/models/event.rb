@@ -1,5 +1,4 @@
 class Event < ActiveRecord::Base
-  has_event_calendar
 
   belongs_to      :club
   belongs_to      :user
