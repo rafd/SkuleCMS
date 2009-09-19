@@ -1,5 +1,5 @@
 class HubPagesController < ApplicationController
-  caches_page :index, :services
+  caches_page :index, :services, :calendar
   
   def index
 		@page_banner = true
@@ -30,6 +30,13 @@ class HubPagesController < ApplicationController
   def calendar
   	@page_title = "Calendar"
   	@site_section = "hub"
+  	
+  	@calendars = 
+	{
+		"EngSoc" => ["g.skule.ca_asc150ngkdob7lea1f6jg098bo@group.calendar.google.com","FF8822"],
+		"CitizenEngineer" => ["citizenengineer.skule.ca_383mvjkui8ln8intl4cr04sc5s%40group.calendar.google.com","3322FF"],
+		"Holidays" => ["en.canadian%23holiday%40group.v.calendar.google.com","CCCCCC"]
+	}
   end
 
 	#see clubs/index
