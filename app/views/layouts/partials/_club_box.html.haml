@@ -1,6 +1,6 @@
 - ignore = [] unless ignore
 
-.club(class="#{"onskuleclubs" unless club.website} #{display_all_tags_classes(club)} visible")
+.club(class="#{"onskuleclubs" unless club.website} #{display_all_tags_classes(club)}")
 	= render :partial => 'layouts/partials/avatar', :locals => {:club => club}
 
 	%h3(title="#{(club.name || club.official_name)}")
