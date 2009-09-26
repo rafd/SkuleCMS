@@ -12,8 +12,11 @@ ActionController::Routing::Routes.draw do |map|
   
   map.formatted_search "/search.:format", :controller => "search", :action => "index", :method => :get 
 
+
+
   map.resources :admin_sessions
   map.resources :clubs, :collection => { :admin => :get }, :member => { :settings => :get, :change_settings => :post} do |club|
+    club.calendar '/calendar', :controller => 'calendar', :action => 'index'
     club.resources  :files,
                     :controller => "download_folders",
                     :has_many => :downloads,

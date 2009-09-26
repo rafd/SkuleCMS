@@ -22,6 +22,7 @@ class Club < ActiveRecord::Base
   validates_length_of       :address, :maximum => 250
   validates_length_of       :web_name, :in => 3..15
   validates_length_of       :tagline, :in => 5..100
+  validates_length_of       :gcal, :in => 5..255, :allow_blank => true
   validates_length_of       :description, :in => 5..400
   validates_format_of       :web_name, :with => /^[A-Za-z\d_]+$/, :message => "name is invalid. Only letters, numbers, and underscores allowed."
   validates_format_of       :contact, :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i, :allow_blank => true, :message => 'email is invalid.'

@@ -42,6 +42,14 @@
 	= f.label :banner, "Banner Image"
 	%span The banner image that will be displayed on the club website. Recommended 800px x 175px. Max 800 KB.
 	= f.file_field :banner
+	
+%p
+	= f.label :gcal, "Google Calendar ID"
+	%span
+		The google calendar id that contains all your events.
+		To find the Calendar ID, go to Calendar Details for your specific google calendar, and under Calendar Address you should see (Calendar ID: example@gmail.com).
+		Copy and paste that here.
+	= f.text_field :gcal
 
 %p
 	= f.label :website, "External Website Url"

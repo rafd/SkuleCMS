@@ -12,5 +12,7 @@
 				-page.children.each do |child|
 					%dd= link_to_unless_current child.title, :controller=> 'pages', :action=> 'show', :id => child, :club_id => @club
 
-	
-		
+	-unless @club.gcal.blank?
+		%dl
+			%dt= link_to_unless_current 'Event Calendar', :controller=> 'calendar', :action=> 'index', :club_id => @club
+
