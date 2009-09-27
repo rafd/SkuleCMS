@@ -44,6 +44,14 @@ module ApplicationHelper
     end
   end
   
+  def club_image_path(club, file)
+    if FileTest.exist?("assets/clubs/"+club.web_name+"/"+file)
+  	  return compute_public_path(file, 'assets/clubs/'+club.web_name+ "/")
+  	else
+  	  return image_path("blank.gif")
+  	end
+  end
+  
   def short_time(time)
     #return time.strftime('%b. %e, %l:%M %p')
     return time.strftime('%b. %d, %I:%M %p')

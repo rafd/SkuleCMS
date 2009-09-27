@@ -372,26 +372,26 @@ a {
   margin: 0 auto 2em;
   line-height: 2em;
   height: 2em; }
-  /* line 6, ../../../app/stylesheets/partials/page_elements/_skulebar.sass */
+  /* line 7, ../../../app/stylesheets/partials/page_elements/_skulebar.sass */
   #skulebar #skule {
     float: left;
     background: #fff 5px url(/images/icons/hardhat.png) no-repeat;
     -moz-border-radius: 0 0 2px 2px;
     -webkit-border-radius: 0 0 2px 2px;
-    margin: 0 0 0 5%;
+    margin: 0 5%;
     text-align: center;
     text-transform: capitalize;
     font-weight: bold;
     padding: 0 0.5em 0 25px; }
-    /* line 16, ../../../app/stylesheets/partials/page_elements/_skulebar.sass */
+    /* line 17, ../../../app/stylesheets/partials/page_elements/_skulebar.sass */
     #skulebar #skule:hover {
       text-decoration: none;
       color: #000; }
-  /* line 20, ../../../app/stylesheets/partials/page_elements/_skulebar.sass */
+  /* line 21, ../../../app/stylesheets/partials/page_elements/_skulebar.sass */
   #skulebar a {
     color: #aaaaaa;
     font-weight: normal; }
-  /* line 24, ../../../app/stylesheets/partials/page_elements/_skulebar.sass */
+  /* line 25, ../../../app/stylesheets/partials/page_elements/_skulebar.sass */
   #skulebar #bookmarks {
     margin: 0;
     padding: 0;
@@ -418,27 +418,27 @@ a {
       /* line 42, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.14/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal_list.sass */
       #skulebar #bookmarks li.last {
         padding-right: 0px; }
-    /* line 28, ../../../app/stylesheets/partials/page_elements/_skulebar.sass */
+    /* line 29, ../../../app/stylesheets/partials/page_elements/_skulebar.sass */
     #skulebar #bookmarks li a.google {
       background: url('/images/icons/google_favicon.png') left center no-repeat;
       padding-left: 20px;
       margin: 0 0 0 0.25em; }
-    /* line 30, ../../../app/stylesheets/partials/page_elements/_skulebar.sass */
+    /* line 31, ../../../app/stylesheets/partials/page_elements/_skulebar.sass */
     #skulebar #bookmarks li a.facebook {
       background: url('/images/icons/favicon_facebook.gif') left center no-repeat;
       padding-left: 20px;
       margin: 0 0 0 0.25em; }
-  /* line 33, ../../../app/stylesheets/partials/page_elements/_skulebar.sass */
+  /* line 34, ../../../app/stylesheets/partials/page_elements/_skulebar.sass */
   #skulebar #message {
     float: left; }
-    /* line 35, ../../../app/stylesheets/partials/page_elements/_skulebar.sass */
+    /* line 36, ../../../app/stylesheets/partials/page_elements/_skulebar.sass */
     #skulebar #message p {
       margin: 0; }
-  /* line 38, ../../../app/stylesheets/partials/page_elements/_skulebar.sass */
+  /* line 39, ../../../app/stylesheets/partials/page_elements/_skulebar.sass */
   #skulebar form {
     float: left;
     margin: 0 0.5em; }
-    /* line 41, ../../../app/stylesheets/partials/page_elements/_skulebar.sass */
+    /* line 42, ../../../app/stylesheets/partials/page_elements/_skulebar.sass */
     #skulebar form input {
       font-size: 1em;
       height: 1.3em;
@@ -450,13 +450,18 @@ a {
       width: 20em;
       border: none;
       background: #fff url("/images/icons/magnifier.png") right center no-repeat; }
-  /* line 52, ../../../app/stylesheets/partials/page_elements/_skulebar.sass */
+  /* line 53, ../../../app/stylesheets/partials/page_elements/_skulebar.sass */
   #skulebar #user {
     float: right;
     display: block;
     height: 2em;
-    line-height: 2em; }
-  /* line 61, ../../../app/stylesheets/partials/page_elements/_skulebar.sass */
+    line-height: 2em;
+    color: #eee;
+    margin: 0 4%; }
+    /* line 60, ../../../app/stylesheets/partials/page_elements/_skulebar.sass */
+    #skulebar #user a {
+      color: #fff; }
+  /* line 66, ../../../app/stylesheets/partials/page_elements/_skulebar.sass */
   #skulebar a.more {
     text-indent: -9999em;
     overflow: hidden;

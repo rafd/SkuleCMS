@@ -1,4 +1,4 @@
 -if club
-	=link_to((club.name || club.official_name), (club.website || {:controller => 'clubs', :action => 'show', :id => club}), {:class => 'avatar', :title => club.name, :style=>"background-image:url(#{path_to_image(FileTest.exist?("public/images/avatars/"+club.web_name) ? "avatars/"+club.web_name : "blank.gif")})"})
+	=link_to((club.name || club.official_name), (club.website || {:controller => 'clubs', :action => 'show', :id => club}), {:class => 'avatar', :title => club.name, :style=>"background-image:url(#{club_image_path(club, "avatar")})"})
 -else
 	=link_to("skule", "/", {:class => 'avatar', :style=>"background-image:url(#{path_to_image("blank.gif")})"})
