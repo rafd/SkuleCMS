@@ -66,7 +66,7 @@ class ApplicationController < ActionController::Base
     elsif !current_admin.super_admin && current_admin.club_id.blank?
       redirect_to new_club_path
     elsif !current_admin.super_admin && current_admin.club_id != @club.id
-      redirect_to club_path(@club.id)
+      redirect_to club_path(@club)
     end
   end
 

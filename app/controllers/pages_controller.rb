@@ -78,7 +78,7 @@ class PagesController < ApplicationController
   def edit
     @page = @club.pages.find(params[:id])
     @pagelist = @club.all_pages
-    @pagelist  -= @page.all_children << @page
+    @pagelist  -= @page.self_and_descendants
     
     @page_title = "Editing " + @page.title
     @site_section = "admin"

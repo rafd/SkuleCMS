@@ -6,7 +6,7 @@ class GroupsController < ApplicationController
   # GET /groups.xml
   def index
     @groups = @club.groups
-    @grouplist = @club.groups.find(:all, :conditions => ["parent_id IS NOT ?", nil], :order => 'lft')
+    @grouplist = @club.groups.find(:all, :conditions => ["bns_parent_id IS NOT ?", nil], :order => 'lft')
     
     @page_title = "Group Listing"
     @site_section = "clubs"
@@ -21,7 +21,7 @@ class GroupsController < ApplicationController
   def admin
     if (params[:id].blank?)
       @groups = @club.groups
-      @grouplist = @club.groups.find(:all, :conditions => ["parent_id IS NOT ?", nil], :order => 'lft')
+      @grouplist = @club.groups.find(:all, :conditions => ["bns_parent_id IS NOT ?", nil], :order => 'lft')
       
       @page_title = "Group Listing"
       @site_section = "admin"
@@ -74,7 +74,7 @@ class GroupsController < ApplicationController
   def edit
     @group = @club.groups.find(params[:id])
     @grouplist = @club.groups.find(:all, :conditions => ["parent_id IS NOT ?", nil], :order => 'lft')
-    @grouplist -= @group.all_children << @group
+    @grouplist -= @group.self_and_descendants
     
     @page_title = "Editing " + @group.name
     @site_section = "admin"

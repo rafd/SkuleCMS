@@ -12,7 +12,7 @@ class Page < ActiveRecord::Base
   validates_numericality_of :order
   
   attr_protected :id, :club_id, :created_at, :updated_at
-  before_save :check_parent_id
+  before_validation :check_parent_id
   after_save :move_to_parent
   
   def check_parent_id

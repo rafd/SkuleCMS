@@ -17,7 +17,7 @@ class Group < ActiveRecord::Base
                       :right_column => "rgt",
                       :text_coloumn => "name"
   
-  before_validation_on_create :check_parent_id
+  before_validation :check_parent_id
   after_save :move_to_parent
   
   def check_parent_id
