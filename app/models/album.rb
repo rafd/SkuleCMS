@@ -23,7 +23,7 @@ class Album < ActiveRecord::Base
     if !File.exist?(directory)
       FileUtils.mkdir_p(directory)
     end
-    directory = "#{RAILS_ROOT}/assets/clubs/"+self.club.web_name"/"+self.id.to_s
+    directory = "#{RAILS_ROOT}/assets/clubs/"+self.club.web_name+"/"+self.id.to_s
     if !File.exist?(directory)
       FileUtils.mkdir_p(directory)
     end
