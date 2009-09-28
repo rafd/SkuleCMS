@@ -46,7 +46,7 @@ module ApplicationHelper
   
   def club_image_path(club, file)
     if FileTest.exist?("public/assets/clubs/"+club.web_name+"/"+file)
-  	  return compute_public_path(file, 'public/assets/clubs/'+club.web_name)
+  	  return compute_public_path(file, 'assets/clubs/'+club.web_name)
   	else
   	  return image_path("blank.gif")
   	end
