@@ -89,10 +89,10 @@ class Club < ActiveRecord::Base
   
   def save_images
     if(!self.logo.blank?)
-      File.open(File.join("#{RAILS_ROOT}/assets/clubs/"+self.web_name+"avatar"), "wb") { |f| f.write(self.logo.read) }
+      File.open(File.join("#{RAILS_ROOT}/assets/clubs/"+self.web_name+"/avatar"), "wb") { |f| f.write(self.logo.read) }
     end
     if(!self.banner.blank?)
-      File.open(File.join("#{RAILS_ROOT}/assets/clubs/"+self.web_name+"banner"), "wb") { |f| f.write(self.banner.read) }
+      File.open(File.join("#{RAILS_ROOT}/assets/clubs/"+self.web_name+"/banner"), "wb") { |f| f.write(self.banner.read) }
     end
   end  
   
