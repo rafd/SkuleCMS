@@ -21,7 +21,7 @@
 	<p>
     <%= f.label :order, "Weighting" %>
 		<span>This will affect the order in which pages are displayed. Lower values are displayed first.</span>
-    <%= f.text_field :order %>
+    <%= f.text_field :order, :value => "1" %>
   </p>
   <p>
     <%= f.submit 'Create' %>
