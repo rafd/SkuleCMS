@@ -2,8 +2,8 @@
 <%= 'src="http://www.google.com/calendar/hosted/webdev.skule.ca/embed?title=SkuleClubs&amp;showTitle=0&amp;showNav=1&amp;showPrint=0&amp;showTz=0&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;' -%>
 <%="src=en.canadian%23holiday%40group.v.calendar.google.com&amp;color=%23A32929&amp;" -%>
 <% @calendars.each do |club| -%>
-<% color = club.web_name == "EngSoc" ? "2952A3" : "AB8B00" -%>
-<%="src="+club.gcal+"&amp;color=%232952A3&amp;" -%>
+<% color = club.name == "EngSoc" ? "2952A3" : "AB8B00" -%>
+<%="src="+club.gcal+"&amp;color=%23"+color+"&amp;" -%>
 <% end -%>
 <%= 'ctz=America%2FToronto"' -%>
         style="border-width:0;"

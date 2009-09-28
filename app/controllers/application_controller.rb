@@ -46,7 +46,7 @@ class ApplicationController < ActionController::Base
   
   def load_club
     if !params[:club_id].blank?
-      @club = params[:club_id].to_i ? Club.find(params[:club_id]) : Club.find_by_web_name(params[:club_id])
+      @club = Club.find_by_web_name(params[:club_id])
     end
   end
   
