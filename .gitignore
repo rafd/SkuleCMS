@@ -15,5 +15,4 @@ db/*.sqlite3
 Capfile
 public/club_data/*
 db/schema.rb
-config/deploy.rb
 assets/**
