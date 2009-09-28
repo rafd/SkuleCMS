@@ -19,11 +19,11 @@ class Album < ActiveRecord::Base
   after_save :create_directory
   
   def create_directory
-    directory = "#{RAILS_ROOT}/assets/clubs/"+self.web_name
+    directory = "#{RAILS_ROOT}/public/assets/clubs/"+self.web_name
     if !File.exist?(directory)
       FileUtils.mkdir_p(directory)
     end
-    directory = "#{RAILS_ROOT}/assets/clubs/"+self.club.web_name+"/"+self.id.to_s
+    directory = "#{RAILS_ROOT}/public/assets/clubs/"+self.club.web_name+"/"+self.id.to_s
     if !File.exist?(directory)
       FileUtils.mkdir_p(directory)
     end

@@ -89,15 +89,15 @@ class Club < ActiveRecord::Base
   
   def save_images
     if(!self.logo.blank?)
-      File.open(File.join("#{RAILS_ROOT}/assets/clubs/"+self.web_name+"/avatar"), "wb") { |f| f.write(self.logo.read) }
+      File.open(File.join("#{RAILS_ROOT}/public/assets/clubs/"+self.web_name+"/avatar"), "wb") { |f| f.write(self.logo.read) }
     end
     if(!self.banner.blank?)
-      File.open(File.join("#{RAILS_ROOT}/assets/clubs/"+self.web_name+"/banner"), "wb") { |f| f.write(self.banner.read) }
+      File.open(File.join("#{RAILS_ROOT}/public/assets/clubs/"+self.web_name+"/banner"), "wb") { |f| f.write(self.banner.read) }
     end
   end  
   
   def create_directory
-    directory = "#{RAILS_ROOT}/assets/clubs/"+self.web_name
+    directory = "#{RAILS_ROOT}/public/assets/clubs/"+self.web_name
     if !File.exist?(directory)
       FileUtils.mkdir_p(directory)
     end
