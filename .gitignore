@@ -13,6 +13,6 @@ coverage/*
 db/*.sqlite3
 *.tmproj
 Capfile
-public/club_data/*
+public/stylesheets/compiled/*
 db/schema.rb
 assets/**
