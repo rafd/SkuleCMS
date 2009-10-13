@@ -2,7 +2,7 @@
 	:margin 0 auto 2em
 	:line-height 2em
 	:height 2em
-	
+	:font-size 12px	
 
 	#skule
 		:float left
@@ -39,16 +39,30 @@
 	form
 		:float left
 		:margin 0 0.5em
+		
 		input
-			:font-size 1em
-			:height 1.3em
-			:color #999
-			:margin 0.25em
-			+rounded-corners(2px)
-			:padding 0.1em 0.25em
-			:width 20em
+			:height 1.7em
 			:border none
-			:background #fff url("/images/icons/magnifier.png") right center no-repeat
+			:margin 0
+			:color #999
+			:float left
+			:font-size 1em
+			
+		#search_search
+			:padding 0.3em 0.35em 0
+			+rounded-corners(0 0 0 2px)
+			:width 20em
+			:background #fff
+			
+		#club_submit
+			:background #fff url("/images/icons/magnifier.png") center center no-repeat
+			:text-indent -1000px
+			:overflow hidden
+			:height 2em
+			:width 2em
+			:padding 0 1em
+			+rounded-corners(0 0 2px 0)
+
 		
 	#user
 		:float right
