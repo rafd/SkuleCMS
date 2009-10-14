@@ -13,7 +13,7 @@ set :use_sudo, false
 set :ssh_options, { :forward_agent => true }
 
 set :scm, "git"
-set :repository,  "git@rafd.xen.prgmr.com:skuleclubs.git"
+set :repository,  "git@rafd.xen.prgmr.com:SkuleCMS.git"
 set :branch, "master"
 set :git_enable_submodules, 1
 
