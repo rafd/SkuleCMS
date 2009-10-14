@@ -629,24 +629,25 @@ a {
         display: block;
         font-size: 11px;
         background: #cccccc;
-        color: #222222; }
-        /* line 35, ../../../app/stylesheets/partials/page_elements/_left.sass */
+        color: #222222;
+        height: 24px; }
+        /* line 36, ../../../app/stylesheets/partials/page_elements/_left.sass */
         #left ul li a.active, #left ul dt a.active, #left ul dd a.active, #left dl li a.active, #left dl dt a.active, #left dl dd a.active {
           font-size: 14px; }
-        /* line 38, ../../../app/stylesheets/partials/page_elements/_left.sass */
+        /* line 39, ../../../app/stylesheets/partials/page_elements/_left.sass */
         #left ul li a.selected, #left ul dt a.selected, #left ul dd a.selected, #left dl li a.selected, #left dl dt a.selected, #left dl dd a.selected {
           color: white; }
-    /* line 42, ../../../app/stylesheets/partials/page_elements/_left.sass */
+    /* line 43, ../../../app/stylesheets/partials/page_elements/_left.sass */
     #left ul dd, #left dl dd {
-      font-size: 1em;
+      font-size: 11px;
       text-indent: 1em; }
-      /* line 46, ../../../app/stylesheets/partials/page_elements/_left.sass */
+      /* line 47, ../../../app/stylesheets/partials/page_elements/_left.sass */
       #left ul dd.space_after, #left dl dd.space_after {
         margin-bottom: 0.5em; }
-  /* line 52, ../../../app/stylesheets/partials/page_elements/_left.sass */
+  /* line 53, ../../../app/stylesheets/partials/page_elements/_left.sass */
   #left #club_tags p {
     font-size: 14px; }
-    /* line 55, ../../../app/stylesheets/partials/page_elements/_left.sass */
+    /* line 56, ../../../app/stylesheets/partials/page_elements/_left.sass */
     #left #club_tags p .active {
       font-size: 16px;
       background: white;
