@@ -371,7 +371,8 @@ a {
 #skulebar {
   margin: 0 auto 2em;
   line-height: 2em;
-  height: 2em; }
+  height: 2em;
+  font-size: 12px; }
   /* line 7, ../../../app/stylesheets/partials/page_elements/_skulebar.sass */
   #skulebar #skule {
     float: left;
@@ -438,19 +439,32 @@ a {
   #skulebar form {
     float: left;
     margin: 0 0.5em; }
-    /* line 42, ../../../app/stylesheets/partials/page_elements/_skulebar.sass */
+    /* line 43, ../../../app/stylesheets/partials/page_elements/_skulebar.sass */
     #skulebar form input {
-      font-size: 1em;
-      height: 1.3em;
-      color: #999;
-      margin: 0.25em;
-      -moz-border-radius: 2px;
-      -webkit-border-radius: 2px;
-      padding: 0.1em 0.25em;
-      width: 20em;
+      height: 1.7em;
       border: none;
-      background: #fff url("/images/icons/magnifier.png") right center no-repeat; }
-  /* line 53, ../../../app/stylesheets/partials/page_elements/_skulebar.sass */
+      margin: 0;
+      color: #999;
+      float: left;
+      font-size: 1em; }
+    /* line 51, ../../../app/stylesheets/partials/page_elements/_skulebar.sass */
+    #skulebar form #search_search {
+      padding: 0.3em 0.35em 0;
+      -moz-border-radius: 0 0 0 2px;
+      -webkit-border-radius: 0 0 0 2px;
+      width: 20em;
+      background: #fff; }
+    /* line 57, ../../../app/stylesheets/partials/page_elements/_skulebar.sass */
+    #skulebar form #club_submit {
+      background: #fff url("/images/icons/magnifier.png") center center no-repeat;
+      text-indent: -1000px;
+      overflow: hidden;
+      height: 2em;
+      width: 2em;
+      padding: 0 1em;
+      -moz-border-radius: 0 0 2px 0;
+      -webkit-border-radius: 0 0 2px 0; }
+  /* line 67, ../../../app/stylesheets/partials/page_elements/_skulebar.sass */
   #skulebar #user {
     float: right;
     display: block;
@@ -458,10 +472,10 @@ a {
     line-height: 2em;
     color: #eee;
     margin: 0 4%; }
-    /* line 60, ../../../app/stylesheets/partials/page_elements/_skulebar.sass */
+    /* line 74, ../../../app/stylesheets/partials/page_elements/_skulebar.sass */
     #skulebar #user a {
       color: #fff; }
-  /* line 66, ../../../app/stylesheets/partials/page_elements/_skulebar.sass */
+  /* line 80, ../../../app/stylesheets/partials/page_elements/_skulebar.sass */
   #skulebar a.more {
     text-indent: -9999em;
     overflow: hidden;
@@ -479,19 +493,20 @@ a {
   overflow: hidden;
   line-height: 50px;
   margin: 0 0 0 10px;
-  position: relative; }
-  /* line 11, ../../../app/stylesheets/partials/page_elements/_header.sass */
+  position: relative;
+  font-size: 36px; }
+  /* line 12, ../../../app/stylesheets/partials/page_elements/_header.sass */
   #header h1 a {
     color: #222222;
     float: left; }
-    /* line 14, ../../../app/stylesheets/partials/page_elements/_header.sass */
+    /* line 15, ../../../app/stylesheets/partials/page_elements/_header.sass */
     #header h1 a:hover {
       text-decoration: none; }
-  /* line 17, ../../../app/stylesheets/partials/page_elements/_header.sass */
+  /* line 18, ../../../app/stylesheets/partials/page_elements/_header.sass */
   #header h1 .avatar {
     float: left;
     margin: 0 0.25em 0 0; }
-  /* line 21, ../../../app/stylesheets/partials/page_elements/_header.sass */
+  /* line 22, ../../../app/stylesheets/partials/page_elements/_header.sass */
   #header h1 .alpha {
     background: red;
     -moz-border-radius: 0 5px 0 5px;
@@ -504,13 +519,13 @@ a {
     height: 1.5em;
     line-height: 1.5em;
     float: left; }
-/* line 32, ../../../app/stylesheets/partials/page_elements/_header.sass */
+/* line 33, ../../../app/stylesheets/partials/page_elements/_header.sass */
 #header #top {
   background: white;
   position: relative;
   height: 50px;
   padding: 10px 0; }
-  /* line 38, ../../../app/stylesheets/partials/page_elements/_header.sass */
+  /* line 39, ../../../app/stylesheets/partials/page_elements/_header.sass */
   #header #top #menu {
     margin: 0;
     padding: 0;
@@ -519,7 +534,7 @@ a {
     overflow: hidden;
     display: inline-block;
     float: right;
-    font-size: 1.25em;
+    font-size: 15px;
     margin: 0;
     position: absolute;
     bottom: 1.5em;
@@ -542,34 +557,34 @@ a {
       /* line 42, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.14/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal_list.sass */
       #header #top #menu li.last {
         padding-right: 0px; }
-    /* line 47, ../../../app/stylesheets/partials/page_elements/_header.sass */
+    /* line 48, ../../../app/stylesheets/partials/page_elements/_header.sass */
     #header #top #menu li {
-      margin: 0 0.25em;
-      padding: 0 0.5em;
+      margin: 0 5px;
+      padding: 0 7px;
       background: #222222;
       -moz-border-radius: 0 5px 0 5px;
       -webkit-border-radius: 0 5px 0 5px;
       font-weight: bold;
       color: white;
       line-height: 1.5em; }
-      /* line 56, ../../../app/stylesheets/partials/page_elements/_header.sass */
+      /* line 57, ../../../app/stylesheets/partials/page_elements/_header.sass */
       #header #top #menu li a {
         background: white;
         font-weight: normal;
         display: inline-block;
-        margin: -0.25em -0.5em;
-        padding: 0.05em 0.51em;
+        margin: -3px -7px;
+        padding: 0 7px;
         color: #000; }
-        /* line 63, ../../../app/stylesheets/partials/page_elements/_header.sass */
+        /* line 64, ../../../app/stylesheets/partials/page_elements/_header.sass */
         #header #top #menu li a.active {
           -moz-border-radius: 0 5px 0 5px;
           -webkit-border-radius: 0 5px 0 5px; }
-/* line 67, ../../../app/stylesheets/partials/page_elements/_header.sass */
+/* line 68, ../../../app/stylesheets/partials/page_elements/_header.sass */
 #header #banner {
   background: url('/images/banners/skule.png') #222222 center center;
   margin: 0 0 0 -10px;
   padding-right: 20px; }
-  /* line 73, ../../../app/stylesheets/partials/page_elements/_header.sass */
+  /* line 74, ../../../app/stylesheets/partials/page_elements/_header.sass */
   #header #banner #info {
     background: white;
     margin: 2em 0;
@@ -597,8 +612,8 @@ a {
     margin: 0 0 2em 0; }
     /* line 15, ../../../app/stylesheets/partials/page_elements/_left.sass */
     #left ul li, #left ul dt, #left ul dd, #left ul .active, #left dl li, #left dl dt, #left dl dd, #left dl .active {
-      line-height: 1.75em;
-      height: 1.75em;
+      line-height: 24px;
+      height: 24px;
       text-indent: 0.5em;
       margin: 0;
       color: #222222;
@@ -608,32 +623,33 @@ a {
       font-weight: normal; }
     /* line 26, ../../../app/stylesheets/partials/page_elements/_left.sass */
     #left ul li, #left ul dt, #left ul dd, #left dl li, #left dl dt, #left dl dd {
-      font-size: 1.2em; }
+      font-size: 14px; }
       /* line 29, ../../../app/stylesheets/partials/page_elements/_left.sass */
       #left ul li a, #left ul dt a, #left ul dd a, #left dl li a, #left dl dt a, #left dl dd a {
         display: block;
-        font-size: 0.85em;
+        font-size: 11px;
         background: #cccccc;
-        color: #222222; }
-        /* line 35, ../../../app/stylesheets/partials/page_elements/_left.sass */
+        color: #222222;
+        height: 24px; }
+        /* line 36, ../../../app/stylesheets/partials/page_elements/_left.sass */
         #left ul li a.active, #left ul dt a.active, #left ul dd a.active, #left dl li a.active, #left dl dt a.active, #left dl dd a.active {
-          font-size: 1em; }
-        /* line 38, ../../../app/stylesheets/partials/page_elements/_left.sass */
+          font-size: 14px; }
+        /* line 39, ../../../app/stylesheets/partials/page_elements/_left.sass */
         #left ul li a.selected, #left ul dt a.selected, #left ul dd a.selected, #left dl li a.selected, #left dl dt a.selected, #left dl dd a.selected {
           color: white; }
-    /* line 42, ../../../app/stylesheets/partials/page_elements/_left.sass */
+    /* line 43, ../../../app/stylesheets/partials/page_elements/_left.sass */
     #left ul dd, #left dl dd {
-      font-size: 1em;
+      font-size: 11px;
       text-indent: 1em; }
-      /* line 46, ../../../app/stylesheets/partials/page_elements/_left.sass */
+      /* line 47, ../../../app/stylesheets/partials/page_elements/_left.sass */
       #left ul dd.space_after, #left dl dd.space_after {
         margin-bottom: 0.5em; }
-  /* line 52, ../../../app/stylesheets/partials/page_elements/_left.sass */
+  /* line 53, ../../../app/stylesheets/partials/page_elements/_left.sass */
   #left #club_tags p {
-    font-size: 1em; }
-    /* line 55, ../../../app/stylesheets/partials/page_elements/_left.sass */
+    font-size: 14px; }
+    /* line 56, ../../../app/stylesheets/partials/page_elements/_left.sass */
     #left #club_tags p .active {
-      font-size: 1.2em;
+      font-size: 16px;
       background: white;
       -moz-border-radius: 5px 5px 5px 5px;
       -webkit-border-radius: 5px 5px 5px 5px; }
@@ -729,8 +745,9 @@ a {
     float: left;
     margin-right: 10px;
     width: 790px;
-    font-size: 0.8em;
-    margin: 2em 0 0; }
+    font-size: 0.825em;
+    margin: 2em 0 0;
+    letter-spacing: 0.05em; }
     /* line 101, ../../../../../../../usr/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.8.14/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
     * html #footer #copyright {
       overflow-x: hidden; }

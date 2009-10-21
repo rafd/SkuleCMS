@@ -13,6 +13,5 @@ coverage/*
 db/*.sqlite3
 *.tmproj
 Capfile
-public/club_data/*
 db/schema.rb
 assets/**
