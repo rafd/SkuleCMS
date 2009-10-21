@@ -134,6 +134,11 @@ class PagesController < ApplicationController
   # DELETE /pages/1.xml
   def destroy
     @page = @club.pages.find(params[:id])
+		#destroy settings
+		@settings = @club.settings.find(:all, :conditions => ['name = ? AND value = ?', 'pages', @page.id]);
+		@settings.each do |setting|
+			setting.destroy
+		end
     @page.destroy
 
     respond_to do |format|
