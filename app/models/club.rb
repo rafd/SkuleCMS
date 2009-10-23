@@ -88,6 +88,7 @@ class Club < ActiveRecord::Base
   end
   
   def save_images
+    self.create_directory
     if(!self.logo.blank?)
       File.open(File.join("#{RAILS_ROOT}/public/assets/clubs/"+self.web_name+"/avatar"), "wb") { |f| f.write(self.logo.read) }
     end

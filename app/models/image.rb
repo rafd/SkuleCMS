@@ -29,7 +29,6 @@ class Image < ActiveRecord::Base
     directory = "#{RAILS_ROOT}/public/assets/clubs/"+album.club.web_name+"/"+album.id.to_s
     # create the file path
     path = File.join(directory, name)
-    File.makedirs path
     # write the file
     File.open(path, "wb") { |f| f.write(upload.read) }
     return name
