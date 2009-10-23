@@ -9,11 +9,10 @@
 				%span.count= tag.taggings_count.to_s
 				%span.name= tag.name
 			
-- form_for( @club, :url => { :action => :update_tags, :method => :put }) do |f|
+- form_for( @club, :url => { :action => :update_tags, :id => @club}, :method => :put) do |f|
 	%p
 		= f.label :tags, 'Tags'
 		= f.text_field :tag_list
-		= f.hidden_field :id, :value => @club.id
 	%p
 		= f.submit 'Update Tags'
 		| 

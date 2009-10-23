@@ -207,20 +207,39 @@ class Club < ActiveRecord::Base
     end
   end
 
-  def set_settings(active, option_name, name, value)
+  def custom_home_page?
+    return self.settings.count(:all, :conditions => ["option_name = ? AND name = ?", 'HomePage', 'pages']) > 0
+  end
+  
+  def set_settings(active, option_name, name, value, unique = false)
     if (active)
-      if (self.settings.find(:first, :conditions => ["option_name = ? AND name = ? AND value = ?", option_name, name, value]).blank?)
-        @setting = self.settings.new
-        @setting.option_name = option_name
-        @setting.name = name
+      if (unique)
+        @setting = self.settings.find(:first, :conditions => ["option_name = ? AND name = ?", option_name, name])
+        if (@setting.blank?)
+          @setting = self.settings.new
+          @setting.option_name = option_name
+          @setting.name = name
+        end
         @setting.value = value
         @setting.save
+      else
+        if (self.settings.find(:first, :conditions => ["option_name = ? AND name = ? AND value = ?", option_name, name, value]).blank?)
+          @setting = self.settings.new
+          @setting.option_name = option_name
+          @setting.name = name
+          @setting.value = value
+          @setting.save
+        end
       end
     else
-      @setting = self.settings.find(:first, :conditions => ['option_name = ? AND name = ? AND value = ?', option_name, name, value])
+      if (unique)
+        @setting = self.settings.find(:first, :conditions => ['option_name = ? AND name = ?', option_name, name])
+      else 
+        @setting = self.settings.find(:first, :conditions => ['option_name = ? AND name = ? AND value = ?', option_name, name, value])
+      end
       if (!@setting.blank?)
         @setting.destroy
-      end
+      end  
     end
-  end 
+  end
 end
