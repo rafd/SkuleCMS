@@ -109,8 +109,8 @@ class LargePostsController < ApplicationController
 
     respond_to do |format|
       if @large_post.save
-        flash[:notice] = 'LargePost was successfully created.'
-        format.html { redirect_to admin_club_large_post_path(@club, @large_post) }
+        flash[:notice] = 'Post successfully created.'
+        format.html { redirect_to :action => :admin, :club => @club }
         format.xml  { render :xml => @large_post, :status => :created, :location => @large_post }
       else
         @page_title = "New Large Post"
