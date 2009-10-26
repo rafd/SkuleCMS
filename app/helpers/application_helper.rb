@@ -21,13 +21,13 @@ module ApplicationHelper
   end
     
   def summarize(string, maxlength, name, options = {}, html_options = {})
-
-  	if string.length > maxlength
-  		return string[0..maxlength] + "..." + link_to(name, options, html_options)
-	else
-		return string
-	end 
+    if string.length > maxlength
+      return string[0..maxlength].gsub(/<\/?[^>]*>/, "") + "..." + link_to(name, options, html_options)
+    else
+      return string
+    end 
   end
+
 
   def format_time(time)
     #return time.strftime('%a. %b. %e %l:%M %p')
