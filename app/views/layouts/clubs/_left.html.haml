@@ -1,6 +1,10 @@
 #left
 	%dl
-		%dt= link_to_unless_current "Feed", {:controller => "clubs", :action => "show", :id => @club}, :class=> ("active" if @controller.action_name == "show" && @controller.controller_name == "large_posts" || @controller.controller_name == "small_posts" || @controller.controller_name == "events" )
+		-if (@club.custom_home_page?)
+			%dt= link_to_unless_current "Home", {:controller => "clubs", :action => "show", :id => @club}
+			%dt= link_to_unless_current "Feed", {:controller => "clubs", :action => "news", :id => @club}, :class=> ("active" if @controller.action_name == "show" && @controller.controller_name == "large_posts" || @controller.controller_name == "small_posts" || @controller.controller_name == "events" )
+		-else
+			%dt= link_to_unless_current "Feed", {:controller => "clubs", :action => "show", :id => @club}, :class=> ("active" if @controller.action_name == "show" && @controller.controller_name == "large_posts" || @controller.controller_name == "small_posts" || @controller.controller_name == "events" )
 		-#
 			%dt= link_to "Photos", "#"
 			%dt= link_to "Members", "#"
@@ -12,5 +16,7 @@
 				-page.children.each do |child|
 					%dd= link_to_unless_current child.title, :controller=> 'pages', :action=> 'show', :id => child, :club_id => @club
 
-	
-		
+	-unless @club.gcal.blank?
+		%dl
+			%dt= link_to_unless_current 'Event Calendar', :controller=> 'calendar', :action=> 'index', :club_id => @club
+

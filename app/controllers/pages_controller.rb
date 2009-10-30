@@ -78,7 +78,7 @@ class PagesController < ApplicationController
   def edit
     @page = @club.pages.find(params[:id])
     @pagelist = @club.all_pages
-    @pagelist  -= @page.all_children << @page
+    @pagelist  -= @page.self_and_descendants
     
     @page_title = "Editing " + @page.title
     @site_section = "admin"
@@ -134,6 +134,11 @@ class PagesController < ApplicationController
   # DELETE /pages/1.xml
   def destroy
     @page = @club.pages.find(params[:id])
+		#destroy settings
+		@settings = @club.settings.find(:all, :conditions => ['name = ? AND value = ?', 'pages', @page.id]);
+		@settings.each do |setting|
+			setting.destroy
+		end
     @page.destroy
 
     respond_to do |format|

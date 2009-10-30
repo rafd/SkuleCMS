@@ -4,6 +4,10 @@
 	= render :partial => "form", :locals => {:f => f }
 
 	%p
+		= label_tag :home_page, "Home Page"
+		%span Set a custom page as the home page or leave blank to show the feed.
+		= (select (:home_page, "page", @pagelist.map {|p| [ p.indented_title.to_s, p.id.to_s ] }, {:prompt => 'Select a Page', :include_blank => '--None--',:selected => (@homePage.blank? ? '0' : @homePage.value.to_s)})).gsub("&amp;", "&")
+	%p
 		= f.label :live, "Make Site Live"
 		%span Check this when the club is ready to be live and visible to everyone.
 		= f.check_box :live
