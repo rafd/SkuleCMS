@@ -1,22 +1,21 @@
 #skulebar
 	= link_to "SKULE&trade;", "http://www.skule.ca/", :id => "skule"
-	-#
-		- form_for :club, @search, :url => {:controller => 'search', :action => 'search', :club_id => (club_id||nil)}  do |f|
-			= text_field_with_auto_complete :search, :search, {}, { :url => formatted_search_path(:js), :select => :select_tag, :after_update_element => "submit", :frequency => 0.4, :method => :get, :param_name => 'search', :skip_style => true }
-			-#
-				%ul#bookmarks
-					%li= link_to "Google", "http://www.google.com", :class => "google"
-					%li= link_to "Facebook", "http://www.facebook.com", :class => "facebook"
-					%li= link_to "More", "#", :class => "more"
+	- form_for :club, @search, :url => {:controller => 'search', :action => 'search', :club_id => (club_id||nil)}  do |f|
+		= text_field_with_auto_complete :search, :search, {}, { :url => formatted_search_path(:js), :select => :select_tag, :after_update_element => "submit", :frequency => 0.4, :method => :get, :param_name => 'search', :skip_style => true }
+		-#
+			%ul#bookmarks
+				%li= link_to "Google", "http://www.google.com", :class => "google"
+				%li= link_to "Facebook", "http://www.facebook.com", :class => "facebook"
+				%li= link_to "More", "#", :class => "more"
 
-				%ul#message= flash[:notice]
+			%ul#message= flash[:notice]
 
-			%div#user	
-				-if current_admin
-					= link_to current_admin.login, (current_admin.super_admin ? admins_path : (current_admin.club_id.blank? ? new_club_path : club_admin_index_path(current_admin.club_id) ) )
-					|
-					= link_to "Account", change_password_admins_path
-					|
-					= link_to "Logout", logout_path
-				-else
-					=link_to "Login", login_path
+		%div#user	
+			-if current_admin
+				= link_to current_admin.login, (current_admin.super_admin ? admins_path : (current_admin.club_id.blank? ? new_club_path : club_admin_index_path(current_admin.club_id) ) )
+				|
+				= link_to "Account", change_password_admins_path
+				|
+				= link_to "Logout", logout_path
+			-else
+				=link_to "Login", login_path
