@@ -1,10 +1,7 @@
 class PagesController < ApplicationController
   before_filter :load_club
   before_filter :auth_admin, :only => [:admin, :new, :edit, :create, :update, :destroy]
-  
-  def load_club
-    @club = Club.find(params[:club_id])
-  end
+
        uses_tiny_mce :options => {
                                 :theme => 'advanced',
                                 :plugins => %w{ advimg media emotions },
@@ -81,7 +78,7 @@ class PagesController < ApplicationController
   def edit
     @page = @club.pages.find(params[:id])
     @pagelist = @club.all_pages
-    @pagelist  -= @page.all_children << @page
+    @pagelist  -= @page.self_and_descendants
     
     @page_title = "Editing " + @page.title
     @site_section = "admin"
@@ -91,6 +88,8 @@ class PagesController < ApplicationController
   # POST /pages.xml
   def create
     @page = @club.pages.new(params[:page])
+    @page.parent_id = params[:page][:parent_id];
+    @page.bns_parent_id = params[:page][:parent_id];
     respond_to do |format|
       if @page.save
         flash[:notice] = 'Pages was successfully created.'
@@ -111,7 +110,8 @@ class PagesController < ApplicationController
   # PUT /pages/1.xml
   def update
     @page = @club.pages.find(params[:id])
-
+    @page.parent_id = params[:page][:parent_id];
+    @page.bns_parent_id = params[:page][:parent_id];
     respond_to do |format|
       if @page.update_attributes(params[:page])
         flash[:notice] = 'Pages was successfully updated.'
@@ -134,6 +134,11 @@ class PagesController < ApplicationController
   # DELETE /pages/1.xml
   def destroy
     @page = @club.pages.find(params[:id])
+		#destroy settings
+		@settings = @club.settings.find(:all, :conditions => ['name = ? AND value = ?', 'pages', @page.id]);
+		@settings.each do |setting|
+			setting.destroy
+		end
     @page.destroy
 
     respond_to do |format|

@@ -1,6 +1,6 @@
 class Group < ActiveRecord::Base
   belongs_to      :club
-  has_many        :memberships
+  has_many        :memberships, :dependent => :destroy
   has_many        :users,   :through => :memberships
   #better nested tree
 
@@ -17,12 +17,13 @@ class Group < ActiveRecord::Base
                       :right_column => "rgt",
                       :text_coloumn => "name"
   
-  before_save :check_parent_id
+  before_validation :check_parent_id
   after_save :move_to_parent
   
   def check_parent_id
     if self.parent_id.blank? && !self.is_member_list?
       self.parent_id = self.club.member_list.id
+      self.bns_parent_id = self.club.member_list.id
     end
   end
   
@@ -40,7 +41,6 @@ class Group < ActiveRecord::Base
         self.move_to_child_of(self.club.groups.find(self.parent_id))
       else
         self.parent_id = self.club.member_list.id
-        puts self.club.member_list.id
         self.move_to_child_of(self.club.member_list)
       end
       self.parent.order_by_weight
@@ -56,12 +56,17 @@ class Group < ActiveRecord::Base
   
   #This is for fixture loading. Don't use unless necessary.
   def self.rebuild_tree
+    @groups = Group.find(:all, :conditions => ['bns_parent_id IS ?', nil])
+    @groups.each do |group|
+      group.recreate_node
+    end
+        
     @clubs = Club.all
     @clubs.each do |club|
       club.member_list
     end
-    renumber_all
-    Group.all.each do |group|
+    #rebuild!
+    Group.find(:all, :conditions => ['bns_parent_id IS NOT ?', nil]).each do |group|
       group.order_by_weight
     end
   end
@@ -75,4 +80,25 @@ class Group < ActiveRecord::Base
     return @spacing+self.name
   end
   
+  def recreate_node(parent_node = nil)
+    @childs = Group.find(:all, :conditions => ["parent_id = ?", self.id])
+    @members = self.users
+    @node = self.club.groups.new
+    @node.parent_id = parent_node
+    @node.bns_parent_id = parent_node
+    @node.misc = self.misc
+    @node.name = self.name
+    @node.order = self.order
+    @node.save_with_validation(false)
+    @members.each do |member|
+      @membership = Membership.new
+      @membership.user = member
+      @membership.group = @node
+      @membership.save
+    end
+    @childs.each do |child|
+      child.recreate_node(@node.id)
+    end
+    self.destroy
+  end
 end

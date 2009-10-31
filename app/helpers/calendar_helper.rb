@@ -19,7 +19,7 @@ module CalendarHelper
     def event_calendar
       calendar event_calendar_options do |event|
         if event.link.blank?
-          link_to("<div>" + event.name + " - " + event.club.name + "</div>", {:controller => 'events', :action => 'show', :club_id => event.club_id, :id => event.id}, :title => event.name + " - " + event.club.name)
+          link_to("<div>" + event.name + " - " + event.club.name + "</div>", {:controller => 'events', :action => 'show', :club_id => event.club, :id => event.id}, :title => event.name + " - " + event.club.name)
         else
           link_to("<div>" + event.name + " - " + event.club.name + "</div>", event.link, :title => event.name + " - " + event.club.name)        
         end

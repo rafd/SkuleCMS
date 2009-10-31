@@ -3,8 +3,9 @@ require "will_paginate"
 class ClubsController < ApplicationController
   before_filter :auth_admin, :only => [:edit, :update, :settings, :update_settings]
   before_filter :auth_new_club, :only => [:new, :create]
-  before_filter :auth_super_admin_only, :only => [:admin, :destroy, :edit_tags, :update_tags]
-
+  before_filter :auth_super_admin_only, :only => [:admin, :destroy, :edit_tags, :update_tags, :go_live]
+	#Does add_feed_item need auth?
+	
   caches_page :index
   cache_sweeper :club_sweeper
 
@@ -26,7 +27,7 @@ class ClubsController < ApplicationController
   end
   
   def go_live
-	club = Club.find(params[:club])
+	club = Club.find_by_web_name(params[:club])
 	club.update_attribute("live", true)
 	render :text => "Live!"
   end
@@ -38,7 +39,7 @@ class ClubsController < ApplicationController
 
     @clubs = Club.find(:all, :include => :tags)
 
-	@tags = Club.find_related_tags("club")
+		@tags = Club.find_related_tags("club")
     @live_clubs = Club.find(:all, :include => :tags, :conditions => ["live=?" , true], :order => "name ASC")
     @hidden_clubs = Club.find(:all, :conditions => ["live=?" , false], :order => "name ASC")
   end
@@ -46,10 +47,40 @@ class ClubsController < ApplicationController
   # GET /clubs/1
   # GET /clubs/1.xml
   def show
-    @club = Club.find(params[:id], :include => :tags)
-   
+    @club = Club.find_by_web_name(params[:id], :include => :tags)
+    
     @page_title = ""
     @site_section = "clubs"
+    
+    @setting = @club.settings.find(:first, :conditions => ["option_name = ? AND name = ?", 'HomePage', 'pages']) 
+    @page = @club.pages.find(:first, :conditions => ["id = ?", @setting.value]) unless @setting.blank?
+    if @setting.blank? || @page.blank?
+      respond_to do |format|
+        format.html {
+          @feed = feed_output([@club.small_posts, @club.large_posts, @club.events], feed_list_length, :all, :order => "created_at DESC", :limit => feed_list_length)
+          @feed_earliest_time = feed_earliest_time(@feed)
+          render :action => 'news'
+        }
+        format.xml {
+          @feed = feed_output([@club.small_posts, @club.large_posts, @club.events], feed_rss_length, :all, {:order => "created_at DESC", :limit => feed_rss_length})
+          if @feed[0] == nil
+            render :xml => @club
+          end  
+        }  
+      end
+    else
+      respond_to do |format|
+        format.html
+      end
+    end
+
+  end
+  
+  def news
+    @club = Club.find_by_web_name(params[:id], :include => :tags)
+    @page_title = "News Feed"
+    @site_section = "clubs"
+    
     respond_to do |format|
       format.html {
         @feed = feed_output([@club.small_posts, @club.large_posts, @club.events], feed_list_length, :all, :order => "created_at DESC", :limit => feed_list_length)
@@ -65,7 +96,7 @@ class ClubsController < ApplicationController
   end
 
   def add_feed_item
-    @club = Club.find(params[:id])
+    @club = Club.find_by_web_name(params[:id])
 
     @feed = feed_output([@club.small_posts, @club.large_posts, @club.events], feed_add_length, :all, { :conditions => ["created_at < ?", params[:time]], :order => "created_at DESC", :limit => feed_add_length})
     @feed_earliest_time = feed_earliest_time(@feed)   
@@ -87,14 +118,15 @@ class ClubsController < ApplicationController
 
   # GET /clubs/1/edit
   def edit
-    @club = Club.find(params[:id], :include => :tags)
-    
+    @club = Club.find_by_web_name(params[:id], :include => :tags)
+    @homePage = @club.settings.find(:first, :conditions => ['option_name = ? AND name = ?', 'HomePage', 'pages'])
+    @pagelist = @club.all_pages
     @page_title = "Editing "+@club.name
     @site_section = "admin"
   end
   
   def edit_tags
-  	@club = Club.find(params[:id], :include => :tags)
+  	@club = Club.find_by_web_name(params[:id], :include => :tags)
   	@tags = Tag.all
     
     @page_title = "Tags for "+@club.name
@@ -128,14 +160,17 @@ class ClubsController < ApplicationController
   # PUT /clubs/1
   # PUT /clubs/1.xml
   def update
-    @club = Club.find(params[:id], :include => :tags)
-
-    respond_to do |format|
+   @club = Club.find_by_web_name(params[:id], :include => :tags)
+   respond_to do |format|
       if @club.update_attributes(params[:club])
+			  @club.set_settings(!params[:home_page][:page].blank? && params[:home_page][:page] != '0', 'HomePage', 'pages', params[:home_page][:page], true)
         flash[:notice] = 'Club was successfully updated.'
         format.html { redirect_to(club_admin_index_path(@club)) }
         format.xml  { head :ok }
       else
+				@homePage = @club.settings.new
+				@homePage.value = params[:home_page][:page]
+        @pagelist = @club.all_pages
         @page_title = "Editing "+@club.name
         @site_section = "admin"
         format.html { render :action => "edit" }
@@ -147,7 +182,7 @@ class ClubsController < ApplicationController
   # DELETE /clubs/1
   # DELETE /clubs/1.xml
   def destroy
-    @club = Club.find(params[:id])
+    @club = Club.find_by_web_name(params[:id])
     @club.destroy
 
     respond_to do |format|
@@ -158,19 +193,22 @@ class ClubsController < ApplicationController
   
 
   def update_tags
-    #@club = Club.find(params[:club][:club_id], :include => :tags) 
+    #@club = Club.find_by_web_name(params[:club][:club_id], :include => :tags) 
 	#@club.tag_list = params[:club]["tag_list_" + @club.id.to_s]
-	@club = Club.find(params[:club][:id], :include => :tags)
-    @club.update_attribute("tag_list", params[:club][:tag_list])
-    
+	  @club = Club.find_by_web_name(params[:id], :include => :tags)
+		#if params[:club][('tag_list_'+@club.id.to_s).to_sym].blank?
+			@club.update_attribute("tag_list", params[:club][:tag_list])
+    #else
+		#	@club.update_attribute("tag_list", params[:club][('tag_list_'+@club.id.to_s).to_sym])
+		#end
     expire_page(:controller => 'clubs', :action => 'index')
-    expire_page(:controller => 'hub', :action => 'services')
+    expire_page(:controller => 'hub_pages', :action => 'services')
 
 	redirect_to :action => :admin
   end
 
   def settings
-    @club = Club.find(params[:id])
+    @club = Club.find_by_web_name(params[:id])
     @page_title = "Changing "+@club.name+"'s Settings"
     @site_section = "admin"
     @pages = @club.all_pages
@@ -182,7 +220,7 @@ class ClubsController < ApplicationController
   end
   
   def update_settings
-    @club = Club.find(params[:id])
+    @club = Club.find_by_web_name(params[:id])
     @controller_names = ['clubs', 'groups', 'events', 'large_posts', 'albums', 'images', 'download_folders', 'downloads', 'calendar']
     @controller_names.each do |name|
       @club.set_settings(!params[('banner_' + name).to_sym].blank?, 'Banner', name, 'All')
@@ -203,10 +241,11 @@ class ClubsController < ApplicationController
   private
   
   def auth_admin
+    @club = Club.find_by_web_name(params[:id])
     if current_admin.blank?
       redirect_to login_path
-    elsif !current_admin.super_admin && !current_admin.club_id.blank? && current_admin.club_id.to_s != params[:id]
-      redirect_to club_admin_index_path(current_admin.club_id)
+    elsif !current_admin.super_admin && !current_admin.club_id.blank? && current_admin.club_id != @club.id
+      redirect_to club_admin_index_path(Club.find(current_admin.club_id))
     elsif !current_admin.super_admin && current_admin.club_id.blank?
       redirect_to new_club_path
     end
@@ -216,7 +255,7 @@ class ClubsController < ApplicationController
     if current_admin.blank?
       redirect_to login_path
     elsif !current_admin.super_admin && !current_admin.club_id.blank?
-      redirect_to club_admin_index_path(current_admin.club_id)
+      redirect_to club_admin_index_path(Club.find(current_admin.club_id))
     end
   end
 end

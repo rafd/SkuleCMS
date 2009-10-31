@@ -1,15 +1,12 @@
 class GroupsController < ApplicationController
   before_filter :load_club
   before_filter :auth_admin, :only => [:admin, :new, :edit, :create, :update, :destroy, :add_member, :create_membership, :kick]
-  def load_club
-    @club = Club.find(params[:club_id])
-  end
   
   # GET /groups
   # GET /groups.xml
   def index
     @groups = @club.groups
-    @grouplist = @club.groups.find(:all, :conditions => ["parent_id IS NOT ?", nil], :order => 'lft')
+    @grouplist = @club.groups.find(:all, :conditions => ["bns_parent_id IS NOT ?", nil], :order => 'lft')
     
     @page_title = "Group Listing"
     @site_section = "clubs"
@@ -24,7 +21,7 @@ class GroupsController < ApplicationController
   def admin
     if (params[:id].blank?)
       @groups = @club.groups
-      @grouplist = @club.groups.find(:all, :conditions => ["parent_id IS NOT ?", nil], :order => 'lft')
+      @grouplist = @club.groups.find(:all, :conditions => ["bns_parent_id IS NOT ?", nil], :order => 'lft')
       
       @page_title = "Group Listing"
       @site_section = "admin"
@@ -77,7 +74,7 @@ class GroupsController < ApplicationController
   def edit
     @group = @club.groups.find(params[:id])
     @grouplist = @club.groups.find(:all, :conditions => ["parent_id IS NOT ?", nil], :order => 'lft')
-    @grouplist -= @group.all_children << @group
+    @grouplist -= @group.self_and_descendants
     
     @page_title = "Editing " + @group.name
     @site_section = "admin"
@@ -87,6 +84,8 @@ class GroupsController < ApplicationController
   # POST /groups.xml
   def create
     @group = @club.groups.new(params[:group])
+    @group.parent_id = params[:group][:parent_id];
+    @group.bns_parent_id = params[:group][:parent_id];
     respond_to do |format|
       if @group.save
         flash[:notice] = 'Group was successfully created.'
@@ -110,7 +109,8 @@ class GroupsController < ApplicationController
   # PUT /groups/1.xml
   def update
     @group = @club.groups.find(params[:id])
-    
+    @group.parent_id = params[:group][:parent_id];
+    @group.bns_parent_id = params[:group][:parent_id];
     respond_to do |format|
       if (@group.is_member_list?)
         flash[:notice] = 'Cannot edit the member list.'

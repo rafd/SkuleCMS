@@ -91,7 +91,7 @@ class ApplicationController < ActionController::Base
   
   def load_club
     if !params[:club_id].blank?
-      @club = Club.find(params[:club_id])
+      @club = Club.find_by_web_name(params[:club_id])
     end
   end
   
@@ -111,7 +111,7 @@ class ApplicationController < ActionController::Base
     elsif !current_admin.super_admin && current_admin.club_id.blank?
       redirect_to new_club_path
     elsif !current_admin.super_admin && current_admin.club_id != @club.id
-      redirect_to club_path(@club.id)
+      redirect_to club_path(@club)
     end
   end
 

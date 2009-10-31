@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(:version => 20090926202744) do
     t.string   "address"
     t.text     "description"
     t.string   "rss_link"
+    t.string   "gcal"
   end
 
   create_table "download_folders", :force => true do |t|

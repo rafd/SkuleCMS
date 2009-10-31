@@ -6,28 +6,23 @@ document.observe('dom:loaded', function() {
 			var tag = $w(elmt.className).find(function(value){
 				return value.substring(0,9) == "LEFT_TAG_";
 			});
-			if (prev != null && prev != tag)
-				$$('a.taglist.'+prev)[0].toggleClassName('selected');
-			prev = tag;
-			var tag = tag.substring(5);
-			elmt.toggleClassName('selected');
-			if(elmt.hasClassName('selected')){
-				//TODO: test if including .visible makes it faster or slower
-				clubs.select('div.club.visible:not(.'+tag+')').each(function(club){ //only visible clubs
-					club.removeClassName('visible');
-					club.addClassName('hidden');
+			//Restores previously hidden clubs
+			if (prev != null) {
+	  		$$('a.taglist.' + prev)[0].toggleClassName('selected');
+				clubs.select('div.club:not(.'+prev.substring(5)+')').each(function(club){ 
+					club.toggleClassName('hidden');
 				});
-				clubs.select('div.club.hidden.'+tag).each(function(club){ //only visible clubs
-					club.removeClassName('hidden');
-					club.addClassName('visible');
+	  	}
+			//Hides all non-selected clubs if user selects a new tag
+			if (prev != tag) {
+				elmt.toggleClassName('selected');
+				prev = tag;
+				clubs.select('div.club:not(.'+tag.substring(5)+')').each(function(club){ //only visible clubs
+					club.toggleClassName('hidden');
 				});
-			} else {
+	  	}
+			else
 				prev = null;
-				clubs.select('div.club.hidden').each(function(club){ //only hidden clubs
-						club.removeClassName('hidden');
-						club.addClassName('visible');
-				});
-			}
 		});
 	});	
 });

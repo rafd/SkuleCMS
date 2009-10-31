@@ -23,10 +23,20 @@ class Club < ActiveRecord::Base
   validates_length_of       :address, :maximum => 250
   validates_length_of       :web_name, :in => 3..15
   validates_length_of       :tagline, :in => 5..100
+  validates_length_of       :gcal, :in => 5..255, :allow_blank => true
   validates_length_of       :description, :in => 5..400
   validates_format_of       :web_name, :with => /^[A-Za-z\d_]+$/, :message => "name is invalid. Only letters, numbers, and underscores allowed."
   validates_format_of       :contact, :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i, :allow_blank => true, :message => 'email is invalid.'
   validates_length_of       :website, :in => 3..200, :allow_blank => true
+  
+  
+  def to_s
+    web_name
+  end
+  
+  def to_param
+    "#{to_s.parameterize}"
+  end
   
   attr_protected :id,
                 :group_ids,
@@ -81,15 +91,15 @@ class Club < ActiveRecord::Base
   
   def save_images
     if(!self.logo.blank?)
-      File.open(File.join("public/images/avatars", self.web_name), "wb") { |f| f.write(self.logo.read) }
+      File.open(File.join("#{RAILS_ROOT}/public/assets/clubs/"+self.web_name+"/avatar"), "wb") { |f| f.write(self.logo.read) }
     end
     if(!self.banner.blank?)
-      File.open(File.join("public/images/banners", self.web_name), "wb") { |f| f.write(self.banner.read) }
+      File.open(File.join("#{RAILS_ROOT}/public/assets/clubs/"+self.web_name+"/banner"), "wb") { |f| f.write(self.banner.read) }
     end
   end  
   
   def create_directory
-    directory = "#{RAILS_ROOT}/public"+"/club_data/"+self.id.to_s
+    directory = "#{RAILS_ROOT}/public/assets/clubs/"+self.web_name
     if !File.exist?(directory)
       FileUtils.mkdir_p(directory)
     end
@@ -153,6 +163,7 @@ class Club < ActiveRecord::Base
       @group.misc = "Full member list of the club"
       @group.order = 1
       @group.save
+      @group.move_to_root
     end
     return @group
   end
@@ -163,6 +174,7 @@ class Club < ActiveRecord::Base
       @root_page = self.pages.new
       @root_page.order = 1
       @root_page.save_with_validation(false)
+      @root_page.move_to_root
     end
     return @root_page
   end
@@ -197,20 +209,39 @@ class Club < ActiveRecord::Base
     end
   end
 
-  def set_settings(active, option_name, name, value)
+  def custom_home_page?
+    return self.settings.count(:all, :conditions => ["option_name = ? AND name = ?", 'HomePage', 'pages']) > 0
+  end
+  
+  def set_settings(active, option_name, name, value, unique = false)
     if (active)
-      if (self.settings.find(:first, :conditions => ["option_name = ? AND name = ? AND value = ?", option_name, name, value]).blank?)
-        @setting = self.settings.new
-        @setting.option_name = option_name
-        @setting.name = name
+      if (unique)
+        @setting = self.settings.find(:first, :conditions => ["option_name = ? AND name = ?", option_name, name])
+        if (@setting.blank?)
+          @setting = self.settings.new
+          @setting.option_name = option_name
+          @setting.name = name
+        end
         @setting.value = value
         @setting.save
+      else
+        if (self.settings.find(:first, :conditions => ["option_name = ? AND name = ? AND value = ?", option_name, name, value]).blank?)
+          @setting = self.settings.new
+          @setting.option_name = option_name
+          @setting.name = name
+          @setting.value = value
+          @setting.save
+        end
       end
     else
-      @setting = self.settings.find(:first, :conditions => ['option_name = ? AND name = ? AND value = ?', option_name, name, value])
+      if (unique)
+        @setting = self.settings.find(:first, :conditions => ['option_name = ? AND name = ?', option_name, name])
+      else 
+        @setting = self.settings.find(:first, :conditions => ['option_name = ? AND name = ? AND value = ?', option_name, name, value])
+      end
       if (!@setting.blank?)
         @setting.destroy
-      end
+      end  
     end
-  end 
+  end
 end

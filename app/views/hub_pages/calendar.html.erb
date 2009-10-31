@@ -1,20 +1,43 @@
 <iframe
-	src="http://www.google.com/calendar/hosted/webdev.skule.ca/embed?title=SkuleClubs&amp;\
-showTitle=0&amp;\
-showNav=0&amp;\
-showPrint=0&amp;\
-showTz=0&amp;\
-height=600&amp;\
-wkst=1&amp;\
-bgcolor=%23FFFFFF&amp;\
-src=en.canadian%23holiday%40group.v.calendar.google.com&amp;\
-color=%23A32929&amp;\
-src=citizenengineer.skule.ca_383mvjkui8ln8intl4cr04sc5s%40group.calendar.google.com&amp;\
-color=%23AB8B00&amp;\
-ctz=America%2FToronto" 
-	style="border-width:0;" 
-	width="790" 
-	height="500" 
-	frameborder="0" 
-	scrolling="no">
+<%= 'src="http://www.google.com/calendar/hosted/webdev.skule.ca/embed?title=SkuleClubs&amp;showTitle=0&amp;showNav=1&amp;showPrint=0&amp;showTz=0&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;' -%>
+<%="src=en.canadian%23holiday%40group.v.calendar.google.com&amp;color=%23A32929&amp;" -%>
+<% @calendars.each do |club| -%>
+<% color = club.name == "EngSoc" ? "2952A3" : "AB8B00" -%>
+<%="src="+club.gcal+"&amp;color=%23"+color+"&amp;" -%>
+<% end -%>
+<%= 'ctz=America%2FToronto"' -%>
+        style="border-width:0;"
+        width="790"
+        height="500"
+        frameborder="0"
+        scrolling="no">
 </iframe>
+
+<% if false %>
+BASIC
+A32929 red
+B1365F pink
+7A367A reddish-purple
+5229A3 purple
+29527A navy
+2952A3 blue
+1B887A light-blue
+
+GREEN - RED
+28754E forest green
+0D7813 green
+528800 puke green
+88880E puke yellow
+AB8B00 yellow
+BE6D00 orange
+B1440E orangey-red
+
+MUTED
+865A5A light pink/pruple
+705770 light purple
+4E5D6C light navy
+5A6986 light blue
+4A716C light green/blue
+6E6E41 brown
+8D6F47 light brown
+<% end %>

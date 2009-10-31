@@ -1,5 +1,5 @@
 class HubPagesController < ApplicationController
-  caches_page :index, :services
+  caches_page :index, :services, :calendar
   
   def index
 		@page_banner = true
@@ -40,6 +40,8 @@ class HubPagesController < ApplicationController
   def calendar
   	@page_title = "Calendar"
   	@site_section = "hub"
+
+    @calendars = Club.find(:all, :conditions => ['gcal IS NOT ? AND gcal != ? AND live = ?', nil, '', true], :select => 'name, gcal')
   end
 
 	#see clubs/index

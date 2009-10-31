@@ -1,12 +1,13 @@
-#sidebar
-	-if @club.description
-		.widget
-			%h4 About Us
-			%p= @club.description
+-if @disable_widgets.blank?
+	#sidebar
+		-if @club.description
+			.widget
+				%h4 About Us
+				%p= @club.description
 		
 					
-	=render :partial => 'layouts/widgets/members', :locals => {:club => @club}
-	
-	=render :partial => 'layouts/widgets/upcoming_events', :locals => {:events => @club.upcoming_events}
-	
-	=render :partial => 'layouts/widgets/contact_info', :locals => {:club => @club}
+		=render :partial => 'layouts/widgets/members', :locals => {:club => @club}
+		
+		=render :partial => 'layouts/widgets/upcoming_events', :locals => {:events => @club.upcoming_events}
+		
+		=render :partial => 'layouts/widgets/contact_info', :locals => {:club => @club}
