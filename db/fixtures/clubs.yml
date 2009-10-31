@@ -445,6 +445,7 @@ ASX:
   official_name: Astronomy and Space Exploration Society
   description:  A club where you can learn about astronomy and space exploration, including history and newest developments. 
   website: http://asx.sa.utoronto.ca
+  rss_link: http://asx.sa.utoronto.ca/feed/
   contact: space.society@utoronto.ca
   live: true
 
