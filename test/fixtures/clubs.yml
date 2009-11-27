@@ -254,6 +254,7 @@ ASX:
   website: asx.sa.utoronto.ca
   contact: space.society@utoronto.ca
   affiliated: true
+  rss_link: http://asx.sa.utoronto.ca/feed/
 #  tags: 
 
 ELG:

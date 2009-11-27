@@ -12,6 +12,7 @@ class Club < ActiveRecord::Base
   has_many      :small_posts, :dependent => :destroy
   has_many      :large_posts, :dependent => :destroy
   has_many      :settings, :dependent => :destroy
+  has_many      :external_posts, :dependent => :destroy
   
   validates_uniqueness_of   :name, :case_sensitive => false
   validates_uniqueness_of   :official_name, :case_sensitive => false
@@ -46,6 +47,7 @@ class Club < ActiveRecord::Base
                 :page_ids,
                 :small_post_ids,
                 :large_post_ids,
+                :external_post_ids,
                 :setting_ids,
                 :created_at,
                 :updated_at

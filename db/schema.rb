@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090926183413) do
+ActiveRecord::Schema.define(:version => 20090926202744) do
 
   create_table "admin_sessions", :force => true do |t|
     t.datetime "created_at"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(:version => 20090926183413) do
     t.boolean  "live"
     t.string   "address"
     t.text     "description"
+    t.string   "rss_link"
     t.string   "gcal"
   end
 
@@ -89,6 +90,15 @@ ActiveRecord::Schema.define(:version => 20090926183413) do
     t.datetime "updated_at"
     t.string   "name"
     t.text     "description"
+  end
+
+  create_table "external_posts", :force => true do |t|
+    t.string   "title"
+    t.text     "content"
+    t.integer  "club_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "weblink"
   end
 
   create_table "groups", :force => true do |t|
@@ -158,7 +168,6 @@ ActiveRecord::Schema.define(:version => 20090926183413) do
     t.datetime "updated_at"
     t.integer  "club_id"
     t.integer  "user_id"
-    t.string   "origin"
   end
 
   create_table "taggings", :force => true do |t|

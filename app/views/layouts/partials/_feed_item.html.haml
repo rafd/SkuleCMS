@@ -22,7 +22,9 @@
 				%span.location= abbrev(feed_item.location, 12)
 				
 			.content
-				= summarize(feed_item.description, 144, 'Find Out More &raquo;', {:controller=> feed_item.class.to_s.tableize, :action => 'show', :id => feed_item.id, :club_id => feed_item.club}, {:class=>"more"})
+				= summarize(feed_item.description, 144, 'Find Out More &raquo;', {:controller=> feed_item.class.to_s.tableize, :action => 'show', :id => feed_item.id, :club_id => feed_item.club.id}, {:class=>"more"})
+		-when "ExternalPost" then
+			.content= feed_item.content	
 		-else
 			= feed_item.class	
 	.source

@@ -1,6 +1,9 @@
 # Filters added to this controller apply to all controllers in the application.
 # Likewise, all the methods added will be available for all controllers.
 
+require 'rss/2.0'
+require 'open-uri'
+
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
@@ -42,6 +45,48 @@ class ApplicationController < ActionController::Base
     end
  
     return earliest_time
+  end
+  
+  def feed_eat_external(feed_url, length=2, perform_validation=false)
+    feed_out = []
+    open(feed_url) do |rss|
+      feed_out = RSS::Parser.parse(rss, perform_validation).items
+    end
+    if feed_out.length > length
+      return feed_out[0..length-1]
+    else
+      return feed_out
+    end
+  end
+  
+  def feed_pull_external(club_id)
+
+    club = Club.find(club_id)
+    feed_out = feed_eat_external(club.rss_link, feed_rss_length)
+
+    feed_out.reverse.each do |entry|
+      last_external_post = club.external_posts.find(:last)
+
+      if (last_external_post == nil) ||(entry.pubDate.utc.to_i > last_external_post.created_at.utc.to_i)
+        
+       #deep copy outside feed => new external post
+        new_external_post = club.external_posts.new
+        new_external_post.title = entry.title
+        new_external_post.content = entry.description
+        new_external_post.weblink = entry.link
+        new_external_post.club_id = club.id
+        
+        new_external_post.save
+        
+        ####
+        new_external_post.created_at = entry.pubDate.utc.strftime("%Y-%m-%d %H:%M:%S")
+        ####
+        
+        new_external_post.save
+        
+      end
+    end
+    
   end
   
   def load_club
